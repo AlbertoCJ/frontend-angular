@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
+import { AuthService } from '../../core/services/auth/auth.service';
+
+@Component({
+  selector: 'app-menubar',
+  templateUrl: './menubar.component.html',
+  styleUrls: ['./menubar.component.css']
+})
+export class MenubarComponent implements OnInit {
+
+  items: MenuItem[];
+
+  constructor(private auth: AuthService) { }
+
+  ngOnInit() {
+    this.items = [
+      {
+        icon: 'pi pi-fw pi-home',
+        routerLink: ['/dashboard']
+      },
+      {
+          label: 'DataSets',
+          icon: 'pi pi-file',
+          items: [{
+                  label: 'Agregar',
+                  icon: 'pi pi-fw pi-upload',
+                  routerLink: ['/datasets-upload']
+              },
+              {
+                label: 'Listado',
+                icon: 'pi pi-fw pi-list',
+                routerLink: ['/datasets-list']
+            }
+          ]
+      }
+    ];
+  }
+
+  logout() {
+    this.auth.logout();
+  }
+
+}

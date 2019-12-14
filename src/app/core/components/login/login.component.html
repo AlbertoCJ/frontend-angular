@@ -1,0 +1,18 @@
+<div class="box-center box-login bc-box-login">
+    <p-fieldset legend="Login" styleClass="bc-box-login">
+        <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+            <span class="ui-float-label input-email-login">
+                <input formControlName="email" type="text " size="30 " pInputText> 
+                <label for="float-input ">Email</label>
+            </span>
+            <span class="ui-float-label input-pass-login ">
+                <input formControlName="password" type="password " size="30 " pInputText> 
+                <label for="float-input ">Contraseña</label>
+            </span>
+            <span *ngIf="showError" class="box-error-login class-error">{{ textError }}</span>
+            <div class="box-button-login">
+                <button class="button-login cursor-pointer" type="submit">Login</button>
+            </div>
+        </form>
+    </p-fieldset>
+</div>

@@ -1,0 +1,32 @@
+.box-login {
+    padding: 0px 10px 10px 10px;
+    border-radius: 5px;
+}
+
+.bc-box-login {
+    background-color: white;
+}
+
+.input-email-login {
+    margin: 15px 25px 25px 25px;
+}
+
+.input-pass-login {
+    margin: 25px 25px 10px 25px;
+}
+
+.box-button-login,
+.box-error-login {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.box-error-login {}
+
+.button-login {
+    width: 100%!important;
+    height: 32px;
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 5px;
+}
