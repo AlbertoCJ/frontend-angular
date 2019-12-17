@@ -1,16 +1,32 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+// Pages
 import { DatasetsUploadPageComponent } from './datasets-upload-page/datasets-upload-page.component';
 import { DatasetsListPageComponent } from './datasets-list-page/datasets-list-page.component';
 
+// Modules
+import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
+
+// List components
+import { DATASETS_COMPONENTS } from './components';
+
+// List containers
+import { DATASETS_CONTAINERS } from './containers/index';
 
 @NgModule({
   declarations: [
     DatasetsUploadPageComponent,
-    DatasetsListPageComponent
+    DatasetsListPageComponent,
+    DATASETS_COMPONENTS,
+    DATASETS_CONTAINERS
   ],
   imports: [
-    CommonModule
+    CoreModule,
+    SharedModule
+  ],
+  exports: [
+    DATASETS_COMPONENTS,
+    DATASETS_CONTAINERS
   ]
 })
 export class DatasetsModule { }

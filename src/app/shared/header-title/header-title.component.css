@@ -1,0 +1,8 @@
+:host ::ng-deep .ui-accordion .ui-accordion-header.ui-state-active a {
+    background-color: #007ad9;
+    color: white;
+}
+
+:host ::ng-deep .ui-state-disabled {
+    opacity: 1;
+}

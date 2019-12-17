@@ -20,3 +20,7 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
+
+.container {
+    margin-top: 15px;
+}

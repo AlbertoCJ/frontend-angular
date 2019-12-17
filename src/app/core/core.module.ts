@@ -12,7 +12,9 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {ButtonModule} from 'primeng/button';
 import {CheckboxModule} from 'primeng/checkbox';
 import {MenubarModule} from 'primeng/menubar';
-import {ToastModule} from 'primeng/toast';
+import {FileUploadModule} from 'primeng/fileupload';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {AccordionModule} from 'primeng/accordion';
 
 // Services
 import { AuthService } from './services/auth/auth.service';
@@ -39,7 +41,10 @@ import { LoginComponent } from './components/login/login.component';
     FieldsetModule,
     ButtonModule,
     CheckboxModule,
-    MenubarModule
+    MenubarModule,
+    FileUploadModule,
+    InputTextareaModule,
+    AccordionModule
   ],
   exports: [
     CommonModule,
@@ -52,7 +57,10 @@ import { LoginComponent } from './components/login/login.component';
     FieldsetModule,
     ButtonModule,
     CheckboxModule,
-    MenubarModule
+    MenubarModule,
+    FileUploadModule,
+    InputTextareaModule,
+    AccordionModule
   ]
 })
 export class CoreModule { }

@@ -3,13 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../entities/user/user';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private url = 'http://localhost:3000';
+  private url = environment.apiUrl;
   userToken: string;
 
   constructor(private http: HttpClient,
@@ -24,7 +26,7 @@ export class AuthService {
 
 
     // const httpOptions = {
-    //   headers: new HttpHeaders({ 
+    //   headers: new HttpHeaders({
     //     'Access-Control-Allow-Origin': '*'
     //   })
     // };
