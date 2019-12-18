@@ -15,6 +15,7 @@ import {MenubarModule} from 'primeng/menubar';
 import {FileUploadModule} from 'primeng/fileupload';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {AccordionModule} from 'primeng/accordion';
+import {CardModule} from 'primeng/card';
 
 // Services
 import { AuthService } from './services/auth/auth.service';
@@ -44,7 +45,8 @@ import { LoginComponent } from './components/login/login.component';
     MenubarModule,
     FileUploadModule,
     InputTextareaModule,
-    AccordionModule
+    AccordionModule,
+    CardModule
   ],
   exports: [
     CommonModule,
@@ -60,7 +62,8 @@ import { LoginComponent } from './components/login/login.component';
     MenubarModule,
     FileUploadModule,
     InputTextareaModule,
-    AccordionModule
+    AccordionModule,
+    CardModule
   ]
 })
 export class CoreModule { }

@@ -1,12 +1,17 @@
-<span class="">
+<div class="">
     <p-fileUpload name="files[]" chooseLabel="Agregar fichero" uploadLabel="Subir dataset" cancelLabel="Limpiar" customUpload="true" (uploadHandler)="uploadDataset($event)" (onClear)="clearAll()" (onRemove)="removeFile()">
         <ng-template pTemplate="toolbar">
             <span class="ui-float-label span-description">
                 <textarea name="description" [(ngModel)]="formDataset.description" class="textarea-description" [rows]="1" [ngClass]="{'ng-invalid ng-dirty': showError, 'ng-valid': !showError}" pInputTextarea autoResize="autoResize"></textarea>
                 <label for="float-input ">Descripción</label>
             </span>
-<span *ngIf="showError" class="box-error-login class-error">{{ textError }}</span>
-</ng-template>
-</p-fileUpload>
-</span>
+            <span *ngIf="showError" class="box-error-login class-error">{{ textError }}</span>
+        </ng-template>
+    </p-fileUpload>
+</div>
+<div *ngIf="dataset" class="p-grid mt-cards">
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <app-dataset-card [dataset]="dataset" showButton="false"></app-dataset-card>
+    </div>
+</div>
 <!-- <span *ngIf="showError" class="box-error-login class-error">{{ textError }}</span> -->

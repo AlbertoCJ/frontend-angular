@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormDataset } from '../../../core/entities/dataset/form-dataset';
 import { DatasetService } from '../../../core/services/dataset/dataset.service';
+import { Dataset } from '../../../core/entities/dataset/dataset';
 
 @Component({
   selector: 'app-container-form-dataset',
@@ -12,8 +13,9 @@ export class ContainerFormDatasetComponent implements OnInit {
   formDataset: FormDataset;
   textError: string;
   showError = false;
+  dataset: Dataset;
 
-  constructor( private dataset: DatasetService) {
+  constructor( private datasetService: DatasetService) {
     this.formDataset = new FormDataset();
   }
 
@@ -32,8 +34,11 @@ export class ContainerFormDatasetComponent implements OnInit {
       this.textError = 'Escibe una descipción';
     } else {
       this.formDataset.file = event.files[0];
-      this.dataset.upload(this.formDataset).subscribe( resp => {
+      this.datasetService.upload(this.formDataset).subscribe( (resp: Dataset) => {
         console.log(resp);
+        this.dataset = resp;
+        // this.generateDataset(resp);
+        // console.log(resp.dataset._id);
         this.clearAll();
         this.formDataset = new FormDataset();
       }, (err) => {
@@ -44,6 +49,7 @@ export class ContainerFormDatasetComponent implements OnInit {
         // } else {
         //   alert(`Error inesperado: ${ err.status }`); // TODO: Ver como mostrar alertas
         // }
+        alert(`Error inesperado: ${ err.status }`); // TODO: Ver como mostrar alertas
       });
     }
   }
@@ -53,7 +59,8 @@ export class ContainerFormDatasetComponent implements OnInit {
   }
 
   clearAll() {
-    this.formDataset.description = '';
+    // this.formDataset.description = '';
+    this.formDataset = new FormDataset();
     this.clearError();
   }
 
