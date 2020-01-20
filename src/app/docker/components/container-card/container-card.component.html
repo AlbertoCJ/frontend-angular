@@ -1,0 +1,22 @@
+<p-card styleClass="ui-card-shadow">
+    <div class="p-grid">
+        <span class="p-col title-card">
+            <div>
+                <span>{{ container.imagenName }}</span>
+        <span class="status" [ngClass]="{ 'status-on': container.state === 'running', 'status-off': container.state === 'exited' }"></span>
+    </div>
+    </span>
+    <span class="p-col subtitle-card">
+            <span>{{ container.state }}</span>
+    </span>
+    </div>
+    <p class="title-url">URL:</p>
+    <p-tabView>
+        <p-tabPanel *ngFor="let port of container.ports; let i = index;" [header]="i+1" [selected]="i == 0">
+            {{ port.ip }}:{{ port.publicPort }}
+        </p-tabPanel>
+    </p-tabView>
+    <p-footer>
+        <p-splitButton label="Eliminar" icon="pi pi-trash" (onClick)="removeContainer()" [model]="items" styleClass="ui-button-danger"></p-splitButton>
+    </p-footer>
+</p-card>

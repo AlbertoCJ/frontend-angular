@@ -24,3 +24,10 @@ body {
 .container {
     margin-top: 15px;
 }
+
+.list-empty {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: grey;
+}

@@ -16,6 +16,9 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {AccordionModule} from 'primeng/accordion';
 import {CardModule} from 'primeng/card';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import {TabViewModule} from 'primeng/tabview';
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 // Services
 import { AuthService } from './services/auth/auth.service';
@@ -46,7 +49,10 @@ import { LoginComponent } from './components/login/login.component';
     FileUploadModule,
     InputTextareaModule,
     AccordionModule,
-    CardModule
+    CardModule,
+    SplitButtonModule,
+    TabViewModule,
+    SelectButtonModule
   ],
   exports: [
     CommonModule,
@@ -63,7 +69,10 @@ import { LoginComponent } from './components/login/login.component';
     FileUploadModule,
     InputTextareaModule,
     AccordionModule,
-    CardModule
+    CardModule,
+    SplitButtonModule,
+    TabViewModule,
+    SelectButtonModule
   ]
 })
 export class CoreModule { }

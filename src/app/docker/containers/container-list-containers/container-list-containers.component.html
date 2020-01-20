@@ -1,0 +1,10 @@
+<div>
+    <app-container-status-selected (statusChanged)="stateChanged($event)">
+
+    </app-container-status-selected>
+</div>
+<div style="margin-top: 15px;">
+    <app-containers-list [containers]="containers" (containerRemoved)="removeContainer($event)" (containerStarted)="startContainer($event)" (containerStopped)="stopContainer($event)">
+        <!-- recibir eliminar, parar o eliminar contenedor -->
+    </app-containers-list>
+</div>

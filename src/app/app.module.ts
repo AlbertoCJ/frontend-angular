@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DatasetsModule } from './datasets/datasets.module';
+import { DockerModule } from './docker/docker.module';
 
 @NgModule({
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -21,7 +22,8 @@ import { DatasetsModule } from './datasets/datasets.module';
     CoreModule,
     SharedModule,
     DashboardModule,
-    DatasetsModule
+    DatasetsModule,
+    DockerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

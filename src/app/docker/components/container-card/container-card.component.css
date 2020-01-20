@@ -1,0 +1,25 @@
+.title-card {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.subtitle-card {
+    color: grey;
+    font-weight: bold;
+    text-align: right;
+}
+
+.status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: fixed;
+}
+
+.status-on {
+    background-color: green;
+}
+
+.status-off {
+    background-color: red;
+}

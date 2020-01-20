@@ -1,0 +1,7 @@
+<div class="p-grid" *ngIf="containers.length > 0">
+    <app-container-card *ngFor="let container of containers" [container]="container" (removed)="removeContainer($event)" (started)="startContainer($event)" (stopped)="stopContainer($event)" class="p-col-12 p-md-6 p-lg-3"></app-container-card>
+    <!-- recibir eliminar, parar o eliminar contenedor -->
+</div>
+<div *ngIf="containers.length === 0">
+    <p class="list-empty">No hay contenedores</p>
+</div>

@@ -33,7 +33,22 @@ export class MenubarComponent implements OnInit {
                 routerLink: ['/datasets-list']
             }
           ]
-      }
+      },
+      {
+        label: 'Gestión Docker',
+        icon: 'pi pi-desktop',
+        items: [{
+                label: 'Agregar',
+                icon: 'pi pi-fw pi-upload',
+                routerLink: ['/datasets-upload']
+            },
+            {
+              label: 'Listado',
+              icon: 'pi pi-fw pi-list',
+              routerLink: ['/container-list']
+          }
+        ]
+    }
     ];
   }
 
