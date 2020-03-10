@@ -6,8 +6,10 @@ import { ContainerListPageComponent } from './container-list-page/container-list
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 
-// List containers
+// List components
 import { DOCKER_COMPONENTS } from './components/index';
+
+// List controllers
 import { DOCKER_CONTROLLERS } from './controllers/index';
 
 @NgModule({

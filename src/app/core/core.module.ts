@@ -19,6 +19,7 @@ import {CardModule} from 'primeng/card';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {TabViewModule} from 'primeng/tabview';
 import {SelectButtonModule} from 'primeng/selectbutton';
+import {StepsModule} from 'primeng/steps';
 
 // Services
 import { AuthService } from './services/auth/auth.service';
@@ -52,7 +53,8 @@ import { LoginComponent } from './components/login/login.component';
     CardModule,
     SplitButtonModule,
     TabViewModule,
-    SelectButtonModule
+    SelectButtonModule,
+    StepsModule
   ],
   exports: [
     CommonModule,
@@ -72,7 +74,8 @@ import { LoginComponent } from './components/login/login.component';
     CardModule,
     SplitButtonModule,
     TabViewModule,
-    SelectButtonModule
+    SelectButtonModule,
+    StepsModule
   ]
 })
 export class CoreModule { }

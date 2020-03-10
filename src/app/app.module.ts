@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DatasetsModule } from './datasets/datasets.module';
+import { JobModule } from './job/job.module';
 import { DockerModule } from './docker/docker.module';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DockerModule } from './docker/docker.module';
     SharedModule,
     DashboardModule,
     DatasetsModule,
+    JobModule,
     DockerModule
   ],
   providers: [],

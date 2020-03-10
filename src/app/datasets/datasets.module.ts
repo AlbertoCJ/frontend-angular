@@ -10,7 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 // List components
 import { DATASETS_COMPONENTS } from './components';
 
-// List containers
+// List controllers
 import { DATASETS_CONTROLLERS } from './controllers/index';
 
 

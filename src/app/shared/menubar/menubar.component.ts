@@ -35,6 +35,21 @@ export class MenubarComponent implements OnInit {
           ]
       },
       {
+        label: 'Job',
+        icon: 'pi pi-file',
+        items: [{
+                label: 'Lanzar',
+                icon: 'pi pi-fw pi-upload',
+                routerLink: ['/launch-job']
+            },
+            {
+              label: 'Listado',
+              icon: 'pi pi-fw pi-list',
+              routerLink: ['/job-list']
+          }
+        ]
+    },
+      {
         label: 'Gestión Docker',
         icon: 'pi pi-desktop',
         items: [{
