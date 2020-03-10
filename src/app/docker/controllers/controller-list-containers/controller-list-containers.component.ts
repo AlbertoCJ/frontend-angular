@@ -3,11 +3,11 @@ import { DockerService } from '../../../core/services/docker/docker.service';
 import { Container } from '../../../core/entities/docker/container';
 
 @Component({
-  selector: 'app-container-list-containers',
-  templateUrl: './container-list-containers.component.html',
-  styleUrls: ['./container-list-containers.component.css']
+  selector: 'app-controller-list-containers',
+  templateUrl: './controller-list-containers.component.html',
+  styleUrls: ['./controller-list-containers.component.css']
 })
-export class ContainerListContainersComponent implements OnInit {
+export class ControllerListContainersComponent implements OnInit {
 
   state: string;
   containers: Container[];

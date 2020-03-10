@@ -4,11 +4,11 @@ import { DatasetService } from '../../../core/services/dataset/dataset.service';
 import { Dataset } from '../../../core/entities/dataset/dataset';
 
 @Component({
-  selector: 'app-container-form-dataset',
-  templateUrl: './container-form-dataset.component.html',
-  styleUrls: ['./container-form-dataset.component.css']
+  selector: 'app-controller-form-dataset',
+  templateUrl: './controller-form-dataset.component.html',
+  styleUrls: ['./controller-form-dataset.component.css']
 })
-export class ContainerFormDatasetComponent implements OnInit {
+export class ControllerFormDatasetComponent implements OnInit {
 
   formDataset: FormDataset;
   textError: string;

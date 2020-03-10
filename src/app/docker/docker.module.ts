@@ -8,13 +8,13 @@ import { CoreModule } from '../core/core.module';
 
 // List containers
 import { DOCKER_COMPONENTS } from './components/index';
-import { DOCKER_CONTAINERS } from './containers/index';
+import { DOCKER_CONTROLLERS } from './controllers/index';
 
 @NgModule({
   declarations: [
     ContainerListPageComponent,
     DOCKER_COMPONENTS,
-    DOCKER_CONTAINERS
+    DOCKER_CONTROLLERS
   ],
   imports: [
     CoreModule,
@@ -22,7 +22,7 @@ import { DOCKER_CONTAINERS } from './containers/index';
   ],
   exports: [
     DOCKER_COMPONENTS,
-    DOCKER_CONTAINERS
+    DOCKER_CONTROLLERS
   ]
 })
 export class DockerModule { }

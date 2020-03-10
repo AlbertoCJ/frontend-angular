@@ -11,7 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DATASETS_COMPONENTS } from './components';
 
 // List containers
-import { DATASETS_CONTAINERS } from './containers/index';
+import { DATASETS_CONTROLLERS } from './controllers/index';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { DATASETS_CONTAINERS } from './containers/index';
     DatasetsUploadPageComponent,
     DatasetsListPageComponent,
     DATASETS_COMPONENTS,
-    DATASETS_CONTAINERS
+    DATASETS_CONTROLLERS
   ],
   imports: [
     CoreModule,
@@ -27,7 +27,7 @@ import { DATASETS_CONTAINERS } from './containers/index';
   ],
   exports: [
     DATASETS_COMPONENTS,
-    DATASETS_CONTAINERS
+    DATASETS_CONTROLLERS
   ]
 })
 export class DatasetsModule { }
