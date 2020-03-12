@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Container } from '../../../core/entities/docker/container';
+import { Container } from '../../entities';
 
 @Component({
   selector: 'app-containers-list',

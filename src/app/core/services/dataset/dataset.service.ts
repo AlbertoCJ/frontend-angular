@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
-import { FormDataset } from '../../entities/dataset/form-dataset';
-import { Dataset } from '../../entities/dataset/dataset';
+import { FormDataset, Dataset } from '../../../datasets/entities';
 
 @Injectable({
   providedIn: 'root'

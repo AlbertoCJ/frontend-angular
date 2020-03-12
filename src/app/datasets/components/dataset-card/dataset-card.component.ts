@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Dataset } from '../../../core/entities/dataset/dataset';
+import { Dataset } from '../../entities';
 
 @Component({
   selector: 'app-dataset-card',

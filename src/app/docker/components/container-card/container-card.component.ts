@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Container } from '../../../core/entities/docker/container';
+import { Container } from '../../entities';
 
 @Component({
   selector: 'app-container-card',

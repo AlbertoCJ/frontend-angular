@@ -13,7 +13,6 @@ import { JOB_COMPONENTS } from './components';
 // List controllers
 import { JOB_CONTROLLERS } from './controllers';
 
-
 @NgModule({
   declarations: [
     LaunchJobPageComponent,

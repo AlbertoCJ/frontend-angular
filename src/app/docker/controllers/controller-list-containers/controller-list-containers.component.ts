@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DockerService } from '../../../core/services/docker/docker.service';
-import { Container } from '../../../core/entities/docker/container';
+import { Container } from '../../entities';
 
 @Component({
   selector: 'app-controller-list-containers',

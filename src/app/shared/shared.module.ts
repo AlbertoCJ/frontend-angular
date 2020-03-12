@@ -4,13 +4,15 @@ import { CoreModule } from '../core/core.module';
 // Components
 import { MenubarComponent } from './menubar/menubar.component';
 import { HeaderTitleComponent } from './header-title/header-title.component';
+import { StepComponent } from './step/step.component';
 
 
 
 @NgModule({
   declarations: [
     MenubarComponent,
-    HeaderTitleComponent
+    HeaderTitleComponent,
+    StepComponent
   ],
   imports: [
     CoreModule
@@ -18,7 +20,8 @@ import { HeaderTitleComponent } from './header-title/header-title.component';
   exports: [
     CoreModule,
     MenubarComponent,
-    HeaderTitleComponent
+    HeaderTitleComponent,
+    StepComponent
   ]
 })
 export class SharedModule { }

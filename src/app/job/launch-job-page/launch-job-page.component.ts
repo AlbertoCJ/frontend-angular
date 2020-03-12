@@ -8,26 +8,27 @@ import { MenuItem } from 'primeng/api';
 })
 export class LaunchJobPageComponent implements OnInit {
   items: MenuItem[];
-  activeIndex: number;
+  activeStep: number ;
 
   constructor() {
     this.items = [
       {
-        label: 'Personal'
+        label: 'Dataset'
       },
       {
-        label: 'Seat'
+        label: 'Algoritmos'
       },
       {
-        label: 'Payment'
+        label: 'Contenedor'
       },
       {
-        label: 'Confirmation'
+        label: 'Confirmación'
       }
     ];
    }
 
   ngOnInit() {
+    this.activeStep = 1;
   }
 
 }

@@ -1,0 +1,43 @@
+:host ::ng-deep .ui-steps {
+    position: relative;
+}
+
+:host ::ng-deep .ui-steps:before {
+    top: 30%;
+}
+
+:host ::ng-deep .ui-steps ul {
+    display: flex;
+}
+
+:host ::ng-deep .ui-steps .ui-steps-item {
+    flex-grow: 1;
+}
+
+:host ::ng-deep .ui-steps .ui-steps-item .ui-menuitem-link {
+    padding: 0 1em 0 1em;
+    border-width: 0px;
+    border-style: hidden;
+    border: 0px;
+}
+
+:host ::ng-deep .ui-steps .ui-steps-item a:focus {
+    padding: 0 1em 0 1em;
+    outline: none;
+}
+
+:host ::ng-deep .ui-steps .ui-steps-item .ui-menuitem-link .ui-steps-number {
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    line-height: 18px;
+    margin-bottom: 0px;
+}
+
+:host ::ng-deep .ui-steps .ui-steps-item .ui-menuitem-link .ui-steps-title {
+    color: #555555;
+}
+
+
+/* ui-state-complete */

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormDataset } from '../../../core/entities/dataset/form-dataset';
+import { FormDataset, Dataset } from '../../entities';
 import { DatasetService } from '../../../core/services/dataset/dataset.service';
-import { Dataset } from '../../../core/entities/dataset/dataset';
 
 @Component({
   selector: 'app-controller-form-dataset',

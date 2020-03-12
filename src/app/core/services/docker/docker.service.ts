@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Container } from '../../entities/docker/container';
+import { Container } from '../../../docker/entities';
 
 
 @Injectable({
