@@ -5,14 +5,14 @@ import { CoreModule } from '../core/core.module';
 import { MenubarComponent } from './menubar/menubar.component';
 import { HeaderTitleComponent } from './header-title/header-title.component';
 import { StepComponent } from './step/step.component';
-
-
+import { BUTTONS_COMPONENTS } from './buttons/index';
 
 @NgModule({
   declarations: [
     MenubarComponent,
     HeaderTitleComponent,
-    StepComponent
+    StepComponent,
+    BUTTONS_COMPONENTS
   ],
   imports: [
     CoreModule
@@ -21,7 +21,8 @@ import { StepComponent } from './step/step.component';
     CoreModule,
     MenubarComponent,
     HeaderTitleComponent,
-    StepComponent
+    StepComponent,
+    BUTTONS_COMPONENTS
   ]
 })
 export class SharedModule { }
