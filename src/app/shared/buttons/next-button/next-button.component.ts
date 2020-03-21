@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-next-button',
@@ -10,11 +10,17 @@ export class NextButtonComponent implements OnInit {
   label: string;
   @Input() disabled = false;
 
+  @Output() emitClicked = new EventEmitter<string>();
+
   constructor() {
     this.label = 'Next';
   }
 
   ngOnInit() {
+  }
+
+  clicked() {
+    this.emitClicked.emit('clicked');
   }
 
 }

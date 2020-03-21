@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Steps } from '../../enums/steps.enum';
 
 @Component({
   selector: 'app-controller-launch-confirm',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControllerLaunchConfirmComponent implements OnInit {
 
-  constructor() { }
+  btnPrevDisabled: boolean;
+  btnNextDisabled: boolean;
+
+  @Output() emitStep = new EventEmitter<number>();
+
+  constructor() {
+    this.btnPrevDisabled = false;
+    this.btnNextDisabled = false;
+   }
 
   ngOnInit() {
+  }
+
+  btnPrevClicked() {
+    this.emitStep.emit(Steps.WORKERS);
+  }
+
+  btnLaunchClicked() {
+    alert('Lanzado');
   }
 
 }

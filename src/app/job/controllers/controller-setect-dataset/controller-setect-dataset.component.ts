@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Steps } from '../../enums/steps.enum';
 
 @Component({
   selector: 'app-controller-setect-dataset',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControllerSetectDatasetComponent implements OnInit {
 
-  constructor() { }
+  btnNextDisabled: boolean;
+
+  @Output() emitStep = new EventEmitter<number>();
+
+  constructor() {
+    this.btnNextDisabled = false;
+  }
 
   ngOnInit() {
+  }
+
+  btnNextClicked() {
+    this.emitStep.emit(Steps.ALGORITHM);
   }
 
 }

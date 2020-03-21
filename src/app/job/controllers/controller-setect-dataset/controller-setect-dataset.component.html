@@ -1,2 +1,7 @@
-<app-previous-button></app-previous-button>
-<app-next-button></app-next-button>
+<app-header-title [textTitle]="'Selección Dataset'">
+    <app-buttons-panel-normal>
+        <span slot="start">
+            <app-next-button [disabled]="btnNextDisabled" (emitClicked)="btnNextClicked()"></app-next-button>
+        </span>
+    </app-buttons-panel-normal>
+</app-header-title>

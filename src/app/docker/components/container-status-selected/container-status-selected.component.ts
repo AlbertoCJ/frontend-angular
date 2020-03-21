@@ -16,14 +16,14 @@ export class ContainerStatusSelectedComponent implements OnInit {
 
   constructor() {
     this.types = [
-            {label: 'Iniciadas', value: 'running', icon: 'fa fa-fw fa-cc-paypal'},
-            {label: 'Paradas', value: 'exited', icon: 'fa fa-fw fa-cc-paypal'},
+            {label: 'Iniciadas', value: 'running'},
+            {label: 'Paradas', value: 'exited'},
             // {label: 'Creadas', value: 'created', icon: 'fa fa-fw fa-cc-paypal'},
             // {label: 'Pausadas', value: 'paused', icon: 'fa fa-fw fa-cc-paypal'},
             // {label: 'Reiniciadas', value: 'restarting', icon: 'fa fa-fw fa-cc-paypal'},
             // {label: 'Eliminadas', value: 'removing', icon: 'fa fa-fw fa-cc-paypal'},
             // {label: 'Muertas', value: 'dead', icon: 'fa fa-fw fa-cc-paypal'},
-            {label: 'Todas', value: 'all', icon: 'fa fa-fw fa-cc-paypal'}
+            {label: 'Todas', value: 'all'}
         ];
    }
 

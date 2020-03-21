@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Steps } from '../enums/steps.enum';
 
 @Component({
   selector: 'app-launch-job-page',
@@ -25,10 +26,30 @@ export class LaunchJobPageComponent implements OnInit {
         label: 'Confirmación'
       }
     ];
+    this.activeStep = 1;
    }
 
   ngOnInit() {
-    this.activeStep = 1;
+  }
+
+  changeStep(step) {
+    this.activeStep = step;
+  }
+
+  isDataset() {
+    return this.activeStep === Steps.DATASET;
+  }
+
+  isAlgorithm() {
+    return this.activeStep === Steps.ALGORITHM;
+  }
+
+  isWorkers() {
+    return this.activeStep === Steps.WORKERS;
+  }
+
+  isConfirm() {
+    return this.activeStep === Steps.CONFIRM;
   }
 
 }

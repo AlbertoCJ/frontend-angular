@@ -1,1 +1,10 @@
-<p>controller-launch-worker works!</p>
+<app-header-title [textTitle]="'Configurar workers'">
+    <app-buttons-panel-normal>
+        <span slot="start">
+            <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>
+        </span>
+        <span slot="end">
+            <app-next-button [disabled]="btnNextDisabled" (emitClicked)="btnNextClicked()"></app-next-button>
+        </span>
+    </app-buttons-panel-normal>
+</app-header-title>

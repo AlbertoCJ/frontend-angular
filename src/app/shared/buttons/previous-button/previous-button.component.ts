@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-previous-button',
@@ -10,11 +10,17 @@ export class PreviousButtonComponent implements OnInit {
   label: string;
   @Input() disabled = false;
 
+  @Output() emitClicked = new EventEmitter<string>();
+
   constructor() {
     this.label = 'Prev';
   }
 
   ngOnInit() {
+  }
+
+  clicked() {
+    this.emitClicked.emit('clicked');
   }
 
 }

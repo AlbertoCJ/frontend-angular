@@ -13,7 +13,7 @@ export class StepComponent implements OnInit {
 
   @Input() items: MenuItem[];
   @Input('activeStep') set activeStep(activeIndex: number) {
-    if (activeIndex) { this.activeIndex = activeIndex; }
+    if (activeIndex) { activeIndex <= 0 ? this.activeIndex = 0 : this.activeIndex = (activeIndex - 1); }
   }
 
   @Output() emitStep = new EventEmitter<number>();
