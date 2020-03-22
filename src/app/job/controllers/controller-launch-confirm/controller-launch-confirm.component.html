@@ -1,10 +1,12 @@
 <app-header-title [textTitle]="'Confirmación'">
-    <app-buttons-panel-normal>
-        <span slot="start">
+    <div class="ui-fluid form-container">
+        <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
+            <span slot="start">
             <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>
         </span>
-        <span slot="end">
-            <app-next-button [disabled]="btnNextDisabled" (emitClicked)="btnLaunchClicked()"></app-next-button>
+            <span slot="end">
+            <app-custom-button [label]="btnLaunchLabel" [disabled]="btnLaunchDisabled" [styleClass]="btnLaunchStyleClass" (emitClicked)="btnLaunchClicked()"></app-custom-button>
         </span>
-    </app-buttons-panel-normal>
+        </app-buttons-panel-normal>
+    </div>
 </app-header-title>

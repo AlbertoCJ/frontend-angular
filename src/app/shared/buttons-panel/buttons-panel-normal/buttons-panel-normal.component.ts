@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-buttons-panel-normal',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buttons-panel-normal.component.css']
 })
 export class ButtonsPanelNormalComponent implements OnInit {
+
+  @Input() marginTop = false;
+  @Input() showStart = false;
+  @Input() showEnd = true;
 
   constructor() { }
 

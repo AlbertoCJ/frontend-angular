@@ -1,8 +1,8 @@
-<div class="p-grid p-justify-between">
-    <div class="p-col">
+<div class="p-grid p-justify-between" [ngClass]="{'btn-panel-top': marginTop}">
+    <div class="p-col" *ngIf="showStart">
         <ng-content select="[slot=start]"></ng-content>
     </div>
-    <div class="p-col buttons-panel buttons-panel-end">
+    <div class="p-col buttons-panel buttons-panel-end" *ngIf="showEnd">
         <ng-content select="[slot=end]"></ng-content>
     </div>
 </div>

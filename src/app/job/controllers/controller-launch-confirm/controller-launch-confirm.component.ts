@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Steps } from '../../enums/steps.enum';
+import { StringifyOptions } from 'querystring';
 
 @Component({
   selector: 'app-controller-launch-confirm',
@@ -9,13 +10,17 @@ import { Steps } from '../../enums/steps.enum';
 export class ControllerLaunchConfirmComponent implements OnInit {
 
   btnPrevDisabled: boolean;
-  btnNextDisabled: boolean;
+  btnLaunchDisabled: boolean;
+  btnLaunchLabel: string;
+  btnLaunchStyleClass: string;
 
   @Output() emitStep = new EventEmitter<number>();
 
   constructor() {
     this.btnPrevDisabled = false;
-    this.btnNextDisabled = false;
+    this.btnLaunchDisabled = false;
+    this.btnLaunchLabel = 'Launch'; // TODO: traducir
+    this.btnLaunchStyleClass = 'ui-button-success';
    }
 
   ngOnInit() {

@@ -11,6 +11,9 @@ import {SplitButtonModule} from 'primeng/splitbutton';
 import {TabViewModule} from 'primeng/tabview';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {StepsModule} from 'primeng/steps';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {SpinnerModule} from 'primeng/spinner';
 
 export const PRIMENG_MODULES = [
     InputTextModule,
@@ -25,5 +28,8 @@ export const PRIMENG_MODULES = [
     SplitButtonModule,
     TabViewModule,
     SelectButtonModule,
-    StepsModule
+    StepsModule,
+    DropdownModule,
+    InputSwitchModule,
+    SpinnerModule
 ];
