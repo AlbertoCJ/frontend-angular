@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormDataset, Dataset } from '../../entities';
 import { DatasetService } from '../../../core/services/dataset/dataset.service';
 
@@ -13,6 +13,8 @@ export class ControllerFormDatasetComponent implements OnInit {
   textError: string;
   showError = false;
   dataset: Dataset;
+
+  @Output() emitDataset = new EventEmitter<Dataset>();
 
   constructor( private datasetService: DatasetService) {
     this.formDataset = new FormDataset();
@@ -36,6 +38,7 @@ export class ControllerFormDatasetComponent implements OnInit {
       this.datasetService.upload(this.formDataset).subscribe( (resp: Dataset) => {
         console.log(resp);
         this.dataset = resp;
+        this.emitDataset.emit(resp);
         // this.generateDataset(resp);
         // console.log(resp.dataset._id);
         this.clearAll();

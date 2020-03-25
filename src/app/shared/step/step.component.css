@@ -40,4 +40,17 @@
 }
 
 
+/* Texto acortado */
+
+@media (max-width:800px) {
+     :host ::ng-deep .ui-steps .ui-steps-item .ui-menuitem-link .ui-steps-title {
+        color: #555555;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 50px;
+    }
+}
+
+
 /* ui-state-complete */

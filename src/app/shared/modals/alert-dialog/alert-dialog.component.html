@@ -1,0 +1,16 @@
+<!-- Modal -->
+<app-modal-generic *ngIf="isModalActive" (closed)="emitAccept()" [showHeader]="title && title !== ''" [showSection]="message && message !== ''">
+    <!-- <custom-header style="width: 100%;"> -->
+    <span slot="custom-header" class="modal-card-title">{{ title }}</span>
+    <!-- </custom-header> -->
+    <!-- <custom-section> -->
+    <p slot="custom-section">{{ message }}</p>
+    <app-collapse *ngIf="textToShowCollapse && textToShowCollapse !== ''" [textShowMore]="textShowMoreCollapse" [textShowLess]="textShowLessCollapse" [textToShow]="textToShowCollapse"></app-collapse>
+    <!-- </custom-section> -->
+    <!-- <custom-footer> -->
+    <span slot="custom-footer">
+            <app-custom-button [label]="'Cerrar'" (click)="emitAccept()">
+            </app-custom-button>
+        </span>
+    <!-- </custom-footer> -->
+</app-modal-generic>

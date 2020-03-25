@@ -2,7 +2,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {FieldsetModule} from 'primeng/fieldset';
 import {ButtonModule} from 'primeng/button';
 import {CheckboxModule} from 'primeng/checkbox';
-import {MenubarModule} from 'primeng/menubar';
+import {MenubarModule} from 'primeng/menubar'; // ??????
+import {MenuModule} from 'primeng/menu'; // ???????
 import {FileUploadModule} from 'primeng/fileupload';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {AccordionModule} from 'primeng/accordion';
@@ -14,6 +15,7 @@ import {StepsModule} from 'primeng/steps';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {SpinnerModule} from 'primeng/spinner';
+import {DialogModule} from 'primeng/dialog';
 
 export const PRIMENG_MODULES = [
     InputTextModule,
@@ -21,6 +23,7 @@ export const PRIMENG_MODULES = [
     ButtonModule,
     CheckboxModule,
     MenubarModule,
+    MenuModule,
     FileUploadModule,
     InputTextareaModule,
     AccordionModule,
@@ -31,5 +34,6 @@ export const PRIMENG_MODULES = [
     StepsModule,
     DropdownModule,
     InputSwitchModule,
-    SpinnerModule
+    SpinnerModule,
+    DialogModule
 ];

@@ -1,0 +1,17 @@
+<div>
+    <p class="pointer text-click-color" *ngIf="!show" (click)="showToogle()">
+        <span class="text-click">{{ textShowMore }}</span>
+        <span class="my-icon">
+            <i class="fas fa-caret-down"></i>
+        </span>
+    </p>
+    <p class="pointer text-click-color" *ngIf="show" (click)="showToogle()">
+        <span class="text-click">{{ textShowLess }}</span>
+        <span class="my-icon">
+                <i class="fas fa-caret-up"></i>
+              </span>
+    </p>
+    <div class="jumbotron" *ngIf="show">
+        <p class="text-show">{{ textToShow }}</p>
+    </div>
+</div>

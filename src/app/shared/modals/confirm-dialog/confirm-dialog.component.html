@@ -1,0 +1,19 @@
+<!-- Modal -->
+<app-modal-generic *ngIf="isModalActive" (closed)="emitCancel()" [showHeader]="title && title !== ''" [showSection]="message && message !== ''">
+    <!-- <custom-header> -->
+    <span slot="custom-header">{{ title }}</span>
+    <!-- </custom-header> -->
+    <!-- <custom-section> -->
+    <p slot="custom-section">{{ message }}</p>
+    <!-- </custom-section> -->
+    <!-- <custom-footer> -->
+    <span slot="custom-footer" class="button-panel button-panel-end">
+            <app-accept-button
+                (emitClicked)="emitConfirm()">
+            </app-accept-button>
+            <app-cancel-button
+                (emitClicked)="emitCancel()">
+            </app-cancel-button>
+        </span>
+    <!-- </custom-footer> -->
+</app-modal-generic>
