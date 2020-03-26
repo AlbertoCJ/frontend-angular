@@ -14,6 +14,7 @@ import { AuthService } from './services/auth/auth.service';
 
 // Components
 import { LoginComponent } from './components/login/login.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './components/login/login.component';
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
-    AuthService
+    AuthService,
+    MessageService
   ],
   imports: [
     CommonModule,

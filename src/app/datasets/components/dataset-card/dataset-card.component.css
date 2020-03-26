@@ -1,4 +1,4 @@
-.mt-input {
+/* .mt-input {
     margin-top: 20px;
 }
 
@@ -12,4 +12,37 @@
 
 .input-span-size {
     width: 10%;
+} */
+
+:host ::ng-deep .mt-card {
+    width: 100%;
+}
+
+.clear-wrapper {
+    -webkit-box-align: flex-start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: flex-start;
+    justify-content: flex-end;
+    align-items: flex-start;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: nowrap;
+    -ms-flex-flow: nowrap;
+    flex-flow: nowrap;
+}
+
+.clear-icon {
+    background-color: rgb(250, 108, 108);
+    color: white;
+    position: absolute;
+    /* font-size: 12px; */
+    cursor: pointer;
+    /* padding: 2px 3px; */
+}
+
+.clear-icon:hover {
+    color: white;
+    background-color: rgb(250, 49, 49);
 }

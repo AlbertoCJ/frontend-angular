@@ -12,6 +12,7 @@ export class AlertDialogComponent implements OnInit, DoCheck {
 
   title: string;
   message: string;
+  isAlertActive: boolean;
   isModalActive: boolean;
   private dataAlert$: Observable<Alert>;
   textShowMoreCollapse: string;
@@ -27,14 +28,19 @@ export class AlertDialogComponent implements OnInit, DoCheck {
     this.dataAlert$.subscribe( (dataAlert: Alert) => {
       this.title = dataAlert.title;
       this.message = dataAlert.message;
-      this.isModalActive = dataAlert.activated;
       this.textToShowCollapse = dataAlert.showMore;
+      this.isAlertActive = dataAlert.activated;
+      this.isModalActive = dataAlert.activated;
     });
   }
 
   ngDoCheck() {
-    this.textShowMoreCollapse = 'Mostrar más'; // this.translate.instant('general.showMore');
-    this.textShowLessCollapse = 'Mostrar menos'; // this.translate.instant('general.showLess');
+    this.textShowMoreCollapse = 'Mostrar más'; // this.translate.instant('general.showMore'); // TODO: Traducir
+    this.textShowLessCollapse = 'Mostrar menos'; // this.translate.instant('general.showLess'); // TODO: Traducir
+  }
+
+  close() {
+    this.isModalActive = false;
   }
 
   emitAccept() {

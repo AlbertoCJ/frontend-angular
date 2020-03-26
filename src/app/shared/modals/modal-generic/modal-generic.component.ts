@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, ViewChild, ElementRef, OnInit, Output, EventEmitter } from '@angular/core';
 // import { ModalsManagerService } from '../../../core/services/modals-manager.service';
-import { Dialog } from 'primeng/dialog/dialog';
+import { Dialog } from 'primeng/dialog';
 
 @Component({
   selector: 'app-modal-generic',
@@ -9,12 +9,20 @@ import { Dialog } from 'primeng/dialog/dialog';
 })
 export class ModalGenericComponent implements OnInit, OnDestroy {
 
+  isModalActive: boolean;
   isFullModal: boolean;
   // zIndex: number;
   id: string;
   style: any;
 
-  @Input() isModalActive = true;
+  // @Input() isModalActive = true;
+  @Input('isModalActive') set modalActive(value: boolean) {
+    if (value !== undefined && value === true) {
+      this.isModalActive = true;
+    } else if (value !== undefined && value === false) {
+      this.isModalActive = false;
+    }
+  }
   @Input() showHeader = true;
   @Input() showSection = true;
   @Input() showFooter = true;
@@ -55,6 +63,7 @@ export class ModalGenericComponent implements OnInit, OnDestroy {
   @Output() closed = new EventEmitter<boolean>();
 
   constructor() {
+    this.isModalActive = true;
     this.isFullModal = false;
   }
 
@@ -70,12 +79,13 @@ export class ModalGenericComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.isModalActive = false;
     // if (this.id) {
     //   this.modalManager.removeModalId(this.id);
     // }
-    if (this.isFullModal) {
-      // document.getElementsByTagName('html')[0].style.overflowY = 'auto';
-    }
+    // if (this.isFullModal) {
+    //   // document.getElementsByTagName('html')[0].style.overflowY = 'auto';
+    // }
   }
 
   defaultStyle() {

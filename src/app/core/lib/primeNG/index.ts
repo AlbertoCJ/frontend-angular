@@ -16,6 +16,8 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {SpinnerModule} from 'primeng/spinner';
 import {DialogModule} from 'primeng/dialog';
+import {ToastModule} from 'primeng/toast';
+import {TooltipModule} from 'primeng/tooltip';
 
 export const PRIMENG_MODULES = [
     InputTextModule,
@@ -35,5 +37,7 @@ export const PRIMENG_MODULES = [
     DropdownModule,
     InputSwitchModule,
     SpinnerModule,
-    DialogModule
+    DialogModule,
+    ToastModule,
+    TooltipModule
 ];

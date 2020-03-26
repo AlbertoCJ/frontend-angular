@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormDataset, Dataset } from '../../entities';
 import { DatasetService } from '../../../core/services/dataset/dataset.service';
+import { MessageService } from 'primeng/api';
+import { AlertService } from '../../../core/services/alert/alert.service';
+
 
 @Component({
   selector: 'app-controller-form-dataset',
@@ -16,7 +19,9 @@ export class ControllerFormDatasetComponent implements OnInit {
 
   @Output() emitDataset = new EventEmitter<Dataset>();
 
-  constructor( private datasetService: DatasetService) {
+  constructor( private datasetService: DatasetService,
+               private messageService: MessageService,
+               private alertService: AlertService) {
     this.formDataset = new FormDataset();
   }
 
@@ -32,26 +37,17 @@ export class ControllerFormDatasetComponent implements OnInit {
     this.clearError();
     if (this.formDataset && this.formDataset.description === '') {
       this.showError = true;
-      this.textError = 'Escibe una descipción';
+      this.textError = 'Escibe una descipción'; // TODO: Traducir
     } else {
       this.formDataset.file = event.files[0];
       this.datasetService.upload(this.formDataset).subscribe( (resp: Dataset) => {
-        console.log(resp);
         this.dataset = resp;
         this.emitDataset.emit(resp);
-        // this.generateDataset(resp);
-        // console.log(resp.dataset._id);
         this.clearAll();
         this.formDataset = new FormDataset();
+        this.messageService.add({severity: 'success', detail: 'Guardado correctamente'});
       }, (err) => {
-        console.log(err);
-        // if (err.status === 401) {
-        //   this.textError = 'Email y/o contraseña erronea.';
-        //   this.showError = true;
-        // } else {
-        //   alert(`Error inesperado: ${ err.status }`); // TODO: Ver como mostrar alertas
-        // }
-        alert(`Error inesperado: ${ err.status }`); // TODO: Ver como mostrar alertas
+        this.alertService.setAlertShowMore('Alerta', 'Error al guardar dataset', err.message);
       });
     }
   }

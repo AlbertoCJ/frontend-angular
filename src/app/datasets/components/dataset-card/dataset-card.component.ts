@@ -17,4 +17,8 @@ export class DatasetCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  select() {
+    console.log('SELECTED');
+  }
+
 }
