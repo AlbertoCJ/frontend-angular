@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Dataset } from '../../entities';
 
 @Component({
@@ -9,8 +9,11 @@ import { Dataset } from '../../entities';
 export class DatasetCardComponent implements OnInit {
 
   @Input() showButtons = true;
+  @Input() isClicker = false;
   @Input() dataset: Dataset;
 
+  @Output() emitSelected = new EventEmitter<Dataset>();
+  @Output() emitRemoved = new EventEmitter<Dataset>();
 
   constructor() { }
 
@@ -18,7 +21,11 @@ export class DatasetCardComponent implements OnInit {
   }
 
   select() {
-    console.log('SELECTED');
+    this.emitSelected.emit(this.dataset);
+  }
+
+  remove() {
+    this.emitRemoved.emit(this.dataset);
   }
 
 }

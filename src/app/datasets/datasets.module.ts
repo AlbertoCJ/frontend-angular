@@ -7,27 +7,14 @@ import { DatasetsListPageComponent } from './datasets-list-page/datasets-list-pa
 import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
 
-// List components
-import { DATASETS_COMPONENTS } from './components';
-
-// List controllers
-import { DATASETS_CONTROLLERS } from './controllers/index';
-
-
 @NgModule({
   declarations: [
     DatasetsUploadPageComponent,
-    DatasetsListPageComponent,
-    DATASETS_COMPONENTS,
-    DATASETS_CONTROLLERS
+    DatasetsListPageComponent
   ],
   imports: [
     CoreModule,
     SharedModule
-  ],
-  exports: [
-    DATASETS_COMPONENTS,
-    DATASETS_CONTROLLERS
   ]
 })
 export class DatasetsModule { }

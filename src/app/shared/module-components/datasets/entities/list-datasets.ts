@@ -1,5 +1,5 @@
 import { Dataset } from './dataset';
-import { ListGeneric } from '../../core/entities/generic/list-generic';
+import { ListGeneric } from '../../../../core/entities/generic/list-generic';
 
 export class ListDatasets extends ListGeneric {
 

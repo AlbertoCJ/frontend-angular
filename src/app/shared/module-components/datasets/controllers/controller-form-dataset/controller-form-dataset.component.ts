@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormDataset, Dataset } from '../../entities';
-import { DatasetService } from '../../../core/services/dataset/dataset.service';
+import { DatasetService } from '../../../../../core/services/dataset/dataset.service';
 import { MessageService } from 'primeng/api';
-import { AlertService } from '../../../core/services/alert/alert.service';
+import { AlertService } from '../../../../../core/services/alert/alert.service';
+
 
 
 @Component({

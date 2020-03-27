@@ -1,0 +1,13 @@
+<div class="card-wrapper" [ngClass]="{'card-rotate': isClicker}">
+    <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{clicker: isClicker}" (click)="select()">
+        <p>{{ dataset.dateCreation }}</p>
+        <p>{{ dataset.file }}</p>
+        <p>({{ dataset.fullName }})</p>
+        <p>{{ dataset.size }} bytes</p>
+        <p>{{ dataset.description }}</p>
+        <div *ngIf="showButtons" class="buttons-panel">
+        </div>
+    </p-card>
+    <i *ngIf="showButtons" class="pi pi-trash card-icon" (click)="remove()"></i>
+
+</div>

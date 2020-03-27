@@ -1,0 +1,12 @@
+<div class="p-grid mt-cards">
+    <div class="p-col-12 p-md-6 p-lg-3" *ngFor="let dataset of listDataset.datasets">
+        <app-dataset-card [dataset]="dataset" [showButtons]="true" [isClicker]="clickCard" (emitSelected)="select($event)" (emitRemoved)="remove($event)"></app-dataset-card>
+    </div>
+</div>
+<div *ngIf="listDataset.datasets.length === 0">
+    <p class="list-empty">No hay datasets</p>
+</div>
+
+<div>
+    <app-pagination [listDataset]="listDataset" (emitPage)="changePage($event)"></app-pagination>
+</div>

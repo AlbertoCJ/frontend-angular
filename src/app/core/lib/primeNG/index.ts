@@ -18,6 +18,7 @@ import {SpinnerModule} from 'primeng/spinner';
 import {DialogModule} from 'primeng/dialog';
 import {ToastModule} from 'primeng/toast';
 import {TooltipModule} from 'primeng/tooltip';
+import {PaginatorModule} from 'primeng/paginator';
 
 export const PRIMENG_MODULES = [
     InputTextModule,
@@ -39,5 +40,6 @@ export const PRIMENG_MODULES = [
     SpinnerModule,
     DialogModule,
     ToastModule,
-    TooltipModule
+    TooltipModule,
+    PaginatorModule
 ];

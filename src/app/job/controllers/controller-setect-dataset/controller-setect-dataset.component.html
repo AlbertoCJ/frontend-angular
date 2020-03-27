@@ -1,4 +1,27 @@
 <app-header-title [textTitle]="'Selección Dataset'">
+
+    <div class="ui-fluid">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-6">
+                <p-card class="" styleClass="ui-card-shadow" (click)="showView = 1">
+                    Subir y seleccionar Dataset
+                </p-card>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+                <p-card class="" styleClass="ui-card-shadow" (click)="showView = 2">
+                    Seleccionar Dataset existente
+                </p-card>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="showView === 1">
+        <app-controller-form-dataset></app-controller-form-dataset>
+    </div>
+    <div *ngIf="showView === 2">
+        <app-controller-list-dataset [clickCard]="true"></app-controller-list-dataset>
+    </div>
+
     <div class="ui-fluid form-container">
         <app-buttons-panel-normal [marginTop]="true">
             <span slot="end">

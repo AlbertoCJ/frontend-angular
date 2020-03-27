@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
-import { FormDataset, Dataset } from '../../../datasets/entities';
-import { ListDatasets } from 'src/app/datasets/entities/list-datasets';
+import { FormDataset, Dataset } from '../../../shared/module-components/datasets/entities';
+import { ListDatasets } from 'src/app/shared/module-components/datasets/entities/list-datasets';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +41,16 @@ export class DatasetService {
     // };
 
     return this.http.post(`${ this.url }/dataset`, formData).pipe(
+      map( (resp: any) => {
+        const respDataset = resp.dataset;
+        const dataset = new Dataset(respDataset);
+        return dataset;
+      })
+    );
+  }
+
+  deleteDataset(id) {
+    return this.http.delete(`${ this.url }/dataset/${ id }`).pipe(
       map( (resp: any) => {
         const respDataset = resp.dataset;
         const dataset = new Dataset(respDataset);

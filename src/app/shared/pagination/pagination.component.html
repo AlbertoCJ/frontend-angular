@@ -1,0 +1,3 @@
+<div *ngIf="listDataset">
+    <p-paginator [rows]="listDataset.limit" [totalRecords]="listDataset.totalDocs" (onPageChange)="paginate($event)"></p-paginator>
+</div>
