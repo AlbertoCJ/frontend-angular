@@ -13,6 +13,7 @@ import { MODALS_COMPONENTS } from './modals/index';
 
 // Module components
 import { DATASETS_SHARED } from './module-components/datasets/index';
+import { JOB_SHARED } from './module-components/job/index';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DATASETS_SHARED } from './module-components/datasets/index';
     BUTTONS_COMPONENTS,
     BUTTONSPANEL_COMPONENTS,
     MODALS_COMPONENTS,
-    DATASETS_SHARED
+    DATASETS_SHARED,
+    JOB_SHARED
   ],
   imports: [
     CoreModule
@@ -39,7 +41,8 @@ import { DATASETS_SHARED } from './module-components/datasets/index';
     BUTTONS_COMPONENTS,
     BUTTONSPANEL_COMPONENTS,
     MODALS_COMPONENTS,
-    DATASETS_SHARED
+    DATASETS_SHARED,
+    JOB_SHARED
   ]
 })
 export class SharedModule { }

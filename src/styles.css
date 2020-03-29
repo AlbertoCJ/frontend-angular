@@ -9,6 +9,10 @@ body {
     font-size: 11px;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 .box-center {
     position: absolute;
     left: 50%;

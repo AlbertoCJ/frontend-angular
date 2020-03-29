@@ -53,5 +53,12 @@
 
 .card-rotate:hover {
     transform: rotate(1deg);
+}
+
+.card-background {
+    border: 1px solid transparent;
+}
+
+.card-background:hover {
     border: 1px solid rgba(0, 128, 0, 0.479);
 }

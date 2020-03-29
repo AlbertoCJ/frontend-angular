@@ -1,5 +1,5 @@
 <div class="card-wrapper" [ngClass]="{'card-rotate': isClicker}">
-    <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{clicker: isClicker}" (click)="select()">
+    <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{clicker: isClicker, 'card-background': isClicker}" (click)="select()">
         <p>{{ dataset.dateCreation }}</p>
         <p>{{ dataset.file }}</p>
         <p>({{ dataset.fullName }})</p>

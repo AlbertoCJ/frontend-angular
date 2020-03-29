@@ -1,0 +1,158 @@
+<app-header-title [textTitle]="'Configurar algoritmos'">
+    <div class="ui-fluid form-container">
+
+        <div *ngIf="!showAlgoritConf">
+            <div>
+                <div class="ui-g">
+                    <div class="ui-g-4">
+                        <p-checkbox label="Linear Regression" [(ngModel)]="linearRegression"></p-checkbox>
+                    </div>
+                    <div class="ui-g-4">
+                        <p-checkbox label="Linear Regression Bagging" [(ngModel)]="linearRegressionBagging"></p-checkbox>
+                    </div>
+                    <div class="ui-g-4">
+                        <p-checkbox label="IBk" [(ngModel)]="IBk"></p-checkbox>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-4">
+                        <p-checkbox label="ZeroR" [(ngModel)]="ZeroR"></p-checkbox>
+                    </div>
+                    <div class="ui-g-4">
+                        <p-checkbox label="M5P" [(ngModel)]="M5P"></p-checkbox>
+                    </div>
+                    <div class="ui-g-4">
+                        <p-checkbox label="M5Rules" [(ngModel)]="M5Rules"></p-checkbox>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-4">
+                        <p-checkbox label="Decision Stump" [(ngModel)]="DecisionStump"></p-checkbox>
+                    </div>
+                    <div class="ui-g-4">
+                        <p-checkbox label="DecisionStump Bagging" [(ngModel)]="DecisionStumpBagging"></p-checkbox>
+                    </div>
+                </div>
+            </div>
+            <p class="pointer text-click-color" (click)="showAlgoritConf = true">
+                <span class="text-click"> Configurar algoritmos </span>
+                <span class="my-icon">
+                        <i class="pi pi-caret-up"></i>
+                      </span>
+            </p>
+        </div>
+
+        <div *ngIf="showAlgoritConf">
+            <p class="pointer text-click-color" (click)="showAlgoritConf = false">
+                <span class="text-click"> Cambiar algoritmos </span>
+                <span class="my-icon">
+                    <i class="pi pi-caret-down"></i>
+                </span>
+            </p>
+            <p-accordion [multiple]="true">
+                <p-accordionTab header="Alg I" *ngIf="linearRegression">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="ui-g-5">
+                                InputText
+                            </div>
+                            <div class="ui-g-7">
+                                <p-spinner [(ngModel)]="val2" [min]="0" [max]="100"></p-spinner>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g-5">
+                                Switch
+                            </div>
+                            <div class="ui-g-7">
+                                <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g-5">
+                                Dropdown
+                            </div>
+                            <div class="ui-g-7">
+                                <p-dropdown [options]="cities" [(ngModel)]="selectedCity"></p-dropdown>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+
+                        </div>
+                    </div>
+                </p-accordionTab>
+                <p-accordionTab header="Alg II" *ngIf="linearRegressionBagging">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="ui-g-5">
+                                InputText
+                            </div>
+                            <div class="ui-g-7">
+                                <p-spinner [(ngModel)]="val2" [min]="0" [max]="100"></p-spinner>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g-5">
+                                Switch
+                            </div>
+                            <div class="ui-g-7">
+                                <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g-5">
+                                Dropdown
+                            </div>
+                            <div class="ui-g-7">
+                                <p-dropdown [options]="cities" [(ngModel)]="selectedCity"></p-dropdown>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+
+                        </div>
+                    </div>
+                </p-accordionTab>
+                <p-accordionTab header="Alg III" *ngIf="IBk">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="ui-g-5">
+                                InputText
+                            </div>
+                            <div class="ui-g-7">
+                                <p-spinner [(ngModel)]="val2" [min]="0" [max]="100"></p-spinner>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g-5">
+                                Switch
+                            </div>
+                            <div class="ui-g-7">
+                                <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g-5">
+                                Dropdown
+                            </div>
+                            <div class="ui-g-7">
+                                <p-dropdown [options]="cities" [(ngModel)]="selectedCity"></p-dropdown>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+
+                        </div>
+                    </div>
+                </p-accordionTab>
+            </p-accordion>
+
+            <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
+                <span slot="start">
+                <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>
+            </span>
+                <span slot="end">
+                <app-next-button [disabled]="btnNextDisabled" (emitClicked)="btnNextClicked()"></app-next-button>
+            </span>
+            </app-buttons-panel-normal>
+        </div>
+    </div>
+</app-header-title>

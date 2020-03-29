@@ -14,9 +14,9 @@ export class DatasetService {
 
   constructor(private http: HttpClient) { }
 
-  getListDataset(page: number, limit: number) {
+  getListDataset(page: number, limit: number, descriptionSearch: string) {
 
-    const params = new HttpParams().set('page', page.toString()).set('limit', limit.toString());
+    const params = new HttpParams().set('descriptionSearch', descriptionSearch).set('page', page.toString()).set('limit', limit.toString());
 
     return this.http.get(`${ this.url }/dataset`, { params }).pipe(
       map( (resp: any) => {

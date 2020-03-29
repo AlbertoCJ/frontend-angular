@@ -4,7 +4,7 @@
     </div>
 
     <div *ngIf="isDataset()">
-        <app-controller-setect-dataset (emitStep)="changeStep($event)"></app-controller-setect-dataset>
+        <app-controller-setect-dataset (emitStep)="changeStep($event)" [dataset]="datasetSelected" (emitDataset)="setDatasetSelected($event)"></app-controller-setect-dataset>
     </div>
     <div *ngIf="isAlgorithm()">
         <app-controller-algorithm-config (emitStep)="changeStep($event)"></app-controller-algorithm-config>

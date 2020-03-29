@@ -1,0 +1,45 @@
+<app-header-title [textTitle]="'Selección Dataset'">
+
+    <div class="p-grid" *ngIf="datasetSelected">
+        <div class="p-col-12 p-md-6 p-lg-3">
+            <app-dataset-card [dataset]="datasetSelected" [showButtons]="false"></app-dataset-card>
+        </div>
+    </div>
+
+    <div class="ui-fluid">
+        <div class="ui-g" *ngIf="!datasetSelected">
+            <div class="ui-g-12 ui-md-6">
+                <p-card class="pointer" styleClass="ui-card-shadow" (click)="showView = 1">
+                    <p style="text-align: center;">Subir y seleccionar Dataset</p>
+                </p-card>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+                <p-card class="pointer" styleClass="ui-card-shadow" (click)="showView = 2">
+                    <p style="text-align: center;">Seleccionar Dataset existente</p>
+                </p-card>
+            </div>
+        </div>
+        <div class="ui-g" *ngIf="datasetSelected">
+            <div class="ui-g-12">
+                <p-card class="pointer" styleClass="ui-card-shadow" (click)="clearDataset()">
+                    <p style="text-align: center;">Limpiar Dataset</p>
+                </p-card>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="showView === 1">
+        <app-controller-form-dataset (emitDataset)="setDatasetSelected($event)"></app-controller-form-dataset>
+    </div>
+    <div *ngIf="showView === 2">
+        <app-controller-list-dataset [clickCard]="true" [showCardButtons]="false" (emitDataset)="setDatasetSelected($event)"></app-controller-list-dataset>
+    </div>
+
+    <div class="ui-fluid form-container">
+        <app-buttons-panel-normal [marginTop]="true">
+            <span slot="end">
+            <app-next-button [disabled]="!datasetSelected" (emitClicked)="btnNextClicked()"></app-next-button>
+        </span>
+        </app-buttons-panel-normal>
+    </div>
+</app-header-title>

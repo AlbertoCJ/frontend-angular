@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Steps } from '../enums/steps.enum';
+import { Steps } from '../../shared/module-components/job/enums/steps.enum';
+import { Dataset } from 'src/app/shared/module-components/datasets/entities';
 
 @Component({
   selector: 'app-launch-job-page',
@@ -10,6 +11,7 @@ import { Steps } from '../enums/steps.enum';
 export class LaunchJobPageComponent implements OnInit {
   items: MenuItem[];
   activeStep: number ;
+  datasetSelected: Dataset;
 
   constructor() {
     this.items = [
@@ -50,6 +52,10 @@ export class LaunchJobPageComponent implements OnInit {
 
   isConfirm() {
     return this.activeStep === Steps.CONFIRM;
+  }
+
+  setDatasetSelected(dataset: Dataset) {
+    this.datasetSelected = dataset;
   }
 
 }

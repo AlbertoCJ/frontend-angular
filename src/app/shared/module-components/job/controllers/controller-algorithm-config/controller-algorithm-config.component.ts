@@ -9,6 +9,19 @@ import { SelectItem } from 'primeng/api/selectitem';
 })
 export class ControllerAlgorithmConfigComponent implements OnInit {
 
+  showAlgoritConf: boolean;
+
+  // CheckBox
+  linearRegression: boolean;
+  linearRegressionBagging: boolean;
+  IBk: boolean;
+  ZeroR: boolean;
+  M5P: boolean;
+  M5Rules: boolean;
+  DecisionStump: boolean;
+  DecisionStumpBagging: boolean;
+
+  // Buttons
   btnPrevDisabled: boolean;
   btnNextDisabled: boolean;
 
@@ -20,6 +33,7 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
   @Output() emitStep = new EventEmitter<number>();
 
   constructor() {
+    this.showAlgoritConf = false;
     this.btnPrevDisabled = false;
     this.btnNextDisabled = false;
     this.cities = [];
