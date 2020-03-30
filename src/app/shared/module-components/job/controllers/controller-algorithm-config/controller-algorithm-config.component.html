@@ -34,21 +34,15 @@
                     </div>
                 </div>
             </div>
-            <p class="pointer text-click-color" (click)="showAlgoritConf = true">
-                <span class="text-click"> Configurar algoritmos </span>
-                <span class="my-icon">
-                        <i class="pi pi-caret-up"></i>
-                      </span>
-            </p>
+            <div class="box-button">
+                <app-special-button [btnText]="'Configurar algoritmos'" (emitClick)="showAlgoritConf = true"></app-special-button>
+            </div>
         </div>
 
         <div *ngIf="showAlgoritConf">
-            <p class="pointer text-click-color" (click)="showAlgoritConf = false">
-                <span class="text-click"> Cambiar algoritmos </span>
-                <span class="my-icon">
-                    <i class="pi pi-caret-down"></i>
-                </span>
-            </p>
+            <div class="box-button">
+                <app-special-button [btnText]="'Cambiar algoritmos'" (emitClick)="showAlgoritConf = false"></app-special-button>
+            </div>
             <p-accordion [multiple]="true">
                 <p-accordionTab header="Alg I" *ngIf="linearRegression">
                     <div class="ui-g">
@@ -144,15 +138,14 @@
                     </div>
                 </p-accordionTab>
             </p-accordion>
-
-            <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
-                <span slot="start">
-                <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>
-            </span>
-                <span slot="end">
-                <app-next-button [disabled]="btnNextDisabled" (emitClicked)="btnNextClicked()"></app-next-button>
-            </span>
-            </app-buttons-panel-normal>
         </div>
+        <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
+            <span slot="start">
+            <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>
+        </span>
+            <span slot="end">
+            <app-next-button [disabled]="btnNextDisabled" (emitClicked)="btnNextClicked()"></app-next-button>
+        </span>
+        </app-buttons-panel-normal>
     </div>
 </app-header-title>

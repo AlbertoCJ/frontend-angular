@@ -1,1 +1,7 @@
-<p>special-button works!</p>
+<!-- <p-card class="pointer" styleClass="ui-card-shadow" (click)="showView = 1">
+    <p style="text-align: center;">Subir y seleccionar Dataset</p>
+</p-card> -->
+
+<div [class]="stringClass" [ngClass]="{'disabled': disabled}" (click)="onClick()">
+    <p style="text-align: center;">{{ btnText }}</p>
+</div>

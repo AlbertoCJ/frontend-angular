@@ -9,21 +9,24 @@
     <div class="ui-fluid">
         <div class="ui-g" *ngIf="!datasetSelected">
             <div class="ui-g-12 ui-md-6">
-                <p-card class="pointer" styleClass="ui-card-shadow" (click)="showView = 1">
+                <!-- <p-card class="pointer" styleClass="ui-card-shadow" (click)="showView = 1">
                     <p style="text-align: center;">Subir y seleccionar Dataset</p>
-                </p-card>
+                </p-card> -->
+                <app-special-button [btnText]="'Subir y seleccionar Dataset'" (emitClick)="showView = 1"></app-special-button>
             </div>
             <div class="ui-g-12 ui-md-6">
-                <p-card class="pointer" styleClass="ui-card-shadow" (click)="showView = 2">
+                <!-- <p-card class="pointer" styleClass="ui-card-shadow" (click)="showView = 2">
                     <p style="text-align: center;">Seleccionar Dataset existente</p>
-                </p-card>
+                </p-card> -->
+                <app-special-button [btnText]="'Seleccionar Dataset existente'" (emitClick)="showView = 2"></app-special-button>
             </div>
         </div>
         <div class="ui-g" *ngIf="datasetSelected">
             <div class="ui-g-12">
-                <p-card class="pointer" styleClass="ui-card-shadow" (click)="clearDataset()">
+                <!-- <p-card class="pointer" styleClass="ui-card-shadow" (click)="clearDataset()">
                     <p style="text-align: center;">Limpiar Dataset</p>
-                </p-card>
+                </p-card> -->
+                <app-special-button [btnText]="'Limpiar Dataset'" (emitClick)="clearDataset()" [customClass]="'ui-special-button-danger'"></app-special-button>
             </div>
         </div>
     </div>
