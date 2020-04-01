@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Steps } from '../../shared/module-components/job/enums/steps.enum';
+// import { Steps } from '../../shared/module-components/job/enums/steps.enum';
 import { Dataset } from 'src/app/shared/module-components/datasets/entities';
 
 @Component({
@@ -10,8 +10,10 @@ import { Dataset } from 'src/app/shared/module-components/datasets/entities';
 })
 export class LaunchJobPageComponent implements OnInit {
   items: MenuItem[];
-  activeStep: number ;
+  activeStep: number;
+  activeTab: number;
   datasetSelected: Dataset;
+  listAlgorithms: any; // Object created in ControllerAlgorithmConfigComponent
 
   constructor() {
     this.items = [
@@ -29,6 +31,7 @@ export class LaunchJobPageComponent implements OnInit {
       }
     ];
     this.activeStep = 1;
+    this.activeTab = 0;
    }
 
   ngOnInit() {
@@ -36,26 +39,33 @@ export class LaunchJobPageComponent implements OnInit {
 
   changeStep(step) {
     this.activeStep = step;
+    this.activeTab = step - 1;
   }
 
-  isDataset() {
-    return this.activeStep === Steps.DATASET;
-  }
+  // Section to show
+  // isDataset() {
+  //   return this.activeStep === Steps.DATASET;
+  // }
 
-  isAlgorithm() {
-    return this.activeStep === Steps.ALGORITHM;
-  }
+  // isAlgorithm() {
+  //   return this.activeStep === Steps.ALGORITHM;
+  // }
 
-  isWorkers() {
-    return this.activeStep === Steps.WORKERS;
-  }
+  // isWorkers() {
+  //   return this.activeStep === Steps.WORKERS;
+  // }
 
-  isConfirm() {
-    return this.activeStep === Steps.CONFIRM;
-  }
+  // isConfirm() {
+  //   return this.activeStep === Steps.CONFIRM;
+  // }
 
+  // Set data sections
   setDatasetSelected(dataset: Dataset) {
     this.datasetSelected = dataset;
   }
 
+  setListAlgorithms(listAlgorithms: any) {
+    this.listAlgorithms = listAlgorithms;
+    console.log(listAlgorithms);
+  }
 }

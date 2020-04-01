@@ -1,8 +1,33 @@
 <div class="buttons-panel buttons-panel-end">
     <app-restart-button [disabled]="btnRestart" (emitClicked)="restart()"></app-restart-button>
 </div>
-<form [formGroup]="linearRegressionForm">
+<form [formGroup]="linearRegressionBaggingForm">
     <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Bag Size Percent
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="bagSizePercent" [min]="0" [max]="100"></p-spinner>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Batch Size
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="batchSize" [min]="0" [max]="100"></p-spinner>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Num Iterations
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="numIterations" [min]="0"></p-spinner>
+            </div>
+        </div>
+
         <div class="ui-g-12">
             <div class="ui-g-5">
                 Attribute Selection Method

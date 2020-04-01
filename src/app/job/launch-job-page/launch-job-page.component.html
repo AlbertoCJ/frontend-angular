@@ -2,17 +2,34 @@
     <div class="ui-card job-step">
         <app-step [items]="items" [activeStep]="activeStep"></app-step>
     </div>
-
-    <div *ngIf="isDataset()">
-        <app-controller-setect-dataset (emitStep)="changeStep($event)" [dataset]="datasetSelected" (emitDataset)="setDatasetSelected($event)"></app-controller-setect-dataset>
-    </div>
-    <div *ngIf="isAlgorithm()">
-        <app-controller-algorithm-config (emitStep)="changeStep($event)"></app-controller-algorithm-config>
-    </div>
-    <div *ngIf="isWorkers()">
-        <app-controller-launch-worker (emitStep)="changeStep($event)"></app-controller-launch-worker>
-    </div>
-    <div *ngIf="isConfirm()">
-        <app-controller-launch-confirm (emitStep)="changeStep($event)"></app-controller-launch-confirm>
-    </div>
+    <p-tabView [activeIndex]="activeTab" class="custom-tab">
+        <p-tabPanel>
+            <app-controller-setect-dataset (emitStep)="changeStep($event)" (emitDataset)="setDatasetSelected($event)"></app-controller-setect-dataset>
+        </p-tabPanel>
+        <p-tabPanel>
+            <app-controller-algorithm-config (emitStep)="changeStep($event)" (emitListAlgorithms)="setListAlgorithms($event)"></app-controller-algorithm-config>
+        </p-tabPanel>
+        <p-tabPanel>
+            <app-controller-launch-worker (emitStep)="changeStep($event)"></app-controller-launch-worker>
+        </p-tabPanel>
+        <p-tabPanel>
+            <app-controller-launch-confirm (emitStep)="changeStep($event)"></app-controller-launch-confirm>
+        </p-tabPanel>
+    </p-tabView>
 </app-header-title>
+
+
+<!-- <div *ngIf="isDataset()"> -->
+<!-- [dataset]="datasetSelected" (emitDataset)="setDatasetSelected($event)" -->
+<!-- <app-controller-setect-dataset (emitStep)="changeStep($event)"></app-controller-setect-dataset>
+</div>
+<div *ngIf="isAlgorithm()"> -->
+<!-- [listAlgorithms]="listAlgorithms" (emitListAlgorithms)="setListAlgorithms($event)" -->
+<!-- <app-controller-algorithm-config (emitStep)="changeStep($event)"></app-controller-algorithm-config>
+</div>
+<div *ngIf="isWorkers()">
+    <app-controller-launch-worker (emitStep)="changeStep($event)"></app-controller-launch-worker>
+</div>
+<div *ngIf="isConfirm()">
+    <app-controller-launch-confirm (emitStep)="changeStep($event)"></app-controller-launch-confirm>
+</div> -->

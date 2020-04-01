@@ -15,7 +15,6 @@ export class FileUploadComponent implements OnInit {
   }
 
   filesSelected(files: FileList) {
-    console.log(files[0]);
     this.fileName = files[0].name;
   }
 }

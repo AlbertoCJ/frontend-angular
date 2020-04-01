@@ -12,12 +12,6 @@ export class ControllerSetectDatasetComponent implements OnInit {
   datasetSelected: Dataset;
   showView: number; // 1 = Subir y seleccionar, 2 = seleccionar existente
 
-  @Input() set dataset(dataset: Dataset) {
-    if (dataset) {
-      this.datasetSelected = dataset;
-    }
-  }
-
   @Output() emitStep = new EventEmitter<number>();
   @Output() emitDataset = new EventEmitter<Dataset>();
 

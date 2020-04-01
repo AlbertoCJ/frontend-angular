@@ -10,7 +10,7 @@ export class ButtonComponent implements OnInit {
   @Input() type = 'button';
   @Input() label = '';
   @Input() icon = null;
-  @Input() iconPos = ''; // 'left' or 'right'
+  @Input() iconPos = 'left'; // 'left' or 'right'
   @Input() disabled = false;
   @Input() styleClass = ''; // ui-button-secondary, ui-button-success, ui-button-info, ui-button-warning, ui-button-danger
 

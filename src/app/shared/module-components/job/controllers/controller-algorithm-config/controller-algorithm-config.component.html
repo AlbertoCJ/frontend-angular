@@ -5,37 +5,37 @@
             <div>
                 <div class="ui-g">
                     <div class="ui-g-4">
-                        <p-checkbox label="Linear Regression" [(ngModel)]="linearRegression"></p-checkbox>
+                        <p-checkbox label="Linear Regression" (onChange)="clickCheckAlgorithm($event, Algorithms.LINEAR_REGRESSION)" [(ngModel)]="linearRegressionCheckBox"></p-checkbox>
                     </div>
                     <div class="ui-g-4">
-                        <p-checkbox label="Linear Regression Bagging" [(ngModel)]="linearRegressionBagging"></p-checkbox>
+                        <p-checkbox label="Linear Regression Bagging" (onChange)="clickCheckAlgorithm($event, Algorithms.LINEAR_REGRESSION_BAGGING)" [(ngModel)]="linearRegressionBaggingCheckBox"></p-checkbox>
                     </div>
                     <div class="ui-g-4">
-                        <p-checkbox label="IBk" [(ngModel)]="IBk"></p-checkbox>
-                    </div>
-                </div>
-                <div class="ui-g">
-                    <div class="ui-g-4">
-                        <p-checkbox label="ZeroR" [(ngModel)]="ZeroR"></p-checkbox>
-                    </div>
-                    <div class="ui-g-4">
-                        <p-checkbox label="M5P" [(ngModel)]="M5P"></p-checkbox>
-                    </div>
-                    <div class="ui-g-4">
-                        <p-checkbox label="M5Rules" [(ngModel)]="M5Rules"></p-checkbox>
+                        <p-checkbox label="IBk" (onChange)="clickCheckAlgorithm($event, Algorithms.IBK)" [(ngModel)]="IBkCheckBox"></p-checkbox>
                     </div>
                 </div>
                 <div class="ui-g">
                     <div class="ui-g-4">
-                        <p-checkbox label="Decision Stump" [(ngModel)]="DecisionStump"></p-checkbox>
+                        <p-checkbox label="ZeroR" (onChange)="clickCheckAlgorithm($event, Algorithms.ZEROR)" [(ngModel)]="ZeroRCheckBox"></p-checkbox>
                     </div>
                     <div class="ui-g-4">
-                        <p-checkbox label="DecisionStump Bagging" [(ngModel)]="DecisionStumpBagging"></p-checkbox>
+                        <p-checkbox label="M5P" (onChange)="clickCheckAlgorithm($event, Algorithms.M5P)" [(ngModel)]="M5PCheckBox"></p-checkbox>
+                    </div>
+                    <div class="ui-g-4">
+                        <p-checkbox label="M5Rules" (onChange)="clickCheckAlgorithm($event, Algorithms.M5RULES)" [(ngModel)]="M5RulesCheckBox"></p-checkbox>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-4">
+                        <p-checkbox label="Decision Stump" (onChange)="clickCheckAlgorithm($event, Algorithms.DECISION_STUMP)" [(ngModel)]="DecisionStumpCheckBox"></p-checkbox>
+                    </div>
+                    <div class="ui-g-4">
+                        <p-checkbox label="DecisionStump Bagging" (onChange)="clickCheckAlgorithm($event, Algorithms.DECISION_STUMP_BAGGING)" [(ngModel)]="DecisionStumpBaggingCheckBox"></p-checkbox>
                     </div>
                 </div>
             </div>
             <div class="box-button">
-                <app-special-button [btnText]="'Configurar algoritmos'" (emitClick)="showAlgoritConf = true"></app-special-button>
+                <app-special-button [btnText]="'Configurar algoritmos'" [disabled]="!isAnyAlgorithms()" (emitClick)="showAlgoritConf = true"></app-special-button>
             </div>
         </div>
 
@@ -44,108 +44,25 @@
                 <app-special-button [btnText]="'Cambiar algoritmos'" (emitClick)="showAlgoritConf = false"></app-special-button>
             </div>
             <p-accordion [multiple]="true">
-                <p-accordionTab header="Alg I" *ngIf="linearRegression">
-                    <div class="ui-g">
-                        <div class="ui-g-12">
-                            <div class="ui-g-5">
-                                InputText
-                            </div>
-                            <div class="ui-g-7">
-                                <p-spinner [(ngModel)]="val2" [min]="0" [max]="100"></p-spinner>
-                            </div>
-                        </div>
-                        <div class="ui-g-12">
-                            <div class="ui-g-5">
-                                Switch
-                            </div>
-                            <div class="ui-g-7">
-                                <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
-                            </div>
-                        </div>
-                        <div class="ui-g-12">
-                            <div class="ui-g-5">
-                                Dropdown
-                            </div>
-                            <div class="ui-g-7">
-                                <p-dropdown [options]="cities" [(ngModel)]="selectedCity"></p-dropdown>
-                            </div>
-                        </div>
-                        <div class="ui-g-12">
-
-                        </div>
-                    </div>
+                <p-accordionTab header="Linear Regression" *ngIf="listAlgorithms.linearRegression">
+                    <app-algorithm-linear-regression [linearRegression]="listAlgorithms.linearRegression" (changeLinearRegression)="onChangeLinearRegression($event)"></app-algorithm-linear-regression>
                 </p-accordionTab>
-                <p-accordionTab header="Alg II" *ngIf="linearRegressionBagging">
-                    <div class="ui-g">
-                        <div class="ui-g-12">
-                            <div class="ui-g-5">
-                                InputText
-                            </div>
-                            <div class="ui-g-7">
-                                <p-spinner [(ngModel)]="val2" [min]="0" [max]="100"></p-spinner>
-                            </div>
-                        </div>
-                        <div class="ui-g-12">
-                            <div class="ui-g-5">
-                                Switch
-                            </div>
-                            <div class="ui-g-7">
-                                <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
-                            </div>
-                        </div>
-                        <div class="ui-g-12">
-                            <div class="ui-g-5">
-                                Dropdown
-                            </div>
-                            <div class="ui-g-7">
-                                <p-dropdown [options]="cities" [(ngModel)]="selectedCity"></p-dropdown>
-                            </div>
-                        </div>
-                        <div class="ui-g-12">
-
-                        </div>
-                    </div>
+                <p-accordionTab header="Linear Regression Bagging" *ngIf="listAlgorithms.linearRegressionBagging">
+                    <app-algorithm-linear-regression-bagging [linearRegressionBagging]="listAlgorithms.linearRegressionBagging" (changeLinearRegressionBagging)="onChangeLinearRegressionBagging($event)"></app-algorithm-linear-regression-bagging>
                 </p-accordionTab>
-                <p-accordionTab header="Alg III" *ngIf="IBk">
-                    <div class="ui-g">
-                        <div class="ui-g-12">
-                            <div class="ui-g-5">
-                                InputText
-                            </div>
-                            <div class="ui-g-7">
-                                <p-spinner [(ngModel)]="val2" [min]="0" [max]="100"></p-spinner>
-                            </div>
-                        </div>
-                        <div class="ui-g-12">
-                            <div class="ui-g-5">
-                                Switch
-                            </div>
-                            <div class="ui-g-7">
-                                <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
-                            </div>
-                        </div>
-                        <div class="ui-g-12">
-                            <div class="ui-g-5">
-                                Dropdown
-                            </div>
-                            <div class="ui-g-7">
-                                <p-dropdown [options]="cities" [(ngModel)]="selectedCity"></p-dropdown>
-                            </div>
-                        </div>
-                        <div class="ui-g-12">
-
-                        </div>
-                    </div>
+                <p-accordionTab header="Alg III" *ngIf="IBkCheckBox">
+                    <!-- IBK -->
                 </p-accordionTab>
+                <!-- TODO: Faltan el resto de algoritmos -->
             </p-accordion>
         </div>
         <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
             <span slot="start">
-            <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>
-        </span>
+                <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>
+            </span>
             <span slot="end">
-            <app-next-button [disabled]="btnNextDisabled" (emitClicked)="btnNextClicked()"></app-next-button>
-        </span>
+                <app-next-button [disabled]="btnNextDisabled || !isAnyAlgorithms()" (emitClicked)="btnNextClicked()"></app-next-button>
+            </span>
         </app-buttons-panel-normal>
     </div>
 </app-header-title>

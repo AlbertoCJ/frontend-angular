@@ -3,3 +3,18 @@
     margin-top: 5px;
     margin-bottom: 10px;
 }
+
+:host ::ng-deep .custom-tab .ui-tabview .ui-tabview-nav {
+    display: none;
+}
+
+:host ::ng-deep .custom-tab .ui-tabview-panels,
+:host ::ng-deep .custom-tab .ui-tabview {
+    padding: 0px;
+    border: 0px;
+}
+
+
+/* :host ::ng-deep .custom-tab .ui-tabview {
+    padding: 0px;
+} */
