@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 // import { Steps } from '../../shared/module-components/job/enums/steps.enum';
 import { Dataset } from 'src/app/shared/module-components/datasets/entities';
+import { LocalWorkers } from '../../shared/module-components/job/entities/workers/local-workers';
+import { Steps } from 'src/app/shared/module-components/job/enums/steps.enum';
 
 @Component({
   selector: 'app-launch-job-page',
@@ -14,6 +16,7 @@ export class LaunchJobPageComponent implements OnInit {
   activeTab: number;
   datasetSelected: Dataset;
   listAlgorithms: any; // Object created in ControllerAlgorithmConfigComponent
+  dataWorkers: LocalWorkers;
 
   constructor() {
     this.items = [
@@ -30,7 +33,7 @@ export class LaunchJobPageComponent implements OnInit {
         label: 'Confirmación'
       }
     ];
-    this.activeStep = 1;
+    this.activeStep = Steps.DATASET;
     this.activeTab = 0;
    }
 
@@ -40,6 +43,11 @@ export class LaunchJobPageComponent implements OnInit {
   changeStep(step) {
     this.activeStep = step;
     this.activeTab = step - 1;
+  }
+
+  setDataWorkers(dataWorkers: LocalWorkers) {
+    console.log(dataWorkers);
+    this.dataWorkers = dataWorkers;
   }
 
   // Section to show

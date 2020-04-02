@@ -1,5 +1,30 @@
 <app-header-title [textTitle]="'Configurar workers'">
+
+    <div class="ui-fluid">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-6">
+                <app-special-button [btnText]="'AWS'" [disabled]="true" (emitClick)="showView = 1"></app-special-button>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+                <app-special-button [btnText]="'Local'" (emitClick)="showView = 2"></app-special-button>
+            </div>
+        </div>
+    </div>
+
     <div class="ui-fluid form-container">
+        <div *ngIf="showView === 1">
+            <!-- <app-controller-form-dataset (emitDataset)="setDatasetSelected($event)"></app-controller-form-dataset> -->
+
+            <app-header-title [textTitle]="'Configurar workers AWS'">
+
+            </app-header-title>
+        </div>
+        <div *ngIf="showView === 2">
+            <app-config-local-workers (emitLocalWorkers)="setLocalWorkers($event)"></app-config-local-workers>
+            <!-- local -->
+            <!-- <app-controller-list-dataset [clickCard]="true" [showCardButtons]="false" (emitDataset)="setDatasetSelected($event)"></app-controller-list-dataset> -->
+        </div>
+
         <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
             <span slot="start">
             <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>

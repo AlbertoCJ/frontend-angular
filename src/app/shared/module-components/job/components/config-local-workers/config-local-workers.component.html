@@ -1,0 +1,14 @@
+<app-header-title [textTitle]="'Configurar workers local'">
+    <form [formGroup]="containersForm">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="ui-g-5">
+                    Num containers
+                </div>
+                <div class="ui-g-7">
+                    <p-spinner formControlName="numContainers" [min]="0" [max]="4"></p-spinner>
+                </div>
+            </div>
+        </div>
+    </form>
+</app-header-title>

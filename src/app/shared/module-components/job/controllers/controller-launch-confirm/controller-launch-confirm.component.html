@@ -1,5 +1,21 @@
 <app-header-title [textTitle]="'Confirmación'">
     <div class="ui-fluid form-container">
+
+        <div *ngIf="dataset">
+            <p>Dataset:</p>
+            {{ dataset | json }}
+        </div>
+        <br>
+        <div *ngIf="listAlgorithms">
+            <p>Algoritmos:</p>
+            {{ listAlgorithms | json }}
+        </div>
+        <br>
+        <div *ngIf="dataWorkers">
+            <p>Worker:</p>
+            {{ dataWorkers | json }}
+        </div>
+
         <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
             <span slot="start">
             <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>
