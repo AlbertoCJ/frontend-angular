@@ -11,6 +11,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { DatasetsModule } from './datasets/datasets.module';
 import { JobModule } from './job/job.module';
 import { DockerModule } from './docker/docker.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { DockerModule } from './docker/docker.module';
     JobModule,
     DockerModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
