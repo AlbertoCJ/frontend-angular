@@ -4,6 +4,7 @@ import { MenuItem } from 'primeng/api';
 import { Dataset } from 'src/app/shared/module-components/datasets/entities';
 import { LocalWorkers } from '../../shared/module-components/job/entities/workers/local-workers';
 import { Steps } from 'src/app/shared/module-components/job/enums/steps.enum';
+import { FormJobData } from '../../shared/module-components/job/entities/job-data/form-job-data';
 
 @Component({
   selector: 'app-launch-job-page',
@@ -14,6 +15,7 @@ export class LaunchJobPageComponent implements OnInit {
   items: MenuItem[];
   activeStep: number;
   activeTab: number;
+  formJobData: FormJobData;
   datasetSelected: Dataset;
   listAlgorithms: any; // Object created in ControllerAlgorithmConfigComponent
   dataWorkers: LocalWorkers;
@@ -68,6 +70,10 @@ export class LaunchJobPageComponent implements OnInit {
   // }
 
   // Set data sections
+  setFormJobData(formJobData: FormJobData) {
+    this.formJobData = formJobData;
+  }
+
   setDatasetSelected(dataset: Dataset) {
     this.datasetSelected = dataset;
   }

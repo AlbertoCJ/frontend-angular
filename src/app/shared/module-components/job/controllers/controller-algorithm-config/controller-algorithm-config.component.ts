@@ -27,14 +27,30 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
 
   // Algorithms object
   listAlgorithms: any = {
-    linearRegression: undefined,
-    linearRegressionBagging: undefined,
-    IBk: undefined,
-    ZeroR: undefined,
-    M5P: undefined,
-    M5Rules: undefined,
-    DecisionStump: undefined,
-    DecisionStumpBagging: undefined,
+    linearRegression: {
+      algorithm: null
+    },
+    linearRegressionBagging: {
+      algorithm: null
+    },
+    IBk: {
+      algorithm: null
+    },
+    ZeroR: {
+      algorithm: null
+    },
+    M5P: {
+      algorithm: null
+    },
+    M5Rules: {
+      algorithm: null
+    },
+    DecisionStump: {
+      algorithm: null
+    },
+    DecisionStumpBagging: {
+      algorithm: null
+    },
   };
 
   // Buttons
@@ -57,48 +73,48 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
     switch (idAlgorithm) {
       case Algorithms.LINEAR_REGRESSION:
         if (event) {
-          this.listAlgorithms.linearRegression = new LinearRegression();
+          this.listAlgorithms.linearRegression.algorithm = new LinearRegression();
         } else {
-          this.listAlgorithms.linearRegression = undefined;
+          this.listAlgorithms.linearRegression.algorithm = null;
         }
         break;
       case Algorithms.LINEAR_REGRESSION_BAGGING:
         if (event) {
-          this.listAlgorithms.linearRegressionBagging = new LinearRegressionBagging();
+          this.listAlgorithms.linearRegressionBagging.algorithm = new LinearRegressionBagging();
         } else {
-          this.listAlgorithms.linearRegressionBagging = undefined;
+          this.listAlgorithms.linearRegressionBagging.algorithm = null;
         }
         break;
       case Algorithms.IBK:
-        if (!this.IBkCheckBox) { this.listAlgorithms.IBk = undefined; }
+        if (!this.IBkCheckBox) { this.listAlgorithms.IBk.algorithm = undefined; }
         break;
       case Algorithms.ZEROR:
-        if (!this.ZeroRCheckBox) { this.listAlgorithms.ZeroR = undefined; }
+        if (!this.ZeroRCheckBox) { this.listAlgorithms.ZeroR.algorithm = undefined; }
         break;
       case Algorithms.M5P:
-        if (!this.M5PCheckBox) { this.listAlgorithms.M5P = undefined; }
+        if (!this.M5PCheckBox) { this.listAlgorithms.M5P.algorithm = undefined; }
         break;
       case Algorithms.M5RULES:
-        if (!this.M5RulesCheckBox) { this.listAlgorithms.M5Rules = undefined; }
+        if (!this.M5RulesCheckBox) { this.listAlgorithms.M5Rules.algorithm = undefined; }
         break;
       case Algorithms.DECISION_STUMP:
-        if (!this.DecisionStumpCheckBox) { this.listAlgorithms.DecisionStump = undefined; }
+        if (!this.DecisionStumpCheckBox) { this.listAlgorithms.DecisionStump.algorithm = undefined; }
         break;
       case Algorithms.DECISION_STUMP_BAGGING:
-        if (!this.DecisionStumpBaggingCheckBox) { this.listAlgorithms.DecisionStumpBagging = undefined; }
+        if (!this.DecisionStumpBaggingCheckBox) { this.listAlgorithms.DecisionStumpBagging.algorithm = undefined; }
         break;
     }
   }
 
   isAnyAlgorithms() {
-    if (this.listAlgorithms.linearRegression ||
-      this.listAlgorithms.linearRegressionBagging ||
-      this.listAlgorithms.IBk ||
-      this.listAlgorithms.ZeroR ||
-      this.listAlgorithms.M5P ||
-      this.listAlgorithms.M5Rules ||
-      this.listAlgorithms.DecisionStump ||
-      this.listAlgorithms.DecisionStumpBagging) {
+    if (this.listAlgorithms.linearRegression.algorithm ||
+      this.listAlgorithms.linearRegressionBagging.algorithm ||
+      this.listAlgorithms.IBk.algorithm ||
+      this.listAlgorithms.ZeroR.algorithm ||
+      this.listAlgorithms.M5P.algorithm ||
+      this.listAlgorithms.M5Rules.algorithm ||
+      this.listAlgorithms.DecisionStump.algorithm ||
+      this.listAlgorithms.DecisionStumpBagging.algorithm) {
       return true;
     }
     return false;
@@ -106,11 +122,11 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
 
   // Changes in algorithms
   onChangeLinearRegression(linearRegression: LinearRegression) {
-    this.listAlgorithms.linearRegression = linearRegression;
+    this.listAlgorithms.linearRegression.algorithm = linearRegression;
   }
 
   onChangeLinearRegressionBagging(linearRegressionBagging: LinearRegressionBagging) {
-    this.listAlgorithms.linearRegressionBagging = linearRegressionBagging;
+    this.listAlgorithms.linearRegressionBagging.algorithm = linearRegressionBagging;
   }
 
   // Emit y buttons

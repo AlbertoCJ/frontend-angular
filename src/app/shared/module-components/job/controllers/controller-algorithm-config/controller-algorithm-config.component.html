@@ -46,11 +46,11 @@
                 <app-special-button [btnText]="'Cambiar algoritmos'" (emitClick)="showAlgoritConf = false"></app-special-button>
             </div>
             <p-accordion [multiple]="true">
-                <p-accordionTab header="Linear Regression" *ngIf="listAlgorithms.linearRegression">
-                    <app-algorithm-linear-regression [linearRegression]="listAlgorithms.linearRegression" (changeLinearRegression)="onChangeLinearRegression($event)"></app-algorithm-linear-regression>
+                <p-accordionTab header="Linear Regression" *ngIf="listAlgorithms.linearRegression.algorithm">
+                    <app-algorithm-linear-regression [linearRegression]="listAlgorithms.linearRegression.algorithm" (changeLinearRegression)="onChangeLinearRegression($event)"></app-algorithm-linear-regression>
                 </p-accordionTab>
-                <p-accordionTab header="Linear Regression Bagging" *ngIf="listAlgorithms.linearRegressionBagging">
-                    <app-algorithm-linear-regression-bagging [linearRegressionBagging]="listAlgorithms.linearRegressionBagging" (changeLinearRegressionBagging)="onChangeLinearRegressionBagging($event)"></app-algorithm-linear-regression-bagging>
+                <p-accordionTab header="Linear Regression Bagging" *ngIf="listAlgorithms.linearRegressionBagging.algorithm">
+                    <app-algorithm-linear-regression-bagging [linearRegressionBagging]="listAlgorithms.linearRegressionBagging.algorithm" (changeLinearRegressionBagging)="onChangeLinearRegressionBagging($event)"></app-algorithm-linear-regression-bagging>
                 </p-accordionTab>
                 <p-accordionTab header="Alg III" *ngIf="IBkCheckBox">
                     <!-- IBK -->

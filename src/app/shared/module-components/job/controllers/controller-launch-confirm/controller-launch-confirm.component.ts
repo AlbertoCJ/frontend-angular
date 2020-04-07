@@ -3,6 +3,8 @@ import { Steps } from '../../enums/steps.enum';
 import { StringifyOptions } from 'querystring';
 import { Dataset } from '../../../datasets/entities';
 import { LocalWorkers } from '../../entities/workers/local-workers';
+import { FormJobData } from '../../entities/job-data/form-job-data';
+import { JobService } from '../../../../../core/services/job/job.service';
 
 @Component({
   selector: 'app-controller-launch-confirm',
@@ -16,13 +18,14 @@ export class ControllerLaunchConfirmComponent implements OnInit {
   btnLaunchLabel: string;
   btnLaunchStyleClass: string;
 
+  @Input() formJobData: FormJobData;
   @Input() dataset: Dataset;
   @Input() listAlgorithms: any;
   @Input() dataWorkers: LocalWorkers;
 
   @Output() emitStep = new EventEmitter<number>();
 
-  constructor() {
+  constructor(private jobService: JobService) {
     this.btnPrevDisabled = false;
     this.btnLaunchDisabled = false;
     this.btnLaunchLabel = 'Launch'; // TODO: traducir
@@ -38,6 +41,16 @@ export class ControllerLaunchConfirmComponent implements OnInit {
 
   btnLaunchClicked() {
     alert('Lanzado');
+    this.jobService.launchJob(this.formJobData, this.dataset, this.listAlgorithms, 'container').subscribe( // this.containers
+      resp => {
+        // this.listDataset = listDataset;
+        console.log(resp);
+      },
+      err => {
+        // this.alertService.setAlertShowMore('Alerta', 'Error al obtener listado de datasets', err.message);
+        console.log(err);
+      }
+    );
     // TODO: Primero comprobar si es local o aws
 
     // SI ES LOCAL

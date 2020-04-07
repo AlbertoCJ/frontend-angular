@@ -1,6 +1,11 @@
 <app-header-title [textTitle]="'Confirmación'">
     <div class="ui-fluid form-container">
 
+        <div *ngIf="formJobData">
+            <p>Datos job:</p>
+            {{ formJobData | json }}
+        </div>
+        <br>
         <div *ngIf="dataset">
             <p>Dataset:</p>
             {{ dataset | json }}

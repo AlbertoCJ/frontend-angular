@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Steps } from '../../enums/steps.enum';
 import { Dataset } from '../../../datasets/entities/dataset';
+import { FormJobData } from '../../entities/job-data/form-job-data';
 
 @Component({
   selector: 'app-controller-setect-dataset',
@@ -9,13 +10,20 @@ import { Dataset } from '../../../datasets/entities/dataset';
 })
 export class ControllerSetectDatasetComponent implements OnInit {
 
+  formJobData: FormJobData;
+  showError = false;
+  textError: string;
   datasetSelected: Dataset;
   showView: number; // 1 = Subir y seleccionar, 2 = seleccionar existente
 
   @Output() emitStep = new EventEmitter<number>();
   @Output() emitDataset = new EventEmitter<Dataset>();
+  @Output() emitFormJobData = new EventEmitter<FormJobData>();
 
-  constructor() { }
+  constructor() {
+    this.formJobData = new FormJobData();
+    this.textError = 'Debe escribir un nombre.'; // TODO: Traducir
+   }
 
   ngOnInit() {
   }
@@ -31,7 +39,13 @@ export class ControllerSetectDatasetComponent implements OnInit {
   }
 
   btnNextClicked() {
-    this.emitStep.emit(Steps.ALGORITHM);
+    if (this.formJobData.name === '') {
+      this.showError = true;
+    } else {
+      this.showError = false;
+      this.emitStep.emit(Steps.ALGORITHM);
+      this.emitFormJobData.emit(this.formJobData);
+    }
   }
 
 }
