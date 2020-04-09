@@ -60,4 +60,15 @@ export class DockerService {
     );
   }
 
+  runContainers(numContainers: number) {
+    const formData: FormData = new FormData();
+    formData.append('nContainers', numContainers.toString());
+
+    return this.http.post(`${ this.url }/container/run`, formData).pipe(
+      map( (resp: any) => {
+        return resp;
+      })
+    );
+  }
+
 }

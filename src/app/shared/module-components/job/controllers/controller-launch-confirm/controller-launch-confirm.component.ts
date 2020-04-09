@@ -5,6 +5,8 @@ import { Dataset } from '../../../datasets/entities';
 import { LocalWorkers } from '../../entities/workers/local-workers';
 import { FormJobData } from '../../entities/job-data/form-job-data';
 import { JobService } from '../../../../../core/services/job/job.service';
+import { DockerService } from '../../../../../core/services/docker/docker.service';
+import { AlertService } from '../../../../../core/services/alert/alert.service';
 
 @Component({
   selector: 'app-controller-launch-confirm',
@@ -25,7 +27,9 @@ export class ControllerLaunchConfirmComponent implements OnInit {
 
   @Output() emitStep = new EventEmitter<number>();
 
-  constructor(private jobService: JobService) {
+  constructor(private jobService: JobService,
+              private dockerService: DockerService,
+              private alertService: AlertService) {
     this.btnPrevDisabled = false;
     this.btnLaunchDisabled = false;
     this.btnLaunchLabel = 'Launch'; // TODO: traducir
@@ -41,16 +45,45 @@ export class ControllerLaunchConfirmComponent implements OnInit {
 
   btnLaunchClicked() {
     alert('Lanzado');
-    this.jobService.launchJob(this.formJobData, this.dataset, this.listAlgorithms, 'container').subscribe( // this.containers
-      resp => {
+
+    this.dockerService.runContainers(this.dataWorkers.numContainers).subscribe( // this.containers
+      respContainers => {
         // this.listDataset = listDataset;
-        console.log(resp);
+        console.log(respContainers.containers);
+        alert('Container');
+        this.jobService.launchJob(this.formJobData, this.dataset, this.listAlgorithms, respContainers.containers).subscribe(
+          respJob => {
+            // this.listDataset = listDataset;
+            console.log(respJob);
+          },
+          err => {
+            // this.alertService.setAlertShowMore('Alerta', 'Error al obtener listado de datasets', err.message);
+            console.log(err);
+          }
+        );
+
       },
       err => {
-        // this.alertService.setAlertShowMore('Alerta', 'Error al obtener listado de datasets', err.message);
         console.log(err);
+        switch (err.status) {
+          case 600:
+            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message);
+            break;
+          case 601:
+            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message);
+            break;
+          case 602:
+            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message);
+            break;
+          default:
+            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.message);
+            break;
+        }
       }
     );
+
+
+
     // TODO: Primero comprobar si es local o aws
 
     // SI ES LOCAL

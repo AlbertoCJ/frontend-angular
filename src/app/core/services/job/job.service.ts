@@ -20,7 +20,7 @@ export class JobService {
     formData.append('jobName', formJobData.name);
     formData.append('jobDescription', formJobData.description);
     formData.append('algorithms', JSON.stringify(listAlgorithms));
-    // formData.append('containers', containers);
+    formData.append('containers', JSON.stringify(containers));
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -30,10 +30,7 @@ export class JobService {
 
     return this.http.post(`${ this.url }/algorithm`, formData).pipe(
       map( (resp: any) => {
-        // const respDataset = resp.dataset;
-        // const dataset = new Dataset(respDataset);
-        // return dataset;
-        console.log(resp);
+        return resp;
       })
     );
   }
