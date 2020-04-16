@@ -52,8 +52,8 @@
                 <p-accordionTab header="Linear Regression Bagging" *ngIf="listAlgorithms.linearRegressionBagging.algorithm">
                     <app-algorithm-linear-regression-bagging [linearRegressionBagging]="listAlgorithms.linearRegressionBagging.algorithm" (changeLinearRegressionBagging)="onChangeLinearRegressionBagging($event)"></app-algorithm-linear-regression-bagging>
                 </p-accordionTab>
-                <p-accordionTab header="Alg III" *ngIf="IBkCheckBox">
-                    <!-- IBK -->
+                <p-accordionTab header="IBk" *ngIf="IBkCheckBox">
+                    <app-algorithm-ibk [ibk]="listAlgorithms.IBk.algorithm" (changeIbk)="onChangeIBk($event)"></app-algorithm-ibk>
                 </p-accordionTab>
                 <!-- TODO: Faltan el resto de algoritmos -->
             </p-accordion>

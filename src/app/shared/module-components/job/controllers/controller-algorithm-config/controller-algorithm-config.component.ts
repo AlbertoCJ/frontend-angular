@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Steps } from '../../enums/steps.enum';
-import { SelectItem } from 'primeng/api/selectitem';
+import { Algorithms } from '../../enums/algorithms.enum';
 import { LinearRegression } from '../../entities/algorithms/linear-regression/linear-regression';
 import { LinearRegressionBagging } from '../../entities/algorithms/linear-regression-bagging/linear-regression-bagging';
-import { Algorithms } from '../../enums/algorithms.enum';
+import { Ibk } from '../../entities/algorithms/ibk/ibk';
 
 @Component({
   selector: 'app-controller-algorithm-config',
@@ -86,7 +86,12 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
         }
         break;
       case Algorithms.IBK:
-        if (!this.IBkCheckBox) { this.listAlgorithms.IBk.algorithm = undefined; }
+        if (event) {
+          this.listAlgorithms.IBk.algorithm = new Ibk();
+        } else {
+          this.listAlgorithms.IBk.algorithm = null;
+        }
+        // if (!this.IBkCheckBox) { this.listAlgorithms.IBk.algorithm = undefined; }
         break;
       case Algorithms.ZEROR:
         if (!this.ZeroRCheckBox) { this.listAlgorithms.ZeroR.algorithm = undefined; }
@@ -127,6 +132,10 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
 
   onChangeLinearRegressionBagging(linearRegressionBagging: LinearRegressionBagging) {
     this.listAlgorithms.linearRegressionBagging.algorithm = linearRegressionBagging;
+  }
+
+  onChangeIBk(ibk: Ibk) {
+    this.listAlgorithms.Ibk.algorithm = ibk;
   }
 
   // Emit y buttons

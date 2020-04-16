@@ -1,1 +1,71 @@
-<p>algorithm-ibk works!</p>
+<div class="buttons-panel buttons-panel-end">
+    <app-restart-button [disabled]="btnRestart" (emitClicked)="restart()"></app-restart-button>
+</div>
+<form [formGroup]="ibkForm">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Window Size
+            </div>
+            <div class="ui-g-7">
+                <p-inputSwitch formControlName="windowSize"></p-inputSwitch>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                KNN
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="KNN" [min]="1"></p-spinner>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Cross Validate
+            </div>
+            <div class="ui-g-7">
+                <p-inputSwitch formControlName="crossValidate"></p-inputSwitch>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Distance Weighting
+            </div>
+            <div class="ui-g-7">
+                <p-dropdown [options]="optionsDistanceWeighting" formControlName="distanceWeighting"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Mean Squared
+            </div>
+            <div class="ui-g-7">
+                <p-inputSwitch formControlName="meanSquared"></p-inputSwitch>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Nearest Neighbour Search Algorithm
+            </div>
+            <div class="ui-g-7">
+                <p-dropdown [options]="optionsNearestNeighbourSearchAlgorithm" formControlName="nearestNeighbourSearchAlgorithm"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Validation
+            </div>
+            <div class="ui-g-7">
+                <p-dropdown [options]="optionsValidation" formControlName="validation"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Validation Num
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="validationNum" [min]="0" [max]="100"></p-spinner>
+            </div>
+        </div>
+    </div>
+</form>
