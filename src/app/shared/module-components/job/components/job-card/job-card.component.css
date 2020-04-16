@@ -1,0 +1,64 @@
+/* .mt-input {
+    margin-top: 20px;
+}
+
+.mt-card {
+    margin-top: 10px;
+}
+
+.input-size {
+    width: 90%;
+}
+
+.input-span-size {
+    width: 10%;
+} */
+
+:host ::ng-deep .mt-card {
+    width: 100%;
+}
+
+.card-wrapper {
+    -webkit-box-align: flex-start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: flex-start;
+    justify-content: flex-end;
+    align-items: flex-start;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: nowrap;
+    -ms-flex-flow: nowrap;
+    flex-flow: nowrap;
+}
+
+.card-icon {
+    background-color: rgb(250, 108, 108);
+    color: white;
+    position: absolute;
+    /* font-size: 12px; */
+    cursor: pointer;
+    /* padding: 2px 3px; */
+}
+
+.card-icon:hover {
+    color: white;
+    background-color: rgb(250, 49, 49);
+}
+
+.clicker {
+    cursor: pointer;
+}
+
+.card-rotate:hover {
+    /* transform: rotate(1deg); */
+}
+
+.card-background {
+    border: 1px solid transparent;
+}
+
+.card-background:hover {
+    border: 1px solid rgba(0, 128, 0, 0.479);
+}

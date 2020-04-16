@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Steps } from '../../enums/steps.enum';
 import { Dataset } from '../../../datasets/entities/dataset';
-import { FormJobData } from '../../entities/job-data/form-job-data';
+import { FormJobData } from '../../entities/form-job-data/form-job-data';
 
 @Component({
   selector: 'app-controller-setect-dataset',

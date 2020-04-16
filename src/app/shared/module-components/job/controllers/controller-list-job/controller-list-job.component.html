@@ -1,0 +1,26 @@
+<div>
+    <div class="ui-g ui-fluid mb-4">
+        <div class="ui-g-12">
+            <form (ngSubmit)="search(forma)" #forma="ngForm" novalidate>
+                <div class="ui-inputgroup">
+                    <button pButton type="submit" icon="pi pi-search" class="ui-button-primary" [disabled]="nameSearch === '' && descriptionSearch === ''"></button>
+                    <input type="text" pInputText name="nameSearch" placeholder="Buscar por nombre" (keypress)="keypressNameSearch($event)" [(ngModel)]="nameSearch">
+                    <input type="text" pInputText name="descriptionSearch" placeholder="Buscar por descripción" (keypress)="keypressDescriptionSearch($event)" [(ngModel)]="descriptionSearch">
+                    <button pButton type="button" icon="pi pi-times" class="ui-button-danger" (click)="clearSearch()"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="p-grid m-cards">
+        <div class="p-col-12" *ngFor="let job of listJob.jobs">
+            <app-job-card [job]="job" [showButtons]="showCardButtons" [isClicker]="clickCard" (emitSelected)="select($event)" (emitEdit)="edit($event)" (emitRemoved)="remove($event)"></app-job-card>
+        </div>
+    </div>
+    <div *ngIf="listJob.jobs.length === 0">
+        <p class="list-empty">No hay jobs</p>
+    </div>
+
+    <div>
+        <app-pagination [paginationData]="listJob.paginationData" (emitPage)="changePage($event)"></app-pagination>
+    </div>
+</div>

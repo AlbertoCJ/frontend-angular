@@ -6,7 +6,7 @@
                 Nombre job*
             </div>
             <div class="ui-g-7">
-                <input type="text" pInputText name="jobName" placeholder="Nombre job" [(ngModel)]="formJobData.name" [ngClass]="{'ng-invalid ng-dirty': showError, 'ng-valid': !showError}">
+                <input type="text" pInputText name="jobName" [(ngModel)]="formJobData.name" [ngClass]="{'ng-invalid ng-dirty': showError, 'ng-valid': !showError}">
                 <span *ngIf="showError" class="box-error-login class-error">{{ textError }}</span>
             </div>
         </div>

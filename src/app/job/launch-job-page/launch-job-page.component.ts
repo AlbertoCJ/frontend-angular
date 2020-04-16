@@ -4,7 +4,7 @@ import { MenuItem } from 'primeng/api';
 import { Dataset } from 'src/app/shared/module-components/datasets/entities';
 import { LocalWorkers } from '../../shared/module-components/job/entities/workers/local-workers';
 import { Steps } from 'src/app/shared/module-components/job/enums/steps.enum';
-import { FormJobData } from '../../shared/module-components/job/entities/job-data/form-job-data';
+import { FormJobData } from '../../shared/module-components/job/entities/form-job-data/form-job-data';
 
 @Component({
   selector: 'app-launch-job-page',

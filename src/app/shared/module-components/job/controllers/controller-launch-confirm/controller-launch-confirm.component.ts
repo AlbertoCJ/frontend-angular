@@ -3,7 +3,7 @@ import { Steps } from '../../enums/steps.enum';
 import { StringifyOptions } from 'querystring';
 import { Dataset } from '../../../datasets/entities';
 import { LocalWorkers } from '../../entities/workers/local-workers';
-import { FormJobData } from '../../entities/job-data/form-job-data';
+import { FormJobData } from '../../entities/form-job-data/form-job-data';
 import { JobService } from '../../../../../core/services/job/job.service';
 import { DockerService } from '../../../../../core/services/docker/docker.service';
 import { AlertService } from '../../../../../core/services/alert/alert.service';

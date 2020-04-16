@@ -20,6 +20,6 @@
     </div>
 
     <div>
-        <app-pagination [listDataset]="listDataset" (emitPage)="changePage($event)"></app-pagination>
+        <app-pagination [paginationData]="listDataset.paginationData" (emitPage)="changePage($event)"></app-pagination>
     </div>
 </div>

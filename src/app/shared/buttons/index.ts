@@ -6,6 +6,9 @@ import { AcceptButtonComponent } from './accept-button/accept-button.component';
 import { CancelButtonComponent } from './cancel-button/cancel-button.component';
 import { RestartButtonComponent } from './restart-button/restart-button.component';
 import { SpecialButtonComponent } from './special-button/special-button.component';
+import { RemoveButtonComponent } from './remove-button/remove-button.component';
+import { ViewButtonComponent } from './view-button/view-button.component';
+import { EditButtonComponent } from './edit-button/edit-button.component';
 
 export const BUTTONS_COMPONENTS = [
     ButtonComponent,
@@ -15,5 +18,8 @@ export const BUTTONS_COMPONENTS = [
     AcceptButtonComponent,
     CancelButtonComponent,
     RestartButtonComponent,
-    SpecialButtonComponent
+    SpecialButtonComponent,
+    RemoveButtonComponent,
+    ViewButtonComponent,
+    EditButtonComponent
 ];

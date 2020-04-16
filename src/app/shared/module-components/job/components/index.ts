@@ -4,11 +4,13 @@ import { AlgorithmLinearRegressionBaggingComponent } from './algorithm-linear-re
 import { AlgorithmIBKComponent } from './algorithm-ibk/algorithm-ibk.component';
 import { ConfigLocalWorkersComponent } from './config-local-workers/config-local-workers.component';
 import { ConfigAwsWorkersComponent } from './config-aws-workers/config-aws-workers.component';
+import { JobCardComponent } from './job-card/job-card.component';
 
 export const JOB_COMPONENTS = [
     AlgorithmLinearRegressionComponent,
     AlgorithmLinearRegressionBaggingComponent,
     AlgorithmIBKComponent,
     ConfigLocalWorkersComponent,
-    ConfigAwsWorkersComponent
+    ConfigAwsWorkersComponent,
+    JobCardComponent
 ];

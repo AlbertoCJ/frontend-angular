@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ListDatasets } from '../module-components/datasets/entities/list-datasets';
+import { PaginationData } from '../../core/entities/generic/pagination-data';
 
 @Component({
   selector: 'app-pagination',
@@ -10,7 +10,7 @@ export class PaginationComponent implements OnInit {
 
   page: number;
 
-  @Input() listDataset: ListDatasets;
+  @Input() paginationData: PaginationData;
 
   @Output() emitPage = new EventEmitter<number>();
 
