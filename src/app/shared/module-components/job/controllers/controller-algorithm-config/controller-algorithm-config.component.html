@@ -52,8 +52,23 @@
                 <p-accordionTab header="Linear Regression Bagging" *ngIf="listAlgorithms.linearRegressionBagging.algorithm">
                     <app-algorithm-linear-regression-bagging [linearRegressionBagging]="listAlgorithms.linearRegressionBagging.algorithm" (changeLinearRegressionBagging)="onChangeLinearRegressionBagging($event)"></app-algorithm-linear-regression-bagging>
                 </p-accordionTab>
-                <p-accordionTab header="IBk" *ngIf="IBkCheckBox">
+                <p-accordionTab header="IBk" *ngIf="listAlgorithms.IBk.algorithm">
                     <app-algorithm-ibk [ibk]="listAlgorithms.IBk.algorithm" (changeIbk)="onChangeIBk($event)"></app-algorithm-ibk>
+                </p-accordionTab>
+                <p-accordionTab header="ZeroR" *ngIf="listAlgorithms.ZeroR.algorithm">
+                    <app-algorithm-zeror [zeror]="listAlgorithms.ZeroR.algorithm" (changeIbk)="onChangeZeror($event)"></app-algorithm-zeror>
+                </p-accordionTab>
+                <p-accordionTab header="M5P" *ngIf="listAlgorithms.M5P.algorithm">
+                    <app-algorithm-m5p [m5p]="listAlgorithms.M5P.algorithm" (changeM5p)="onChangeM5p($event)"></app-algorithm-m5p>
+                </p-accordionTab>
+                <p-accordionTab header="M5Rules" *ngIf="listAlgorithms.M5Rules.algorithm">
+                    <app-algorithm-m5rules [m5rules]="listAlgorithms.M5Rules.algorithm" (changeM5rules)="onChangeM5rules($event)"></app-algorithm-m5rules>
+                </p-accordionTab>
+                <p-accordionTab header="Decision Stump" *ngIf="listAlgorithms.DecisionStump.algorithm">
+                    <app-algorithm-decision-stump [decisionStump]="listAlgorithms.DecisionStump.algorithm" (changeDecisionStump)="onChangeDecisionStump($event)"></app-algorithm-decision-stump>
+                </p-accordionTab>
+                <p-accordionTab header="Decision Stump Bagging" *ngIf="listAlgorithms.DecisionStumpBagging.algorithm">
+                    <app-algorithm-decision-stump-bagging [decisionStumpBagging]="listAlgorithms.DecisionStumpBagging.algorithm" (changeDecisionStumpBagging)="onChangeDecisionStumpBagging($event)"></app-algorithm-decision-stump-bagging>
                 </p-accordionTab>
                 <!-- TODO: Faltan el resto de algoritmos -->
             </p-accordion>

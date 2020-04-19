@@ -37,7 +37,7 @@ export class JobService {
     );
   }
 
-  getListJobs(page: number, limit: number, nameSearch: string, descriptionSearch: string) { // TODO: ampliar search
+  getListJobs(page: number, limit: number, nameSearch: string, descriptionSearch: string) {
 
     const params = new HttpParams()
     .set('nameSearch', nameSearch)
@@ -50,6 +50,17 @@ export class JobService {
         const respJobs = resp.jobs;
         const listJobs = new ListJob(respJobs);
         return listJobs;
+      })
+    );
+
+  }
+
+  getJob(id: string) {
+    return this.http.get(`${ this.url }/job/${ id }`).pipe(
+      map( (resp: any) => {
+        const respJob = resp.job;
+        const job = new Job(respJob);
+        return job;
       })
     );
 

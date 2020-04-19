@@ -1,0 +1,11 @@
+<app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="formCancel()" [showFooter]="true" [fullModal]="false">
+    <span slot="custom-header">Job: {{ job.name }}</span>
+    <span slot="custom-section">
+        <!-- <code>{{ job | json }}</code> -->
+        <app-controller-job-details [jobId]="job.id" [mode]="mode" (emitJob)="updateJob($event)" (emitCancel)="close()"></app-controller-job-details>
+    </span>
+    <!-- <span slot="custom-footer">
+        <app-custom-button [label]="'Cerrar'" (emitClicked)="close()">
+        </app-custom-button>
+    </span> -->
+</app-modal-generic>

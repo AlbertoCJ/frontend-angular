@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Job } from '../../entities/job';
+import { ViewMode } from '../../../../../core/enums/view-mode.enum';
 
 @Component({
   selector: 'app-job-card',
@@ -12,8 +13,9 @@ export class JobCardComponent implements OnInit {
   disabledButtonEdit = false;
   disabledButtonRemove = false;
 
-  isAlertActive: boolean;
-  isModalActive: boolean; // TODO: pasar a componente jobModal
+  // Modal job
+  isModalActive: boolean;
+  mode: number;
 
   @Input() showButtons = true;
   @Input() isClicker = false;
@@ -30,28 +32,22 @@ export class JobCardComponent implements OnInit {
 
   select() {
     this.emitSelected.emit(this.job);
-    this.isAlertActive = true;
+    this.mode = ViewMode.VIEW;
     this.isModalActive = true;
   }
 
   edit() {
     this.emitEdit.emit(this.job);
+    this.mode = ViewMode.EDIT;
+    this.isModalActive = true;
   }
 
   remove() {
     this.emitRemoved.emit(this.job);
   }
 
-  emitCancel() { // TODO: pasar a componente jobModal
-    // this.cancel.emit('cancel');
-  }
-
-  formCancel() {
-    this.isAlertActive = false;
-  }
-
-  close() {
-    this.isModalActive = false;
+  closeModalJob(event: boolean) {
+    this.isModalActive = event;
   }
 
 }

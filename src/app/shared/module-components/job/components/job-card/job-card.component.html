@@ -31,40 +31,4 @@
 
 </div>
 
-<app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="formCancel()" [showFooter]="true" [fullModal]="false">
-    <!-- <custom-header>
-        <span>{{translate.instant('contacts.titleDetail')}}</span>
-    </custom-header>
-    <custom-section>
-        <app-contact-detail
-            [id]="contactId"
-            [contactTypes]="contactTypes"
-            (cancelled)="formCancel()"
-            (contactSaved)="getContactSaved($event)">
-        </app-contact-detail>
-    </custom-section> -->
-    <span slot="custom-header">Job YYYYY</span>
-    <span slot="custom-section">
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-        <p>CUERPO</p>
-    </span>
-    <span slot="custom-footer">
-        <app-custom-button [label]="'Cerrar'" (emitClicked)="close()">
-        </app-custom-button>
-    </span>
-</app-modal-generic>
+<app-modal-job-details *ngIf="isModalActive" [isModalActive]="isModalActive" [job]="job" [mode]="mode" (closedModalJob)="closeModalJob($event)"></app-modal-job-details>

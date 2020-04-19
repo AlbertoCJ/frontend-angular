@@ -3,7 +3,7 @@ import { ControllerAlgorithmConfigComponent } from './controller-algorithm-confi
 import { ControllerLaunchWorkerComponent } from './controller-launch-worker/controller-launch-worker.component';
 import { ControllerLaunchConfirmComponent } from './controller-launch-confirm/controller-launch-confirm.component';
 import { ControllerListJobComponent } from './controller-list-job/controller-list-job.component';
-import { ControllerModalJobDetailsComponent } from './controller-modal-job-details/controller-modal-job-details.component';
+import { ControllerJobDetailsComponent } from './controller-job-details/controller-job-details.component';
 
 export const JOB_CONTROLLERS = [
     ControllerSetectDatasetComponent,
@@ -11,5 +11,5 @@ export const JOB_CONTROLLERS = [
     ControllerLaunchWorkerComponent,
     ControllerLaunchConfirmComponent,
     ControllerListJobComponent,
-    ControllerModalJobDetailsComponent
+    ControllerJobDetailsComponent
 ];

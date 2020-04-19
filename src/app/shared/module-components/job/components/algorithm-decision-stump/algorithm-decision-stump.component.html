@@ -1,0 +1,23 @@
+<div class="buttons-panel buttons-panel-end">
+    <app-restart-button [disabled]="btnRestart" (emitClicked)="restart()"></app-restart-button>
+</div>
+<form [formGroup]="decisionStumpForm">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Validation
+            </div>
+            <div class="ui-g-7">
+                <p-dropdown [options]="optionsValidation" formControlName="validation"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Validation Num
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="validationNum" [min]="0" [max]="100"></p-spinner>
+            </div>
+        </div>
+    </div>
+</form>

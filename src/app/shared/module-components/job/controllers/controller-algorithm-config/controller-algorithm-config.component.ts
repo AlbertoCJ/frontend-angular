@@ -4,6 +4,11 @@ import { Algorithms } from '../../enums/algorithms.enum';
 import { LinearRegression } from '../../entities/algorithms/linear-regression/linear-regression';
 import { LinearRegressionBagging } from '../../entities/algorithms/linear-regression-bagging/linear-regression-bagging';
 import { Ibk } from '../../entities/algorithms/ibk/ibk';
+import { Zeror } from '../../entities/algorithms/zeror/zeror';
+import { M5p } from '../../entities/algorithms/m5p/m5p';
+import { M5rules } from '../../entities/algorithms/m5rules/m5rules';
+import { DecisionStump } from '../../entities/algorithms/decision-stump/decision-stump';
+import { DecisionStumpBagging } from '../../entities/algorithms/decision-stump-bagging/decision-stump-bagging';
 
 @Component({
   selector: 'app-controller-algorithm-config',
@@ -14,16 +19,6 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
 
   showAlgoritConf: boolean;
   Algorithms = Algorithms;
-
-  // CheckBox
-  linearRegressionCheckBox = false;
-  linearRegressionBaggingCheckBox = false;
-  IBkCheckBox = false;
-  ZeroRCheckBox = false;
-  M5PCheckBox = false;
-  M5RulesCheckBox = false;
-  DecisionStumpCheckBox = false;
-  DecisionStumpBaggingCheckBox = false;
 
   // Algorithms object
   listAlgorithms: any = {
@@ -91,22 +86,41 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
         } else {
           this.listAlgorithms.IBk.algorithm = null;
         }
-        // if (!this.IBkCheckBox) { this.listAlgorithms.IBk.algorithm = undefined; }
         break;
       case Algorithms.ZEROR:
-        if (!this.ZeroRCheckBox) { this.listAlgorithms.ZeroR.algorithm = undefined; }
+        if (event) {
+          this.listAlgorithms.ZeroR.algorithm = new Zeror();
+        } else {
+          this.listAlgorithms.ZeroR.algorithm = null;
+        }
         break;
       case Algorithms.M5P:
-        if (!this.M5PCheckBox) { this.listAlgorithms.M5P.algorithm = undefined; }
+        if (event) {
+          this.listAlgorithms.M5P.algorithm = new M5p();
+        } else {
+          this.listAlgorithms.M5P.algorithm = null;
+        }
         break;
       case Algorithms.M5RULES:
-        if (!this.M5RulesCheckBox) { this.listAlgorithms.M5Rules.algorithm = undefined; }
+        if (event) {
+          this.listAlgorithms.M5Rules.algorithm = new M5rules();
+        } else {
+          this.listAlgorithms.M5Rules.algorithm = null;
+        }
         break;
       case Algorithms.DECISION_STUMP:
-        if (!this.DecisionStumpCheckBox) { this.listAlgorithms.DecisionStump.algorithm = undefined; }
+        if (event) {
+          this.listAlgorithms.DecisionStump.algorithm = new DecisionStump();
+        } else {
+          this.listAlgorithms.DecisionStump.algorithm = null;
+        }
         break;
       case Algorithms.DECISION_STUMP_BAGGING:
-        if (!this.DecisionStumpBaggingCheckBox) { this.listAlgorithms.DecisionStumpBagging.algorithm = undefined; }
+        if (event) {
+          this.listAlgorithms.DecisionStumpBagging.algorithm = new DecisionStumpBagging();
+        } else {
+          this.listAlgorithms.DecisionStumpBagging.algorithm = null;
+        }
         break;
     }
   }
@@ -136,6 +150,26 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
 
   onChangeIBk(ibk: Ibk) {
     this.listAlgorithms.Ibk.algorithm = ibk;
+  }
+
+  onChangeZeror(zeror: Zeror) {
+    this.listAlgorithms.ZeroR.algorithm = zeror;
+  }
+
+  onChangeM5p(m5p: M5p) {
+    this.listAlgorithms.M5P.algorithm = m5p;
+  }
+
+  onChangeM5rules(m5rules: M5rules) {
+    this.listAlgorithms.M5Rules.algorithm = m5rules;
+  }
+
+  onChangeDecisionStump(decisionStump: DecisionStump) {
+    this.listAlgorithms.DecisionStump.algorithm = decisionStump;
+  }
+
+  onChangeDecisionStumpBagging(decisionStumpBagging: DecisionStumpBagging) {
+    this.listAlgorithms.DecisionStumpBagging.algorithm = decisionStumpBagging;
   }
 
   // Emit y buttons

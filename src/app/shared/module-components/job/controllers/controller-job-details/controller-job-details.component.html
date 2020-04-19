@@ -1,0 +1,15 @@
+<app-job-details [job]="job" [mode]="mode"></app-job-details>
+
+<div class="ui-fluid">
+    <app-buttons-panel-normal [marginTop]="true">
+        <span slot="end">
+            <div *ngIf="mode === viewMode.EDIT">  
+                <span class="btn-panel"><app-cancel-button (emitClicked)="btnCancelClicked()"></app-cancel-button></span>
+        <span class="btn-panel"><app-save-button (emitClicked)="btnSaveClicked()"></app-save-button></span>
+</div>
+<div *ngIf="mode === viewMode.VIEW">
+    <span><app-back-button (emitClicked)="btnBackClicked()"></app-back-button></span>
+</div>
+</span>
+</app-buttons-panel-normal>
+</div>

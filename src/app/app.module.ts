@@ -5,14 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Modules
+import { NgxLoadingModule } from 'ngx-loading';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DatasetsModule } from './datasets/datasets.module';
 import { JobModule } from './job/job.module';
 import { DockerModule } from './docker/docker.module';
+
+// Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { LoadingScreenInterceptor } from './core/interceptors/loading-screen.interceptor';
 
 
 @NgModule({
@@ -21,6 +25,7 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
     AppComponent
   ],
   imports: [
+    NgxLoadingModule.forRoot({}),
     BrowserModule,
     AppRoutingModule,
     CoreModule,
@@ -31,7 +36,8 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
     DockerModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingScreenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

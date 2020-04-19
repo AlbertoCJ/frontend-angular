@@ -9,6 +9,8 @@ import { SpecialButtonComponent } from './special-button/special-button.componen
 import { RemoveButtonComponent } from './remove-button/remove-button.component';
 import { ViewButtonComponent } from './view-button/view-button.component';
 import { EditButtonComponent } from './edit-button/edit-button.component';
+import { SaveButtonComponent } from './save-button/save-button.component';
+import { BackButtonComponent } from './back-button/back-button.component';
 
 export const BUTTONS_COMPONENTS = [
     ButtonComponent,
@@ -21,5 +23,7 @@ export const BUTTONS_COMPONENTS = [
     SpecialButtonComponent,
     RemoveButtonComponent,
     ViewButtonComponent,
-    EditButtonComponent
+    EditButtonComponent,
+    SaveButtonComponent,
+    BackButtonComponent
 ];
