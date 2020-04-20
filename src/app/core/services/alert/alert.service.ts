@@ -21,6 +21,11 @@ export class AlertService {
     this.nextDataAlert(this.dataAlert);
   }
 
+  setAlertRedirect(title: string, message: string, redirect: string) { // Inicia alerta y redirecciona
+    this.dataAlert = new Alert({ activated: true, title, message, redirect });
+    this.nextDataAlert(this.dataAlert);
+  }
+
   setAlertShowMore(title: string, message: string, showMore: string) { // Inicia alerta con mostrar mas
     this.dataAlert = new Alert({ activated: true, title, message, showMore });
     this.nextDataAlert(this.dataAlert);

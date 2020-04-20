@@ -2,9 +2,9 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ListDatasets } from '../../entities/list-datasets';
 import { DatasetService } from '../../../../../core/services/dataset/dataset.service';
 import { Dataset } from '../../entities/dataset';
-import { AlertService } from '../../../../../core/services/alert/alert.service';
 import { MessageService } from 'primeng/api';
 import { NgForm } from '@angular/forms';
+import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 
 @Component({
   selector: 'app-controller-list-dataset',
@@ -25,10 +25,10 @@ export class ControllerListDatasetComponent implements OnInit {
 
   constructor(private datasetService: DatasetService,
               private messageService: MessageService,
-              private alertService: AlertService) {
+              private httpError: HttpErrorService) {
     // this.descriptionSearch = '';
     this.page = 1;
-    this.limit = 2;
+    this.limit = 4;
     this.listDataset = new ListDatasets();
   }
 
@@ -46,7 +46,7 @@ export class ControllerListDatasetComponent implements OnInit {
         this.listDataset = listDataset;
       },
       err => {
-        this.alertService.setAlertShowMore('Alerta', 'Error al obtener listado de datasets', err.message);
+        this.httpError.checkError(err, 'Alerta', 'Error al obtener listado de datasets'); // TODO: Traducir
       }
   );
   }
@@ -74,8 +74,8 @@ export class ControllerListDatasetComponent implements OnInit {
         this.getListDatasets();
       },
       err => {
-          this.alertService.setAlertShowMore('Alerta', 'Error al borrar dataset', err.message);
-          this.getListDatasets();
+        this.httpError.checkError(err, 'Alerta', 'Error al borrar dataset'); // TODO: Traducir
+        this.getListDatasets();
       }
     );
   }

@@ -8,6 +8,11 @@ import { Dataset } from '../../entities';
 })
 export class DatasetCardComponent implements OnInit {
 
+  // Confirm
+  isConfirmActive = false;
+  titleConfirm = 'Aviso'; // TODO: Traducir
+  messageConfirm = 'Se eliminara permanentemente. ¿Estás seguro?'; // TODO: Traducir
+
   @Input() showButtons = true;
   @Input() isClicker = false;
   @Input() dataset: Dataset;
@@ -24,8 +29,22 @@ export class DatasetCardComponent implements OnInit {
     this.emitSelected.emit(this.dataset);
   }
 
+  // remove() {
+  //   this.emitRemoved.emit(this.dataset);
+  // }
+
+  // Confirm
+  removeConfirm() {
+    this.isConfirmActive = true;
+  }
+
   remove() {
     this.emitRemoved.emit(this.dataset);
+    this.isConfirmActive = false;
+  }
+
+  removeCancel() {
+    this.isConfirmActive = false;
   }
 
 }

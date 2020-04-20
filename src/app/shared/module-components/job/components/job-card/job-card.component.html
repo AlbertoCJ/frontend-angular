@@ -1,33 +1,63 @@
 <div class="card-wrapper" [ngClass]="{'card-rotate': isClicker}">
     <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{clicker: isClicker, 'card-background': isClicker}">
-        <!-- <p>{{ dataset.dateCreation }}</p>
-        <p>{{ dataset.file }}</p>
-        <p>({{ dataset.fullName }})</p>
-        <p>{{ dataset.size }} bytes</p>
-        <p>{{ dataset.description }}</p>
-        <div *ngIf="showButtons" class="buttons-panel">
-        </div> -->
-
-        {{ job | json }}
-        <!-- <p>{{ job.name | json }}</p>
-        <p>{{ job.description | json }}</p> -->
-        <div *ngIf="showButtons" class="ui-fluid">
-            <app-buttons-panel-normal [marginTop]="true">
-                <span slot="end">
-                    <span class="btn-panel">
-                        <app-remove-button [disabled]="disabledButtonRemove" (emitClicked)="remove()"></app-remove-button>
-                    </span>
-                <span class="btn-panel">
-                        <app-edit-button [disabled]="disabledButtonEdit" (emitClicked)="edit()"></app-edit-button>
-                    </span>
-                <span class="btn-panel">
-                        <app-view-button [disabled]="disabledButtonView" (emitClicked)="select()"></app-view-button>
-                    </span>
-                </span>
-            </app-buttons-panel-normal>
+        <div class="p-grid">
+            <div class="p-lg-4 p-md-5 p-sm-6 p-col-12">
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-6">
+                        <span class="date-job">{{ job.dateCreation | date:'dd/MM/yyyy' }}</span>
+                    </div>
+                    <div class="p-col-6">
+                        <span class="status-job">{{ job.hasStatus }}</span>
+                    </div>
+                </div>
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-4">
+                        <span class="title-card-job">Nombre:</span>
+                    </div>
+                    <div class="p-col-8 separator">
+                        <span class="content-card-job">{{ job.name }}</span>
+                    </div>
+                </div>
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-4">
+                        <span class="title-card-job">Descripción:</span>
+                    </div>
+                    <div class="p-col-8 custom-textarea separator">
+                        <textarea [rows]="2" disabled [(ngModel)]="job.description" pInputTextarea></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="p-lg-8 p-md-7 p-sm-6 p-col-12">
+                <div class="p-grid">
+                    <div class="p-col-12" style="height: 60px; background-color: blueviolet;">4</div>
+                    <div class="p-col-12">
+                        <p-progressBar class="progressbar-job-card" [value]="40"></p-progressBar>
+                    </div>
+                    <div class="p-col-12">
+                        <div *ngIf="showButtons" class="ui-fluid">
+                            <app-buttons-panel-normal>
+                                <span slot="end">
+                                    <span class="btn-panel">
+                                        <app-remove-button [disabled]="disabledButtonRemove" (emitClicked)="removeConfirm()"></app-remove-button>
+                                    </span>
+                                <span class="btn-panel">
+                                        <app-edit-button [disabled]="disabledButtonEdit" (emitClicked)="edit()"></app-edit-button>
+                                    </span>
+                                <span class="btn-panel">
+                                        <app-view-button [disabled]="disabledButtonView" (emitClicked)="select()"></app-view-button>
+                                    </span>
+                                </span>
+                            </app-buttons-panel-normal>
+                            <app-confirm-dialog *ngIf="isConfirmActive" [isConfirmActive]="isConfirmActive" [title]="titleConfirm" [message]="messageConfirm" (confirm)="remove()" (cancel)="removeCancel()"></app-confirm-dialog>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- {{ job | json }} -->
+
     </p-card>
-    <!-- <i *ngIf="showButtons" class="pi pi-trash card-icon" (click)="remove()"></i> -->
 
 </div>
 

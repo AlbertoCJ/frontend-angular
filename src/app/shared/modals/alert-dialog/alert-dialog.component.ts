@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, DoCheck } from '@angula
 import { AlertService } from '../../../core/services/alert/alert.service';
 import { Observable } from 'rxjs';
 import { Alert } from 'src/app/core/entities/generic/alert';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alert-dialog',
@@ -12,6 +13,7 @@ export class AlertDialogComponent implements OnInit, DoCheck {
 
   title: string;
   message: string;
+  redirect: string;
   isAlertActive: boolean;
   isModalActive: boolean;
   private dataAlert$: Observable<Alert>;
@@ -19,7 +21,8 @@ export class AlertDialogComponent implements OnInit, DoCheck {
   textShowLessCollapse: string;
   textToShowCollapse: string;
 
-  constructor(private alert: AlertService) {
+  constructor(private alert: AlertService,
+              private router: Router) {
     this.isModalActive = false;
   }
 
@@ -28,6 +31,7 @@ export class AlertDialogComponent implements OnInit, DoCheck {
     this.dataAlert$.subscribe( (dataAlert: Alert) => {
       this.title = dataAlert.title;
       this.message = dataAlert.message;
+      this.redirect = dataAlert.redirect;
       this.textToShowCollapse = dataAlert.showMore;
       this.isAlertActive = dataAlert.activated;
       this.isModalActive = dataAlert.activated;
@@ -41,9 +45,17 @@ export class AlertDialogComponent implements OnInit, DoCheck {
 
   close() {
     this.isModalActive = false;
+    this.redirectTo();
   }
 
   emitAccept() {
     this.alert.closeAlert();
+  }
+
+  redirectTo() {
+    if (this.redirect !== '') {
+      // this.router.navigate([this.redirect]);
+      this.router.navigateByUrl(`/${ this.redirect }`);
+    }
   }
 }

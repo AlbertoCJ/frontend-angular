@@ -9,7 +9,9 @@ export class ConfirmDialogComponent implements OnInit {
 
   title: string;
   message: string;
+  isConfirmActive: boolean;
   isModalActive: boolean;
+  confirmed: boolean;
 
   @Input('isConfirmActive') set confirmActive(option: boolean) {
     this.isModalActive = option || false;
@@ -28,18 +30,30 @@ export class ConfirmDialogComponent implements OnInit {
   @Output() cancel = new EventEmitter<string>();
 
   constructor() {
+    this.isConfirmActive = true;
     this.isModalActive = true;
    }
 
   ngOnInit() {
   }
 
-  emitConfirm() {
-    this.confirm.emit('accept');
+  confirmClicked() {
+    this.confirmed = true;
+    this.isModalActive = false;
   }
 
-  emitCancel() {
-    this.cancel.emit('cancel');
+  closeClicked() {
+    this.isModalActive = false;
+  }
+
+  emitModal() {
+    if (this.confirmed) {
+      this.confirm.emit('accept');
+    } else {
+      this.cancel.emit('cancel');
+    }
+    this.isConfirmActive = false;
+    this.isModalActive = false;
   }
 
 }

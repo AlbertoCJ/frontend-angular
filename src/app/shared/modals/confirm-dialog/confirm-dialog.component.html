@@ -1,5 +1,5 @@
 <!-- Modal -->
-<app-modal-generic *ngIf="isModalActive" (closed)="emitCancel()" [showHeader]="title && title !== ''" [showSection]="message && message !== ''">
+<app-modal-generic *ngIf="isConfirmActive" [isModalActive]="isModalActive" (closed)="emitModal()" [showHeader]="title && title !== ''" [showSection]="message && message !== ''">
     <!-- <custom-header> -->
     <span slot="custom-header">{{ title }}</span>
     <!-- </custom-header> -->
@@ -9,10 +9,10 @@
     <!-- <custom-footer> -->
     <span slot="custom-footer" class="button-panel button-panel-end">
             <app-accept-button
-                (emitClicked)="emitConfirm()">
+                (emitClicked)="confirmClicked()">
             </app-accept-button>
             <app-cancel-button
-                (emitClicked)="emitCancel()">
+                (emitClicked)="closeClicked()">
             </app-cancel-button>
         </span>
     <!-- </custom-footer> -->

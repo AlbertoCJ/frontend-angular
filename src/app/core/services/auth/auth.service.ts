@@ -40,8 +40,12 @@ export class AuthService {
   }
 
   logout() {
-    sessionStorage.removeItem('token');
+    this.removeToken();
     this.router.navigateByUrl('/login');
+  }
+
+  removeToken() {
+    sessionStorage.removeItem('token');
   }
 
   private saveToken(token: string) {

@@ -2,9 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Job } from '../../entities/job';
 import { JobService } from '../../../../../core/services/job/job.service';
 import { MessageService } from 'primeng/api';
-import { AlertService } from '../../../../../core/services/alert/alert.service';
 import { ListJob } from '../../entities/list-job';
 import { NgForm } from '@angular/forms';
+import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 
 @Component({
   selector: 'app-controller-list-job',
@@ -27,10 +27,10 @@ export class ControllerListJobComponent implements OnInit {
 
   constructor(private jobService: JobService,
               private messageService: MessageService,
-              private alertService: AlertService) {
+              private httpError: HttpErrorService) {
     // this.descriptionSearch = '';
     this.page = 1;
-    this.limit = 2;
+    this.limit = 4;
     this.listJob = new ListJob();
   }
 
@@ -48,7 +48,7 @@ export class ControllerListJobComponent implements OnInit {
         this.listJob = listJob;
       },
       err => {
-        this.alertService.setAlertShowMore('Alerta', 'Error al obtener listado de jobs', err.message);
+        this.httpError.checkError(err, 'Alerta', 'Error al obtener listado de jobs'); // TODO: Traducir
       }
   );
   }
@@ -85,12 +85,12 @@ export class ControllerListJobComponent implements OnInit {
   remove(job: Job) {
     this.jobService.deleteJob(job.id).subscribe(
       job => {
-        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente'});
+        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente'}); // TODO: Traducir
         this.getListJobs();
       },
       err => {
-          this.alertService.setAlertShowMore('Alerta', 'Error al borrar job', err.message);
-          this.getListJobs();
+        this.httpError.checkError(err, 'Alerta', 'Error al borrar job'); // TODO: Traducir
+        this.getListJobs();
       }
     );
   }

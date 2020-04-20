@@ -19,6 +19,8 @@ import {DialogModule} from 'primeng/dialog';
 import {ToastModule} from 'primeng/toast';
 import {TooltipModule} from 'primeng/tooltip';
 import {PaginatorModule} from 'primeng/paginator';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {TabMenuModule} from 'primeng/tabmenu';
 
 export const PRIMENG_MODULES = [
     InputTextModule,
@@ -41,5 +43,7 @@ export const PRIMENG_MODULES = [
     DialogModule,
     ToastModule,
     TooltipModule,
-    PaginatorModule
+    PaginatorModule,
+    ProgressBarModule,
+    TabMenuModule
 ];

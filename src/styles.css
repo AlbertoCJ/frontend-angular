@@ -61,10 +61,11 @@ body {
 
 /* MODAL */
 
-body .ui-widget-overlay {
-    /* background-color: rgba(95, 95, 95, 0.89) */
+
+/* body .ui-widget-overlay {
+    background-color: rgba(95, 95, 95, 0.89)
     background-color: rgb(237, 237, 237, 1);
-}
+} */
 
 @media (min-width:1140px) {
     .dialog-responsive {
@@ -187,6 +188,10 @@ body .ui-widget-overlay {
 
 
 /* --- HELPERS --- */
+
+.clear-padding {
+    padding: 0px;
+}
 
 
 /* MARGINS */

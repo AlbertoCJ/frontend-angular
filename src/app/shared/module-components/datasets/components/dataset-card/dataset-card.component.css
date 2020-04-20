@@ -18,6 +18,10 @@
     width: 100%;
 }
 
+:host ::ng-deep .mt-card .ui-card-body {
+    background-color: rgb(255, 249, 241);
+}
+
 .card-wrapper {
     -webkit-box-align: flex-start;
     -webkit-align-items: flex-start;
@@ -33,18 +37,14 @@
     flex-flow: nowrap;
 }
 
-.card-icon {
-    background-color: rgb(250, 108, 108);
-    color: white;
+.card-icons {
     position: absolute;
-    /* font-size: 12px; */
-    cursor: pointer;
-    /* padding: 2px 3px; */
 }
 
-.card-icon:hover {
+.card-icon {
     color: white;
-    background-color: rgb(250, 49, 49);
+    font-size: 18px;
+    cursor: pointer;
 }
 
 .clicker {
@@ -61,4 +61,41 @@
 
 .card-background:hover {
     border: 1px solid rgba(0, 128, 0, 0.479);
+}
+
+.date-dataset {
+    font-size: x-small;
+    font-weight: bold;
+}
+
+.title-card-dataset {
+    font-size: x-small;
+    font-weight: bold;
+    float: right;
+}
+
+.title-card-dataset-bytes {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.content-card-dataset {
+    font-size: small;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.separator {
+    border-left: 1px solid black;
+}
+
+.custom-textarea .ui-inputtext {
+    width: 100%;
+    resize: none;
+    font-size: small;
+}
+
+.custom-textarea .ui-widget:disabled {
+    opacity: 1;
 }

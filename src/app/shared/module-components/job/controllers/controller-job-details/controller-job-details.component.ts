@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { JobService } from '../../../../../core/services/job/job.service';
 import { MessageService } from 'primeng/api';
-import { AlertService } from '../../../../../core/services/alert/alert.service';
 import { Job } from '../../entities/job';
 import { ViewMode } from '../../../../../core/enums/view-mode.enum';
+import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 
 @Component({
   selector: 'app-controller-job-details',
@@ -23,7 +23,7 @@ export class ControllerJobDetailsComponent implements OnInit {
 
   constructor(private jobService: JobService,
               private messageService: MessageService,
-              private alertService: AlertService) { }
+              private httpError: HttpErrorService) { }
 
   ngOnInit() {
     this.getJob();
@@ -36,7 +36,7 @@ export class ControllerJobDetailsComponent implements OnInit {
         this.emitJob.emit(this.job);
       },
       err => {
-        this.alertService.setAlertShowMore('Alerta', 'Error al obtener el job.', err.message);
+        this.httpError.checkError(err, 'Alerta', 'Error al obtener el job.'); // TODO: Traducir
       }
   );
   }

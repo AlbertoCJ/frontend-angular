@@ -16,6 +16,7 @@ export class ModalGenericComponent implements OnInit, OnDestroy {
   style: any;
 
   // @Input() isModalActive = true;
+  @Input() closable = true;
   @Input('isModalActive') set modalActive(value: boolean) {
     if (value !== undefined && value === true) {
       this.isModalActive = true;

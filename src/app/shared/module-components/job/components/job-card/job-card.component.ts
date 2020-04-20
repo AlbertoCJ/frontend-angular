@@ -13,6 +13,11 @@ export class JobCardComponent implements OnInit {
   disabledButtonEdit = false;
   disabledButtonRemove = false;
 
+  // Confirm
+  isConfirmActive = false;
+  titleConfirm = 'Aviso'; // TODO: Traducir
+  messageConfirm = 'Se eliminara permanentemente. ¿Estás seguro?'; // TODO: Traducir
+
   // Modal job
   isModalActive: boolean;
   mode: number;
@@ -42,12 +47,23 @@ export class JobCardComponent implements OnInit {
     this.isModalActive = true;
   }
 
-  remove() {
-    this.emitRemoved.emit(this.job);
-  }
-
+  // Modal
   closeModalJob(event: boolean) {
     this.isModalActive = event;
+  }
+
+  // Confirm
+  removeConfirm() {
+    this.isConfirmActive = true;
+  }
+
+  remove() {
+    this.emitRemoved.emit(this.job);
+    this.isConfirmActive = false;
+  }
+
+  removeCancel() {
+    this.isConfirmActive = false;
   }
 
 }

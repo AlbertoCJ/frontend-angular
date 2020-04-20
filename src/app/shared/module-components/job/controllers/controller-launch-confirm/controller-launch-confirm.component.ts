@@ -7,6 +7,7 @@ import { FormJobData } from '../../entities/form-job-data/form-job-data';
 import { JobService } from '../../../../../core/services/job/job.service';
 import { DockerService } from '../../../../../core/services/docker/docker.service';
 import { AlertService } from '../../../../../core/services/alert/alert.service';
+import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 
 @Component({
   selector: 'app-controller-launch-confirm',
@@ -29,7 +30,8 @@ export class ControllerLaunchConfirmComponent implements OnInit {
 
   constructor(private jobService: JobService,
               private dockerService: DockerService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private httpError: HttpErrorService) {
     this.btnPrevDisabled = false;
     this.btnLaunchDisabled = false;
     this.btnLaunchLabel = 'Launch'; // TODO: traducir
@@ -57,6 +59,8 @@ export class ControllerLaunchConfirmComponent implements OnInit {
             console.log(respJob);
           },
           err => {
+            // TODO: Gestionar bien los errores
+            // this.httpError.checkError(err, 'Alerta', 'Error al borrar dataset'); // TODO: Traducir
             // this.alertService.setAlertShowMore('Alerta', 'Error al obtener listado de datasets', err.message);
             console.log(err);
           }

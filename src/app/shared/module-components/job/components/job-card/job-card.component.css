@@ -18,7 +18,8 @@
     width: 100%;
 }
 
-.card-wrapper {
+
+/* .card-wrapper {
     -webkit-box-align: flex-start;
     -webkit-align-items: flex-start;
     -ms-flex-align: flex-start;
@@ -37,15 +38,14 @@
     background-color: rgb(250, 108, 108);
     color: white;
     position: absolute;
-    /* font-size: 12px; */
     cursor: pointer;
-    /* padding: 2px 3px; */
-}
+} */
 
-.card-icon:hover {
+
+/* .card-icon:hover {
     color: white;
     background-color: rgb(250, 49, 49);
-}
+} */
 
 .clicker {
     cursor: pointer;
@@ -61,4 +61,53 @@
 
 .card-background:hover {
     border: 1px solid rgba(0, 128, 0, 0.479);
+}
+
+.date-job {
+    font-size: small;
+    font-weight: bold;
+}
+
+.status-job {
+    font-size: small;
+    font-weight: bold;
+    float: right;
+}
+
+.title-card-job {
+    font-size: small;
+    float: right;
+    /* font-weight: bold; */
+}
+
+.content-card-job {
+    font-size: small;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    /* font-weight: bold; */
+}
+
+.separator {
+    border-left: 1px solid black;
+}
+
+.custom-textarea .ui-inputtext {
+    width: 100%;
+    resize: none;
+    font-size: small;
+}
+
+.custom-textarea .ui-widget:disabled {
+    opacity: 1;
+}
+
+:host ::ng-deep .progressbar-job-card .ui-progressbar {
+    height: 15px;
+    background-color: rgb(158, 158, 158);
+}
+
+:host ::ng-deep .progressbar-job-card .ui-progressbar .ui-progressbar-label {
+    line-height: 15px;
+    color: white;
 }

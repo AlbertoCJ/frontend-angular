@@ -1,5 +1,5 @@
 <!-- Modal -->
-<app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="emitAccept()" [showHeader]="title && title !== ''" [showSection]="message && message !== ''">
+<app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="emitAccept()" [showHeader]="title && title !== ''" [showSection]="message && message !== ''" [closable]="false">
     <!-- <custom-header style="width: 100%;"> -->
     <span slot="custom-header" class="modal-card-title">{{ title }}</span>
     <!-- </custom-header> -->

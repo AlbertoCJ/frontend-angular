@@ -1,13 +1,52 @@
 <div class="card-wrapper" [ngClass]="{'card-rotate': isClicker}">
     <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{clicker: isClicker, 'card-background': isClicker}" (click)="select()">
-        <p>{{ dataset.dateCreation }}</p>
-        <p>{{ dataset.file }}</p>
-        <p>({{ dataset.fullName }})</p>
-        <p>{{ dataset.size }} bytes</p>
-        <p>{{ dataset.description }}</p>
+
+        <div class="">
+            <p class="date-dataset">{{ dataset.dateCreation | date:'dd/MM/yyyy' }}</p>
+            <div class="p-grid p-justify-center">
+                <div class="p-col-4">
+                    <span class="title-card-dataset">Fichero:</span>
+                </div>
+                <div class="p-col-8 separator">
+                    <span class="content-card-dataset">{{ dataset.file }}</span>
+                </div>
+            </div>
+            <div class="p-grid p-justify-center">
+                <div class="p-col-4">
+                    <span class="title-card-dataset">Nombre:</span>
+                </div>
+                <div class="p-col-8 separator">
+                    <span class="content-card-dataset">{{ dataset.fullName }}</span>
+                </div>
+            </div>
+            <div class="p-grid p-justify-center">
+                <div class="p-col-4">
+                    <span class="title-card-dataset">Tamaño:</span>
+                </div>
+                <div class="p-col-8 separator">
+                    <span class="content-card-dataset">{{ dataset.size }} <span class="title-card-dataset-bytes">Byte</span></span>
+                </div>
+            </div>
+            <div class="p-grid p-justify-center">
+                <div class="p-col-4">
+                    <span class="title-card-dataset">Descripción:</span>
+                </div>
+                <div class="p-col-8 custom-textarea separator">
+                    <textarea [rows]="2" disabled [(ngModel)]="dataset.description" pInputTextarea></textarea>
+                </div>
+            </div>
+        </div>
+
         <div *ngIf="showButtons" class="buttons-panel">
         </div>
     </p-card>
-    <i *ngIf="showButtons" class="pi pi-trash card-icon" (click)="remove()"></i>
+    <div class="card-icons">
+        <i *ngIf="showButtons" class="pi pi-download card-icon ui-special-button-info ml-1" (click)="removeConfirm()"></i>
+        <i *ngIf="showButtons" class="pi pi-pencil card-icon ui-special-button-warning ml-1" (click)="removeConfirm()"></i>
+        <i *ngIf="showButtons" class="pi pi-trash card-icon ui-special-button-danger ml-1 mr-1" (click)="removeConfirm()"></i>
+
+    </div>
 
 </div>
+
+<app-confirm-dialog *ngIf="isConfirmActive" [isConfirmActive]="isConfirmActive" [title]="titleConfirm" [message]="messageConfirm" (confirm)="remove()" (cancel)="removeCancel()"></app-confirm-dialog>
