@@ -1,0 +1,28 @@
+.card-mini {
+    width: 100%;
+}
+
+.card-mini-header {
+    font-size: x-small;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-mini-body {
+    opacity: 0.8;
+    text-align: center;
+}
+
+.card-mini-icon {
+    color: black;
+    margin: 0px 2px 0px 2px;
+    font-size: small;
+    font-weight: bold;
+}
+
+.card-mini-content {
+    color: black;
+    margin: 0px 2px 0px 2px;
+    font-size: small;
+    font-weight: bold;
+}

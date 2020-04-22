@@ -1,0 +1,12 @@
+<div class="card-mini">
+    <div class="card-mini-header" [ngStyle]="{'background-color': backgroundColor, 'color': colorText}">
+        <p>{{ title }}</p>
+    </div>
+    <div class="card-mini-body" [ngStyle]="{'background-color': backgroundColor}">
+        <p>
+            <span class="card-mini-icon" [ngStyle]="{'color': colorIcon}" *ngIf="iconClassText && iconPos === 'left'"><i [class]="iconClassText"></i></span>
+            <span class="card-mini-content" [ngStyle]="{'color': colorText}">{{ content }}</span>
+            <span class="card-mini-icon" [ngStyle]="{'color': colorIcon}" *ngIf="iconClassText && iconPos === 'right'"><i [class]="iconClassText"></i></span>
+        </p>
+    </div>
+</div>

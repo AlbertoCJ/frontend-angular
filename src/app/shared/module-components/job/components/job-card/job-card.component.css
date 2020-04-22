@@ -1,19 +1,3 @@
-/* .mt-input {
-    margin-top: 20px;
-}
-
-.mt-card {
-    margin-top: 10px;
-}
-
-.input-size {
-    width: 90%;
-}
-
-.input-span-size {
-    width: 10%;
-} */
-
 :host ::ng-deep .mt-card {
     width: 100%;
 }
@@ -47,20 +31,43 @@
     background-color: rgb(250, 49, 49);
 } */
 
-.clicker {
+
+/* .clicker {
     cursor: pointer;
-}
+} */
 
-.card-rotate:hover {
+:host ::ng-deep .card-job .ui-card:hover {
     /* transform: rotate(1deg); */
+    /* border: 1px solid grey; */
+    -webkit-box-shadow: 0px 0px 9px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 9px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 9px 4px rgba(0, 0, 0, 0.75);
 }
 
-.card-background {
+
+/* .card-background {
     border: 1px solid transparent;
+} */
+
+
+/* .card-background:hover {
+    border: 1px solid rgba(0, 128, 0, 0.479);
+} */
+
+:host ::ng-deep .card-job-completed .ui-card-body {
+    background-color: #efffef;
 }
 
-.card-background:hover {
-    border: 1px solid rgba(0, 128, 0, 0.479);
+:host ::ng-deep .card-job-running .ui-card-body {
+    background-color: #ffffe3;
+}
+
+:host ::ng-deep .card-job-partial .ui-card-body {
+    background-color: #eaeaff;
+}
+
+:host ::ng-deep .card-job-error .ui-card-body {
+    background-color: #ffeaea;
 }
 
 .date-job {
@@ -100,6 +107,30 @@
 
 .custom-textarea .ui-widget:disabled {
     opacity: 1;
+}
+
+.card-info-mini-panel-title {
+    font-size: small;
+    text-align: center;
+}
+
+.card-info-mini-panel-box {
+    border: 1px solid #007ad9;
+}
+
+.card-info-mini-panel-title {
+    background-color: #007ad9;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+}
+
+.card-info-mini-panel {
+    display: flex;
+}
+
+.card-info-mini-item {
+    flex-grow: 4;
 }
 
 :host ::ng-deep .progressbar-job-card .ui-progressbar {

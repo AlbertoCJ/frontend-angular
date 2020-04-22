@@ -12,6 +12,10 @@ import { ConfigAwsWorkersComponent } from './config-aws-workers/config-aws-worke
 import { JobCardComponent } from './job-card/job-card.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { ModalJobDetailsComponent } from './modal-job-details/modal-job-details.component';
+import { AlgorithmDetailsComponent } from './algorithm-details/algorithm-details.component';
+import { AlgorithmDetailsTitleComponent } from './algorithm-details-title/algorithm-details-title.component';
+import { AlgorithmDetailsInfoComponent } from './algorithm-details-info/algorithm-details-info.component';
+import { AlgorithmDetailsDataComponent } from './algorithm-details-data/algorithm-details-data.component';
 
 export const JOB_COMPONENTS = [
     AlgorithmLinearRegressionComponent,
@@ -26,5 +30,9 @@ export const JOB_COMPONENTS = [
     ConfigAwsWorkersComponent,
     JobCardComponent,
     JobDetailsComponent,
-    ModalJobDetailsComponent
+    ModalJobDetailsComponent,
+    AlgorithmDetailsComponent,
+    AlgorithmDetailsTitleComponent,
+    AlgorithmDetailsInfoComponent,
+    AlgorithmDetailsDataComponent,
 ];

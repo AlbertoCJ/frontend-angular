@@ -7,6 +7,8 @@ import { HeaderTitleComponent } from './header-title/header-title.component';
 import { StepComponent } from './step/step.component';
 import { CollapseComponent } from './collapse/collapse.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { CardInfoMiniComponent } from './card-info-mini/card-info-mini.component';
+import { ErrorTextareaComponent } from './error-textarea/error-textarea.component';
 import { BUTTONS_COMPONENTS } from './buttons/index';
 import { BUTTONSPANEL_COMPONENTS } from './buttons-panel/index';
 import { MODALS_COMPONENTS } from './modals/index';
@@ -22,6 +24,8 @@ import { JOB_SHARED } from './module-components/job/index';
     StepComponent,
     CollapseComponent,
     PaginationComponent,
+    CardInfoMiniComponent,
+    ErrorTextareaComponent,
     BUTTONS_COMPONENTS,
     BUTTONSPANEL_COMPONENTS,
     MODALS_COMPONENTS,
@@ -38,6 +42,8 @@ import { JOB_SHARED } from './module-components/job/index';
     StepComponent,
     CollapseComponent,
     PaginationComponent,
+    CardInfoMiniComponent,
+    ErrorTextareaComponent,
     BUTTONS_COMPONENTS,
     BUTTONSPANEL_COMPONENTS,
     MODALS_COMPONENTS,

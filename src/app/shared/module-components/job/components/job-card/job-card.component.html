@@ -1,5 +1,5 @@
-<div class="card-wrapper" [ngClass]="{'card-rotate': isClicker}">
-    <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{clicker: isClicker, 'card-background': isClicker}">
+<div class="card-job">
+    <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{'card-job-completed': job.hasStatus === 'COMPLETED', 'card-job-running': job.hasStatus === 'RUNNING', 'card-job-partial': job.hasStatus === 'PARTIAL', 'card-job-error': job.hasStatus === 'ERROR'}">
         <div class="p-grid">
             <div class="p-lg-4 p-md-5 p-sm-6 p-col-12">
                 <div class="p-grid p-justify-center">
@@ -29,9 +29,19 @@
             </div>
             <div class="p-lg-8 p-md-7 p-sm-6 p-col-12">
                 <div class="p-grid">
-                    <div class="p-col-12" style="height: 60px; background-color: blueviolet;">4</div>
                     <div class="p-col-12">
-                        <p-progressBar class="progressbar-job-card" [value]="40"></p-progressBar>
+                        <div class="card-info-mini-panel-box">
+                            <div class="card-info-mini-panel-title">Estado de los algoritmos</div>
+                            <div class="card-info-mini-panel">
+                                <app-card-info-mini class="card-info-mini-item" [title]="'Total'" [content]="counters.total" [icon]="" [backgroundColor]="'#3295e0'"></app-card-info-mini>
+                                <app-card-info-mini class="card-info-mini-item" [title]="'Running'" [content]="counters.running" [icon]="'clock'" [backgroundColor]="'#fcb634'" [colorIcon]="'#e9480e'"></app-card-info-mini>
+                                <app-card-info-mini class="card-info-mini-item" [title]="'Errors'" [content]="counters.error" [icon]="'thumbs-down'" [backgroundColor]="'#e96c76'" [colorIcon]="'#b9000f'"></app-card-info-mini>
+                                <app-card-info-mini class="card-info-mini-item" [title]="'Completed'" [content]="counters.completed" [icon]="'thumbs-up'" [backgroundColor]="'#7bca7c'" [colorIcon]="'#007902'"></app-card-info-mini>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12">
+                        <p-progressBar class="progressbar-job-card" [value]="counters.percent"></p-progressBar>
                     </div>
                     <div class="p-col-12">
                         <div *ngIf="showButtons" class="ui-fluid">

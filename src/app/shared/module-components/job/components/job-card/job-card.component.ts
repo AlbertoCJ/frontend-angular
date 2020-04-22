@@ -22,9 +22,17 @@ export class JobCardComponent implements OnInit {
   isModalActive: boolean;
   mode: number;
 
+  job: Job;
+  counters: any;
+
   @Input() showButtons = true;
   @Input() isClicker = false;
-  @Input() job: Job;
+  @Input('job') set setJob(job: Job) {
+    if (job) {
+      this.job = job;
+      this.calculateDataInfo();
+    }
+  }
 
   @Output() emitSelected = new EventEmitter<Job>();
   @Output() emitEdit = new EventEmitter<Job>();
@@ -33,6 +41,40 @@ export class JobCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  calculateDataInfo() {
+    const counters = { total: 0, running: 0, error: 0, completed: 0, percent: 0 };
+    let percentAcum = 0;
+    let numAlgorithm = 0;
+    if (this.job) {
+      const dataAlgorithms = this.job.dataAlgorithms;
+      // tslint:disable-next-line: forin
+      for (const key in dataAlgorithms) {
+        if (dataAlgorithms.hasOwnProperty(key)) {
+          const algorit = dataAlgorithms[key];
+          if (algorit) {
+            if (algorit.algorithm) { numAlgorithm++; }
+            if (algorit.algorithm && algorit.task) { percentAcum += algorit.task.percentageCompleted; }
+
+            if (algorit.algorithm && algorit.task && algorit.model && algorit.task.hasStatus === 'COMPLETED') {
+              counters.total = counters.total + 1;
+              counters.completed = counters.completed + 1;
+            } else if (algorit.algorithm && algorit.task) {
+              if (algorit.task.hasStatus === 'RUNNING') {
+                counters.total = counters.total + 1;
+                counters.running = counters.running + 1;
+              } else if (algorit.task.hasStatus === 'ERROR') {
+                counters.total = counters.total + 1;
+                counters.error = counters.error + 1;
+              }
+            }
+          }
+        }
+      }
+      if (percentAcum > 0 && numAlgorithm > 0) { counters.percent = percentAcum / numAlgorithm; }
+    }
+    this.counters = counters;
   }
 
   select() {
