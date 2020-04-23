@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Task } from '../../entities/task';
 
 @Component({
   selector: 'app-algorithm-details-info',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./algorithm-details-info.component.css']
 })
 export class AlgorithmDetailsInfoComponent implements OnInit {
+
+  // algorithm: any;
+  // task: Task;
+
+  @Input() algorithm: any;
+  @Input() task: Task;
 
   constructor() { }
 

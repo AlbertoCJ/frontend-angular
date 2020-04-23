@@ -21,6 +21,7 @@ import {TooltipModule} from 'primeng/tooltip';
 import {PaginatorModule} from 'primeng/paginator';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {TabMenuModule} from 'primeng/tabmenu';
+import {PanelModule} from 'primeng/panel';
 
 export const PRIMENG_MODULES = [
     InputTextModule,
@@ -45,5 +46,6 @@ export const PRIMENG_MODULES = [
     TooltipModule,
     PaginatorModule,
     ProgressBarModule,
-    TabMenuModule
+    TabMenuModule,
+    PanelModule
 ];

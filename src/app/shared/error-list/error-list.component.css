@@ -1,0 +1,15 @@
+.content-error {
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.content-error ul {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    list-style-type: square;
+    /* padding: 4px; */
+}
+
+:host ::ng-deep .error-list .ui-panel .ui-panel-content {
+    padding: 0px;
+}

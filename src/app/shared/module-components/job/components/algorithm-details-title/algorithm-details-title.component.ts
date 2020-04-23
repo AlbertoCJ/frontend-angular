@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-algorithm-details-title',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./algorithm-details-title.component.css']
 })
 export class AlgorithmDetailsTitleComponent implements OnInit {
+
+  @Input() title: string;
+  @Input() percent: number;
 
   constructor() { }
 

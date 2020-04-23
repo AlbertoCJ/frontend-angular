@@ -3,6 +3,12 @@ import { Model } from './model';
 import { Algorithms } from '../enums/algorithms.enum';
 import { LinearRegression } from './algorithms/linear-regression/linear-regression';
 import { LinearRegressionBagging } from './algorithms/linear-regression-bagging/linear-regression-bagging';
+import { Ibk } from './algorithms/ibk/ibk';
+import { Zeror } from './algorithms/zeror/zeror';
+import { M5p } from './algorithms/m5p/m5p';
+import { M5rules } from './algorithms/m5rules/m5rules';
+import { DecisionStump } from './algorithms/decision-stump/decision-stump';
+import { DecisionStumpBagging } from './algorithms/decision-stump-bagging/decision-stump-bagging';
 export class DataAlgorithms {
 
     linearRegression: any;
@@ -39,29 +45,29 @@ export class DataAlgorithms {
     algorithm(algorithm: any, enumAlgorith: number) {
         let algorithmNew = null;
         switch (enumAlgorith) {
-            case 1:
+            case Algorithms.LINEAR_REGRESSION:
                 algorithmNew = new LinearRegression(algorithm);
                 break;
-            case 2:
+            case Algorithms.LINEAR_REGRESSION_BAGGING:
                 algorithmNew = new LinearRegressionBagging(algorithm);
                 break;
-            case 3:
-                // algorithmNew =
+            case Algorithms.IBK:
+                algorithmNew = new Ibk(algorithm);
                 break;
-            case 4:
-                // algorithmNew =
+            case Algorithms.ZEROR:
+                algorithmNew = new Zeror(algorithm);
                 break;
-            case 5:
-                // algorithmNew =
+            case Algorithms.M5P:
+                algorithmNew = new M5p(algorithm);
                 break;
-            case 6:
-                // algorithmNew =
+            case Algorithms.M5RULES:
+                algorithmNew = new M5rules(algorithm);
                 break;
-            case 7:
-                // algorithmNew =
+            case Algorithms.DECISION_STUMP:
+                algorithmNew = new DecisionStump(algorithm);
                 break;
-            case 8:
-                // algorithmNew =
+            case Algorithms.DECISION_STUMP_BAGGING:
+                algorithmNew = new DecisionStumpBagging(algorithm);
                 break;
         }
         return algorithmNew;

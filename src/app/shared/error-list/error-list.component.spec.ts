@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorTextareaComponent } from './error-textarea.component';
+import { ErrorListComponent } from './error-list.component';
 
-describe('ErrorTextareaComponent', () => {
-  let component: ErrorTextareaComponent;
-  let fixture: ComponentFixture<ErrorTextareaComponent>;
+describe('ErrorListComponent', () => {
+  let component: ErrorListComponent;
+  let fixture: ComponentFixture<ErrorListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorTextareaComponent ]
+      declarations: [ ErrorListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ErrorTextareaComponent);
+    fixture = TestBed.createComponent(ErrorListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

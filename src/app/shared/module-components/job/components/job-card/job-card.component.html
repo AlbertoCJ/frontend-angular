@@ -1,4 +1,4 @@
-<div class="card-job">
+<div [ngClass]="{'card-job': isClicker}">
     <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{'card-job-completed': job.hasStatus === 'COMPLETED', 'card-job-running': job.hasStatus === 'RUNNING', 'card-job-partial': job.hasStatus === 'PARTIAL', 'card-job-error': job.hasStatus === 'ERROR'}">
         <div class="p-grid">
             <div class="p-lg-4 p-md-5 p-sm-6 p-col-12">

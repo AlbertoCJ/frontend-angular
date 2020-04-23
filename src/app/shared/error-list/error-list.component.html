@@ -1,0 +1,9 @@
+<div class="error-list">
+    <p-panel [header]="headerText">
+        <div class="content-error" [ngStyle]="{'max-height': maxHeight}">
+            <ul *ngIf="errorList">
+                <li *ngFor="let errorText of errorList">{{ errorText }}</li>
+            </ul>
+        </div>
+    </p-panel>
+</div>

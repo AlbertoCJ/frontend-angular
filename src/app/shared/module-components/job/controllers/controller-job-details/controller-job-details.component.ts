@@ -32,6 +32,7 @@ export class ControllerJobDetailsComponent implements OnInit {
   getJob() {
     this.jobService.getJob(this.jobId).subscribe(
       job => {
+        console.log(job);
         this.job = job;
         this.emitJob.emit(this.job);
       },

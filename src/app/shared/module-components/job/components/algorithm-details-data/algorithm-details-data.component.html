@@ -1,1 +1,27 @@
-<p>algorithm-details-data works!</p>
+<div class="algorithm-details-data">
+    <!-- <p-tabMenu [model]="items" [activeItem]="activeItem">
+    </p-tabMenu> -->
+    <p-selectButton [options]="types" [(ngModel)]="selectedType"></p-selectButton>
+
+    <div class="box-data" [ngStyle]="{'height': height}">
+        <div *ngIf="selectedType === 'CONFIG'">
+            {{ algorithm.config |json }}
+        </div>
+        <div *ngIf="selectedType === 'RESULT'">
+            <table class="box-data-table">
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Valor</th>
+                </tr>
+                <tr *ngFor="let result of results">
+                    <td>
+                        <div class="float-right box-data-label">{{ result.label }}</div>
+                    </td>
+                    <td>
+                        <div class="float-right box-data-value">{{ result.value }}</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

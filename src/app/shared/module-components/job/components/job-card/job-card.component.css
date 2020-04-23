@@ -142,3 +142,14 @@
     line-height: 15px;
     color: white;
 }
+
+:host ::ng-deep .progressbar-job-card .ui-progressbar .ui-progressbar-value {
+    background: rgba(156, 207, 255, 1);
+    background: -moz-linear-gradient(left, rgba(156, 207, 255, 1) 0%, rgba(0, 69, 143, 1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(156, 207, 255, 1)), color-stop(100%, rgba(0, 69, 143, 1)));
+    background: -webkit-linear-gradient(left, rgba(156, 207, 255, 1) 0%, rgba(0, 69, 143, 1) 100%);
+    background: -o-linear-gradient(left, rgba(156, 207, 255, 1) 0%, rgba(0, 69, 143, 1) 100%);
+    background: -ms-linear-gradient(left, rgba(156, 207, 255, 1) 0%, rgba(0, 69, 143, 1) 100%);
+    background: linear-gradient(to right, rgba(156, 207, 255, 1) 0%, rgba(0, 69, 143, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#9ccfff', endColorstr='#00458f', GradientType=1);
+}

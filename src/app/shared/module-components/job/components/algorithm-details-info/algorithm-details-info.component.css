@@ -1,0 +1,11 @@
+.algorithm-date {
+    float: left;
+    font-size: small;
+    font-weight: bold;
+}
+
+.algorithm-status {
+    float: right;
+    font-size: small;
+    font-weight: bold;
+}

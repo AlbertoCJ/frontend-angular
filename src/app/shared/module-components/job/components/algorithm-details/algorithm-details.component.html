@@ -1,1 +1,17 @@
-<p>algorithm-details works!</p>
+<p-accordionTab>
+    <p-header>
+        <div style="display: inline-block; width: 94%;">
+            <app-algorithm-details-title [title]="algorithm.name" [percent]="task ? task.percentageCompleted : null"></app-algorithm-details-title>
+        </div>
+    </p-header>
+
+    <div class="p-grid">
+        <div class="p-lg-6 p-md-5 p-sm-5 p-col-12">
+            <app-algorithm-details-info [algorithm]="algorithm" [task]="task"></app-algorithm-details-info>
+        </div>
+        <div class="p-lg-6 p-md-7 p-sm-7 p-col-12">
+            <app-algorithm-details-data [algorithm]="algorithm" [model]="model" [height]="'200px'"></app-algorithm-details-data>
+        </div>
+    </div>
+
+</p-accordionTab>
