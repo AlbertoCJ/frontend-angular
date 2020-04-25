@@ -5,6 +5,7 @@ import { Dataset } from '../../entities/dataset';
 import { MessageService } from 'primeng/api';
 import { NgForm } from '@angular/forms';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { ViewMode } from '../../../../../core/enums/view-mode.enum';
 
 @Component({
   selector: 'app-controller-list-dataset',
@@ -17,6 +18,8 @@ export class ControllerListDatasetComponent implements OnInit {
   page: number;
   limit: number;
   listDataset: ListDatasets;
+
+  mode: number;
 
   @Input() clickCard = false;
   @Input() showCardButtons = true;
@@ -67,17 +70,8 @@ export class ControllerListDatasetComponent implements OnInit {
     this.emitDataset.emit(dataset);
   }
 
-  remove(dataset: Dataset) {
-    this.datasetService.deleteDataset(dataset.id).subscribe(
-      dataset => {
-        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente'});
-        this.getListDatasets();
-      },
-      err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al borrar dataset'); // TODO: Traducir
-        this.getListDatasets();
-      }
-    );
+  removed(dataset: Dataset) {
+    this.getListDatasets();
   }
 
   changePage(page: number) {

@@ -13,14 +13,14 @@
     </div>
     <div class="p-grid m-cards">
         <div class="p-col-12" *ngFor="let job of listJob.jobs">
-            <app-job-card [job]="job" [showButtons]="showCardButtons" [isClicker]="clickCard" (emitSelected)="select($event)" (emitEdit)="edit($event)" (emitRemoved)="remove($event)"></app-job-card>
+            <app-job-card [job]="job" [showButtons]="showCardButtons" [isClicker]="clickCard" (emitSelected)="select($event)" (emitEdit)="edit($event)" (emitRemoved)="removed($event)" (emitSavedJob)="getListJobs()"></app-job-card>
         </div>
     </div>
     <div *ngIf="listJob.jobs.length === 0">
         <p class="list-empty">No hay jobs</p>
     </div>
 
-    <div>
+    <div *ngIf="listJob.jobs.length > 0">
         <app-pagination [paginationData]="listJob.paginationData" (emitPage)="changePage($event)"></app-pagination>
     </div>
 </div>

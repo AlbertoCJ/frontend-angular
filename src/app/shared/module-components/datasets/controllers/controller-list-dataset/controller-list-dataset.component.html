@@ -12,14 +12,14 @@
     </div>
     <div class="p-grid m-cards">
         <div class="p-lg-3 p-md-4 p-sm-6 p-col-12" *ngFor="let dataset of listDataset.datasets">
-            <app-dataset-card [dataset]="dataset" [showButtons]="showCardButtons" [isClicker]="clickCard" (emitSelected)="select($event)" (emitRemoved)="remove($event)"></app-dataset-card>
+            <app-dataset-card [dataset]="dataset" [showButtons]="showCardButtons" [isClicker]="clickCard" (emitSelected)="select($event)" (emitRemoved)="removed($event)"></app-dataset-card>
         </div>
     </div>
     <div *ngIf="listDataset.datasets.length === 0">
         <p class="list-empty">No hay datasets</p>
     </div>
 
-    <div>
+    <div *ngIf="listDataset.datasets.length > 0">
         <app-pagination [paginationData]="listDataset.paginationData" (emitPage)="changePage($event)"></app-pagination>
     </div>
 </div>

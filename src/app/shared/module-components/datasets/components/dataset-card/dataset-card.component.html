@@ -1,4 +1,4 @@
-<div class="card-wrapper" [ngClass]="{'card-rotate': isClicker}">
+<div class="card-wrapper">
     <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{clicker: isClicker, 'card-background': isClicker}" (click)="select()">
 
         <div class="">
@@ -32,7 +32,7 @@
                     <span class="title-card-dataset">Descripción:</span>
                 </div>
                 <div class="p-col-8 custom-textarea separator">
-                    <textarea [rows]="2" disabled [(ngModel)]="dataset.description" pInputTextarea></textarea>
+                    <textarea [rows]="2" [disabled]="mode === viewMode.VIEW" [(ngModel)]="dataset.description" pInputTextarea></textarea>
                 </div>
             </div>
         </div>
@@ -41,9 +41,12 @@
         </div>
     </p-card>
     <div class="card-icons">
-        <i *ngIf="showButtons" class="pi pi-download card-icon ui-special-button-info ml-1" (click)="removeConfirm()"></i>
-        <i *ngIf="showButtons" class="pi pi-pencil card-icon ui-special-button-warning ml-1" (click)="removeConfirm()"></i>
-        <i *ngIf="showButtons" class="pi pi-trash card-icon ui-special-button-danger ml-1 mr-1" (click)="removeConfirm()"></i>
+        <!-- <i *ngIf="showButtons" class="pi pi-download card-icon ui-special-button-info ml-1" (click)="removeConfirm()"></i> -->
+        <i *ngIf="showButtons && mode !== viewMode.EDIT" class="pi pi-pencil card-icon ui-special-button-warning ml-1" (click)="edit()"></i>
+        <i *ngIf="showButtons && mode !== viewMode.EDIT" class="pi pi-trash card-icon ui-special-button-danger ml-1 mr-1" (click)="removeConfirm()"></i>
+
+        <i *ngIf="showButtons && mode === viewMode.EDIT" class="pi pi-save card-icon ui-special-button-success mr-1" (click)="update()"></i>
+        <i *ngIf="showButtons && mode === viewMode.EDIT" class="pi pi-times card-icon ui-special-button-danger mr-1" (click)="cancelUpdate()"></i>
 
     </div>
 

@@ -32,6 +32,7 @@ export class ModalJobDetailsComponent implements OnInit {
 
 
   @Output() closedModalJob = new EventEmitter<boolean>();
+  @Output() emitSavedJob = new EventEmitter<Job>();
 
   constructor() {
     this.isAlertActive = true;
@@ -41,7 +42,7 @@ export class ModalJobDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  updateJob(job: Job) {
+  modificateJob(job: Job) {
     this.job = job;
   }
 
@@ -52,6 +53,11 @@ export class ModalJobDetailsComponent implements OnInit {
 
   close() {
     this.isModalActive = false;
+  }
+
+  saved(job: Job) {
+    this.isModalActive = false;
+    this.emitSavedJob.emit(job);
   }
 
 }

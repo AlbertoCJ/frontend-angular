@@ -49,6 +49,19 @@ export class DatasetService {
     );
   }
 
+  updateDataset(datasetUpdate: Dataset) {
+    const formData: FormData = new FormData();
+    formData.append('description', datasetUpdate.description);
+
+    return this.http.put(`${ this.url }/dataset/${ datasetUpdate.id }`, formData ).pipe(
+      map( (resp: any) => {
+        const respDataset = resp.dataset;
+        const dataset = new Dataset(respDataset);
+        return dataset;
+      })
+    );
+  }
+
   deleteDataset(id) {
     return this.http.delete(`${ this.url }/dataset/${ id }`).pipe(
       map( (resp: any) => {

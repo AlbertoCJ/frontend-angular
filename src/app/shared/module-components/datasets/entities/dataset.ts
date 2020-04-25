@@ -8,6 +8,7 @@ export class Dataset {
     public fullName: string;
     public dateCreation: Date;
     public size: string;
+    public user: string;
 
     constructor(data?: any) {
         this.id = data && data._id ? data._id : '';
@@ -18,5 +19,6 @@ export class Dataset {
         this.fullName = data && data.full_name ? data.full_name : '';
         this.dateCreation = data && data.date_creation ? data.date_creation : null;
         this.size = data && data.size ? data.size : '';
+        this.user = data && data.user ? data.user : '';
     }
 }

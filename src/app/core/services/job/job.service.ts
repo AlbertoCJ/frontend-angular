@@ -66,6 +66,19 @@ export class JobService {
 
   }
 
+  updateJob(jobUpdate: Job) {
+    const formData: FormData = new FormData();
+    formData.append('description', jobUpdate.description);
+
+    return this.http.put(`${ this.url }/job/${ jobUpdate.id }`, formData).pipe(
+      map( (resp: any) => {
+        const respJob = resp.job;
+        const job = new Job(respJob);
+        return job;
+      })
+    );
+  }
+
   deleteJob(id) {
     return this.http.delete(`${ this.url }/job/${ id }`).pipe(
       map( (resp: any) => {

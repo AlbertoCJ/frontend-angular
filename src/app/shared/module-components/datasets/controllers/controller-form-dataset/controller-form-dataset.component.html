@@ -1,5 +1,5 @@
 <div class="">
-    <p-fileUpload name="files[]" chooseLabel="Agregar fichero" uploadLabel="Subir dataset" cancelLabel="Limpiar" customUpload="true" (uploadHandler)="uploadDataset($event)" (onClear)="clearAll()" (onRemove)="removeFile()">
+    <p-fileUpload #form name="files[]" chooseLabel="Agregar fichero" uploadLabel="Subir dataset" cancelLabel="Limpiar" customUpload="true" (uploadHandler)="uploadDataset($event, form)" (onClear)="clearAll()" (onRemove)="removeFile()">
         <ng-template pTemplate="toolbar">
             <span class="ui-float-label span-description">
                 <textarea name="description" [(ngModel)]="formDataset.description" class="textarea-description" [rows]="1" [ngClass]="{'ng-invalid ng-dirty': showError, 'ng-valid': !showError}" pInputTextarea autoResize="autoResize"></textarea>

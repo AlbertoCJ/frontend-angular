@@ -44,16 +44,6 @@
     box-shadow: 0px 0px 9px 4px rgba(0, 0, 0, 0.75);
 }
 
-
-/* .card-background {
-    border: 1px solid transparent;
-} */
-
-
-/* .card-background:hover {
-    border: 1px solid rgba(0, 128, 0, 0.479);
-} */
-
 :host ::ng-deep .card-job-completed .ui-card-body {
     background-color: #efffef;
 }

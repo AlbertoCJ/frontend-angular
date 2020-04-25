@@ -19,6 +19,7 @@ export class ControllerJobDetailsComponent implements OnInit {
   @Input() mode = ViewMode.VIEW;
 
   @Output() emitJob = new EventEmitter<Job>();
+  @Output() emitSaved = new EventEmitter<Job>();
   @Output() emitCancel = new EventEmitter<string>();
 
   constructor(private jobService: JobService,
@@ -32,25 +33,41 @@ export class ControllerJobDetailsComponent implements OnInit {
   getJob() {
     this.jobService.getJob(this.jobId).subscribe(
       job => {
-        console.log(job);
         this.job = job;
         this.emitJob.emit(this.job);
       },
       err => {
         this.httpError.checkError(err, 'Alerta', 'Error al obtener el job.'); // TODO: Traducir
       }
-  );
+    );
+  }
+
+  updateJob() {
+    this.jobService.updateJob(this.job).subscribe(
+      job => {
+        this.messageService.add({severity: 'success', detail: 'Guardado correctamente'}); // TODO: Traducir
+        this.job = job;
+        this.emitSaved.emit(this.job);
+      },
+      err => {
+        this.httpError.checkError(err, 'Alerta', 'Error al guardar el job.'); // TODO: Traducir
+      }
+    );
+  }
+
+  modificateJob(job: Job) {
+    this.job = job;
   }
 
   // Buttons
   btnSaveClicked() {
-    alert('Saved');
+    this.updateJob();
     // this.mode = ViewMode.VIEW;
   }
 
   btnCancelClicked() {
+    this.mode = ViewMode.VIEW;
     this.emitCancel.emit('Backed');
-    // this.mode = ViewMode.VIEW;
   }
 
   btnBackClicked() {

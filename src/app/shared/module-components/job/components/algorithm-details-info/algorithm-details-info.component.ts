@@ -11,7 +11,7 @@ export class AlgorithmDetailsInfoComponent implements OnInit {
   // algorithm: any;
   // task: Task;
 
-  @Input() algorithm: any;
+  @Input() algorithm: any; // TODO: Quizas no haga falta
   @Input() task: Task;
 
   constructor() { }

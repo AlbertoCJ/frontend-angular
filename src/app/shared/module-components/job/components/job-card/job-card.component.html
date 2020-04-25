@@ -23,7 +23,7 @@
                         <span class="title-card-job">Descripción:</span>
                     </div>
                     <div class="p-col-8 custom-textarea separator">
-                        <textarea [rows]="2" disabled [(ngModel)]="job.description" pInputTextarea></textarea>
+                        <textarea [rows]="2" [disabled]="showButtons || !mode || mode === 1" [(ngModel)]="job.description" (keypress)="keypress()" pInputTextarea></textarea>
                     </div>
                 </div>
             </div>
@@ -71,4 +71,4 @@
 
 </div>
 
-<app-modal-job-details *ngIf="isModalActive" [isModalActive]="isModalActive" [job]="job" [mode]="mode" (closedModalJob)="closeModalJob($event)"></app-modal-job-details>
+<app-modal-job-details *ngIf="isModalActive" [isModalActive]="isModalActive" [job]="job" [mode]="mode" (closedModalJob)="closeModalJob($event)" (emitSavedJob)="savedJob($event)"></app-modal-job-details>

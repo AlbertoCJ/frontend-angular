@@ -5,7 +5,20 @@
 
     <div class="box-data" [ngStyle]="{'height': height}">
         <div *ngIf="selectedType === 'CONFIG'">
-            {{ algorithm.config |json }}
+            <table class="box-data-table">
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Opción</th>
+                </tr>
+                <tr *ngFor="let param of configs">
+                    <td>
+                        <div class="float-right box-data-label">{{ param.label }}</div>
+                    </td>
+                    <td>
+                        <div class="float-right box-data-value">{{ param.value }}</div>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div *ngIf="selectedType === 'RESULT'">
             <table class="box-data-table">

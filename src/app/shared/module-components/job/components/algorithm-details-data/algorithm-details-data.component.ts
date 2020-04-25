@@ -12,9 +12,10 @@ export class AlgorithmDetailsDataComponent implements OnInit {
   types: SelectItem[];
   selectedType: string;
 
-  algorithm: any;
-  model: Model;
+  // algorithm: any;
+  // model: Model;
 
+  configs: any[];
   results: any[];
 
   @Input() height: string;
@@ -22,18 +23,24 @@ export class AlgorithmDetailsDataComponent implements OnInit {
     if (algorit) {
       this.types[0].disabled = false;
       this.selectedType = this.types[0].value;
-      this.algorithm = algorit;
+      const conf = algorit.config;
+      const configs = [];
+      for (const key in conf) {
+        if (conf.hasOwnProperty(key)) {
+          configs.push({ label: this.splitCamelCaseToString(this.capitalize(key)), value: conf[key] });
+        }
+      }
+      this.configs = configs;
     }
   }
   @Input('model') set setModel(model: Model) {
     if (model) {
       this.types[1].disabled = false;
-      this.model = model;
       const validation = model.validation;
       const results = [];
       for (const key in validation) {
         if (validation.hasOwnProperty(key)) {
-          results.push({ label: this.splitCamelCaseToString(key), value: validation[key] });
+          results.push({ label: this.splitCamelCaseToString(this.capitalize(key)), value: validation[key] });
         }
       }
       this.results = results;
@@ -53,6 +60,10 @@ export class AlgorithmDetailsDataComponent implements OnInit {
 
   splitCamelCaseToString(s) {
     return s.split(/(?=[A-Z])/).join(' ');
-}
+  }
+
+  capitalize(s) {
+    return s.trim().replace(/^\w/, (c) => c.toUpperCase());
+  }
 
 }

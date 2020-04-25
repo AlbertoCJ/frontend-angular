@@ -1,4 +1,4 @@
-<app-job-details [job]="job" [mode]="mode"></app-job-details>
+<app-job-details [job]="job" [mode]="mode" (emitJob)="modificateJob($event)"></app-job-details>
 
 <div class="ui-fluid">
     <app-buttons-panel-normal [marginTop]="true">

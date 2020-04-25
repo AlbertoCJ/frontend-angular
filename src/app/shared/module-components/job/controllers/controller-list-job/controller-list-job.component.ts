@@ -28,7 +28,6 @@ export class ControllerListJobComponent implements OnInit {
   constructor(private jobService: JobService,
               private messageService: MessageService,
               private httpError: HttpErrorService) {
-    // this.descriptionSearch = '';
     this.page = 1;
     this.limit = 4;
     this.listJob = new ListJob();
@@ -78,21 +77,13 @@ export class ControllerListJobComponent implements OnInit {
   select(job: Job) {
     this.emitViewJob.emit(job);
   }
+
   edit(job: Job) {
     this.emitEditJob.emit(job);
   }
 
-  remove(job: Job) {
-    this.jobService.deleteJob(job.id).subscribe(
-      job => {
-        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente'}); // TODO: Traducir
-        this.getListJobs();
-      },
-      err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al borrar job'); // TODO: Traducir
-        this.getListJobs();
-      }
-    );
+  removed(job: Job) {
+    this.getListJobs();
   }
 
   changePage(page: number) {

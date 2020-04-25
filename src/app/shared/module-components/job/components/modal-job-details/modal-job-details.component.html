@@ -2,7 +2,7 @@
     <span slot="custom-header">Job: {{ job.name }}</span>
     <span slot="custom-section">
         <!-- <code>{{ job | json }}</code> -->
-        <app-controller-job-details [jobId]="job.id" [mode]="mode" (emitJob)="updateJob($event)" (emitCancel)="close()"></app-controller-job-details>
+        <app-controller-job-details [jobId]="job.id" [mode]="mode" (emitJob)="modificateJob($event)" (emitCancel)="close()" (emitSaved)="saved($event)"></app-controller-job-details>
     </span>
     <!-- <span slot="custom-footer">
         <app-custom-button [label]="'Cerrar'" (emitClicked)="close()">

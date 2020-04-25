@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Job } from '../../entities/job';
 import { ViewMode } from '../../../../../core/enums/view-mode.enum';
+import { JobService } from '../../../../../core/services/job/job.service';
+import { MessageService } from 'primeng/api';
+import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 
 @Component({
   selector: 'app-job-card',
@@ -33,12 +36,21 @@ export class JobCardComponent implements OnInit {
       this.calculateDataInfo();
     }
   }
+  @Input('mode') set setMode(mode: number) {
+    if (mode) {
+      this.mode = mode;
+    }
+  }
 
   @Output() emitSelected = new EventEmitter<Job>();
   @Output() emitEdit = new EventEmitter<Job>();
   @Output() emitRemoved = new EventEmitter<Job>();
+  @Output() emitJob = new EventEmitter<Job>();
+  @Output() emitSavedJob = new EventEmitter<Job>();
 
-  constructor() { }
+  constructor(private jobService: JobService,
+              private messageService: MessageService,
+              private httpError: HttpErrorService) { }
 
   ngOnInit() {
   }
@@ -89,9 +101,17 @@ export class JobCardComponent implements OnInit {
     this.isModalActive = true;
   }
 
+  keypress() {
+    this.emitJob.emit(this.job);
+  }
+
   // Modal
   closeModalJob(event: boolean) {
     this.isModalActive = event;
+  }
+
+  savedJob(job: Job) {
+    this.emitSavedJob.emit(job);
   }
 
   // Confirm
@@ -100,7 +120,16 @@ export class JobCardComponent implements OnInit {
   }
 
   remove() {
-    this.emitRemoved.emit(this.job);
+    this.jobService.deleteJob(this.job.id).subscribe(
+      job => {
+        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente'}); // TODO: Traducir
+        this.emitRemoved.emit(this.job);
+      },
+      err => {
+        this.httpError.checkError(err, 'Alerta', 'Error al borrar job'); // TODO: Traducir
+
+      }
+    );
     this.isConfirmActive = false;
   }
 

@@ -34,7 +34,7 @@ export class ControllerFormDatasetComponent implements OnInit {
     this.textError = '';
   }
 
-  uploadDataset(event) {
+  uploadDataset(event, form) {
     this.clearError();
     if (this.formDataset && this.formDataset.description === '') {
       this.showError = true;
@@ -42,9 +42,11 @@ export class ControllerFormDatasetComponent implements OnInit {
     } else {
       this.formDataset.file = event.files[0];
       this.datasetService.upload(this.formDataset).subscribe( (resp: Dataset) => {
+        console.log(resp);
         this.dataset = resp;
         this.emitDataset.emit(resp);
         this.clearAll();
+        form.clear();
         this.formDataset = new FormDataset();
         this.messageService.add({severity: 'success', detail: 'Guardado correctamente'});
       }, (err) => {
