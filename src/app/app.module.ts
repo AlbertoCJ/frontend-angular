@@ -12,12 +12,12 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { DatasetsModule } from './datasets/datasets.module';
 import { JobModule } from './job/job.module';
 import { DockerModule } from './docker/docker.module';
+import { AdministrationModule } from './administration/administration.module';
 
 // Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { LoadingScreenInterceptor } from './core/interceptors/loading-screen.interceptor';
-
 
 @NgModule({
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -33,7 +33,8 @@ import { LoadingScreenInterceptor } from './core/interceptors/loading-screen.int
     DashboardModule,
     DatasetsModule,
     JobModule,
-    DockerModule
+    DockerModule,
+    AdministrationModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

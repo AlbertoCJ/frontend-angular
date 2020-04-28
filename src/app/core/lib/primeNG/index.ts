@@ -22,6 +22,7 @@ import {PaginatorModule} from 'primeng/paginator';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {PanelModule} from 'primeng/panel';
+import {PasswordModule} from 'primeng/password';
 
 export const PRIMENG_MODULES = [
     InputTextModule,
@@ -47,5 +48,6 @@ export const PRIMENG_MODULES = [
     PaginatorModule,
     ProgressBarModule,
     TabMenuModule,
-    PanelModule
+    PanelModule,
+    PasswordModule
 ];

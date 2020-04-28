@@ -4,7 +4,7 @@ import { User } from '../../entities/user/user';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
-
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -71,11 +71,17 @@ export class AuthService {
   getToken() {
     if (sessionStorage.getItem('token')) {
       this.userToken = sessionStorage.getItem('token');
+
     } else {
       this.userToken = '';
     }
 
     return this.userToken;
+  }
+
+  getUser() {
+    const decoded = jwt_decode(this.userToken);
+    return decoded.user;
   }
 
   isAuth(): boolean {

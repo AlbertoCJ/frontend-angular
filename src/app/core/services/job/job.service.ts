@@ -30,7 +30,12 @@ export class JobService {
       })
     };
 
-    return this.http.post(`${ this.url }/algorithm`, formData).pipe(
+    // return this.http.post(`${ this.url }/algorithm`, formData).pipe(
+    //   map( (resp: any) => {
+    //     return resp;
+    //   })
+    // );
+    return this.http.post(`${ this.url }/job`, formData).pipe(
       map( (resp: any) => {
         return resp;
       })

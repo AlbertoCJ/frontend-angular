@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   textError: string;
   showError = false;
   user: User;
+  showPass = false;
 
   constructor(private auth: AuthService,
               private router: Router) {
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: FormGroup) {
+    console.log(form);
     const emailValue = form.value.email;
     const passValue = form.value.password;
     this.showError = false;
@@ -38,7 +40,14 @@ export class LoginComponent implements OnInit {
       this.user.email = form.value.email;
       this.user.password = form.value.password;
       this.auth.login(this.user).subscribe( resp => {
-        this.router.navigateByUrl('dashboard');
+
+        const user = this.auth.getUser();
+        if (user && user.role === 'USER_ROLE') {
+          this.router.navigateByUrl('dashboard');
+        } else if (user && user.role === 'ADMIN_ROLE') {
+          this.router.navigateByUrl('administration-users');
+        }
+
       }, (err) => {
         if (err.status === 401) {
           this.textError = 'Email y/o contraseña erronea.';

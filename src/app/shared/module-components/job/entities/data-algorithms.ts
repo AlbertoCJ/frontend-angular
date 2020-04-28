@@ -38,7 +38,8 @@ export class DataAlgorithms {
         return {
             algorithm: algorit && algorit.algorithm ? this.algorithm(algorit.algorithm, enumAlgorith) : null,
             task: algorit && algorit.task ? new Task(algorit.task) : null,
-            model: algorit && algorit.model ? new Model(algorit.model) : null
+            model: algorit && algorit.model ? new Model(algorit.model) : null,
+            container: null
         };
     }
 

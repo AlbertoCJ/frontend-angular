@@ -1,0 +1,21 @@
+.welcome-text-box {
+    text-align: right;
+    padding-right: 2px;
+}
+
+.welcome-text {
+    font-size: 14px;
+}
+
+.name-text {
+    font-weight: bold;
+}
+
+.welcome-box {
+    background-color: white;
+    padding: 4px;
+    display: inline-block;
+    margin-top: 1px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}

@@ -24,8 +24,11 @@ export class AppComponent {
     // tertiaryColour: '#007ad9'
   };
 
+  // name: string;
+
   constructor(private auth: AuthService,
               private loadingScreenService: LoadingScreenService) {
+    // if (this.auth.isAuth()) { this.name = this.auth.getUser().name; }
     this.loadingSubscription = this.loadingScreenService.loadingStatus.pipe(debounceTime(this.debounceTime)).subscribe(
       (status: boolean) => {
         this.loading = status;
@@ -33,8 +36,22 @@ export class AppComponent {
     );
   }
 
-  showMenu() {
+  showName() {
     return this.auth.isAuth();
+  }
+
+  name() {
+    let name = '';
+    if (this.auth.isAuth()) { name = this.auth.getUser().name; }
+    return name;
+  }
+
+  showMenuApp() {
+    return this.auth.isAuth() && this.auth.getUser().role === 'USER_ROLE';
+  }
+
+  showMenuAdmin() {
+    return this.auth.isAuth() && this.auth.getUser().role === 'ADMIN_ROLE';
   }
 
 }
