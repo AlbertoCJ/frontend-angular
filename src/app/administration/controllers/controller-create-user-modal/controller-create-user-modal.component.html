@@ -1,0 +1,70 @@
+<app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="formCancel()" [showFooter]="false" [fullModal]="false">
+    <!-- TODO: Traducir -->
+    <span slot="custom-header">Crear usuario</span>
+    <span slot="custom-section">
+
+        <form (ngSubmit)="search(forma)" #forma="ngForm" novalidate>
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-g-4">
+                            Nombre:
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText type="text" />
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-g-4">
+                            Email:
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-g-4">
+                            Contraseña:
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText type="text" />
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-g-4">
+                            Conf. Contraseña:
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-g-4">
+                            Activar:
+                        </div>
+                        <div class="ui-g-8">
+                            <!-- [(ngModel)]="checked" -->
+                            <p-inputSwitch ></p-inputSwitch> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-fluid">
+                <app-buttons-panel-normal [marginTop]="true">
+                    <span slot="end"> 
+                        <span class="btn-panel">
+                            <app-cancel-button (emitClicked)="close()"></app-cancel-button>
+                        </span>
+    <span class="btn-panel">
+                            <app-save-button (emitClicked)="saved()"></app-save-button>
+                        </span>
+    </span>
+    </app-buttons-panel-normal>
+    </div>
+    </form>
+    </span>
+</app-modal-generic>

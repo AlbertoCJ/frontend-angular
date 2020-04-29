@@ -1,0 +1,41 @@
+<div class="card-wrapper">
+    <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{clicker: isClicker, 'card-background': isClicker, 'mt-card-admin': user.role === 'ADMIN_ROLE', 'mt-card-user': user.role === 'USER_ROLE'}">
+
+        <div class="">
+            <!-- <p class="date-dataset">{{ dataset.dateCreation | date:'dd/MM/yyyy' }}</p> -->
+            <div class="p-grid p-justify-center">
+                <div class="p-col-4">
+                    <span class="title-card-user">Nombre:</span>
+                </div>
+                <div class="p-col-8 separator">
+                    <span class="content-card-user">{{ user.name }}</span>
+                </div>
+            </div>
+            <div class="p-grid p-justify-center">
+                <div class="p-col-4">
+                    <span class="title-card-user">Correo:</span>
+                </div>
+                <div class="p-col-8 separator">
+                    <span class="content-card-user">{{ user.email }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="showButtons" class="ui-fluid mt-3 card-button-panel">
+            <div class="card-button-item">
+                <app-edit-button (emitClicked)="openEditUserModal()"></app-edit-button>
+            </div>
+            <div class="card-button-item">
+                <app-custom-button [label]="'C. Contraseña'" (emitClicked)="openChangePassUserModal()"></app-custom-button>
+            </div>
+        </div>
+        <app-controller-edit-user-modal [isModalActive]="editUserModal" (closedModal)="closeEditUserModal()"></app-controller-edit-user-modal>
+        <app-controller-change-pass-user-modal [isModalActive]="changePassUserModal" (closedModal)="closeChangePassUserModal()"></app-controller-change-pass-user-modal>
+    </p-card>
+    <div class="card-icons">
+        <i *ngIf="showButtons" class="pi pi-ban card-icon ui-special-button-danger ml-1 mr-1" (click)="activateUser()"></i>
+
+        <i *ngIf="showButtons" class="pi pi-ban card-icon ui-special-button-success mr-1" (click)="deactivateUser()"></i>
+    </div>
+
+</div>

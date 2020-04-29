@@ -1,1 +1,32 @@
-<p>controller-list-user works!</p>
+<div>
+    <div class="ui-g ui-fluid mb-4">
+        <div class="ui-g-12">
+            <form (ngSubmit)="search(forma)" #forma="ngForm" novalidate>
+                <div class="ui-inputgroup">
+                    <button pButton type="submit" icon="pi pi-search" class="ui-button-primary" [disabled]="nameSearch === '' && emailSearch === ''"></button>
+                    <input type="text" pInputText name="nameSearch" placeholder="Buscar por nombre" (keypress)="keypressNameSearch($event)" [(ngModel)]="nameSearch">
+                    <input type="text" pInputText name="emailSearch" placeholder="Buscar por correo" (keypress)="keypressEmailSearch($event)" [(ngModel)]="emailSearch">
+                    <button pButton type="button" icon="pi pi-times" class="ui-button-danger" (click)="clearSearch()"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="mb-4">
+        <app-custom-button [label]="'Crear usuario'" [icon]="'pi pi-user-plus'" [iconPos]="'left'" [styleClass]="'ui-button-success'" (emitClicked)="openCreateUserModal()"></app-custom-button>
+        <app-controller-create-user-modal [isModalActive]="createUserModal" (closedModal)="closeCreateUserModal()"></app-controller-create-user-modal>
+    </div>
+    <div class="p-grid m-cards ">
+        <div class="p-lg-3 p-md-4 p-sm-6 p-col-12 " *ngFor="let user of listUsers.users ">
+            <!-- <div>{{ user | json }}</div> -->
+            <app-user-card [user]="user "></app-user-card>
+            <!-- <app-dataset-card [dataset]="dataset " [showButtons]="showCardButtons " [isClicker]="clickCard " (emitSelected)="select($event) " (emitRemoved)="removed($event) "></app-dataset-card> -->
+        </div>
+    </div>
+    <div *ngIf="listUsers.users.length===0 ">
+        <p class="list-empty ">No hay usuarios</p>
+    </div>
+
+    <div *ngIf="listUsers.users.length> 0">
+        <app-pagination [paginationData]="listUsers.paginationData" (emitPage)="changePage($event)"></app-pagination>
+    </div>
+</div>

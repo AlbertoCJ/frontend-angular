@@ -2,8 +2,12 @@
     width: 100%;
 }
 
-:host ::ng-deep .mt-card .ui-card-body {
-    background-color: #f1f2ff;
+:host ::ng-deep .mt-card-admin .ui-card-body {
+    background-color: #ffeed9;
+}
+
+:host ::ng-deep .mt-card-user .ui-card-body {
+    background-color: #edf2fd;
 }
 
 .card-wrapper {
@@ -46,24 +50,25 @@
     box-shadow: 0px 0px 9px 4px rgba(0, 0, 0, 0.75);
 }
 
-.date-dataset {
+
+/* .date-dataset {
     font-size: x-small;
     font-weight: bold;
-    padding-bottom: 8px;
-}
+} */
 
-.title-card-dataset {
+.title-card-user {
     font-size: x-small;
     font-weight: bold;
     float: right;
 }
 
-.title-card-dataset-bytes {
+
+/* .title-card-dataset-bytes {
     font-size: 10px;
     font-weight: bold;
-}
+} */
 
-.content-card-dataset {
+.content-card-user {
     font-size: small;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -74,7 +79,8 @@
     border-left: 1px solid black;
 }
 
-.custom-textarea .ui-inputtext {
+
+/* .custom-textarea .ui-inputtext {
     width: 100%;
     resize: none;
     font-size: small;
@@ -83,4 +89,16 @@
 .custom-textarea .ui-widget:disabled {
     opacity: 1;
     border-color: #e7e7e7;
+} */
+
+.card-button-panel {
+    display: flex;
+}
+
+.card-button-item {
+    flex-grow: 1;
+}
+
+:host ::ng-deep .card-button-item .my-button {
+    width: 100%;
 }

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../../entities/user/user';
+import { Login } from '../../entities/login/login';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import * as jwt_decode from 'jwt-decode';
+import { User } from '../../entities/user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,10 @@ export class AuthService {
               private router: Router) { }
 
 
-  login( user: User ) {
+  login( login: Login ) {
     const authData = {
-      email: user.email,
-      password: user.password
+      email: login.email,
+      password: login.password
     };
 
 
@@ -81,7 +82,8 @@ export class AuthService {
 
   getUser() {
     const decoded = jwt_decode(this.userToken);
-    return decoded.user;
+    const user = new User(decoded.user);
+    return user;
   }
 
   isAuth(): boolean {
