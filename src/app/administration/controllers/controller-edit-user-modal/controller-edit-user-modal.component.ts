@@ -1,5 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { User } from '../../../core/entities/user/user';
+import { ValidatorsService } from '../../../core/services/validators/validators.service';
+import { UserService } from '../../../core/services/user/user.service';
+import { MessageService } from 'primeng/api';
+import { HttpErrorService } from '../../../core/services/http-error/http-error.service';
+import { AlertService } from '../../../core/services/alert/alert.service';
 
 @Component({
   selector: 'app-controller-edit-user-modal',
@@ -11,6 +17,9 @@ export class ControllerEditUserModalComponent implements OnInit {
   isAlertActive: boolean;
   isModalActive: boolean;
 
+  editUserForm: FormGroup;
+  user: User;
+
   @Input('isModalActive') set setIsModalActive(value: boolean) {
     if (value) {
       this.isAlertActive = true;
@@ -21,13 +30,42 @@ export class ControllerEditUserModalComponent implements OnInit {
     }
   }
 
+  @Input('user') set setUser(user: User) {
+    if (user) {
+      this.editUserForm.patchValue({
+        name: user.name,
+        email: user.email,
+        state: user.state
+      });
+      this.user = user;
+    }
+  }
+
   @Output() closedModal = new EventEmitter<boolean>();
   @Output() emitSaved = new EventEmitter<string>();
 
-  constructor() {
+  constructor(private fb: FormBuilder,
+              private validators: ValidatorsService,
+              private userService: UserService,
+              private messageService: MessageService,
+              private alertService: AlertService,
+              private httpError: HttpErrorService) {
     this.isAlertActive = false;
     this.isModalActive = false;
-   }
+    this.editUserForm = this.fb.group({
+      name: ['', [ Validators.required, Validators.minLength(3) ]],
+      email: ['', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')] ],
+      state: [true]
+    });
+  }
+
+  get nameInvalid() {
+    return this.editUserForm.get('name').invalid && this.editUserForm.get('name').touched;
+  }
+
+  get emailInvalid() {
+    return this.editUserForm.get('email').invalid && this.editUserForm.get('email').touched;
+  }
 
   ngOnInit() {
   }
@@ -41,9 +79,34 @@ export class ControllerEditUserModalComponent implements OnInit {
     this.isModalActive = false;
   }
 
-  saved(form: NgForm) {
-    this.isModalActive = false;
-    this.emitSaved.emit('saved');
+  saved() {
+    if ( this.editUserForm.invalid ) {
+      return Object.values( this.editUserForm.controls ).forEach( control => {
+        if ( control instanceof FormGroup ) {
+          // tslint:disable-next-line: no-shadowed-variable
+          Object.values( control.controls ).forEach( control => control.markAsTouched() );
+        } else {
+          control.markAsTouched();
+        }
+      });
+    } else {
+
+      this.user.name = this.editUserForm.value.name;
+      this.user.email = this.editUserForm.value.email;
+      this.user.state = this.editUserForm.value.state;
+
+      this.userService.updateUser(this.user).subscribe( (resp: User) => {
+        this.isModalActive = false;
+        this.emitSaved.emit('saved');
+        this.messageService.add({severity: 'success', detail: 'Actualizado correctamente'}); // TODO: Traducir
+      }, (err) => {
+        if (err.error && err.error.err && err.error.err.code === 11000) {
+          this.alertService.setAlert('Alerta', `Ya existe el email: ${ err.error.err.keyValue.email }`); // Traducir
+        } else {
+          this.httpError.checkError(err, 'Alerta', 'Error al actualizar usuario'); // TODO: Traducir
+        }
+      });
+    }
   }
 
 }

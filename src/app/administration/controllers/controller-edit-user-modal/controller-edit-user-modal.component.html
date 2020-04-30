@@ -3,7 +3,7 @@
     <span slot="custom-header">Editar usuario</span>
     <span slot="custom-section">
 
-        <form (ngSubmit)="search(forma)" #forma="ngForm" novalidate>
+        <form [formGroup]="editUserForm">
             <div class="ui-fluid">
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-6">
@@ -11,15 +11,29 @@
                             Nombre:
                         </div>
                         <div class="ui-g-8">
-                            <input pInputText type="text" />
+                            <input pInputText type="text" formControlName="name" />
+                            <small *ngIf="nameInvalid" class="class-error">
+                                Ingrese 3 letras
+                            </small>
                         </div>
                     </div>
+                    <!-- <div class="ui-g-12 ui-md-6">
+                        <div class="ui-g-4">
+                            Activar:
+                        </div>
+                        <div class="ui-g-8">
+                            <p-inputSwitch formControlName="state"></p-inputSwitch> 
+                        </div>
+                    </div> -->
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
                             Email:
                         </div>
                         <div class="ui-g-8">
-                            <input pInputText type="text" />
+                            <input pInputText type="text" formControlName="email" />
+                            <small *ngIf="emailInvalid" class="class-error">
+                                Ingrese email
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -29,8 +43,7 @@
                             Activar:
                         </div>
                         <div class="ui-g-8">
-                            <!-- [(ngModel)]="checked" -->
-                            <p-inputSwitch ></p-inputSwitch> 
+                            <p-inputSwitch formControlName="state"></p-inputSwitch> 
                         </div>
                     </div>
                 </div>

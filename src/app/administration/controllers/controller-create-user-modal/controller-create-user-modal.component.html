@@ -3,7 +3,7 @@
     <span slot="custom-header">Crear usuario</span>
     <span slot="custom-section">
 
-        <form (ngSubmit)="search(forma)" #forma="ngForm" novalidate>
+        <form [formGroup]="createUserForm">
             <div class="ui-fluid">
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-6">
@@ -11,7 +11,10 @@
                             Nombre:
                         </div>
                         <div class="ui-g-8">
-                            <input pInputText type="text" />
+                            <input pInputText type="text" formControlName="name" />
+                            <small *ngIf="nameInvalid" class="class-error">
+                                Ingrese 3 letras
+                            </small>
                         </div>
                     </div>
                     <div class="ui-g-12 ui-md-6">
@@ -19,7 +22,10 @@
                             Email:
                         </div>
                         <div class="ui-g-8">
-                            <input pInputText type="text" />
+                            <input pInputText type="text" formControlName="email" />
+                            <small *ngIf="emailInvalid" class="class-error">
+                                Ingrese email
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -29,7 +35,10 @@
                             Contraseña:
                         </div>
                         <div class="ui-g-8">
-                            <input pInputText type="text" />
+                            <input pInputText type="text" formControlName="password" />
+                            <small *ngIf="passwordInvalid" class="class-error">
+                                Ingrese contraseña
+                              </small>
                         </div>
                     </div>
                     <div class="ui-g-12 ui-md-6">
@@ -37,7 +46,10 @@
                             Conf. Contraseña:
                         </div>
                         <div class="ui-g-8">
-                            <input pInputText type="text" />
+                            <input pInputText type="text" formControlName="password2" />
+                            <small *ngIf="password2Invalid" class="class-error">
+                                Las contraseñas no coinciden
+                              </small>
                         </div>
                     </div>
                 </div>
@@ -48,7 +60,7 @@
                         </div>
                         <div class="ui-g-8">
                             <!-- [(ngModel)]="checked" -->
-                            <p-inputSwitch ></p-inputSwitch> 
+                            <p-inputSwitch formControlName="state"></p-inputSwitch> 
                         </div>
                     </div>
                 </div>

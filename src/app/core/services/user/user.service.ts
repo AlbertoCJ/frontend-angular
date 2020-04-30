@@ -42,13 +42,8 @@ export class UserService {
 
   // }
 
-  updateUser(userUpdate: User) {
-    const formData: FormData = new FormData();
-    formData.append('name', userUpdate.name);
-    formData.append('email', userUpdate.email);
-    formData.append('state', userUpdate.state.toString());
-
-    return this.http.put(`${ this.url }/user/${ userUpdate.id }`, formData).pipe(
+  createUser(userCreate: User) {
+    return this.http.post(`${ this.url }/user`, userCreate).pipe(
       map( (resp: any) => {
         const respUser = resp.user;
         const user = new User(respUser);
@@ -57,11 +52,26 @@ export class UserService {
     );
   }
 
-  changePassUser(userUpdate: User, pass: string) {
-    const formData: FormData = new FormData();
-    formData.append('password', pass);
+  updateUser(userUpdate: User) {
+    // const formData: FormData = new FormData();
+    // formData.append('name', userUpdate.name);
+    // formData.append('email', userUpdate.email);
+    // formData.append('state', userUpdate.state.toString());
 
-    return this.http.put(`${ this.url }/userPass/${ userUpdate.id }`, formData).pipe(
+    return this.http.put(`${ this.url }/user/${ userUpdate.id }`, userUpdate).pipe(
+      map( (resp: any) => {
+        const respUser = resp.user;
+        const user = new User(respUser);
+        return user;
+      })
+    );
+  }
+
+  changePassUser(userUpdate: User) {
+    // const formData: FormData = new FormData();
+    // formData.append('password', pass);
+
+    return this.http.put(`${ this.url }/userPass/${ userUpdate.id }`, userUpdate).pipe(
       map( (resp: any) => {
         const respUser = resp.user;
         const user = new User(respUser);

@@ -3,6 +3,7 @@ import { FormDataset, Dataset } from '../../entities';
 import { DatasetService } from '../../../../../core/services/dataset/dataset.service';
 import { MessageService } from 'primeng/api';
 import { AlertService } from '../../../../../core/services/alert/alert.service';
+import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 
 
 
@@ -22,7 +23,8 @@ export class ControllerFormDatasetComponent implements OnInit {
 
   constructor( private datasetService: DatasetService,
                private messageService: MessageService,
-               private alertService: AlertService) {
+               private alertService: AlertService,
+               private httpError: HttpErrorService) {
     this.formDataset = new FormDataset();
   }
 
@@ -38,11 +40,10 @@ export class ControllerFormDatasetComponent implements OnInit {
     this.clearError();
     if (this.formDataset && this.formDataset.description === '') {
       this.showError = true;
-      this.textError = 'Escibe una descipción'; // TODO: Traducir
+      this.textError = 'Escribe una descipción'; // TODO: Traducir
     } else {
       this.formDataset.file = event.files[0];
       this.datasetService.upload(this.formDataset).subscribe( (resp: Dataset) => {
-        console.log(resp);
         this.dataset = resp;
         this.emitDataset.emit(resp);
         this.clearAll();
@@ -50,7 +51,11 @@ export class ControllerFormDatasetComponent implements OnInit {
         this.formDataset = new FormDataset();
         this.messageService.add({severity: 'success', detail: 'Guardado correctamente'});
       }, (err) => {
-        this.alertService.setAlertShowMore('Alerta', 'Error al guardar dataset', err.message);
+        if (err.error && err.error.err && err.error.err.code === 11000) {
+          this.alertService.setAlert('Alerta', `Ya existe esa descripción.`); // Traducir
+        } else {
+          this.httpError.checkError(err, 'Alerta', 'Error al guardar dataset'); // TODO: Traducir
+        }
       });
     }
   }

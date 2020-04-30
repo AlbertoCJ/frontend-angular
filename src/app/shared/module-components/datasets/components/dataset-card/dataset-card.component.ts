@@ -4,6 +4,7 @@ import { ViewMode } from '../../../../../core/enums/view-mode.enum';
 import { DatasetService } from '../../../../../core/services/dataset/dataset.service';
 import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { AlertService } from '../../../../../core/services/alert/alert.service';
 
 @Component({
   selector: 'app-dataset-card',
@@ -31,6 +32,7 @@ export class DatasetCardComponent implements OnInit {
 
   constructor(private datasetService: DatasetService,
               private messageService: MessageService,
+              private alertService: AlertService,
               private httpError: HttpErrorService) { }
 
   ngOnInit() {
@@ -54,7 +56,11 @@ export class DatasetCardComponent implements OnInit {
       },
       err => {
         this.mode = ViewMode.EDIT;
-        this.httpError.checkError(err, 'Alerta', 'Error al guardar dataset'); // TODO: Traducir
+        if (err.error && err.error.err && err.error.err.code === 11000) {
+          this.alertService.setAlert('Alerta', `Ya existe esa descripción.`); // Traducir
+        } else {
+          this.httpError.checkError(err, 'Alerta', 'Error al guardar dataset'); // TODO: Traducir
+        }
       }
     );
   }

@@ -39,7 +39,7 @@ export class MenubarComponent implements OnInit {
         icon: 'pi pi-file',
         items: [{
                 label: 'Lanzar',
-                icon: 'pi pi-fw pi-upload',
+                icon: 'pi pi-fw pi-directions',
                 routerLink: ['/launch-job']
             },
             {

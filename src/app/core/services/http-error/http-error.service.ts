@@ -18,7 +18,7 @@ export class HttpErrorService {
         break;
 
       default:
-        this.alertService.setAlertShowMore('Alerta', 'Error al obtener el job.', err.message);
+        this.alertService.setAlertShowMore(title, message, err.message);
         break;
     }
   }

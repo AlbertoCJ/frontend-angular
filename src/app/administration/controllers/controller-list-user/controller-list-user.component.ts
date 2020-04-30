@@ -46,6 +46,7 @@ export class ControllerListUserComponent implements OnInit {
   );
   }
 
+  // SEARCH
   search(forma: NgForm) {
     this.page = 1;
     this.nameSearch = forma.value.nameSearch;
@@ -62,17 +63,18 @@ export class ControllerListUserComponent implements OnInit {
   }
 
   clearSearch() {
-    this.page = 1;
     this.nameSearch = '';
     this.emailSearch = '';
-    this.getListUsers();
+    this.changePage(1);
   }
 
+  // PAGINATION
   changePage(page: number) {
     this.page = page;
     this.getListUsers();
   }
 
+  // MODAL
   openCreateUserModal() {
     this.createUserModal = true;
   }
