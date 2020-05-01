@@ -9,6 +9,9 @@ import { M5p } from './algorithms/m5p/m5p';
 import { M5rules } from './algorithms/m5rules/m5rules';
 import { DecisionStump } from './algorithms/decision-stump/decision-stump';
 import { DecisionStumpBagging } from './algorithms/decision-stump-bagging/decision-stump-bagging';
+import { M5pBagging } from './algorithms/m5p-bagging/m5p-bagging';
+import { LibsvmBagging } from './algorithms/libsvm-bagging/libsvm-bagging';
+import { Libsvm } from './algorithms/libsvm/libsvm';
 export class DataAlgorithms {
 
     linearRegression: any;
@@ -16,9 +19,12 @@ export class DataAlgorithms {
     IBk: any;
     ZeroR: any;
     M5P: any;
+    M5PBagging: any;
     M5Rules: any;
     DecisionStump: any;
     DecisionStumpBagging: any;
+    Libsvm: any;
+    LibsvmBagging: any;
 
     constructor(data?: any) {
         // tslint:disable-next-line: max-line-length
@@ -28,10 +34,13 @@ export class DataAlgorithms {
         this.IBk = data && data.IBk ? this.generateAlgorithmsData(data.IBk, Algorithms.IBK) : null;
         this.ZeroR = data && data.ZeroR ? this.generateAlgorithmsData(data.ZeroR, Algorithms.ZEROR) : null;
         this.M5P = data && data.M5P ? this.generateAlgorithmsData(data.M5P, Algorithms.M5P) : null;
+        this.M5PBagging = data && data.M5PBagging ? this.generateAlgorithmsData(data.M5PBagging, Algorithms.M5P_BAGGING) : null;
         this.M5Rules = data && data.M5Rules ? this.generateAlgorithmsData(data.M5Rules, Algorithms.M5RULES) : null;
         this.DecisionStump = data && data.DecisionStump ? this.generateAlgorithmsData(data.DecisionStump, Algorithms.DECISION_STUMP) : null;
         // tslint:disable-next-line: max-line-length
         this.DecisionStumpBagging = data && data.DecisionStumpBagging ? this.generateAlgorithmsData(data.DecisionStumpBagging, Algorithms.DECISION_STUMP_BAGGING) : null;
+        this.Libsvm = data && data.Libsvm ? this.generateAlgorithmsData(data.Libsvm, Algorithms.LIBSVM) : null;
+        this.LibsvmBagging = data && data.LibsvmBagging ? this.generateAlgorithmsData(data.LibsvmBagging, Algorithms.LIBSVM_BAGGING) : null;
     }
 
     generateAlgorithmsData(algorit: any, enumAlgorith: number) {
@@ -61,6 +70,9 @@ export class DataAlgorithms {
             case Algorithms.M5P:
                 algorithmNew = new M5p(algorithm);
                 break;
+            case Algorithms.M5P_BAGGING:
+                algorithmNew = new M5pBagging(algorithm);
+                break;
             case Algorithms.M5RULES:
                 algorithmNew = new M5rules(algorithm);
                 break;
@@ -69,6 +81,12 @@ export class DataAlgorithms {
                 break;
             case Algorithms.DECISION_STUMP_BAGGING:
                 algorithmNew = new DecisionStumpBagging(algorithm);
+                break;
+            case Algorithms.LIBSVM:
+                algorithmNew = new Libsvm(algorithm);
+                break;
+            case Algorithms.LIBSVM_BAGGING:
+                algorithmNew = new LibsvmBagging(algorithm);
                 break;
         }
         return algorithmNew;

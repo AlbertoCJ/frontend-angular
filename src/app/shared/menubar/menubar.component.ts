@@ -52,11 +52,12 @@ export class MenubarComponent implements OnInit {
       {
         label: 'Gestión Docker',
         icon: 'pi pi-desktop',
-        items: [{
-                label: 'Agregar',
-                icon: 'pi pi-fw pi-upload',
-                routerLink: ['/datasets-upload']
-            },
+        items: [
+            // {
+            //     label: 'Agregar',
+            //     icon: 'pi pi-fw pi-upload',
+            //     routerLink: ['/datasets-upload']
+            // },
             {
               label: 'Listado',
               icon: 'pi pi-fw pi-list',

@@ -4,7 +4,10 @@ export enum Algorithms {
     IBK,
     ZEROR,
     M5P,
+    M5P_BAGGING,
     M5RULES,
     DECISION_STUMP,
-    DECISION_STUMP_BAGGING
+    DECISION_STUMP_BAGGING,
+    LIBSVM,
+    LIBSVM_BAGGING
 }

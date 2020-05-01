@@ -4,9 +4,12 @@ import { AlgorithmLinearRegressionBaggingComponent } from './algorithm-linear-re
 import { AlgorithmIBKComponent } from './algorithm-ibk/algorithm-ibk.component';
 import { ZerorComponent } from './algorithm-zeror/algorithm-zeror.component';
 import { AlgorithmM5pComponent } from './algorithm-m5p/algorithm-m5p.component';
+import { AlgorithmM5pBaggingComponent } from './algorithm-m5p-bagging/algorithm-m5p-bagging.component';
 import { AlgorithmM5rulesComponent } from './algorithm-m5rules/algorithm-m5rules.component';
 import { AlgorithmDecisionStumpComponent } from './algorithm-decision-stump/algorithm-decision-stump.component';
 import { AlgorithmDecisionStumpBaggingComponent } from './algorithm-decision-stump-bagging/algorithm-decision-stump-bagging.component';
+import { AlgorithmLibsvmComponent } from './algorithm-libsvm/algorithm-libsvm.component';
+import { AlgorithmLibsvmBaggingComponent } from './algorithm-libsvm-bagging/algorithm-libsvm-bagging.component';
 import { ConfigLocalWorkersComponent } from './config-local-workers/config-local-workers.component';
 import { ConfigAwsWorkersComponent } from './config-aws-workers/config-aws-workers.component';
 import { JobCardComponent } from './job-card/job-card.component';
@@ -23,9 +26,12 @@ export const JOB_COMPONENTS = [
     AlgorithmIBKComponent,
     ZerorComponent,
     AlgorithmM5pComponent,
+    AlgorithmM5pBaggingComponent,
     AlgorithmM5rulesComponent,
     AlgorithmDecisionStumpComponent,
     AlgorithmDecisionStumpBaggingComponent,
+    AlgorithmLibsvmComponent,
+    AlgorithmLibsvmBaggingComponent,
     ConfigLocalWorkersComponent,
     ConfigAwsWorkersComponent,
     JobCardComponent,
@@ -34,5 +40,5 @@ export const JOB_COMPONENTS = [
     AlgorithmDetailsComponent,
     AlgorithmDetailsTitleComponent,
     AlgorithmDetailsInfoComponent,
-    AlgorithmDetailsDataComponent,
+    AlgorithmDetailsDataComponent
 ];

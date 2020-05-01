@@ -9,6 +9,9 @@ import { M5p } from '../../entities/algorithms/m5p/m5p';
 import { M5rules } from '../../entities/algorithms/m5rules/m5rules';
 import { DecisionStump } from '../../entities/algorithms/decision-stump/decision-stump';
 import { DecisionStumpBagging } from '../../entities/algorithms/decision-stump-bagging/decision-stump-bagging';
+import { M5pBagging } from '../../entities/algorithms/m5p-bagging/m5p-bagging';
+import { Libsvm } from '../../entities/algorithms/libsvm/libsvm';
+import { LibsvmBagging } from '../../entities/algorithms/libsvm-bagging/libsvm-bagging';
 
 @Component({
   selector: 'app-controller-algorithm-config',
@@ -37,6 +40,9 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
     M5P: {
       algorithm: null
     },
+    M5PBagging: {
+      algorithm: null
+    },
     M5Rules: {
       algorithm: null
     },
@@ -46,6 +52,12 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
     DecisionStumpBagging: {
       algorithm: null
     },
+    Libsvm: {
+      algorithm: null
+    },
+    LibsvmBagging: {
+      algorithm: null
+    }
   };
 
   // Buttons
@@ -101,6 +113,13 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
           this.listAlgorithms.M5P.algorithm = null;
         }
         break;
+      case Algorithms.M5P_BAGGING:
+        if (event) {
+          this.listAlgorithms.M5PBagging.algorithm = new M5pBagging();
+        } else {
+          this.listAlgorithms.M5PBagging.algorithm = null;
+        }
+        break;
       case Algorithms.M5RULES:
         if (event) {
           this.listAlgorithms.M5Rules.algorithm = new M5rules();
@@ -122,6 +141,20 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
           this.listAlgorithms.DecisionStumpBagging.algorithm = null;
         }
         break;
+      case Algorithms.LIBSVM:
+        if (event) {
+          this.listAlgorithms.Libsvm.algorithm = new Libsvm();
+        } else {
+          this.listAlgorithms.Libsvm.algorithm = null;
+        }
+        break;
+      case Algorithms.LIBSVM_BAGGING:
+        if (event) {
+          this.listAlgorithms.LibsvmBagging.algorithm = new LibsvmBagging();
+        } else {
+          this.listAlgorithms.LibsvmBagging.algorithm = null;
+        }
+        break;
     }
   }
 
@@ -131,9 +164,12 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
       this.listAlgorithms.IBk.algorithm ||
       this.listAlgorithms.ZeroR.algorithm ||
       this.listAlgorithms.M5P.algorithm ||
+      this.listAlgorithms.M5PBagging.algorithm ||
       this.listAlgorithms.M5Rules.algorithm ||
       this.listAlgorithms.DecisionStump.algorithm ||
-      this.listAlgorithms.DecisionStumpBagging.algorithm) {
+      this.listAlgorithms.DecisionStumpBagging.algorithm ||
+      this.listAlgorithms.Libsvm.algorithm ||
+      this.listAlgorithms.LibsvmBagging.algorithm) {
       return true;
     }
     return false;
@@ -149,7 +185,7 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
   }
 
   onChangeIBk(ibk: Ibk) {
-    this.listAlgorithms.Ibk.algorithm = ibk;
+    this.listAlgorithms.IBk.algorithm = ibk;
   }
 
   onChangeZeror(zeror: Zeror) {
@@ -158,6 +194,10 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
 
   onChangeM5p(m5p: M5p) {
     this.listAlgorithms.M5P.algorithm = m5p;
+  }
+
+  onChangeM5pBagging(m5pBagging: M5pBagging) {
+    this.listAlgorithms.M5PBagging.algorithm = m5pBagging;
   }
 
   onChangeM5rules(m5rules: M5rules) {
@@ -170,6 +210,14 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
 
   onChangeDecisionStumpBagging(decisionStumpBagging: DecisionStumpBagging) {
     this.listAlgorithms.DecisionStumpBagging.algorithm = decisionStumpBagging;
+  }
+
+  onChangeLibsvm(libsvm: Libsvm) {
+    this.listAlgorithms.Libsvm.algorithm = libsvm;
+  }
+
+  onChangeLibsvmBagging(libsvmBagging: LibsvmBagging) {
+    this.listAlgorithms.LibsvmBagging.algorithm = libsvmBagging;
   }
 
   // Emit y buttons

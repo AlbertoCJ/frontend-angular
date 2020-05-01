@@ -1,0 +1,119 @@
+<div class="buttons-panel buttons-panel-end">
+    <app-restart-button [disabled]="btnRestart" (emitClicked)="restart()"></app-restart-button>
+</div>
+<form [formGroup]="libsvmForm">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Svm Type
+            </div>
+            <div class="ui-g-7">
+                <p-dropdown [options]="optionsSvmType" formControlName="svmType"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Coef0
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="coef0" [min]="0"></p-spinner>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Cost
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="cost" [min]="0" [step]="0.1"></p-spinner>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Degree
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="degree" [min]="0"></p-spinner>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Eps
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="eps" [min]="0" [step]="0.001"></p-spinner>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Gamma
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="gamma" [min]="0" [step]="0.1"></p-spinner>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Kernel Type
+            </div>
+            <div class="ui-g-7">
+                <p-dropdown [options]="optionsKernelType" formControlName="kernelType"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Loss
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="loss" [min]="0" [step]="0.1"></p-spinner>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Normalize
+            </div>
+            <div class="ui-g-7">
+                <p-inputSwitch formControlName="normalize"></p-inputSwitch>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Nu
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="nu" [min]="0" [step]="0.1"></p-spinner>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Probability Estimates
+            </div>
+            <div class="ui-g-7">
+                <p-inputSwitch formControlName="probabilityEstimates"></p-inputSwitch>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                shrinking
+            </div>
+            <div class="ui-g-7">
+                <p-inputSwitch formControlName="shrinking"></p-inputSwitch>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Validation
+            </div>
+            <div class="ui-g-7">
+                <p-dropdown [options]="optionsValidation" formControlName="validation"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-5">
+                Validation Num
+            </div>
+            <div class="ui-g-7">
+                <p-spinner formControlName="validationNum" [min]="0" [max]="100"></p-spinner>
+            </div>
+        </div>
+    </div>
+</form>
