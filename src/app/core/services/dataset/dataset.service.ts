@@ -48,6 +48,17 @@ export class DatasetService {
       })
     );
   }
+  downloadDataset(dataset: Dataset) {
+    const formData: FormData = new FormData();
+    formData.append('fileName', dataset.file);
+    formData.append('originalName', dataset.fullName);
+
+    return this.http.post(`${ this.url }/dataset/download`, formData, { responseType: 'blob' }).pipe(
+      map( (fileBlob: any) => {
+        return fileBlob;
+      })
+    );
+  }
 
   updateDataset(datasetUpdate: Dataset) {
     const formData: FormData = new FormData();

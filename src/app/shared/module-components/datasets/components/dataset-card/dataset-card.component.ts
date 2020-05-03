@@ -5,6 +5,7 @@ import { DatasetService } from '../../../../../core/services/dataset/dataset.ser
 import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { AlertService } from '../../../../../core/services/alert/alert.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-dataset-card',
@@ -40,6 +41,18 @@ export class DatasetCardComponent implements OnInit {
 
   select() {
     this.emitSelected.emit(this.dataset);
+  }
+
+  downloadDataset() {
+    this.datasetService.downloadDataset(this.dataset).subscribe(
+      datasetFile => {
+        saveAs(datasetFile, `${ this.dataset.fullName }`);
+        this.messageService.add({severity: 'success', detail: 'Descargado correctamente'}); // TODO: Traducir
+      },
+      err => {
+        this.httpError.checkError(err, 'Alerta', 'Error al descargar dataset'); // TODO: Traducir
+      }
+    );
   }
 
   edit() {

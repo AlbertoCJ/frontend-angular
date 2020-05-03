@@ -41,7 +41,7 @@
         </div>
     </p-card>
     <div class="card-icons">
-        <!-- <i *ngIf="showButtons" class="pi pi-download card-icon ui-special-button-info ml-1" (click)="removeConfirm()"></i> -->
+        <i *ngIf="showButtons && mode !== viewMode.EDIT" class="pi pi-download card-icon ui-special-button-info ml-1" (click)="downloadDataset()"></i>
         <i *ngIf="showButtons && mode !== viewMode.EDIT" class="pi pi-pencil card-icon ui-special-button-warning ml-1" (click)="edit()"></i>
         <i *ngIf="showButtons && mode !== viewMode.EDIT" class="pi pi-trash card-icon ui-special-button-danger ml-1 mr-1" (click)="removeConfirm()"></i>
 
