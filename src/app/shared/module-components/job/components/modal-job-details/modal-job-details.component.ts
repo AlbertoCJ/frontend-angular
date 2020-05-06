@@ -47,8 +47,8 @@ export class ModalJobDetailsComponent implements OnInit {
   }
 
   formCancel() {
-    this.isAlertActive = false;
     this.closedModalJob.emit(false);
+    this.isAlertActive = false;
   }
 
   close() {
@@ -56,8 +56,8 @@ export class ModalJobDetailsComponent implements OnInit {
   }
 
   saved(job: Job) {
-    this.isModalActive = false;
     this.emitSavedJob.emit(job);
+    this.isModalActive = false;
   }
 
 }

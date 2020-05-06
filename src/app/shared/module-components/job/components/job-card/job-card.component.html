@@ -47,7 +47,11 @@
                         <div *ngIf="showButtons" class="ui-fluid">
                             <app-buttons-panel-normal>
                                 <span slot="end">
-                                    <span class="btn-panel">
+                                    <!-- TODO: Eliminar de aqui y de .ts -->
+                                    <!-- <span class="btn-panel">
+                                        <app-remove-button [disabled]="disabledButtonRemove" (emitClicked)="jobDetails()"></app-remove-button>
+                                    </span> -->
+                                <span class="btn-panel">
                                         <app-remove-button [disabled]="disabledButtonRemove" (emitClicked)="removeConfirm()"></app-remove-button>
                                     </span>
                                 <span class="btn-panel">

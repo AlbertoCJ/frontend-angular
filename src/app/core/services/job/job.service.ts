@@ -37,7 +37,9 @@ export class JobService {
     // );
     return this.http.post(`${ this.url }/job`, formData).pipe(
       map( (resp: any) => {
-        return resp;
+        const respJob = resp.job;
+        const job = new Job(respJob);
+        return job;
       })
     );
   }

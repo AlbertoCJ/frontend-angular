@@ -5,14 +5,6 @@
             <p class="date-dataset">{{ dataset.dateCreation | date:'dd/MM/yyyy' }}</p>
             <div class="p-grid p-justify-center">
                 <div class="p-col-4">
-                    <span class="title-card-dataset">Fichero:</span>
-                </div>
-                <div class="p-col-8 separator">
-                    <span class="content-card-dataset">{{ dataset.file }}</span>
-                </div>
-            </div>
-            <div class="p-grid p-justify-center">
-                <div class="p-col-4">
                     <span class="title-card-dataset">Nombre:</span>
                 </div>
                 <div class="p-col-8 separator">
@@ -33,6 +25,18 @@
                 </div>
                 <div class="p-col-8 custom-textarea separator">
                     <textarea [rows]="2" [disabled]="mode === viewMode.VIEW" [(ngModel)]="dataset.description" pInputTextarea></textarea>
+                </div>
+            </div>
+            <div class="p-grid p-justify-center">
+                <div class="p-col-4">
+                    <span class="title-card-dataset">Atributos:</span>
+                </div>
+                <div class="p-col-8 custom-textarea separator">
+                    <div class="box-atributes">
+                        <ul>
+                            <li class="content-card-dataset" *ngFor="let attribute of dataset.attributes"> - {{ attribute }}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

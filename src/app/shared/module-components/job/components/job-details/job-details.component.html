@@ -6,16 +6,18 @@
     <app-error-list *ngIf="job"></app-error-list>
 </div>
 
-<p-accordion *ngIf="job">
-    <app-algorithm-details *ngIf="job.dataAlgorithms.linearRegression.algorithm" [algorithm]="job.dataAlgorithms.linearRegression"></app-algorithm-details>
-    <app-algorithm-details *ngIf="job.dataAlgorithms.linearRegressionBagging.algorithm" [algorithm]="job.dataAlgorithms.linearRegressionBagging"></app-algorithm-details>
-    <app-algorithm-details *ngIf="job.dataAlgorithms.IBk.algorithm" [algorithm]="job.dataAlgorithms.IBk"></app-algorithm-details>
-    <app-algorithm-details *ngIf="job.dataAlgorithms.ZeroR.algorithm" [algorithm]="job.dataAlgorithms.ZeroR"></app-algorithm-details>
-    <app-algorithm-details *ngIf="job.dataAlgorithms.M5P.algorithm" [algorithm]="job.dataAlgorithms.M5P"></app-algorithm-details>
-    <app-algorithm-details *ngIf="job.dataAlgorithms.M5PBagging.algorithm" [algorithm]="job.dataAlgorithms.M5PBagging"></app-algorithm-details>
-    <app-algorithm-details *ngIf="job.dataAlgorithms.M5Rules.algorithm" [algorithm]="job.dataAlgorithms.M5Rules"></app-algorithm-details>
-    <app-algorithm-details *ngIf="job.dataAlgorithms.DecisionStump.algorithm" [algorithm]="job.dataAlgorithms.DecisionStump"></app-algorithm-details>
-    <app-algorithm-details *ngIf="job.dataAlgorithms.DecisionStumpBagging.algorithm" [algorithm]="job.dataAlgorithms.DecisionStumpBagging"></app-algorithm-details>
-    <app-algorithm-details *ngIf="job.dataAlgorithms.Libsvm.algorithm" [algorithm]="job.dataAlgorithms.Libsvm"></app-algorithm-details>
-    <app-algorithm-details *ngIf="job.dataAlgorithms.LibsvmBagging.algorithm" [algorithm]="job.dataAlgorithms.LibsvmBagging"></app-algorithm-details>
-</p-accordion>
+<app-header-title [textTitle]="'Algoritmos'">
+    <p-accordion *ngIf="job">
+        <app-algorithm-details *ngIf="job.dataAlgorithms.linearRegression.algorithm" [algorithm]="job.dataAlgorithms.linearRegression"></app-algorithm-details>
+        <app-algorithm-details *ngIf="job.dataAlgorithms.linearRegressionBagging.algorithm" [algorithm]="job.dataAlgorithms.linearRegressionBagging"></app-algorithm-details>
+        <app-algorithm-details *ngIf="job.dataAlgorithms.IBk.algorithm" [algorithm]="job.dataAlgorithms.IBk"></app-algorithm-details>
+        <app-algorithm-details *ngIf="job.dataAlgorithms.ZeroR.algorithm" [algorithm]="job.dataAlgorithms.ZeroR"></app-algorithm-details>
+        <app-algorithm-details *ngIf="job.dataAlgorithms.M5P.algorithm" [algorithm]="job.dataAlgorithms.M5P"></app-algorithm-details>
+        <app-algorithm-details *ngIf="job.dataAlgorithms.M5PBagging.algorithm" [algorithm]="job.dataAlgorithms.M5PBagging"></app-algorithm-details>
+        <app-algorithm-details *ngIf="job.dataAlgorithms.M5Rules.algorithm" [algorithm]="job.dataAlgorithms.M5Rules"></app-algorithm-details>
+        <app-algorithm-details *ngIf="job.dataAlgorithms.DecisionStump.algorithm" [algorithm]="job.dataAlgorithms.DecisionStump"></app-algorithm-details>
+        <app-algorithm-details *ngIf="job.dataAlgorithms.DecisionStumpBagging.algorithm" [algorithm]="job.dataAlgorithms.DecisionStumpBagging"></app-algorithm-details>
+        <app-algorithm-details *ngIf="job.dataAlgorithms.Libsvm.algorithm" [algorithm]="job.dataAlgorithms.Libsvm"></app-algorithm-details>
+        <app-algorithm-details *ngIf="job.dataAlgorithms.LibsvmBagging.algorithm" [algorithm]="job.dataAlgorithms.LibsvmBagging"></app-algorithm-details>
+    </p-accordion>
+</app-header-title>

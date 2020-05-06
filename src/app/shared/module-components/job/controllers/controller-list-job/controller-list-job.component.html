@@ -1,5 +1,5 @@
 <div>
-    <div class="ui-g ui-fluid mb-4">
+    <div class="ui-g ui-fluid">
         <div class="ui-g-12">
             <form (ngSubmit)="search(forma)" #forma="ngForm" novalidate>
                 <div class="ui-inputgroup">
@@ -10,6 +10,13 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div class="mb-3">
+        <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
+            <span slot="end">
+                <app-custom-button class="mr-2" [icon]="'pi pi-refresh'" [iconPos]="'left'" (emitClicked)="getListJobs()"></app-custom-button>
+            </span>
+        </app-buttons-panel-normal>
     </div>
     <div class="p-grid m-cards">
         <div class="p-col-12" *ngFor="let job of listJob.jobs">

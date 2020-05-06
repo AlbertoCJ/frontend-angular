@@ -4,6 +4,7 @@ import { ViewMode } from '../../../../../core/enums/view-mode.enum';
 import { JobService } from '../../../../../core/services/job/job.service';
 import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-card',
@@ -50,7 +51,8 @@ export class JobCardComponent implements OnInit {
 
   constructor(private jobService: JobService,
               private messageService: MessageService,
-              private httpError: HttpErrorService) { }
+              private httpError: HttpErrorService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -69,24 +71,33 @@ export class JobCardComponent implements OnInit {
             if (algorit.algorithm) { numAlgorithm++; }
             if (algorit.algorithm && algorit.task) { percentAcum += algorit.task.percentageCompleted; }
 
-            if (algorit.algorithm && algorit.task && algorit.model && algorit.task.hasStatus === 'COMPLETED') {
+            if (algorit.algorithm && algorit.task && algorit.model && algorit.task.status === 'COMPLETED') {
               counters.total = counters.total + 1;
               counters.completed = counters.completed + 1;
             } else if (algorit.algorithm && algorit.task) {
-              if (algorit.task.hasStatus === 'RUNNING') {
+              if (algorit.task.status === 'RUNNING') {
                 counters.total = counters.total + 1;
                 counters.running = counters.running + 1;
-              } else if (algorit.task.hasStatus === 'ERROR') {
+              } else if (algorit.task.status === 'COMPLETED') {
+                counters.total = counters.total + 1;
+                counters.completed = counters.completed + 1;
+              } else if (algorit.task.status === 'ERROR') {
                 counters.total = counters.total + 1;
                 counters.error = counters.error + 1;
               }
+            } else if (algorit.algorithm) {
+              counters.total = counters.total + 1;
             }
           }
         }
       }
-      if (percentAcum > 0 && numAlgorithm > 0) { counters.percent = percentAcum / numAlgorithm; }
+      if (percentAcum > 0 && numAlgorithm > 0) { counters.percent = Number((percentAcum / numAlgorithm).toFixed(0)); }
     }
     this.counters = counters;
+  }
+
+  jobDetails() { // TODO: Prueba eliminar despues y quitar router de constructor
+    this.router.navigate([`job/${this.job.id}`]);
   }
 
   select() {
@@ -112,6 +123,7 @@ export class JobCardComponent implements OnInit {
 
   savedJob(job: Job) {
     this.emitSavedJob.emit(job);
+    // this.isModalActive = false;
   }
 
   // Confirm

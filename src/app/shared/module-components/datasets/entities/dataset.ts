@@ -9,6 +9,7 @@ export class Dataset {
     public dateCreation: Date;
     public size: string;
     public user: string;
+    public attributes: string[];
 
     constructor(data?: any) {
         this.id = data && data._id ? data._id : '';
@@ -20,5 +21,6 @@ export class Dataset {
         this.dateCreation = data && data.date_creation ? data.date_creation : null;
         this.size = data && data.size ? data.size : '';
         this.user = data && data.user ? data.user : '';
+        this.attributes = data && data.attributes ? data.attributes : [];
     }
 }

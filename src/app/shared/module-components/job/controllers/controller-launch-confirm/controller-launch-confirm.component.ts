@@ -8,6 +8,7 @@ import { JobService } from '../../../../../core/services/job/job.service';
 import { DockerService } from '../../../../../core/services/docker/docker.service';
 import { AlertService } from '../../../../../core/services/alert/alert.service';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-controller-launch-confirm',
@@ -31,7 +32,8 @@ export class ControllerLaunchConfirmComponent implements OnInit {
   constructor(private jobService: JobService,
               private dockerService: DockerService,
               private alertService: AlertService,
-              private httpError: HttpErrorService) {
+              private httpError: HttpErrorService,
+              private router: Router) {
     this.btnPrevDisabled = false;
     this.btnLaunchDisabled = false;
     this.btnLaunchLabel = 'Launch'; // TODO: traducir
@@ -57,6 +59,7 @@ export class ControllerLaunchConfirmComponent implements OnInit {
           respJob => {
             // this.listDataset = listDataset;
             console.log(respJob);
+            this.router.navigate([`job/${respJob.id}`]);
           },
           err => {
             // TODO: Gestionar bien los errores
