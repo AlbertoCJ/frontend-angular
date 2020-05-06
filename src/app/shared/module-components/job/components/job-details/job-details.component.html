@@ -2,8 +2,8 @@
     <app-job-card *ngIf="job" [job]="job" [showButtons]="false" [mode]="mode" (emitJob)="updateJob($event)"></app-job-card>
 </div>
 
-<div class="mb-4">
-    <app-error-list *ngIf="job"></app-error-list>
+<div class="mb-4" *ngIf="job && job.errorList.length > 0">
+    <app-error-list [errorList]="job.errorList"></app-error-list>
 </div>
 
 <app-header-title [textTitle]="'Algoritmos'">

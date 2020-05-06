@@ -40,7 +40,9 @@ export class AlgorithmDetailsDataComponent implements OnInit {
       const results = [];
       for (const key in validation) {
         if (validation.hasOwnProperty(key)) {
-          results.push({ label: this.splitCamelCaseToString(this.capitalize(key)), value: validation[key] });
+          if (key !== 'weightedPrecision' && key !== 'error') {
+            results.push({ label: this.splitCamelCaseToString(this.capitalize(key)), value: validation[key] });
+          }
         }
       }
       this.results = results;

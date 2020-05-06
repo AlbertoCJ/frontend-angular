@@ -5,12 +5,14 @@ export class Libsvm {
     name: string;
     endpoint: string;
     config: any;
+    errorList: string[];
 
     constructor(data?: any) {
         this.id = data && data.id ? data.id : Algorithms.LIBSVM;
         this.name = data && data.name ? data.name : 'Libsvm';
         this.endpoint = data && data.endpoint ? data.endpoint : 'libsvm';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.errorList = data && data.errorList ? data.errorList : [];
     }
 
     dataConfig() {

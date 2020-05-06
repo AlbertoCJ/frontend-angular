@@ -5,12 +5,14 @@ export class LinearRegression {
     name: string;
     endpoint: string;
     config: any;
+    errorList: string[];
 
     constructor(data?: any) {
         this.id = data && data.id ? data.id : Algorithms.LINEAR_REGRESSION;
         this.name = data && data.name ? data.name : 'Linear Regression';
         this.endpoint = data && data.endpoint ? data.endpoint : 'linearRegression';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.errorList = data && data.errorList ? data.errorList : [];
     }
 
     dataConfig() {

@@ -14,7 +14,7 @@
     <div class="mb-3">
         <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
             <span slot="end">
-                <app-custom-button class="mr-2" [icon]="'pi pi-refresh'" [iconPos]="'left'" (emitClicked)="getListJobs()"></app-custom-button>
+                <app-custom-button class="mr-2" [icon]="'pi pi-refresh'" [iconPos]="'left'" [styleClass]="'ui-button-warning'" (emitClicked)="getListJobs()"></app-custom-button>
             </span>
         </app-buttons-panel-normal>
     </div>
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div *ngIf="listJob.jobs.length === 0">
-        <p class="list-empty">No hay jobs</p>
+        <p class="list-empty list-empty-padding">No hay jobs</p>
     </div>
 
     <div *ngIf="listJob.jobs.length > 0">

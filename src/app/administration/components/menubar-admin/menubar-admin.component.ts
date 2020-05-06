@@ -24,7 +24,23 @@ export class MenubarAdminComponent implements OnInit {
         label: 'Configuración',
         icon: 'pi pi-cog',
         routerLink: ['/configurations']
-      }
+      },
+      {
+        label: 'Gestión Docker',
+        icon: 'pi pi-desktop',
+        items: [
+            {
+                label: 'AWS',
+                icon: 'pi pi-fw pi-list',
+                routerLink: ['/container-list']
+            },
+            {
+              label: 'Local',
+              icon: 'pi pi-fw pi-list',
+              routerLink: ['/container-list']
+          }
+        ]
+    }
     ];
   }
 

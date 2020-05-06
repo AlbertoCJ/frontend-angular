@@ -1,4 +1,4 @@
-<app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="formCancel()" [showFooter]="true" [fullModal]="false">
+<app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="formCancel()" [showFooter]="false" [fullModal]="false">
     <span slot="custom-header">Job: {{ job.name }}</span>
     <span slot="custom-section">
         <!-- <code>{{ job | json }}</code> -->

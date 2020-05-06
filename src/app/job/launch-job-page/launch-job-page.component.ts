@@ -79,6 +79,7 @@ export class LaunchJobPageComponent implements OnInit {
   }
 
   setListAlgorithms(listAlgorithms: any) {
+    this.listAlgorithms = null;
     this.listAlgorithms = listAlgorithms;
     console.log(listAlgorithms);
   }

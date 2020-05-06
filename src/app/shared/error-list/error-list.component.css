@@ -1,6 +1,7 @@
 .content-error {
     overflow: auto;
     overflow-x: hidden;
+    min-height: 38px;
 }
 
 .content-error ul {

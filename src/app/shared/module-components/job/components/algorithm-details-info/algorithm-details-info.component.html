@@ -1,11 +1,30 @@
-<div *ngIf="task">
-    <div class="p-grid mb-4">
-        <div class="p-col-6"><span class="algorithm-date">{{ task.date | date:'dd/MM/yyyy' }}</span></div>
-        <div class="p-col-6"><span class="algorithm-status"> {{ task.status }}</span></div>
+<div>
+    <div class="mb-4">
+        <div *ngIf="!task">
+            <!-- TODO: Traducir -->
+            <p class="text-status color-not-start"> No iniciado aún</p>
+        </div>
+
+
+        <div class="p-grid" *ngIf="task">
+            <div class="p-col-6"><span class="algorithm-date">{{ task.date | date:'dd/MM/yyyy' }}</span></div>
+            <div class="p-col-6"><span class="algorithm-status"> {{ task.status }}</span></div>
+        </div>
+        <div class="p-grid" *ngIf="!task && algorithm.hasStatus === 'ERROR'">
+            <div class="p-col-6"><span class="algorithm-date"></span></div>
+            <div class="p-col-6"><span class="algorithm-status"> {{ algorithm.hasStatus }}</span></div>
+        </div>
+
+
+        <div *ngIf="task && task.status && task.status === 'RUNNING'">
+            <!-- TODO: Traducir -->
+            <p class="text-status color-running"> Ejecutandose </p>
+        </div>
+        <div *ngIf="!model && task && task.status && task.status === 'COMPLETED'">
+            <!-- TODO: Traducir -->
+            <p class="text-status color-get-result"> Obteniendo resultados</p>
+        </div>
     </div>
 
-    <app-error-list [maxHeight]="80"></app-error-list>
-</div>
-<div *ngIf="!task">
-    <p> NO HAY TASK, texto provisional.</p>
+    <app-error-list *ngIf="algorithm" [maxHeight]="80" [errorList]="algorithm.errorList"></app-error-list>
 </div>

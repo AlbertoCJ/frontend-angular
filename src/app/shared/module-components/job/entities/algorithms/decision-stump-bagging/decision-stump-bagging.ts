@@ -5,12 +5,14 @@ export class DecisionStumpBagging {
     name: string;
     endpoint: string;
     config: any;
+    errorList: string[];
 
     constructor(data?: any) {
         this.id = data && data.id ? data.id : Algorithms.DECISION_STUMP_BAGGING;
         this.name = data && data.name ? data.name : 'Decision Stump Bagging';
         this.endpoint = data && data.endpoint ? data.endpoint : 'DecisionStump/bagging';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.errorList = data && data.errorList ? data.errorList : [];
     }
 
     dataConfig() {

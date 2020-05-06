@@ -17,9 +17,7 @@ export class ErrorListComponent implements OnInit {
     }
   }
 
-  constructor() {
-    this.errorList = ['Lo otro', 'Lo de más allá', 'Esto', 'Lo otro', 'Lo de más allá', 'Esto', 'Lo otro', 'Lo de más allá', 'Esto'];
-   }
+  constructor() {}
 
   ngOnInit() {
   }

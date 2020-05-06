@@ -5,12 +5,14 @@ export class M5p {
     name: string;
     endpoint: string;
     config: any;
+    errorList: string[];
 
     constructor(data?: any) {
         this.id = data && data.id ? data.id : Algorithms.M5P;
         this.name = data && data.name ? data.name : 'M5P';
         this.endpoint = data && data.endpoint ? data.endpoint : 'M5P';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.errorList = data && data.errorList ? data.errorList : [];
     }
 
     dataConfig() {

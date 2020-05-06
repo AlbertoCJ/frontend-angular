@@ -9,3 +9,33 @@
     font-size: small;
     font-weight: bold;
 }
+
+
+/* .not-start-text {
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 3px;
+} */
+
+.text-status {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.color-not-start {
+    color: #ff6464;
+}
+
+.color-running {
+    color: #ff9e43;
+}
+
+.color-get-result {
+    color: #4141ff;
+}
+
+.text-status-padding {
+    padding-top: 49px;
+    padding-bottom: 49px;
+}

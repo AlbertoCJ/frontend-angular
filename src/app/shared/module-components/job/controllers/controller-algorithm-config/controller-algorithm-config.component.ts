@@ -12,6 +12,7 @@ import { DecisionStumpBagging } from '../../entities/algorithms/decision-stump-b
 import { M5pBagging } from '../../entities/algorithms/m5p-bagging/m5p-bagging';
 import { Libsvm } from '../../entities/algorithms/libsvm/libsvm';
 import { LibsvmBagging } from '../../entities/algorithms/libsvm-bagging/libsvm-bagging';
+import { DataAlgorithms } from '../../entities/data-algorithms';
 
 @Component({
   selector: 'app-controller-algorithm-config',
@@ -24,41 +25,42 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
   Algorithms = Algorithms;
 
   // Algorithms object
-  listAlgorithms: any = {
-    linearRegression: {
-      algorithm: null
-    },
-    linearRegressionBagging: {
-      algorithm: null
-    },
-    IBk: {
-      algorithm: null
-    },
-    ZeroR: {
-      algorithm: null
-    },
-    M5P: {
-      algorithm: null
-    },
-    M5PBagging: {
-      algorithm: null
-    },
-    M5Rules: {
-      algorithm: null
-    },
-    DecisionStump: {
-      algorithm: null
-    },
-    DecisionStumpBagging: {
-      algorithm: null
-    },
-    Libsvm: {
-      algorithm: null
-    },
-    LibsvmBagging: {
-      algorithm: null
-    }
-  };
+  listAlgorithms: DataAlgorithms;
+  // listAlgorithms: any = {
+  //   linearRegression: {
+  //     algorithm: null
+  //   },
+  //   linearRegressionBagging: {
+  //     algorithm: null
+  //   },
+  //   IBk: {
+  //     algorithm: null
+  //   },
+  //   ZeroR: {
+  //     algorithm: null
+  //   },
+  //   M5P: {
+  //     algorithm: null
+  //   },
+  //   M5PBagging: {
+  //     algorithm: null
+  //   },
+  //   M5Rules: {
+  //     algorithm: null
+  //   },
+  //   DecisionStump: {
+  //     algorithm: null
+  //   },
+  //   DecisionStumpBagging: {
+  //     algorithm: null
+  //   },
+  //   Libsvm: {
+  //     algorithm: null
+  //   },
+  //   LibsvmBagging: {
+  //     algorithm: null
+  //   }
+  // };
 
   // Buttons
   btnPrevDisabled: boolean;
@@ -68,6 +70,7 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
   @Output() emitListAlgorithms = new EventEmitter<any>();
 
   constructor() {
+    this.listAlgorithms = new DataAlgorithms();
     this.showAlgoritConf = false;
     this.btnPrevDisabled = false;
     this.btnNextDisabled = false;
@@ -159,17 +162,17 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
   }
 
   isAnyAlgorithms() {
-    if (this.listAlgorithms.linearRegression.algorithm ||
-      this.listAlgorithms.linearRegressionBagging.algorithm ||
-      this.listAlgorithms.IBk.algorithm ||
-      this.listAlgorithms.ZeroR.algorithm ||
-      this.listAlgorithms.M5P.algorithm ||
-      this.listAlgorithms.M5PBagging.algorithm ||
-      this.listAlgorithms.M5Rules.algorithm ||
-      this.listAlgorithms.DecisionStump.algorithm ||
-      this.listAlgorithms.DecisionStumpBagging.algorithm ||
-      this.listAlgorithms.Libsvm.algorithm ||
-      this.listAlgorithms.LibsvmBagging.algorithm) {
+    if (this.listAlgorithms.linearRegression && this.listAlgorithms.linearRegression.algorithm ||
+      this.listAlgorithms.linearRegressionBagging && this.listAlgorithms.linearRegressionBagging.algorithm ||
+      this.listAlgorithms.IBk && this.listAlgorithms.IBk.algorithm ||
+      this.listAlgorithms.ZeroR && this.listAlgorithms.ZeroR.algorithm ||
+      this.listAlgorithms.M5P && this.listAlgorithms.M5P.algorithm ||
+      this.listAlgorithms.M5PBagging && this.listAlgorithms.M5PBagging.algorithm ||
+      this.listAlgorithms.M5Rules && this.listAlgorithms.M5Rules.algorithm ||
+      this.listAlgorithms.DecisionStump && this.listAlgorithms.DecisionStump.algorithm ||
+      this.listAlgorithms.DecisionStumpBagging && this.listAlgorithms.DecisionStumpBagging.algorithm ||
+      this.listAlgorithms.Libsvm && this.listAlgorithms.Libsvm.algorithm ||
+      this.listAlgorithms.LibsvmBagging && this.listAlgorithms.LibsvmBagging.algorithm) {
       return true;
     }
     return false;

@@ -22,9 +22,9 @@ const routes: Routes = [ // TODO: AdminRoleGuard <-- Rol para admin
   { path: 'job/:id', component: JobDetailsPageComponent, canActivate: [AuthGuard, UserRoleGuard] },
   { path: 'datasets-upload', component: DatasetsUploadPageComponent, canActivate: [AuthGuard, UserRoleGuard] },
   { path: 'datasets-list', component: DatasetsListPageComponent, canActivate: [AuthGuard, UserRoleGuard] },
-  { path: 'container-list', component: ContainerListPageComponent, canActivate: [AuthGuard, UserRoleGuard] },
   { path: 'administration-users', component: AdministrationUsersPageComponent, canActivate: [AuthGuard, AdminRoleGuard] },
   { path: 'configurations', component: AdministrationConfigPageComponent, canActivate: [AuthGuard, AdminRoleGuard] },
+  { path: 'container-list', component: ContainerListPageComponent, canActivate: [AuthGuard, AdminRoleGuard] },
   { path: '**', pathMatch: 'full', redirectTo: 'login' }
 ];
 

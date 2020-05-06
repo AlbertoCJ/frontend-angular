@@ -5,12 +5,14 @@ export class DecisionStump {
     name: string;
     endpoint: string;
     config: any;
+    errorList: string[];
 
     constructor(data?: any) {
         this.id = data && data.id ? data.id : Algorithms.DECISION_STUMP;
         this.name = data && data.name ? data.name : 'Decision Stump';
         this.endpoint = data && data.endpoint ? data.endpoint : 'DecisionStump';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.errorList = data && data.errorList ? data.errorList : [];
     }
 
     dataConfig() {

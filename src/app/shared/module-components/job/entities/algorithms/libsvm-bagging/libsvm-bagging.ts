@@ -5,12 +5,14 @@ export class LibsvmBagging {
     name: string;
     endpoint: string;
     config: any;
+    errorList: string[];
 
     constructor(data?: any) {
         this.id = data && data.id ? data.id : Algorithms.LIBSVM_BAGGING;
         this.name = data && data.name ? data.name : 'Libsvm Bagging';
         this.endpoint = data && data.endpoint ? data.endpoint : 'libsvm/bagging';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.errorList = data && data.errorList ? data.errorList : [];
     }
 
     dataConfig() {

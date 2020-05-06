@@ -1,7 +1,7 @@
 <app-header-title [textTitle]="'Confirmación'">
     <div class="ui-fluid form-container">
 
-        <div *ngIf="formJobData">
+        <!-- <div *ngIf="formJobData">
             <p>Datos job:</p>
             {{ formJobData | json }}
         </div>
@@ -19,7 +19,96 @@
         <div *ngIf="dataWorkers">
             <p>Worker:</p>
             {{ dataWorkers | json }}
+        </div> -->
+
+        <div class="sheet-config">
+            <div class="sheet-section" *ngIf="formJobData">
+                <div class="title-section">
+                    <span>Job</span>
+                </div>
+                <div class="p-grid">
+                    <div class="p-lg-3 p-md-3 p-sm-4 p-col-4 label-section">
+                        <span>Nombre:</span>
+                    </div>
+                    <div class="p-lg-9 p-md-9 p-sm-8 p-col-8 value-section">
+                        {{ formJobData.name }}
+                    </div>
+                </div>
+                <div class="p-grid">
+                    <div class="p-lg-3 p-md-3 p-sm-4 p-col-4 label-section">
+                        <span>Descripción:</span>
+                    </div>
+                    <div class="p-lg-9 p-md-9 p-sm-8 p-col-8 value-section">
+                        {{ formJobData.description }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="sheet-section" *ngIf="dataset">
+                <div class="title-section">
+                    <span>Dataset</span>
+                </div>
+                <div class="p-grid">
+                    <div class="p-lg-3 p-md-3 p-sm-4 p-col-4 label-section">
+                        <span>Descripción:</span>
+                    </div>
+                    <div class="p-lg-9 p-md-9 p-sm-8 p-col-8 value-section">
+                        {{ dataset.description }}
+                    </div>
+                </div>
+                <div class="p-grid">
+                    <div class="p-lg-3 p-md-3 p-sm-4 p-col-4 label-section">
+                        <span>Atributos:</span>
+                    </div>
+                    <div class="p-lg-9 p-md-9 p-sm-8 p-col-8 value-section">
+                        <p *ngFor="let attribute of dataset.attributes"> - {{ attribute }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sheet-section" *ngIf="listAlgorithms">
+                <div class="title-section">
+                    <span>Lista de algoritmos</span>
+                </div>
+                <div class="p-grid" *ngFor="let algorithm of dataAlgorithms">
+                    <div class="p-col-12 label-algorithm">
+                        <p>{{ algorithm.algorithmName }}</p>
+                    </div>
+                    <div class="p-lg-2 p-md-2 p-sm-4 p-col-4"></div>
+                    <div class="p-lg-10 p-md-10 p-sm-8 p-col-8">
+                        <!-- 
+                        <div class="p-grid"> -->
+                        <div class="p-grid" *ngFor="let config of algorithm.configs">
+                            <div class="p-lg-6 p-md-7 p-sm-7 p-col-8 label-config">
+                                <span>{{ config.label }}</span>
+                            </div>
+                            <div class="p-lg-6 p-md-5 p-sm-5 p-col-4 value-config">
+                                {{ config.value }}
+                            </div>
+                        </div>
+                        <!-- </div> -->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="sheet-section" *ngIf="dataWorkers">
+                <div class="title-section">
+                    <span>Contenedores</span>
+                </div>
+                <div class="p-grid">
+                    <div class="p-lg-5 p-md-5 p-sm-6 p-col-7 label-section">
+                        <span>Nº de contenedores:</span>
+                    </div>
+                    <div class="p-lg-7 p-md-7 p-sm-6 p-col-5 value-section">
+                        {{ dataWorkers.numContainers }}
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+
 
         <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
             <span slot="start">

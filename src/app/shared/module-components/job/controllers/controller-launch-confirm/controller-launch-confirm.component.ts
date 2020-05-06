@@ -9,6 +9,7 @@ import { DockerService } from '../../../../../core/services/docker/docker.servic
 import { AlertService } from '../../../../../core/services/alert/alert.service';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { Router } from '@angular/router';
+import { DataAlgorithms } from '../../entities/data-algorithms';
 
 @Component({
   selector: 'app-controller-launch-confirm',
@@ -22,9 +23,36 @@ export class ControllerLaunchConfirmComponent implements OnInit {
   btnLaunchLabel: string;
   btnLaunchStyleClass: string;
 
+  listAlgorithms: DataAlgorithms;
+  dataAlgorithms: any[] = [];
+
   @Input() formJobData: FormJobData;
   @Input() dataset: Dataset;
-  @Input() listAlgorithms: any;
+  @Input('listAlgorithms') set setListAlgorithms(listAlgorithms: any) {
+    if (listAlgorithms) {
+      this.listAlgorithms = listAlgorithms;
+      for (const key in listAlgorithms) {
+        if (listAlgorithms.hasOwnProperty(key)) {
+          const value = listAlgorithms[key];
+
+          if (value.algorithm) {
+            const configs = value.algorithm.config;
+            const configsParsed = [];
+            for (const keyConf in configs) {
+              if (configs.hasOwnProperty(keyConf)) {
+                // configs.push({ label: this.splitCamelCaseToString(this.capitalize(keyConf)), value: configs[keyConf] });
+                configsParsed.push({ label: keyConf, value: configs[keyConf] });
+              }
+            }
+
+            this.dataAlgorithms.push({ algorithmName: value.algorithm.name, configs: configsParsed });
+          }
+        }
+      }
+      console.log(this.dataAlgorithms);
+
+    }
+  }
   @Input() dataWorkers: LocalWorkers;
 
   @Output() emitStep = new EventEmitter<number>();
