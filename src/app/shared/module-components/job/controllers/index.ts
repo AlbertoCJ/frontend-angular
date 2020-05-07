@@ -4,6 +4,8 @@ import { ControllerLaunchWorkerComponent } from './controller-launch-worker/cont
 import { ControllerLaunchConfirmComponent } from './controller-launch-confirm/controller-launch-confirm.component';
 import { ControllerListJobComponent } from './controller-list-job/controller-list-job.component';
 import { ControllerJobDetailsComponent } from './controller-job-details/controller-job-details.component';
+import { ControllerListJobRunningComponent } from './controller-list-job-running/controller-list-job-running.component';
+import { ControllerListJobLatestsComponent } from './controller-list-job-latests/controller-list-job-latests.component';
 
 export const JOB_CONTROLLERS = [
     ControllerSetectDatasetComponent,
@@ -11,5 +13,7 @@ export const JOB_CONTROLLERS = [
     ControllerLaunchWorkerComponent,
     ControllerLaunchConfirmComponent,
     ControllerListJobComponent,
-    ControllerJobDetailsComponent
+    ControllerJobDetailsComponent,
+    ControllerListJobRunningComponent,
+    ControllerListJobLatestsComponent
 ];

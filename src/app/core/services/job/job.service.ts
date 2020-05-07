@@ -62,6 +62,40 @@ export class JobService {
 
   }
 
+  getListJobsRunning(page: number, limit: number) {
+
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('limit', limit.toString());
+
+    return this.http.get(`${ this.url }/job/running`, { params }).pipe(
+      map( (resp: any) => {
+        const respJobs = resp.jobs;
+        const listJobs = new ListJob(respJobs);
+        return listJobs;
+      })
+    );
+
+  }
+
+  getListJobsLatests(limit: number) {
+
+    const page = 1;
+
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('limit', limit.toString());
+
+    return this.http.get(`${ this.url }/job/latests`, { params }).pipe(
+      map( (resp: any) => {
+        const respJobs = resp.jobs;
+        const listJobs = new ListJob(respJobs);
+        return listJobs;
+      })
+    );
+
+  }
+
   getJob(id: string) {
     return this.http.get(`${ this.url }/job/${ id }`).pipe(
       map( (resp: any) => {

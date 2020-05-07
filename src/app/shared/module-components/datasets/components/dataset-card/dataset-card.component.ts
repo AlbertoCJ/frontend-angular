@@ -50,6 +50,7 @@ export class DatasetCardComponent implements OnInit {
         this.messageService.add({severity: 'success', detail: 'Descargado correctamente'}); // TODO: Traducir
       },
       err => {
+        console.log(err);
         this.httpError.checkError(err, 'Alerta', 'Error al descargar dataset'); // TODO: Traducir
       }
     );

@@ -31,7 +31,7 @@ export class ControllerListDatasetComponent implements OnInit {
               private httpError: HttpErrorService) {
     // this.descriptionSearch = '';
     this.page = 1;
-    this.limit = 4;
+    this.limit = 8;
     this.listDataset = new ListDatasets();
   }
 

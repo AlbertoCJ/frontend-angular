@@ -18,7 +18,7 @@ export class HttpErrorService {
         break;
 
       default:
-        this.alertService.setAlertShowMore(title, message, err.message);
+        this.alertService.setAlertShowMore(title, message, err.error.message);
         break;
     }
   }

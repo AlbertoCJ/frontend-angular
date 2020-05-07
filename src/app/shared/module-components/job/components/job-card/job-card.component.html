@@ -52,10 +52,10 @@
                                         <app-remove-button [disabled]="disabledButtonRemove" (emitClicked)="jobDetails()"></app-remove-button>
                                     </span> -->
                                 <span class="btn-panel">
-                                        <app-remove-button [disabled]="disabledButtonRemove" (emitClicked)="removeConfirm()"></app-remove-button>
+                                        <app-remove-button *ngIf="job.hasStatus !== 'RUNNING'" [disabled]="disabledButtonRemove" (emitClicked)="removeConfirm()"></app-remove-button>
                                     </span>
                                 <span class="btn-panel">
-                                        <app-edit-button [disabled]="disabledButtonEdit" (emitClicked)="edit()"></app-edit-button>
+                                        <app-edit-button *ngIf="job.hasStatus !== 'RUNNING'" [disabled]="disabledButtonEdit" (emitClicked)="edit()"></app-edit-button>
                                     </span>
                                 <span class="btn-panel">
                                         <app-view-button [disabled]="disabledButtonView" (emitClicked)="select()"></app-view-button>

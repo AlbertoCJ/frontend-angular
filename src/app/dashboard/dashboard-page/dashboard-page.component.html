@@ -1,1 +1,9 @@
-<p>dashboard-page works!</p>
+<app-header-title [textTitle]="'Listado Job Ejecutandose'">
+    <app-controller-list-job-running [clickCard]="true">
+    </app-controller-list-job-running>
+</app-header-title>
+
+<app-header-title [textTitle]="'Últimos 5 Jobs'">
+    <app-controller-list-job-latests [clickCard]="true">
+    </app-controller-list-job-latests>
+</app-header-title>

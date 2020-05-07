@@ -75,13 +75,13 @@ export class ControllerLaunchConfirmComponent implements OnInit {
   }
 
   btnLaunchClicked() {
-    alert('Lanzado');
+    // alert('Lanzado');
 
     this.dockerService.runContainers(this.dataWorkers.numContainers).subscribe( // this.containers
       respContainers => {
         // this.listDataset = listDataset;
         console.log(respContainers.containers);
-        alert('Container');
+        // alert('Container');
         this.jobService.launchJob(this.formJobData, this.dataset, this.listAlgorithms, respContainers.containers).subscribe(
           respJob => {
             // this.listDataset = listDataset;
@@ -89,10 +89,7 @@ export class ControllerLaunchConfirmComponent implements OnInit {
             this.router.navigate([`job/${respJob.id}`]);
           },
           err => {
-            // TODO: Gestionar bien los errores
-            // this.httpError.checkError(err, 'Alerta', 'Error al borrar dataset'); // TODO: Traducir
-            // this.alertService.setAlertShowMore('Alerta', 'Error al obtener listado de datasets', err.message);
-            console.log(err);
+            this.httpError.checkError(err, 'Alerta', 'Error al lanzar rutina para generar job.'); // TODO: Traducir
           }
         );
 
