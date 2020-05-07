@@ -28,8 +28,9 @@ export class ControllerLaunchConfirmComponent implements OnInit {
 
   @Input() formJobData: FormJobData;
   @Input() dataset: Dataset;
-  @Input('listAlgorithms') set setListAlgorithms(listAlgorithms: any) {
+  @Input('listAlgorithms') set setListAlgorithms(listAlgorithms: DataAlgorithms) {
     if (listAlgorithms) {
+      this.dataAlgorithms = [];
       this.listAlgorithms = listAlgorithms;
       for (const key in listAlgorithms) {
         if (listAlgorithms.hasOwnProperty(key)) {
@@ -49,8 +50,6 @@ export class ControllerLaunchConfirmComponent implements OnInit {
           }
         }
       }
-      console.log(this.dataAlgorithms);
-
     }
   }
   @Input() dataWorkers: LocalWorkers;

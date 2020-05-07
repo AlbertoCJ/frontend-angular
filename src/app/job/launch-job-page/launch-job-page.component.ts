@@ -5,6 +5,7 @@ import { Dataset } from 'src/app/shared/module-components/datasets/entities';
 import { LocalWorkers } from '../../shared/module-components/job/entities/workers/local-workers';
 import { Steps } from 'src/app/shared/module-components/job/enums/steps.enum';
 import { FormJobData } from '../../shared/module-components/job/entities/form-job-data/form-job-data';
+import { DataAlgorithms } from '../../shared/module-components/job/entities/data-algorithms';
 
 @Component({
   selector: 'app-launch-job-page',
@@ -17,7 +18,7 @@ export class LaunchJobPageComponent implements OnInit {
   activeTab: number;
   formJobData: FormJobData;
   datasetSelected: Dataset;
-  listAlgorithms: any; // Object created in ControllerAlgorithmConfigComponent
+  listAlgorithms: DataAlgorithms;
   dataWorkers: LocalWorkers;
 
   constructor() {
@@ -48,7 +49,7 @@ export class LaunchJobPageComponent implements OnInit {
   }
 
   setDataWorkers(dataWorkers: LocalWorkers) {
-    console.log(dataWorkers);
+    // console.log(dataWorkers);
     this.dataWorkers = dataWorkers;
   }
 
@@ -78,9 +79,7 @@ export class LaunchJobPageComponent implements OnInit {
     this.datasetSelected = dataset;
   }
 
-  setListAlgorithms(listAlgorithms: any) {
-    this.listAlgorithms = null;
-    this.listAlgorithms = listAlgorithms;
-    console.log(listAlgorithms);
+  setListAlgorithms(listAlgorithms: DataAlgorithms) {
+    this.listAlgorithms = new DataAlgorithms(listAlgorithms);
   }
 }

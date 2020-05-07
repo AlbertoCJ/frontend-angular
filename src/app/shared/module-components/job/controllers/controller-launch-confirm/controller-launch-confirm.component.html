@@ -1,26 +1,6 @@
 <app-header-title [textTitle]="'Confirmación'">
     <div class="ui-fluid form-container">
 
-        <!-- <div *ngIf="formJobData">
-            <p>Datos job:</p>
-            {{ formJobData | json }}
-        </div>
-        <br>
-        <div *ngIf="dataset">
-            <p>Dataset:</p>
-            {{ dataset | json }}
-        </div>
-        <br>
-        <div *ngIf="listAlgorithms">
-            <p>Algoritmos:</p>
-            {{ listAlgorithms | json }}
-        </div>
-        <br>
-        <div *ngIf="dataWorkers">
-            <p>Worker:</p>
-            {{ dataWorkers | json }}
-        </div> -->
-
         <div class="sheet-config">
             <div class="sheet-section" *ngIf="formJobData">
                 <div class="title-section">
@@ -66,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="sheet-section" *ngIf="listAlgorithms">
+            <div class="sheet-section" *ngIf="listAlgorithms && dataAlgorithms.length > 0">
                 <div class="title-section">
                     <span>Lista de algoritmos</span>
                 </div>
