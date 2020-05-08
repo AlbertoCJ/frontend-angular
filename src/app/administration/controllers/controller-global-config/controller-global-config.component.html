@@ -1,0 +1,92 @@
+<div *ngIf="globalConfig" class="ui-fluid form-container">
+    <!-- TODO: Traducir todos los textos -->
+    <div class="box-main">
+        <div class="super-title">
+            <p> Contenedores Locales </p>
+        </div>
+
+        <div class="box-param">
+            <div class="p-grid">
+                <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
+                    <span class="label">Nº Cont. Máx. Globales:</span>
+                </div>
+                <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
+                    {{ globalConfig.localContainer.numContMaxGlobal }}
+                </div>
+            </div>
+            <div class="p-grid">
+                <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
+                    <span class="label">Nº Cont. Máx. Por Usuario:</span>
+                </div>
+                <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
+                    {{ globalConfig.localContainer.numContMaxUser }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-main">
+        <div class="super-title">
+            <p> Mostrar en listados </p>
+        </div>
+
+        <div class="box-section">
+            <div class="title">
+                <span>Dashboard</span>
+            </div>
+
+            <div class="box-param">
+                <div class="p-grid">
+                    <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
+                        <span class="label">Nº Cont. Máx. Globales:</span>
+                    </div>
+                    <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
+                        {{ globalConfig.localContainer.numContMaxGlobal }}
+                    </div>
+                </div>
+                <div class="p-grid">
+                    <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
+                        <span class="label">Nº Cont. Máx. Por Usuario:</span>
+                    </div>
+                    <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
+                        {{ globalConfig.localContainer.numContMaxUser }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-section">
+            <div class="title">
+                <span>Dataset</span>
+            </div>
+
+            <div class="box-param">
+                <div class="p-grid">
+                    <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
+                        <span class="label">Nº Cont. Máx. Globales:</span>
+                    </div>
+                    <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
+                        {{ globalConfig.localContainer.numContMaxGlobal }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-section">
+            <div class="title">
+                <span>Job</span>
+            </div>
+
+            <div class="box-param">
+                <div class="p-grid">
+                    <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
+                        <span class="label">Nº Cont. Máx. Globales:</span>
+                    </div>
+                    <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
+                        {{ globalConfig.localContainer.numContMaxGlobal }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

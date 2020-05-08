@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import * as jwt_decode from 'jwt-decode';
 import { User } from '../../entities/user/user';
+import { GlobalConfig } from '../../../administration/entities/global-config';
+import { GlobalConfigService } from '../global-config/global-config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,8 @@ export class AuthService {
   userToken: string;
 
   constructor(private http: HttpClient,
-              private router: Router) { }
+              private router: Router,
+              private globalConfigService: GlobalConfigService) { }
 
 
   login( login: Login ) {
@@ -35,16 +38,21 @@ export class AuthService {
     return this.http.post(`${ this.url }/login`, authData).pipe(
       map( resp => {
         this.saveToken( resp['token']);
+        this.globalConfigService.getGlobalConfig().subscribe( globalConfig => {
+          // this.globalConfigService.saveGlobalConfigSessionStorage( globalConfig);
+        }); // TODO Gestionar si da error
         return resp;
       })
     );
   }
 
   logout() {
+    this.globalConfigService.removeGlobalConfigSessionStorage();
     this.removeToken();
     this.router.navigateByUrl('/login');
   }
 
+  // Gestionar token
   removeToken() {
     sessionStorage.removeItem('token');
   }
@@ -53,21 +61,6 @@ export class AuthService {
     this.userToken = token;
     sessionStorage.setItem('token', token);
   }
-
-  // nuevoUsuario( user: User ) {
-  //   const authData = {
-  //     name: user.name,
-  //     email: user.email,
-  //     password: user.password
-  //   };
-
-  //   return this.http.post(`${ this.url }/user`, authData).pipe(
-  //     map( resp => {
-  //       this.saveToken( resp['token']);
-  //       return resp;
-  //     })
-  //   );
-  // }
 
   getToken() {
     if (sessionStorage.getItem('token')) {

@@ -1,0 +1,50 @@
+.box-main {
+    padding: 8px;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+}
+
+.box-section {
+    padding: 8px;
+}
+
+.box-param {
+    padding: 8px;
+    background-color: #fffcee;
+    border: 1px solid #c9c9c9;
+    margin-top: 6px;
+}
+
+.super-title {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.super-title p {
+    border-bottom: 2px solid blue;
+}
+
+.title {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.title span {
+    border-bottom: 1px solid blue;
+}
+
+.label-section {
+    text-align: right;
+    /* padding: 14px; */
+}
+
+.label {
+    font-weight: bold;
+    font-size: small;
+}
+
+.value-section {
+    /* padding: 14px; */
+}
+
+.value {}
