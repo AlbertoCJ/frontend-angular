@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { NgForm } from '@angular/forms';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { ViewMode } from '../../../../../core/enums/view-mode.enum';
+import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
 
 @Component({
   selector: 'app-controller-list-dataset',
@@ -28,10 +29,11 @@ export class ControllerListDatasetComponent implements OnInit {
 
   constructor(private datasetService: DatasetService,
               private messageService: MessageService,
-              private httpError: HttpErrorService) {
+              private httpError: HttpErrorService,
+              private globalConfigService: GlobalConfigService) {
     // this.descriptionSearch = '';
     this.page = 1;
-    this.limit = 8;
+    this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.dataset.showDatasets;
     this.listDataset = new ListDatasets();
   }
 

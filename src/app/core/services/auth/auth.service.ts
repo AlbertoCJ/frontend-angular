@@ -6,9 +6,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import * as jwt_decode from 'jwt-decode';
 import { User } from '../../entities/user/user';
-import { GlobalConfig } from '../../../administration/entities/global-config';
 import { GlobalConfigService } from '../global-config/global-config.service';
-import { async } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -37,13 +35,8 @@ export class AuthService {
     // };
 
     return this.http.post(`${ this.url }/login`, authData).pipe(
-      map( async(resp) => {
+      map( resp => {
         this.saveToken( resp['token']);
-        await this.globalConfigService.getGlobalConfig().subscribe( globalConfig => {
-          // this.globalConfigService.saveGlobalConfigSessionStorage( globalConfig);
-          console.log('1');
-        }); // TODO Gestionar si da error
-        console.log('2');
         return resp;
       })
     );

@@ -13,6 +13,7 @@ import { M5pBagging } from '../../entities/algorithms/m5p-bagging/m5p-bagging';
 import { Libsvm } from '../../entities/algorithms/libsvm/libsvm';
 import { LibsvmBagging } from '../../entities/algorithms/libsvm-bagging/libsvm-bagging';
 import { DataAlgorithms } from '../../entities/data-algorithms';
+import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
 
 @Component({
   selector: 'app-controller-algorithm-config',
@@ -23,44 +24,10 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
 
   showAlgoritConf: boolean;
   Algorithms = Algorithms;
+  gcAlgorithms: any;
 
   // Algorithms object
   listAlgorithms: DataAlgorithms;
-  // listAlgorithms: any = {
-  //   linearRegression: {
-  //     algorithm: null
-  //   },
-  //   linearRegressionBagging: {
-  //     algorithm: null
-  //   },
-  //   IBk: {
-  //     algorithm: null
-  //   },
-  //   ZeroR: {
-  //     algorithm: null
-  //   },
-  //   M5P: {
-  //     algorithm: null
-  //   },
-  //   M5PBagging: {
-  //     algorithm: null
-  //   },
-  //   M5Rules: {
-  //     algorithm: null
-  //   },
-  //   DecisionStump: {
-  //     algorithm: null
-  //   },
-  //   DecisionStumpBagging: {
-  //     algorithm: null
-  //   },
-  //   Libsvm: {
-  //     algorithm: null
-  //   },
-  //   LibsvmBagging: {
-  //     algorithm: null
-  //   }
-  // };
 
   // Buttons
   btnPrevDisabled: boolean;
@@ -69,11 +36,12 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
   @Output() emitStep = new EventEmitter<number>();
   @Output() emitListAlgorithms = new EventEmitter<any>();
 
-  constructor() {
+  constructor(private globalConfigService: GlobalConfigService) {
     this.listAlgorithms = new DataAlgorithms();
     this.showAlgoritConf = false;
     this.btnPrevDisabled = false;
     this.btnNextDisabled = false;
+    this.gcAlgorithms = this.globalConfigService.getGlobalConfigSessionStorage().algorithms;
    }
 
   ngOnInit() {

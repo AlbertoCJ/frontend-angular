@@ -3,6 +3,7 @@ import { ListJob } from '../../entities/list-job';
 import { Job } from '../../entities/job';
 import { JobService } from '../../../../../core/services/job/job.service';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
 
 @Component({
   selector: 'app-controller-list-job-latests',
@@ -21,8 +22,9 @@ export class ControllerListJobLatestsComponent implements OnInit {
   @Output() emitEditJob = new EventEmitter<Job>();
 
   constructor(private jobService: JobService,
-              private httpError: HttpErrorService) {
-    this.limit = 5;
+              private httpError: HttpErrorService,
+              private globalConfigService: GlobalConfigService) {
+    this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.dashboard.showLatestsJobs;
     this.listJobLatests = new ListJob();
   }
 

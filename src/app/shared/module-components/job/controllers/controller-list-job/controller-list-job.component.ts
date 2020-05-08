@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { ListJob } from '../../entities/list-job';
 import { NgForm } from '@angular/forms';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
 
 @Component({
   selector: 'app-controller-list-job',
@@ -27,9 +28,10 @@ export class ControllerListJobComponent implements OnInit {
 
   constructor(private jobService: JobService,
               private messageService: MessageService,
-              private httpError: HttpErrorService) {
+              private httpError: HttpErrorService,
+              private globalConfigService: GlobalConfigService) {
     this.page = 1;
-    this.limit = 4;
+    this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.job.showJobs;
     this.listJob = new ListJob();
   }
 

@@ -27,9 +27,6 @@ export class GlobalConfigService {
   }
 
   updateGlobalConfig(globalConfigUpdate: GlobalConfig) {
-    // const formData: FormData = new FormData();
-    // formData.append('localContainer', globalConfigUpdate.localContainer);
-    // formData.append('showLists', globalConfigUpdate.showLists);
 
     return this.http.put(`${ this.url }/globalConfig/${ globalConfigUpdate.id }`, globalConfigUpdate ).pipe(
       map( (resp: any) => {

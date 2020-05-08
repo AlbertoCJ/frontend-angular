@@ -3,6 +3,7 @@ import { ListJob } from '../../entities/list-job';
 import { Job } from '../../entities/job';
 import { JobService } from '../../../../../core/services/job/job.service';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
 
 @Component({
   selector: 'app-controller-list-job-running',
@@ -22,9 +23,10 @@ export class ControllerListJobRunningComponent implements OnInit {
   @Output() emitEditJob = new EventEmitter<Job>();
 
   constructor(private jobService: JobService,
-              private httpError: HttpErrorService) {
+              private httpError: HttpErrorService,
+              private globalConfigService: GlobalConfigService) {
     this.page = 1;
-    this.limit = 2;
+    this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.dashboard.showJobsRunning;
     this.listJobRunning = new ListJob();
   }
 

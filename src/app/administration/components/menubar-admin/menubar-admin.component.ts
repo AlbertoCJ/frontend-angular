@@ -16,14 +16,14 @@ export class MenubarAdminComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {
-          label: 'Gestión de usuarios',
-          icon: 'pi pi-users',
-          routerLink: ['/administration-users']
-      },
-      {
         label: 'Configuración',
         icon: 'pi pi-cog',
         routerLink: ['/configurations']
+      },
+      {
+          label: 'Gestión de usuarios',
+          icon: 'pi pi-users',
+          routerLink: ['/administration-users']
       },
       {
         label: 'Gestión Docker',

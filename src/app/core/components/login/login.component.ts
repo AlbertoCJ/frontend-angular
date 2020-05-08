@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Login } from '../../entities/login/login';
+import { GlobalConfigService } from '../../services/global-config/global-config.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   showPass = false;
 
   constructor(private auth: AuthService,
-              private router: Router) {
+              private router: Router,
+              private globalConfigService: GlobalConfigService) {
     this.loginForm = new FormGroup({
       email: new FormControl(''),
       password: new FormControl('')
@@ -40,12 +42,17 @@ export class LoginComponent implements OnInit {
       this.login.password = form.value.password;
       this.auth.login(this.login).subscribe( resp => {
 
-        const user = this.auth.getUser();
-        if (user && user.role === 'USER_ROLE') {
-          this.router.navigateByUrl('dashboard');
-        } else if (user && user.role === 'ADMIN_ROLE') {
-          this.router.navigateByUrl('administration-users');
-        }
+        this.globalConfigService.getGlobalConfig().subscribe( globalConfig => {
+
+          const user = this.auth.getUser();
+          if (user && user.role === 'USER_ROLE') {
+            this.router.navigateByUrl('dashboard');
+          } else if (user && user.role === 'ADMIN_ROLE') {
+            this.router.navigateByUrl('configurations');
+          }
+
+        }); // TODO Gestionar si da error
+
 
       }, (err) => {
         if (err.status === 401) {

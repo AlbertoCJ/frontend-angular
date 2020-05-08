@@ -38,6 +38,17 @@ export class ControllerGlobalConfigComponent implements OnInit {
     this.globalConfigForm = this.fb.group({
       numContMaxGlobal: [10, [ Validators.min(2) ]],
       numContMaxUser: [4, [ Validators.min(1) ]],
+      linearRegression: [true],
+      linearRegressionBagging: [true],
+      IBk: [true],
+      ZeroR: [true],
+      M5P: [true],
+      M5PBagging: [true],
+      M5Rules: [true],
+      DecisionStump: [true],
+      DecisionStumpBagging: [true],
+      Libsvm: [true],
+      LibsvmBagging: [true],
       showLatestsJobs: [5, [ Validators.min(2), Validators.max(10) ]],
       showJobsRunning: [2, [ Validators.min(2), Validators.max(6) ]],
       showDatasets: [8, [ this.validatorsService.numDatasetShowValid ]],
@@ -50,6 +61,17 @@ export class ControllerGlobalConfigComponent implements OnInit {
     this.globalConfigForm.patchValue({
       numContMaxGlobal: this.globalConfig.localContainer.numContMaxGlobal,
       numContMaxUser: this.globalConfig.localContainer.numContMaxUser,
+      linearRegression: this.globalConfig.algorithms.linearRegression,
+      linearRegressionBagging: this.globalConfig.algorithms.linearRegressionBagging,
+      IBk: this.globalConfig.algorithms.IBk,
+      ZeroR: this.globalConfig.algorithms.ZeroR,
+      M5P: this.globalConfig.algorithms.M5P,
+      M5PBagging: this.globalConfig.algorithms.M5PBagging,
+      M5Rules: this.globalConfig.algorithms.M5Rules,
+      DecisionStump: this.globalConfig.algorithms.DecisionStump,
+      DecisionStumpBagging: this.globalConfig.algorithms.DecisionStumpBagging,
+      Libsvm: this.globalConfig.algorithms.Libsvm,
+      LibsvmBagging: this.globalConfig.algorithms.LibsvmBagging,
       showLatestsJobs: this.globalConfig.showLists.dashboard.showLatestsJobs,
       showJobsRunning: this.globalConfig.showLists.dashboard.showJobsRunning,
       showDatasets: this.globalConfig.showLists.dataset.showDatasets,
@@ -71,11 +93,23 @@ export class ControllerGlobalConfigComponent implements OnInit {
     } else {
       this.globalConfig.localContainer.numContMaxGlobal = this.globalConfigForm.value.numContMaxGlobal;
       this.globalConfig.localContainer.numContMaxUser = this.globalConfigForm.value.numContMaxUser;
+
+      this.globalConfig.algorithms.linearRegression = this.globalConfigForm.value.linearRegression;
+      this.globalConfig.algorithms.linearRegressionBagging = this.globalConfigForm.value.linearRegressionBagging;
+      this.globalConfig.algorithms.IBk = this.globalConfigForm.value.IBk;
+      this.globalConfig.algorithms.ZeroR = this.globalConfigForm.value.ZeroR;
+      this.globalConfig.algorithms.M5P = this.globalConfigForm.value.M5P;
+      this.globalConfig.algorithms.M5PBagging = this.globalConfigForm.value.M5PBagging;
+      this.globalConfig.algorithms.M5Rules = this.globalConfigForm.value.M5Rules;
+      this.globalConfig.algorithms.DecisionStump = this.globalConfigForm.value.DecisionStump;
+      this.globalConfig.algorithms.DecisionStumpBagging = this.globalConfigForm.value.DecisionStumpBagging;
+      this.globalConfig.algorithms.Libsvm = this.globalConfigForm.value.Libsvm;
+      this.globalConfig.algorithms.LibsvmBagging = this.globalConfigForm.value.LibsvmBagging;
+
       this.globalConfig.showLists.dashboard.showLatestsJobs = this.globalConfigForm.value.showLatestsJobs;
       this.globalConfig.showLists.dashboard.showJobsRunning = this.globalConfigForm.value.showJobsRunning;
       this.globalConfig.showLists.dataset.showDatasets = this.globalConfigForm.value.showDatasets;
       this.globalConfig.showLists.job.showJobs = this.globalConfigForm.value.showJobs;
-      console.log(this.globalConfig);
 
       this.globalConfigService.updateGlobalConfig(this.globalConfig).subscribe( (resp: GlobalConfig) => {
         this.messageService.add({severity: 'success', detail: 'Actualizado correctamente'}); // TODO: Traducir
