@@ -27,15 +27,15 @@ export class GlobalConfigService {
   }
 
   updateGlobalConfig(globalConfigUpdate: GlobalConfig) {
-    const formData: FormData = new FormData();
-    formData.append('localContainer', globalConfigUpdate.localContainer);
-    formData.append('showLists', globalConfigUpdate.showLists);
+    // const formData: FormData = new FormData();
+    // formData.append('localContainer', globalConfigUpdate.localContainer);
+    // formData.append('showLists', globalConfigUpdate.showLists);
 
-    return this.http.put(`${ this.url }/globalConfig/${ globalConfigUpdate.id }`, formData ).pipe(
+    return this.http.put(`${ this.url }/globalConfig/${ globalConfigUpdate.id }`, globalConfigUpdate ).pipe(
       map( (resp: any) => {
         const respGlobalConfig = resp.globalConfig;
         const globalConfig = new GlobalConfig(respGlobalConfig);
-        this.saveGlobalConfigSessionStorage(respGlobalConfig);
+        this.saveGlobalConfigSessionStorage(globalConfig);
         return globalConfig;
       })
     );

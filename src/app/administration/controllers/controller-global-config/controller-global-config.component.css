@@ -18,6 +18,7 @@
 .super-title {
     font-weight: bold;
     font-size: x-large;
+    text-align: center;
 }
 
 .super-title p {
@@ -27,6 +28,7 @@
 .title {
     font-weight: bold;
     font-size: larger;
+    text-align: center;
 }
 
 .title span {
@@ -48,3 +50,27 @@
 }
 
 .value {}
+
+.undo {
+    font-size: 12px;
+}
+
+.undo:hover {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.help-text {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+:host ::ng-deep .showDatasets-invalid .ng-invalid .ui-spinner .ui-spinner-input {
+    border-color: brown;
+}
+
+.help-text-invalid {
+    color: brown;
+}

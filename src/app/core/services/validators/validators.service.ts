@@ -25,4 +25,16 @@ export class ValidatorsService {
     };
   }
 
+  numDatasetShowValid( control: FormControl ) {
+
+    const numbersValid = [4, 8, 12, 16];
+    if ( !numbersValid.includes(control.value) ) {
+      return {
+        numDatasetShowValid: true
+      };
+    }
+
+    return null;
+  }
+
 }
