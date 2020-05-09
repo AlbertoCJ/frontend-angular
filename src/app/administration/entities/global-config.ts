@@ -14,8 +14,7 @@ export class GlobalConfig {
 
     setLocalContainer(data: any) {
         return {
-            numContMaxGlobal: data.numContMaxGlobal,
-            numContMaxUser: data.numContMaxUser
+            numContMaxGlobal: data.numContMaxGlobal
         };
     }
 

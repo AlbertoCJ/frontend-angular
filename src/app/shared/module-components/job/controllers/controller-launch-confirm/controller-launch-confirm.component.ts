@@ -77,21 +77,26 @@ export class ControllerLaunchConfirmComponent implements OnInit {
   btnLaunchClicked() {
     // alert('Lanzado');
 
+    if (this.dataWorkers.numContainers > 0) {
+      this.launchLocalContainers();
+    } else if (this.dataWorkers.numContainers <= 0) {
+      this.launchJob([]);
+    }
+
+
+
+    // TODO: Primero comprobar si es local o aws
+
+    // SI ES LOCAL
+    // TODO: Lanzar petición para crear contenedores, almacenar los contenedores con el usuario que los crea.
+    // TODO: Si se reciben correctamente, se esperara X segundos por cada contenedor creado antes de lanzar los algoritmos.
+    // TODO: Peticion que gestiona los algoritmos y los asigna a contenedores, etc.
+  }
+
+  launchLocalContainers() {
     this.dockerService.runContainers(this.dataWorkers.numContainers).subscribe( // this.containers
       respContainers => {
-        // this.listDataset = listDataset;
-        console.log(respContainers.containers);
-        // alert('Container');
-        this.jobService.launchJob(this.formJobData, this.dataset, this.listAlgorithms, respContainers.containers).subscribe(
-          respJob => {
-            // this.listDataset = listDataset;
-            console.log(respJob);
-            this.router.navigate([`job/${respJob.id}`]);
-          },
-          err => {
-            this.httpError.checkError(err, 'Alerta', 'Error al lanzar rutina para generar job.'); // TODO: Traducir
-          }
-        );
+        this.launchJob(respContainers.containers);
 
       },
       err => {
@@ -112,15 +117,17 @@ export class ControllerLaunchConfirmComponent implements OnInit {
         }
       }
     );
+  }
 
-
-
-    // TODO: Primero comprobar si es local o aws
-
-    // SI ES LOCAL
-    // TODO: Lanzar petición para crear contenedores, almacenar los contenedores con el usuario que los crea.
-    // TODO: Si se reciben correctamente, se esperara X segundos por cada contenedor creado antes de lanzar los algoritmos.
-    // TODO: Peticion que gestiona los algoritmos y los asigna a contenedores, etc.
+  launchJob(containers: any[]) {
+    this.jobService.launchJob(this.formJobData, this.dataset, this.listAlgorithms, containers).subscribe(
+      respJob => {
+        this.router.navigate([`job/${respJob.id}`]);
+      },
+      err => {
+        this.httpError.checkError(err, 'Alerta', 'Error al lanzar rutina para generar job.'); // TODO: Traducir
+      }
+    );
   }
 
 }

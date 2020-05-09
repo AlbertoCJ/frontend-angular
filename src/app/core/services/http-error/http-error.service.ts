@@ -11,6 +11,7 @@ export class HttpErrorService {
               private auth: AuthService) { }
 
   checkError(err, title, message) {
+    console.log('err en http-error', err); // TODO: Eliminar
     switch (err.status) {
       case 401:
         this.auth.removeToken();
@@ -18,7 +19,7 @@ export class HttpErrorService {
         break;
 
       default:
-        this.alertService.setAlertShowMore(title, message, err.error.message);
+        this.alertService.setAlertShowMore(title, message, err.error && err.error.message ? err.error.message : '');
         break;
     }
   }

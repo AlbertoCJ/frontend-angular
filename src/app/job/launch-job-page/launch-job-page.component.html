@@ -10,7 +10,7 @@
             <app-controller-algorithm-config (emitStep)="changeStep($event)" (emitListAlgorithms)="setListAlgorithms($event)"></app-controller-algorithm-config>
         </p-tabPanel>
         <p-tabPanel>
-            <app-controller-launch-worker (emitStep)="changeStep($event)" (emitDataWorkers)="setDataWorkers($event)"></app-controller-launch-worker>
+            <app-controller-launch-worker [listAlgorithms]="listAlgorithms" (emitStep)="changeStep($event)" (emitDataWorkers)="setDataWorkers($event)"></app-controller-launch-worker>
         </p-tabPanel>
         <p-tabPanel>
             <app-controller-launch-confirm [dataset]="datasetSelected" [formJobData]="formJobData" [listAlgorithms]="listAlgorithms" [dataWorkers]="dataWorkers" (emitStep)="changeStep($event)"></app-controller-launch-confirm>

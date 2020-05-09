@@ -1,4 +1,4 @@
-<app-header-title [textTitle]="'Configurar workers'">
+<app-header-title [textTitle]="'Configurar contenedores'">
 
     <div class="ui-fluid">
         <div class="ui-g">
@@ -20,7 +20,7 @@
             </app-header-title>
         </div>
         <div *ngIf="showView === 2">
-            <app-config-local-workers (emitLocalWorkers)="setLocalWorkers($event)"></app-config-local-workers>
+            <app-config-local-workers [listAlgorithms]="listAlgorithms" (emitLocalWorkers)="setLocalWorkers($event)" (emitAllowNext)="allowNext($event)"></app-config-local-workers>
             <!-- local -->
             <!-- <app-controller-list-dataset [clickCard]="true" [showCardButtons]="false" (emitDataset)="setDatasetSelected($event)"></app-controller-list-dataset> -->
         </div>

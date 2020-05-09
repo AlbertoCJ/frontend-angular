@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Steps } from '../../enums/steps.enum';
 import { LocalWorkers } from '../../entities/workers/local-workers';
 import { ZoneLaunch } from '../../enums/zoneLaunch.enum';
+import { DataAlgorithms } from '../../entities/data-algorithms';
 
 @Component({
   selector: 'app-controller-launch-worker',
@@ -16,6 +17,9 @@ export class ControllerLaunchWorkerComponent implements OnInit {
 
   btnPrevDisabled: boolean;
   btnNextDisabled: boolean;
+  isAllowNext = false;
+
+  @Input() listAlgorithms: DataAlgorithms;
 
   @Output() emitStep = new EventEmitter<number>();
   @Output() emitDataWorkers = new EventEmitter<LocalWorkers>(); // TODO: Falta AwsWorker
@@ -29,11 +33,16 @@ export class ControllerLaunchWorkerComponent implements OnInit {
   ngOnInit() {
   }
 
+  allowNext(event: boolean) {
+    this.isAllowNext = event;
+    this.validNumContainer();
+  }
+
   validNumContainer() {
-    if (this.dataWorkers.numContainers === 0) {
-      this.btnNextDisabled = true;
-    } else {
+    if (this.isAllowNext || this.dataWorkers.numContainers > 0) {
       this.btnNextDisabled = false;
+    } else {
+      this.btnNextDisabled = true;
     }
   }
 
