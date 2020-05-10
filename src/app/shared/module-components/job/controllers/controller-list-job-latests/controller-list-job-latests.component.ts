@@ -24,7 +24,7 @@ export class ControllerListJobLatestsComponent implements OnInit {
   constructor(private jobService: JobService,
               private httpError: HttpErrorService,
               private globalConfigService: GlobalConfigService) {
-    this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.dashboard.showLatestsJobs;
+    this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.home.showLatestsJobs;
     this.listJobLatests = new ListJob();
   }
 

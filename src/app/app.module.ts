@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { NgxLoadingModule } from 'ngx-loading';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { HomeModule } from './home/home.module';
 import { DatasetsModule } from './datasets/datasets.module';
 import { JobModule } from './job/job.module';
 import { DockerModule } from './docker/docker.module';
@@ -30,7 +30,7 @@ import { LoadingScreenInterceptor } from './core/interceptors/loading-screen.int
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    DashboardModule,
+    HomeModule,
     DatasetsModule,
     JobModule,
     DockerModule,

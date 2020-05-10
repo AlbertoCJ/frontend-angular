@@ -20,9 +20,9 @@ export class GlobalConfig {
 
     setShowLists(data: any) {
         return {
-            dashboard: {
-                showLatestsJobs: data.dashboard.showLatestsJobs,
-                showJobsRunning: data.dashboard.showJobsRunning
+            home: {
+                showLatestsJobs: data.home.showLatestsJobs,
+                showJobsRunning: data.home.showJobsRunning
             },
             dataset: {
                 showDatasets: data.dataset.showDatasets

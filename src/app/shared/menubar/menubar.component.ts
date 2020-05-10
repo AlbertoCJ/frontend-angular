@@ -17,7 +17,7 @@ export class MenubarComponent implements OnInit {
     this.items = [
       {
         icon: 'pi pi-fw pi-home',
-        routerLink: ['/dashboard']
+        routerLink: ['/home']
       },
       {
           label: 'DataSets',

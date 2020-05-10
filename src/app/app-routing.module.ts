@@ -4,7 +4,7 @@ import { AuthGuard } from './core/guards/auth/auth.guard';
 import { UserRoleGuard } from './core/guards/user-role/user-role.guard';
 import { AdminRoleGuard } from './core/guards/admin-role/admin-role.guard';
 import { LoginComponent } from './core/components/login/login.component';
-import { DashboardPageComponent } from './dashboard/dashboard-page/dashboard-page.component';
+import { HomePageComponent } from './home/home-page/home-page.component';
 import { LaunchJobPageComponent } from './job/launch-job-page/launch-job-page.component';
 import { JobListPageComponent } from './job/job-list-page/job-list-page.component';
 import { DatasetsUploadPageComponent } from './datasets/datasets-upload-page/datasets-upload-page.component';
@@ -16,7 +16,7 @@ import { AdministrationConfigPageComponent } from './administration/administrati
 
 const routes: Routes = [ // TODO: AdminRoleGuard <-- Rol para admin
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard, UserRoleGuard]  },
+  { path: 'home', component: HomePageComponent, canActivate: [AuthGuard, UserRoleGuard]  },
   { path: 'launch-job', component: LaunchJobPageComponent, canActivate: [AuthGuard, UserRoleGuard] },
   { path: 'job-list', component: JobListPageComponent, canActivate: [AuthGuard, UserRoleGuard] },
   { path: 'job/:id', component: JobDetailsPageComponent, canActivate: [AuthGuard, UserRoleGuard] },

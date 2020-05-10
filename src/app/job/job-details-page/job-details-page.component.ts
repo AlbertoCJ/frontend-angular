@@ -27,8 +27,8 @@ export class JobDetailsPageComponent implements OnInit {
     this.jobTitle = `Job: ${ job.name }`; // Traducir
   }
 
-  backDashboard() {
-    this.router.navigate(['dashboard']);
+  backHome() {
+    this.router.navigate(['home']);
   }
 
 }

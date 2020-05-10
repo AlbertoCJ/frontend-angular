@@ -26,7 +26,7 @@ export class ControllerListJobRunningComponent implements OnInit {
               private httpError: HttpErrorService,
               private globalConfigService: GlobalConfigService) {
     this.page = 1;
-    this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.dashboard.showJobsRunning;
+    this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.home.showJobsRunning;
     this.listJobRunning = new ListJob();
   }
 

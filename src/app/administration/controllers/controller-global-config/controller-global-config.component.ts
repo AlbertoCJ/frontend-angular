@@ -70,8 +70,8 @@ export class ControllerGlobalConfigComponent implements OnInit {
       DecisionStumpBagging: this.globalConfig.algorithms.DecisionStumpBagging,
       Libsvm: this.globalConfig.algorithms.Libsvm,
       LibsvmBagging: this.globalConfig.algorithms.LibsvmBagging,
-      showLatestsJobs: this.globalConfig.showLists.dashboard.showLatestsJobs,
-      showJobsRunning: this.globalConfig.showLists.dashboard.showJobsRunning,
+      showLatestsJobs: this.globalConfig.showLists.home.showLatestsJobs,
+      showJobsRunning: this.globalConfig.showLists.home.showJobsRunning,
       showDatasets: this.globalConfig.showLists.dataset.showDatasets,
       showJobs: this.globalConfig.showLists.job.showJobs
     });
@@ -103,8 +103,8 @@ export class ControllerGlobalConfigComponent implements OnInit {
       this.globalConfig.algorithms.Libsvm = this.globalConfigForm.value.Libsvm;
       this.globalConfig.algorithms.LibsvmBagging = this.globalConfigForm.value.LibsvmBagging;
 
-      this.globalConfig.showLists.dashboard.showLatestsJobs = this.globalConfigForm.value.showLatestsJobs;
-      this.globalConfig.showLists.dashboard.showJobsRunning = this.globalConfigForm.value.showJobsRunning;
+      this.globalConfig.showLists.home.showLatestsJobs = this.globalConfigForm.value.showLatestsJobs;
+      this.globalConfig.showLists.home.showJobsRunning = this.globalConfigForm.value.showJobsRunning;
       this.globalConfig.showLists.dataset.showDatasets = this.globalConfigForm.value.showDatasets;
       this.globalConfig.showLists.job.showJobs = this.globalConfigForm.value.showJobs;
 
