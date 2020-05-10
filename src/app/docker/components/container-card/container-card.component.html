@@ -17,6 +17,8 @@
         </p-tabPanel>
     </p-tabView>
     <p-footer>
-        <p-splitButton label="Eliminar" icon="pi pi-trash" (onClick)="removeContainer()" [model]="items" styleClass="ui-button-danger"></p-splitButton>
+        <div class="ui-fluid">
+            <p-splitButton label="Eliminar" icon="pi pi-trash" (onClick)="removeContainer()" [model]="items" styleClass="ui-button-danger"></p-splitButton>
+        </div>
     </p-footer>
 </p-card>

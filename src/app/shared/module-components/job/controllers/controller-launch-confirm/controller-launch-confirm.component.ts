@@ -100,19 +100,18 @@ export class ControllerLaunchConfirmComponent implements OnInit {
 
       },
       err => {
-        console.log(err);
         switch (err.status) {
           case 600:
-            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message);
+            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message); // TODO: Traducir
             break;
           case 601:
-            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message);
+            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message); // TODO: Traducir
             break;
           case 602:
-            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message);
+            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message); // TODO: Traducir
             break;
           default:
-            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.message);
+            this.httpError.checkError(err, 'Alerta', 'Error al generar contenedores.'); // TODO: Traducir
             break;
         }
       }

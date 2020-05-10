@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DockerService } from '../../../core/services/docker/docker.service';
 import { Container } from '../../entities';
+import { MessageService } from 'primeng/api';
+import { HttpErrorService } from '../../../core/services/http-error/http-error.service';
 
 @Component({
   selector: 'app-controller-list-containers',
@@ -12,7 +14,9 @@ export class ControllerListContainersComponent implements OnInit {
   state: string;
   containers: Container[];
 
-  constructor(private dockerService: DockerService) { }
+  constructor(private dockerService: DockerService,
+              private messageService: MessageService,
+              private httpError: HttpErrorService) { }
 
   ngOnInit() {
   }
@@ -27,8 +31,8 @@ export class ControllerListContainersComponent implements OnInit {
       containers => {
         this.containers = containers;
       },
-      error => {
-          console.log(error); // TODO: mostrar modal error.
+      err => {
+          this.httpError.checkError(err, 'Alerta', 'Error al obtener contenedores.'); // TODO: Traducir
       }
   );
   }
@@ -36,11 +40,11 @@ export class ControllerListContainersComponent implements OnInit {
   removeContainer(id: string) {
     this.dockerService.removeContainer(id).subscribe(
       removed => {
-        console.log('Eliminado correctamente'); // Mostrar mensaje esquina superior
+        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente.'}); // TODO: Traducir
         this.getContainers(this.state);
       },
-      error => {
-        console.log(error); // TODO: mostrar modal error.
+      err => {
+        this.httpError.checkError(err, 'Alerta', 'Error al eliminar contenedor.'); // TODO: Traducir
       }
     );
   }
@@ -48,11 +52,11 @@ export class ControllerListContainersComponent implements OnInit {
   startContainer(id: string) {
     this.dockerService.startContainer(id).subscribe(
       started => {
-        console.log('Iniciado correctamente'); // Mostrar mensaje esquina superior
+        this.messageService.add({severity: 'success', detail: 'Iniciado correctamente.'}); // TODO: Traducir
         this.getContainers(this.state);
       },
-      error => {
-        console.log(error); // TODO: mostrar modal error.
+      err => {
+        this.httpError.checkError(err, 'Alerta', 'Error al iniciar contenedor.'); // TODO: Traducir
       }
     );
   }
@@ -60,11 +64,11 @@ export class ControllerListContainersComponent implements OnInit {
   stopContainer(id: string) {
     this.dockerService.stopContainer(id).subscribe(
       stopped => {
-        console.log('Parado correctamente'); // Mostrar mensaje esquina superior
+        this.messageService.add({severity: 'success', detail: 'Parado correctamente.'}); // TODO: Traducir
         this.getContainers(this.state);
       },
-      error => {
-        console.log(error); // TODO: mostrar modal error.
+      err => {
+        this.httpError.checkError(err, 'Alerta', 'Error al parar contenedor.'); // TODO: Traducir
       }
     );
   }

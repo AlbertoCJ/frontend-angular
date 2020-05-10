@@ -50,7 +50,6 @@ export class DatasetCardComponent implements OnInit {
         this.messageService.add({severity: 'success', detail: 'Descargado correctamente'}); // TODO: Traducir
       },
       err => {
-        console.log(err);
         this.httpError.checkError(err, 'Alerta', 'Error al descargar dataset'); // TODO: Traducir
       }
     );
@@ -92,7 +91,7 @@ export class DatasetCardComponent implements OnInit {
   remove() {
     this.datasetService.deleteDataset(this.dataset.id).subscribe(
       dataset => {
-        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente'});
+        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente'}); // TODO: Traducir
         this.emitRemoved.emit(dataset);
       },
       err => {

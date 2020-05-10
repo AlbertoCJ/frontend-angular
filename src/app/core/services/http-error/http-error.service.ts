@@ -11,7 +11,6 @@ export class HttpErrorService {
               private auth: AuthService) { }
 
   checkError(err, title, message) {
-    console.log('err en http-error', err); // TODO: Eliminar
     switch (err.status) {
       case 401:
         this.auth.removeToken();

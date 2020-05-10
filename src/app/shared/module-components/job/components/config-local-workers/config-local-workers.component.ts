@@ -97,7 +97,7 @@ export class ConfigLocalWorkersComponent implements OnInit {
 
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al obtener contenedores locales'); // TODO: Traducir
+        this.httpError.checkError(err, 'Alerta', 'Error al obtener contenedores locales.'); // TODO: Traducir
       }
     );
   }

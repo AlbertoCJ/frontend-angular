@@ -49,7 +49,7 @@ export class ControllerFormDatasetComponent implements OnInit {
         this.clearAll();
         form.clear();
         this.formDataset = new FormDataset();
-        this.messageService.add({severity: 'success', detail: 'Guardado correctamente'});
+        this.messageService.add({severity: 'success', detail: 'Guardado correctamente'}); // Traducir
       }, (err) => {
         if (err.error && err.error.err && err.error.err.code === 11000) {
           this.alertService.setAlert('Alerta', `Ya existe esa descripción.`); // Traducir

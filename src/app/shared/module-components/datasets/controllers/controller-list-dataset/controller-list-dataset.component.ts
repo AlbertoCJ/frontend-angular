@@ -5,7 +5,6 @@ import { Dataset } from '../../entities/dataset';
 import { MessageService } from 'primeng/api';
 import { NgForm } from '@angular/forms';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
-import { ViewMode } from '../../../../../core/enums/view-mode.enum';
 import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
 
 @Component({

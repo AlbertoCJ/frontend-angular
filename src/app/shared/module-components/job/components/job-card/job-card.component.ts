@@ -134,11 +134,11 @@ export class JobCardComponent implements OnInit {
   remove() {
     this.jobService.deleteJob(this.job.id).subscribe(
       job => {
-        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente'}); // TODO: Traducir
+        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente.'}); // TODO: Traducir
         this.emitRemoved.emit(this.job);
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al borrar job'); // TODO: Traducir
+        this.httpError.checkError(err, 'Alerta', 'Error al borrar job.'); // TODO: Traducir
 
       }
     );

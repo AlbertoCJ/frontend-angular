@@ -89,10 +89,8 @@ export class ControllerChangePassUserModalComponent implements OnInit {
         }
       });
     } else {
-      // TODO: Implementar peticion
       this.isModalActive = false;
       this.emitSaved.emit('changed');
-      console.log('changed');
 
       this.user.password = this.changePassForm.value.password;
       // this.user.email = this.editUserForm.value.email;

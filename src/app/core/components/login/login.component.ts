@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Login } from '../../entities/login/login';
 import { GlobalConfigService } from '../../services/global-config/global-config.service';
+import { HttpErrorService } from '../../services/http-error/http-error.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private router: Router,
-              private globalConfigService: GlobalConfigService) {
+              private globalConfigService: GlobalConfigService,
+              private httpError: HttpErrorService) {
     this.loginForm = new FormGroup({
       email: new FormControl(''),
       password: new FormControl('')
@@ -59,7 +61,7 @@ export class LoginComponent implements OnInit {
           this.textError = 'Email y/o contraseña erronea.';
           this.showError = true;
         } else {
-          alert(`Error inesperado: ${ err.status }`); // TODO: Ver como mostrar alertas
+          this.httpError.checkError(err, 'Alerta', 'Error inesperado al intentar loguearse.'); // TODO: Traducir
         }
       });
     } else {
