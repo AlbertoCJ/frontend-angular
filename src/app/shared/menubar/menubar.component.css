@@ -1,12 +1,7 @@
-/* .ui-menubar .menubar-list {
-    padding: .25em;
-} */
-
-
-/* :host ::ng-deep .ui-menubar .left-secction {
-    float: left;
+.select-language {
+    width: 10px;
 }
 
-:host ::ng-deep .ui-menubar .right-secction {
-    float: right;
-} */
+:host ::ng-deep .select-language .ui-dropdown {
+    min-width: 0px;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-next-button',
@@ -12,8 +13,8 @@ export class NextButtonComponent implements OnInit {
 
   @Output() emitClicked = new EventEmitter<string>();
 
-  constructor() {
-    this.label = 'Next';
+  constructor(public translate: TranslateService) {
+    this.label = this.translate.instant('buttons.btnNext');
   }
 
   ngOnInit() {

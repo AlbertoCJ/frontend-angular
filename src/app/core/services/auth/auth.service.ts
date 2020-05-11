@@ -7,6 +7,7 @@ import { environment } from '../../../../environments/environment';
 import * as jwt_decode from 'jwt-decode';
 import { User } from '../../entities/user/user';
 import { GlobalConfigService } from '../global-config/global-config.service';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class AuthService {
 
   constructor(private http: HttpClient,
               private router: Router,
-              private globalConfigService: GlobalConfigService) { }
+              private globalConfigService: GlobalConfigService,
+              private userService: UserService) { }
 
 
   login( login: Login ) {
@@ -43,6 +45,7 @@ export class AuthService {
   }
 
   logout() {
+    this.userService.removeLanguage();
     this.globalConfigService.removeGlobalConfigSessionStorage();
     this.removeToken();
     this.router.navigateByUrl('/login');

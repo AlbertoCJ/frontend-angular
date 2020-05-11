@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-button',
@@ -12,8 +13,8 @@ export class EditButtonComponent implements OnInit {
 
   @Output() emitClicked = new EventEmitter<string>();
 
-  constructor() {
-    this.label = 'Editar'; // TODO: Traducir
+  constructor(public translate: TranslateService) {
+    this.label = this.translate.instant('buttons.btnEdit');
   }
 
   ngOnInit() {

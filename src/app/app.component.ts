@@ -4,6 +4,7 @@ import { LoadingScreenService } from './core/services/loading-screen/loading-scr
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { ngxLoadingAnimationTypes } from 'ngx-loading';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,13 @@ export class AppComponent {
   // name: string;
 
   constructor(private auth: AuthService,
-              private loadingScreenService: LoadingScreenService) {
+              private loadingScreenService: LoadingScreenService,
+              translate: TranslateService) {
+    // this language will be used as a fallback when a translation isn't found in the current language
+    translate.setDefaultLang('en');
+
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    translate.use('en');
     // if (this.auth.isAuth()) { this.name = this.auth.getUser().name; }
     this.loadingSubscription = this.loadingScreenService.loadingStatus.pipe(debounceTime(this.debounceTime)).subscribe(
       (status: boolean) => {

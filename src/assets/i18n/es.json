@@ -1,0 +1,45 @@
+{
+    "buttons": {
+        "btnAccept": "Aceptar",
+        "btnBack": "Volver",
+        "btnCancel": "Cancelar",
+        "btnEdit": "Editar",
+        "btnNext": "Siguiente",
+        "btnPrevious": "Anterior",
+        "btnDelete": "Eliminar",
+        "btnRestart": "Reiniciar",
+        "btnSave": "Guardar",
+        "btnView": "Ver"
+    },
+    "modals": {
+        "warning": "Aviso"
+    },
+    "login": {
+        "email": "Email",
+        "password": "Contraseña",
+        "btnLogin": "Login",
+        "txtErrEmailOrPass": "Email y/o contraseña erronea.",
+        "txtErrEmailEmpty": "Email vacio",
+        "txtErrAndEmpty": " y ",
+        "txtErrPassEmpty": "Contraseña vacia",
+        "msgAlertErrorLoginUnexpected": "Error inesperado al intentar loguearse."
+    },
+    "menubarAdmin": {
+        "config": "Configuración",
+        "userManager": "Gestión de Usuarios",
+        "dockerManager": "Gestión Docker",
+        "aws": "AWS",
+        "local": "Local",
+        "logOut": "Salir",
+        "msgAlertErrorChangeLanguage": "Error al cambiar el idioma."
+    },
+    "menubar": {
+        "dataSets": "DataSets",
+        "add": "Agregar",
+        "list": "Listado",
+        "job": "Job",
+        "launch": "Lanzar",
+        "logOut": "Salir",
+        "msgAlertErrorChangeLanguage": "Error al cambiar el idioma."
+    }
+}

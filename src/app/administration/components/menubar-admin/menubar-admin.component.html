@@ -1,3 +1,9 @@
 <p-menubar [model]="items">
-    <button (click)="logout()" pButton label="Salir" icon="pi pi-sign-out"></button>
+    <span class="mr-2">
+        <button pButton icon="pi pi-cog" class="ui-button-secondary"></button>
+    </span>
+    <span class="mr-2 select-language">
+        <p-dropdown [options]="language" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage($event)"></p-dropdown>
+    </span>
+    <button (click)="logout()" pButton [label]="translate.instant('menubar.logOut')" icon="pi pi-sign-out"></button>
 </p-menubar>

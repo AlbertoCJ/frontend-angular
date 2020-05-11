@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-previous-button',
@@ -12,8 +13,8 @@ export class PreviousButtonComponent implements OnInit {
 
   @Output() emitClicked = new EventEmitter<string>();
 
-  constructor() {
-    this.label = 'Prev';
+  constructor(public translate: TranslateService) {
+    this.label = this.translate.instant('buttons.btnPrevious');
   }
 
   ngOnInit() {

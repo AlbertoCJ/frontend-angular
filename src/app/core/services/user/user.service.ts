@@ -79,4 +79,32 @@ export class UserService {
       })
     );
   }
+
+  changeLanguage(userUpdate: User) {
+    return this.http.put(`${ this.url }/userLanguage/${ userUpdate.id }`, userUpdate).pipe(
+      map( (resp: any) => {
+        const respUser = resp.user;
+        const user = new User(respUser);
+        return user;
+      })
+    );
+  }
+
+  // Gestionar idioma
+  removeLanguage() {
+    sessionStorage.removeItem('language');
+  }
+
+  saveLanguage(language: string) {
+    sessionStorage.setItem('language', language);
+  }
+
+  getLanguage() {
+    if (sessionStorage.getItem('language')) {
+      return sessionStorage.getItem('language');
+
+    } else {
+      return 'es';
+    }
+  }
 }

@@ -1,20 +1,9 @@
 <p-menubar [model]="items">
-    <button (click)="logout()" pButton label="Salir" icon="pi pi-sign-out"></button>
+    <span class="mr-2">
+        <button pButton icon="pi pi-cog" class="ui-button-secondary"></button>
+    </span>
+    <span class="mr-2 select-language">
+        <p-dropdown [options]="language" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage($event)"></p-dropdown>
+    </span>
+    <button (click)="logout()" pButton [label]="translate.instant('menubar.logOut')" icon="pi pi-sign-out"></button>
 </p-menubar>
-
-<!-- <div>
-    <div class="ui-menubar ui-widget ui-widget-content ui-corner-all">
-        <div class="menubar-list">
-            <span class="left-section">
-            <button type="button" pButton icon="pi pi-bars" (click)="menu.toggle($event)"></button>
-        </span>
-            <span class="right-secction">
-            <button (click)="logout()" pButton label="Salir" icon="pi pi-sign-out"></button>
-        </span>
-        </div>
-
-    </div>
-    <div class="menu-hanburger-items">
-        <p-menu #menu [popup]="true" [model]="items"></p-menu>
-    </div>
-</div> -->

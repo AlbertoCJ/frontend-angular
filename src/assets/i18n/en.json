@@ -1,0 +1,45 @@
+{
+    "buttons": {
+        "btnAccept": "Accept",
+        "btnBack": "Back",
+        "btnCancel": "Cancel",
+        "btnEdit": "Edit",
+        "btnNext": "Next",
+        "btnPrevious": "Previous",
+        "btnDelete": "Delete",
+        "btnRestart": "Restart",
+        "btnSave": "Save",
+        "btnView": "View"
+    },
+    "modals": {
+        "warning": "Warning"
+    },
+    "login": {
+        "email": "Email",
+        "password": "Password",
+        "btnLogin": "Login",
+        "txtErrEmailOrPass": "Wrong email and/or password.",
+        "txtErrEmailEmpty": "Empty Email",
+        "txtErrAndEmpty": " and ",
+        "txtErrPassEmpty": "Empty password",
+        "msgAlertErrorLoginUnexpected": "Unexpected error when trying to log in."
+    },
+    "menubarAdmin": {
+        "config": "Configuration",
+        "userManager": "User Management",
+        "dockerManager": "Docker Management",
+        "aws": "AWS",
+        "local": "Local",
+        "logOut": "LogOut",
+        "msgAlertErrorChangeLanguage": "Error while changing language."
+    },
+    "menubar": {
+        "dataSets": "DataSets",
+        "add": "Add",
+        "list": "List",
+        "job": "Job",
+        "launch": "Launch",
+        "logOut": "LogOut",
+        "msgAlertErrorChangeLanguage": "Error while changing language."
+    }
+}

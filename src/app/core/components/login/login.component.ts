@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Login } from '../../entities/login/login';
 import { GlobalConfigService } from '../../services/global-config/global-config.service';
 import { HttpErrorService } from '../../services/http-error/http-error.service';
+import { TranslateService } from '@ngx-translate/core';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,9 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService,
               private router: Router,
               private globalConfigService: GlobalConfigService,
-              private httpError: HttpErrorService) {
+              private httpError: HttpErrorService,
+              public translate: TranslateService,
+              private userService: UserService) {
     this.loginForm = new FormGroup({
       email: new FormControl(''),
       password: new FormControl('')
@@ -47,6 +51,9 @@ export class LoginComponent implements OnInit {
         this.globalConfigService.getGlobalConfig().subscribe( globalConfig => {
 
           const user = this.auth.getUser();
+          this.userService.saveLanguage(user.language);
+          this.translate.use(this.userService.getLanguage());
+
           if (user && user.role === 'USER_ROLE') {
             this.router.navigateByUrl('home');
           } else if (user && user.role === 'ADMIN_ROLE') {
@@ -58,20 +65,21 @@ export class LoginComponent implements OnInit {
 
       }, (err) => {
         if (err.status === 401) {
-          this.textError = 'Email y/o contraseña erronea.';
+          this.textError = this.translate.instant('login.txtErrEmailOrPass');
           this.showError = true;
         } else {
-          this.httpError.checkError(err, 'Alerta', 'Error inesperado al intentar loguearse.'); // TODO: Traducir
+          // tslint:disable-next-line: max-line-length
+          this.httpError.checkError(err, this.translate.instant('modals.warning'), this.translate.instant('login.msgAlertErrorLoginUnexpected'));
         }
       });
     } else {
       if (emailValue === '') {
-        this.textError = 'Email vacio';
+        this.textError = this.translate.instant('login.txtErrEmailEmpty');
         this.showError = true;
       }
-      if (emailValue === '' && passValue === '') { this.textError += ' y '; }
+      if (emailValue === '' && passValue === '') { this.textError += this.translate.instant('login.txtErrAndEmpty'); }
       if (passValue === '') {
-        this.textError += 'Contraseña vacia';
+        this.textError += this.translate.instant('login.txtErrPassEmpty');
         this.showError = true;
       }
     }

@@ -20,6 +20,8 @@
         "@angular/platform-browser": "~8.2.14",
         "@angular/platform-browser-dynamic": "~8.2.14",
         "@angular/router": "~8.2.14",
+        "@ngx-translate/core": "^12.1.2",
+        "@ngx-translate/http-loader": "^4.0.0",
         "@types/file-saver": "^2.0.1",
         "animate.css": "^3.7.2",
         "file-saver": "^2.0.2",

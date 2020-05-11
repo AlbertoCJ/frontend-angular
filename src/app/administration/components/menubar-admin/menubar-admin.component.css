@@ -1,0 +1,7 @@
+.select-language {
+    width: 10px;
+}
+
+:host ::ng-deep .select-language .ui-dropdown {
+    min-width: 0px;
+}
