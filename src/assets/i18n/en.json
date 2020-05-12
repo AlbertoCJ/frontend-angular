@@ -41,5 +41,8 @@
         "launch": "Launch",
         "logOut": "LogOut",
         "msgAlertErrorChangeLanguage": "Error while changing language."
+    },
+    "homePage": {
+        "headerJobRunning": "List Job Running"
     }
 }

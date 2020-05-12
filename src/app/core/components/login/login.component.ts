@@ -7,6 +7,7 @@ import { GlobalConfigService } from '../../services/global-config/global-config.
 import { HttpErrorService } from '../../services/http-error/http-error.service';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../../services/user/user.service';
+import { SelectItem } from 'primeng/api/selectitem';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,9 @@ import { UserService } from '../../services/user/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  language: SelectItem[];
+  selectedLanguage: string;
 
   loginForm: FormGroup;
   textError: string;
@@ -32,6 +36,10 @@ export class LoginComponent implements OnInit {
       password: new FormControl('')
     });
     this.login = new Login();
+    this.language = [
+      {label: 'EN', value: 'en'},
+      {label: 'ES', value: 'es'}
+    ];
   }
 
   ngOnInit() {
@@ -83,6 +91,10 @@ export class LoginComponent implements OnInit {
         this.showError = true;
       }
     }
+  }
+
+  changeLanguage(language: any) {
+    this.translate.use(this.selectedLanguage);
   }
 
 }

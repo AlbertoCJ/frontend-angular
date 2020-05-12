@@ -1,5 +1,10 @@
-<div class="box-center box-login bc-box-login">
-    <!-- <p-fieldset legend="Login" styleClass="bc-box-login"> -->
+
+ <div class="box-center box-login bc-box-login">
+     <div class="box-language">
+        <span class="select-language">
+            <p-dropdown [options]="language" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage($event)"></p-dropdown>
+        </span>
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm)">
         <div class="ui-fluid">
             <div class="ui-g">
@@ -26,5 +31,4 @@
             </div>
         </div>
     </form>
-    <!-- </p-fieldset> -->
 </div>

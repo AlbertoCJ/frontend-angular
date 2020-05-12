@@ -30,6 +30,10 @@ export class MenubarComponent implements OnInit {
 
   ngOnInit() {
     this.selectedLanguage = this.userService.getLanguage();
+    this.changeLanguage({ value: this.userService.getLanguage() });
+  }
+
+  generateMenuItems() {
     this.items = [
       {
         icon: 'pi pi-fw pi-home',
@@ -78,6 +82,7 @@ export class MenubarComponent implements OnInit {
     this.userService.changeLanguage(user).subscribe( user => {
       this.userService.saveLanguage(user.language);
       this.translate.use(this.userService.getLanguage());
+      this.generateMenuItems();
     }, (err) => {
         // tslint:disable-next-line: max-line-length
         this.httpError.checkError(err, this.translate.instant('modals.warning'), this.translate.instant('menubar.msgAlertErrorChangeLanguage'));

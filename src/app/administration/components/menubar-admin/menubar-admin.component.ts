@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { SelectItem } from 'primeng/api/selectitem';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../../../core/services/user/user.service';
 import { HttpErrorService } from '../../../core/services/http-error/http-error.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menubar-admin',
@@ -22,8 +21,7 @@ export class MenubarAdminComponent implements OnInit {
   constructor(private auth: AuthService,
               public translate: TranslateService,
               private userService: UserService,
-              private httpError: HttpErrorService,
-              private router: Router) {
+              private httpError: HttpErrorService) {
     this.language = [
       {label: 'EN', value: 'en'},
       {label: 'ES', value: 'es'}
@@ -32,6 +30,10 @@ export class MenubarAdminComponent implements OnInit {
 
   ngOnInit() {
     this.selectedLanguage = this.userService.getLanguage();
+    this.changeLanguage({ value: this.userService.getLanguage() });
+  }
+
+  generateMenuItems() {
     this.items = [
       {
         label: this.translate.instant('menubarAdmin.config'),
@@ -72,7 +74,7 @@ export class MenubarAdminComponent implements OnInit {
     this.userService.changeLanguage(user).subscribe( user => {
       this.userService.saveLanguage(user.language);
       this.translate.use(this.userService.getLanguage());
-      this.router.navigateByUrl('configurations');
+      this.generateMenuItems();
     }, (err) => {
         // tslint:disable-next-line: max-line-length
         this.httpError.checkError(err, this.translate.instant('modals.warning'), this.translate.instant('menubar.msgAlertErrorChangeLanguage'));

@@ -1,7 +1,4 @@
 <p-menubar [model]="items">
-    <span class="mr-2">
-        <button pButton icon="pi pi-cog" class="ui-button-secondary"></button>
-    </span>
     <span class="mr-2 select-language">
         <p-dropdown [options]="language" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage($event)"></p-dropdown>
     </span>
