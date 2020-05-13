@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../../core/entities/user/user';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-card',
@@ -15,7 +16,7 @@ export class UserCardComponent implements OnInit {
   @Input() isClicker = false;
   @Input() user: User;
 
-  constructor() { }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit() {
   }

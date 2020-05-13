@@ -1,4 +1,5 @@
 {
+    "welcome": "Welcome",
     "buttons": {
         "btnAccept": "Accept",
         "btnBack": "Back",
@@ -13,6 +14,13 @@
     },
     "modals": {
         "warning": "Warning"
+    },
+    "alerts": {
+        "alert": "Alert"
+    },
+    "menssageToast": {
+        "storedCorrectly": "Stored correctly",
+        "updateCorrectly": "Updated correctly"
     },
     "login": {
         "email": "Email",
@@ -32,6 +40,76 @@
         "local": "Local",
         "logOut": "LogOut",
         "msgAlertErrorChangeLanguage": "Error while changing language."
+    },
+    "administrationConfigPage": {
+        "headerGlobalConfiguration": "Global Configuration"
+    },
+    "controllerGlobalConfig": {
+        "messageConfirm": "The default values will be restored. Are you sure?",
+        "messageErrorUpdated": "Error while updating configuration.",
+        "messageSuccessRestore": "Restored correctly",
+        "messageErrorRestore": "Error when restored settings.",
+        "min": "Min:",
+        "max": "Max:",
+        "valids": "Valids:",
+        "superTitleLocalContainer": "Local Containers",
+        "labelConMaxGlobal": "No. of Global Max. Cont.:",
+        "superTitleAllowAlgorithm": "Allowed Algorithms",
+        "superTitleShowList": "Show in listings",
+        "titleHome": "Home",
+        "labelLatestJobShow": "No. of last jobs to show:",
+        "labelJobRunningShow": "No. of jobs running to show:",
+        "titleDataset": "Dataset",
+        "labelDatasetShow": "No. of datasets to show:",
+        "titleJob": "Job",
+        "labelJobShow": "No. of jobs to show:",
+        "restoreDefaultValue": "Restore Default Values"
+    },
+    "controllerListUser": {
+        "messageErrorGetListUser": "Error when obtaining list of users.",
+        "searchByName": "Search by name",
+        "searchByEmail": "Search by mail",
+        "btnCreateUser": "Create user",
+        "noUsers": "No users"
+    },
+    "controllerCreateUserModal": {
+        "messageErrorExistEmail": "Email already exists",
+        "messageErrorCreateUser": "Error when creating user.",
+        "titleModal": "Create user",
+        "labelName": "Name:",
+        "nameInvalid": "Enter 3 letters",
+        "labelEmail": "Email:",
+        "emailInvalid": "Enter email",
+        "labelPassword": "Password:",
+        "passwordInvalid": "Enter Password",
+        "labelPassword2": "Conf. Password:",
+        "password2Invalid": "Passwords don't match",
+        "labelActive": "Activate:"
+    },
+    "controllerEditUserModal": {
+        "messageErrorEditUser": "Error when updating user.",
+        "titleModal": "Edit user",
+        "labelName": "Name:",
+        "nameInvalid": "Enter 3 letters",
+        "labelEmail": "Email:",
+        "emailInvalid": "Enter email",
+        "labelActive": "Activate:"
+    },
+    "controllerChangePassUserModal": {
+        "messageErrorChangePassUser": "Error when updating the password.",
+        "titleModal": "Change Password",
+        "labelPassword": "Password:",
+        "passwordInvalid": "Enter Password",
+        "labelPassword2": "Repeat Password:",
+        "password2Invalid": "Passwords don't match"
+    },
+    "userCard": {
+        "labelName": "Name:",
+        "labelEmail": "Email:",
+        "btnChangePass": "C. Password"
+    },
+    "administrationUserPage": {
+        "headerUserManagement": "User Management"
     },
     "menubar": {
         "dataSets": "DataSets",

@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ValidatorsService } from '../../../core/services/validators/validators.service';
 import { HttpErrorService } from '../../../core/services/http-error/http-error.service';
 import { MessageService } from 'primeng/api';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-global-config',
@@ -16,8 +17,8 @@ export class ControllerGlobalConfigComponent implements OnInit {
 
   // Confirm
   isConfirmActive = false;
-  titleConfirm = 'Aviso'; // TODO: Traducir
-  messageConfirm = 'Se restablecerán los valores por defecto. ¿Estás seguro?'; // TODO: Traducir
+  titleConfirm = this.translate.instant('modals.warning');
+  messageConfirm = this.translate.instant('controllerGlobalConfig.messageConfirm');
 
   globalConfigForm: FormGroup;
   globalConfig: GlobalConfig;
@@ -26,7 +27,8 @@ export class ControllerGlobalConfigComponent implements OnInit {
               private fb: FormBuilder,
               private validatorsService: ValidatorsService,
               private httpError: HttpErrorService,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              public translate: TranslateService) {
     this.initForm();
   }
 
@@ -109,9 +111,11 @@ export class ControllerGlobalConfigComponent implements OnInit {
       this.globalConfig.showLists.job.showJobs = this.globalConfigForm.value.showJobs;
 
       this.globalConfigService.updateGlobalConfig(this.globalConfig).subscribe( (resp: GlobalConfig) => {
-        this.messageService.add({severity: 'success', detail: 'Actualizado correctamente'}); // TODO: Traducir
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.updateCorrectly')});
       }, (err) => {
-          this.httpError.checkError(err, 'Alerta', 'Error al actualizar configiración'); // TODO: Traducir
+          this.httpError.checkError(err,
+            this.translate.instant('alerts.alert'),
+            this.translate.instant('controllerGlobalConfig.messageErrorUpdated'));
       });
     }
   }
@@ -123,9 +127,11 @@ export class ControllerGlobalConfigComponent implements OnInit {
   resetDefaultValues() {
     this.globalConfigService.restoreGlobalConfig(this.globalConfig).subscribe( (resp: GlobalConfig) => {
       this.updateForm();
-      this.messageService.add({severity: 'success', detail: 'Restablecido correctamente'}); // TODO: Traducir
+      this.messageService.add({severity: 'success', detail: this.translate.instant('controllerGlobalConfig.messageSuccessRestore')});
     }, (err) => {
-        this.httpError.checkError(err, 'Alerta', 'Error al restablecer configiración'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerGlobalConfig.messageErrorRestore'));
     });
     this.isConfirmActive = false;
   }

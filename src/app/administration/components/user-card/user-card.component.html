@@ -5,7 +5,7 @@
             <!-- <p class="date-dataset">{{ dataset.dateCreation | date:'dd/MM/yyyy' }}</p> -->
             <div class="p-grid p-justify-center">
                 <div class="p-col-4">
-                    <span class="title-card-user">Nombre:</span>
+                    <span class="title-card-user">{{ translate.instant('userCard.labelName') }}</span>
                 </div>
                 <div class="p-col-8 separator">
                     <span class="content-card-user">{{ user.name }}</span>
@@ -13,7 +13,7 @@
             </div>
             <div class="p-grid p-justify-center">
                 <div class="p-col-4">
-                    <span class="title-card-user">Correo:</span>
+                    <span class="title-card-user">{{ translate.instant('userCard.labelEmail') }}</span>
                 </div>
                 <div class="p-col-8 separator">
                     <span class="content-card-user">{{ user.email }}</span>
@@ -26,7 +26,7 @@
                 <app-edit-button *ngIf="user.role !== 'ADMIN_ROLE'" (emitClicked)="openEditUserModal()"></app-edit-button>
             </div>
             <div class="card-button-item">
-                <app-custom-button [label]="'C. Contraseña'" (emitClicked)="openChangePassUserModal()"></app-custom-button>
+                <app-custom-button [label]="translate.instant('userCard.btnChangePass')" (emitClicked)="openChangePassUserModal()"></app-custom-button>
             </div>
         </div>
         <app-controller-edit-user-modal [isModalActive]="editUserModal" [user]="user" (closedModal)="closeEditUserModal()"></app-controller-edit-user-modal>

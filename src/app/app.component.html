@@ -2,7 +2,7 @@
 <ngx-loading [show]="loading" [config]="config"></ngx-loading>
 <app-alert-dialog></app-alert-dialog>
 <div class="container">
-    <div *ngIf="showName()" class="welcome-text-box"> <span class="welcome-box"> <span class="welcome-text">Bienvenido, </span> <span class="name-text"> {{ name() }} </span> </span>
+    <div *ngIf="showName()" class="welcome-text-box"> <span class="welcome-box"> <span class="welcome-text">{{ translate.instant('welcome') }}, </span> <span class="name-text"> {{ name() }} </span> </span>
     </div>
     <app-menubar *ngIf="showMenuApp()"></app-menubar>
     <app-menubar-admin *ngIf="showMenuAdmin()"></app-menubar-admin>

@@ -6,6 +6,7 @@ import { UserService } from '../../../core/services/user/user.service';
 import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../core/services/http-error/http-error.service';
 import { AlertService } from '../../../core/services/alert/alert.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-edit-user-modal',
@@ -49,7 +50,8 @@ export class ControllerEditUserModalComponent implements OnInit {
               private userService: UserService,
               private messageService: MessageService,
               private alertService: AlertService,
-              private httpError: HttpErrorService) {
+              private httpError: HttpErrorService,
+              public translate: TranslateService) {
     this.isAlertActive = false;
     this.isModalActive = false;
     this.editUserForm = this.fb.group({
@@ -98,12 +100,15 @@ export class ControllerEditUserModalComponent implements OnInit {
       this.userService.updateUser(this.user).subscribe( (resp: User) => {
         this.isModalActive = false;
         this.emitSaved.emit('saved');
-        this.messageService.add({severity: 'success', detail: 'Actualizado correctamente'}); // TODO: Traducir
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.storedCorrectly')});
       }, (err) => {
         if (err.error && err.error.err && err.error.err.code === 11000) {
-          this.alertService.setAlert('Alerta', `Ya existe el email: ${ err.error.err.keyValue.email }`); // Traducir
+          this.alertService.setAlert(this.translate.instant('alerts.alert'),
+          `${ this.translate.instant('controllerCreateUserModal.messageErrorExistEmail') }: ${ err.error.err.keyValue.email }`);
         } else {
-          this.httpError.checkError(err, 'Alerta', 'Error al actualizar usuario'); // TODO: Traducir
+          this.httpError.checkError(err,
+            this.translate.instant('alerts.alert'),
+            this.translate.instant('controllerEditUserModal.messageErrorEditUser'));
         }
       });
     }

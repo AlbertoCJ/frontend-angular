@@ -3,6 +3,7 @@ import { UserService } from '../../../core/services/user/user.service';
 import { ListUsers } from '../../entities/list-users';
 import { HttpErrorService } from '../../../core/services/http-error/http-error.service';
 import { NgForm } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-list-user',
@@ -21,7 +22,8 @@ export class ControllerListUserComponent implements OnInit {
 
 
   constructor(private userService: UserService,
-              private httpError: HttpErrorService) {
+              private httpError: HttpErrorService,
+              public translate: TranslateService) {
     this.page = 1;
     this.limit = 4;
     this.listUsers = new ListUsers();
@@ -41,7 +43,9 @@ export class ControllerListUserComponent implements OnInit {
         this.listUsers = listUsers;
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al obtener listado de usuarios'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerListUser.messageErrorGetListUser'));
       }
   );
   }

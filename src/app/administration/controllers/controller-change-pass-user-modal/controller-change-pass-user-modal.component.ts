@@ -5,6 +5,7 @@ import { UserService } from '../../../core/services/user/user.service';
 import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../core/services/http-error/http-error.service';
 import { User } from '../../../core/entities/user/user';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-change-pass-user-modal',
@@ -42,7 +43,8 @@ export class ControllerChangePassUserModalComponent implements OnInit {
               private validators: ValidatorsService,
               private userService: UserService,
               private messageService: MessageService,
-              private httpError: HttpErrorService) {
+              private httpError: HttpErrorService,
+              public translate: TranslateService) {
     this.isAlertActive = false;
     this.isModalActive = false;
     this.changePassForm = this.fb.group({
@@ -104,9 +106,11 @@ export class ControllerChangePassUserModalComponent implements OnInit {
         //   email: '',
         //   state: true
         // });
-        this.messageService.add({severity: 'success', detail: 'Actualizado correctamente'}); // TODO: Traducir
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.storedCorrectly')});
       }, (err) => {
-        this.httpError.checkError(err, 'Alerta', 'Error al actualizar usuario'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerChangePassUserModal.messageErrorChangePassUser'));
       });
     }
   }

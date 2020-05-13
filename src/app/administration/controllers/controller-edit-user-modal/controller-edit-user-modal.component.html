@@ -1,6 +1,5 @@
 <app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="formCancel()" [showFooter]="false" [fullModal]="false">
-    <!-- TODO: Traducir -->
-    <span slot="custom-header">Editar usuario</span>
+    <span slot="custom-header">{{ translate.instant('controllerEditUserModal.titleModal') }}</span>
     <span slot="custom-section">
 
         <form [formGroup]="editUserForm">
@@ -8,31 +7,23 @@
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
-                            Nombre:
+                            {{ translate.instant('controllerEditUserModal.labelName') }}
                         </div>
                         <div class="ui-g-8">
                             <input pInputText type="text" formControlName="name" />
                             <small *ngIf="nameInvalid" class="class-error">
-                                Ingrese 3 letras
+                                {{ translate.instant('controllerEditUserModal.nameInvalid') }}
                             </small>
                         </div>
                     </div>
-                    <!-- <div class="ui-g-12 ui-md-6">
-                        <div class="ui-g-4">
-                            Activar:
-                        </div>
-                        <div class="ui-g-8">
-                            <p-inputSwitch formControlName="state"></p-inputSwitch> 
-                        </div>
-                    </div> -->
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
-                            Email:
+                            {{ translate.instant('controllerEditUserModal.labelEmail') }}
                         </div>
                         <div class="ui-g-8">
                             <input pInputText type="text" formControlName="email" />
                             <small *ngIf="emailInvalid" class="class-error">
-                                Ingrese email
+                                {{ translate.instant('controllerEditUserModal.emailInvalid') }}
                             </small>
                         </div>
                     </div>
@@ -40,7 +31,7 @@
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
-                            Activar:
+                            {{ translate.instant('controllerEditUserModal.labelActive') }}
                         </div>
                         <div class="ui-g-8">
                             <p-inputSwitch formControlName="state"></p-inputSwitch> 

@@ -1,19 +1,18 @@
 <div *ngIf="globalConfig" class="ui-fluid form-container">
     <form [formGroup]="globalConfigForm">
-        <!-- TODO: Traducir todos los textos -->
         <div class="box-main">
             <div class="super-title">
-                <p> Contenedores Locales </p>
+                <p> {{ translate.instant('controllerGlobalConfig.superTitleLocalContainer') }} </p>
             </div>
 
             <div class="box-param">
                 <div class="p-grid">
                     <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
-                        <span class="label">Nº Cont. Máx. Globales:</span>
+                        <span class="label">{{ translate.instant('controllerGlobalConfig.labelConMaxGlobal') }}</span>
                     </div>
                     <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
                         <p-spinner formControlName="numContMaxGlobal" [min]="2"></p-spinner>
-                        <p class="help-text">Mín: 2</p>
+                        <p class="help-text">{{ translate.instant('controllerGlobalConfig.min') }} 2</p>
                     </div>
                 </div>
             </div>
@@ -21,7 +20,7 @@
 
         <div class="box-main">
             <div class="super-title">
-                <p> Algoritmos permitidos </p>
+                <p> {{ translate.instant('controllerGlobalConfig.superTitleAllowAlgorithm') }} </p>
             </div>
 
             <div class="box-param">
@@ -122,31 +121,31 @@
 
         <div class="box-main">
             <div class="super-title">
-                <p> Mostrar en listados </p>
+                <p> {{ translate.instant('controllerGlobalConfig.superTitleShowList') }} </p>
             </div>
 
             <div class="box-section">
                 <div class="title">
-                    <span>Home</span>
+                    <span>{{ translate.instant('controllerGlobalConfig.titleHome') }}</span>
                 </div>
 
                 <div class="box-param">
                     <div class="p-grid">
                         <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
-                            <span class="label">Nº últimos jobs a mostrar:</span>
+                            <span class="label">{{ translate.instant('controllerGlobalConfig.labelLatestJobShow') }}</span>
                         </div>
                         <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
                             <p-spinner formControlName="showLatestsJobs" [min]="2" [max]="10"></p-spinner>
-                            <p class="help-text">Mín: 2, Máx: 10</p>
+                            <p class="help-text">{{ translate.instant('controllerGlobalConfig.min') }} 2, {{ translate.instant('controllerGlobalConfig.max') }} 10</p>
                         </div>
                     </div>
                     <div class="p-grid">
                         <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
-                            <span class="label">Nº jobs ejecutandose a mostrar:</span>
+                            <span class="label">{{ translate.instant('controllerGlobalConfig.labelJobRunningShow') }}</span>
                         </div>
                         <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
                             <p-spinner formControlName="showJobsRunning" [min]="2" [max]="6"></p-spinner>
-                            <p class="help-text">Mín: 2, Máx: 6</p>
+                            <p class="help-text">{{ translate.instant('controllerGlobalConfig.min') }} 2, {{ translate.instant('controllerGlobalConfig.max') }} 6</p>
                         </div>
                     </div>
                 </div>
@@ -154,17 +153,17 @@
 
             <div class="box-section">
                 <div class="title">
-                    <span>Dataset</span>
+                    <span>{{ translate.instant('controllerGlobalConfig.titleDataset') }}</span>
                 </div>
 
                 <div class="box-param">
                     <div class="p-grid">
                         <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
-                            <span class="label">Nº datasets a mostrar:</span>
+                            <span class="label">{{ translate.instant('controllerGlobalConfig.labelDatasetShow') }}</span>
                         </div>
                         <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section showDatasets-invalid">
                             <p-spinner formControlName="showDatasets" [min]="4" [max]="16" [step]="4"></p-spinner>
-                            <p class="help-text" [ngClass]="{'help-text-invalid': globalConfigForm.controls.showDatasets.invalid}">Válidos: 4, 8, 12 o 16 </p>
+                            <p class="help-text" [ngClass]="{'help-text-invalid': globalConfigForm.controls.showDatasets.invalid}">{{ translate.instant('controllerGlobalConfig.valids') }} 4, 8, 12 o 16 </p>
                         </div>
                     </div>
                 </div>
@@ -172,17 +171,17 @@
 
             <div class="box-section">
                 <div class="title">
-                    <span>Job</span>
+                    <span>{{ translate.instant('controllerGlobalConfig.titleJob') }}</span>
                 </div>
 
                 <div class="box-param">
                     <div class="p-grid">
                         <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
-                            <span class="label">Nº jobs a mostrar:</span>
+                            <span class="label">{{ translate.instant('controllerGlobalConfig.labelJobShow') }}</span>
                         </div>
                         <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
                             <p-spinner formControlName="showJobs" [min]="2" [max]="20"></p-spinner>
-                            <p class="help-text">Mín: 2, Máx: 20</p>
+                            <p class="help-text">{{ translate.instant('controllerGlobalConfig.min') }} 2, {{ translate.instant('controllerGlobalConfig.max') }} 20</p>
                         </div>
                     </div>
                 </div>
@@ -191,8 +190,7 @@
         <div class="ui-fluid">
             <app-buttons-panel-normal [marginTop]="true">
                 <span slot="end">
-                    <!-- TODO: Traducir -->
-                    <span class="btn-panel undo" (click)="restoreConfirm()">Restablecer valores por defecto</span>
+                    <span class="btn-panel undo" (click)="restoreConfirm()">{{ translate.instant('controllerGlobalConfig.restoreDefaultValue') }}</span>
                 <span class="btn-panel"><app-save-button (emitClicked)="btnSaveClicked()"></app-save-button></span>
                 </span>
             </app-buttons-panel-normal>

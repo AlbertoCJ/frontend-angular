@@ -1,4 +1,5 @@
 {
+    "welcome": "Bienvenido",
     "buttons": {
         "btnAccept": "Aceptar",
         "btnBack": "Volver",
@@ -14,10 +15,17 @@
     "modals": {
         "warning": "Aviso"
     },
+    "alerts": {
+        "alert": "Alerta"
+    },
+    "menssageToast": {
+        "storedCorrectly": "Guardado correctamente",
+        "updateCorrectly": "Actualizado correctamente"
+    },
     "login": {
         "email": "Email",
         "password": "Contraseña",
-        "btnLogin": "Login",
+        "btnLogin": "Entrar",
         "txtErrEmailOrPass": "Email y/o contraseña erronea.",
         "txtErrEmailEmpty": "Email vacio",
         "txtErrAndEmpty": " y ",
@@ -32,6 +40,76 @@
         "local": "Local",
         "logOut": "Salir",
         "msgAlertErrorChangeLanguage": "Error al cambiar el idioma."
+    },
+    "administrationConfigPage": {
+        "headerGlobalConfiguration": "Configuración Global"
+    },
+    "controllerGlobalConfig": {
+        "messageConfirm": "Se restablecerán los valores por defecto. ¿Estás seguro?",
+        "messageErrorUpdated": "Error al actualizar configiración.",
+        "messageSuccessRestore": "Restablecido correctamente",
+        "messageErrorRestore": "Error al restablecer configiración.",
+        "min": "Mín:",
+        "max": "Máx:",
+        "valids": "Válidos:",
+        "superTitleLocalContainer": "Contenedores Locales",
+        "labelConMaxGlobal": "Nº Cont. Máx. Globales:",
+        "superTitleAllowAlgorithm": "Algoritmos permitidos",
+        "superTitleShowList": "Mostrar en listados",
+        "titleHome": "Home",
+        "labelLatestJobShow": "Nº últimos jobs a mostrar:",
+        "labelJobRunningShow": "Nº jobs ejecutandose a mostrar:",
+        "titleDataset": "Dataset",
+        "labelDatasetShow": "Nº datasets a mostrar:",
+        "titleJob": "Job",
+        "labelJobShow": "Nº jobs a mostrar:",
+        "restoreDefaultValue": "Restablecer valores por defecto"
+    },
+    "controllerListUser": {
+        "messageErrorGetListUser": "Error al obtener listado de usuarios.",
+        "searchByName": "Buscar por nombre",
+        "searchByEmail": "Buscar por correo",
+        "btnCreateUser": "Crear usuario",
+        "noUsers": "No hay usuarios"
+    },
+    "controllerCreateUserModal": {
+        "messageErrorExistEmail": "Ya existe el email",
+        "messageErrorCreateUser": "Error al crear usuario.",
+        "titleModal": "Crear usuario",
+        "labelName": "Nombre:",
+        "nameInvalid": "Ingrese 3 letras",
+        "labelEmail": "Correo:",
+        "emailInvalid": "Ingrese email",
+        "labelPassword": "Contraseña:",
+        "passwordInvalid": "Ingrese contraseña",
+        "labelPassword2": "Conf. Contraseña:",
+        "password2Invalid": "Las contraseñas no coinciden",
+        "labelActive": "Activar:"
+    },
+    "controllerEditUserModal": {
+        "messageErrorEditUser": "Error al actualizar usuario.",
+        "titleModal": "Editar usuario",
+        "labelName": "Nombre:",
+        "nameInvalid": "Ingrese 3 letras",
+        "labelEmail": "Correo:",
+        "emailInvalid": "Ingrese email",
+        "labelActive": "Activar:"
+    },
+    "controllerChangePassUserModal": {
+        "messageErrorChangePassUser": "Error al actualizar la contraseña.",
+        "titleModal": "Cambiar contraseña",
+        "labelPassword": "Contraseña:",
+        "passwordInvalid": "Ingrese contraseña",
+        "labelPassword2": "Repetir Contraseña:",
+        "password2Invalid": "Las contraseñas no coinciden"
+    },
+    "userCard": {
+        "labelName": "Nombre:",
+        "labelEmail": "Correo:",
+        "btnChangePass": "C. Contraseña"
+    },
+    "administrationUserPage": {
+        "headerUserManagement": "Gestión de Usuarios"
     },
     "menubar": {
         "dataSets": "DataSets",

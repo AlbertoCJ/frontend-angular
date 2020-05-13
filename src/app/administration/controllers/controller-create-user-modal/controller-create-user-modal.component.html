@@ -1,6 +1,5 @@
 <app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="formCancel()" [showFooter]="false" [fullModal]="false">
-    <!-- TODO: Traducir -->
-    <span slot="custom-header">Crear usuario</span>
+    <span slot="custom-header">{{ translate.instant('controllerCreateUserModal.titleModal') }}</span>
     <span slot="custom-section">
 
         <form [formGroup]="createUserForm">
@@ -8,23 +7,23 @@
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
-                            Nombre:
+                            {{ translate.instant('controllerCreateUserModal.labelName') }}
                         </div>
                         <div class="ui-g-8">
                             <input pInputText type="text" formControlName="name" />
                             <small *ngIf="nameInvalid" class="class-error">
-                                Ingrese 3 letras
+                                {{ translate.instant('controllerCreateUserModal.nameInvalid') }}
                             </small>
                         </div>
                     </div>
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
-                            Email:
+                            {{ translate.instant('controllerCreateUserModal.labelEmail') }}
                         </div>
                         <div class="ui-g-8">
                             <input pInputText type="text" formControlName="email" />
                             <small *ngIf="emailInvalid" class="class-error">
-                                Ingrese email
+                                {{ translate.instant('controllerCreateUserModal.emailInvalid') }}
                             </small>
                         </div>
                     </div>
@@ -32,23 +31,23 @@
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
-                            Contraseña:
+                            {{ translate.instant('controllerCreateUserModal.labelPassword') }}
                         </div>
                         <div class="ui-g-8">
                             <input pInputText type="text" formControlName="password" />
                             <small *ngIf="passwordInvalid" class="class-error">
-                                Ingrese contraseña
+                                {{ translate.instant('controllerCreateUserModal.passwordInvalid') }}
                               </small>
                         </div>
                     </div>
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
-                            Conf. Contraseña:
+                            {{ translate.instant('controllerCreateUserModal.labelPassword2') }}
                         </div>
                         <div class="ui-g-8">
                             <input pInputText type="text" formControlName="password2" />
                             <small *ngIf="password2Invalid" class="class-error">
-                                Las contraseñas no coinciden
+                                {{ translate.instant('controllerCreateUserModal.password2Invalid') }}
                               </small>
                         </div>
                     </div>
@@ -56,10 +55,9 @@
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
-                            Activar:
+                            {{ translate.instant('controllerCreateUserModal.labelActive') }}
                         </div>
                         <div class="ui-g-8">
-                            <!-- [(ngModel)]="checked" -->
                             <p-inputSwitch formControlName="state"></p-inputSwitch> 
                         </div>
                     </div>

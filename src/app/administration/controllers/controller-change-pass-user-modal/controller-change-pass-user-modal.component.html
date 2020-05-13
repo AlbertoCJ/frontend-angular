@@ -1,6 +1,6 @@
 <app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="formCancel()" [showFooter]="false" [fullModal]="false">
     <!-- TODO: Traducir -->
-    <span slot="custom-header">Cambiar contraseña</span>
+    <span slot="custom-header">{{ translate.instant('controllerChangePassUserModal.titleModal') }}</span>
     <span slot="custom-section">
 
         <form [formGroup]="changePassForm">
@@ -8,23 +8,23 @@
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
-                            Contraseña:
+                            {{ translate.instant('controllerChangePassUserModal.labelPassword') }}
                         </div>
                         <div class="ui-g-8">
                             <input pInputText type="text" formControlName="password" />
                             <small *ngIf="passwordInvalid" class="class-error">
-                                Ingrese contraseña
+                                {{ translate.instant('controllerChangePassUserModal.passwordInvalid') }}
                             </small>
                         </div>
                     </div>
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-g-4">
-                            Repetir Contraseña:
+                            {{ translate.instant('controllerChangePassUserModal.labelPassword2') }}
                         </div>
                         <div class="ui-g-8">
                             <input pInputText type="text" formControlName="password2" />
                             <small *ngIf="password2Invalid" class="class-error">
-                                Las contraseñas no coinciden
+                                {{ translate.instant('controllerChangePassUserModal.password2Invalid') }}
                               </small>
                         </div>
                     </div>
