@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { AlertService } from '../../../../../core/services/alert/alert.service';
 import { saveAs } from 'file-saver';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dataset-card',
@@ -16,8 +17,6 @@ export class DatasetCardComponent implements OnInit {
 
   // Confirm
   isConfirmActive = false;
-  titleConfirm = 'Aviso'; // TODO: Traducir
-  messageConfirm = 'Se eliminara permanentemente. ¿Estás seguro?'; // TODO: Traducir
 
   public viewMode = ViewMode;
   descriptionAux: string;
@@ -34,7 +33,8 @@ export class DatasetCardComponent implements OnInit {
   constructor(private datasetService: DatasetService,
               private messageService: MessageService,
               private alertService: AlertService,
-              private httpError: HttpErrorService) { }
+              private httpError: HttpErrorService,
+              public translate: TranslateService) { }
 
   ngOnInit() {
   }
@@ -47,10 +47,12 @@ export class DatasetCardComponent implements OnInit {
     this.datasetService.downloadDataset(this.dataset).subscribe(
       datasetFile => {
         saveAs(datasetFile, `${ this.dataset.fullName }`);
-        this.messageService.add({severity: 'success', detail: 'Descargado correctamente'}); // TODO: Traducir
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.downloadCorrectly')});
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al descargar dataset'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('datasetCard.msgAlertErrorDownloadDataset'));
       }
     );
   }
@@ -64,15 +66,18 @@ export class DatasetCardComponent implements OnInit {
     this.datasetService.updateDataset(this.dataset).subscribe(
       dataset => {
         this.mode = ViewMode.VIEW;
-        this.messageService.add({severity: 'success', detail: 'Guardado correctamente'}); // TODO: Traducir
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.storedCorrectly')});
         this.emitSaved.emit(dataset);
       },
       err => {
         this.mode = ViewMode.EDIT;
         if (err.error && err.error.err && err.error.err.code === 11000) {
-          this.alertService.setAlert('Alerta', `Ya existe esa descripción.`); // Traducir
+          this.alertService.setAlert(this.translate.instant('alerts.alert'),
+          this.translate.instant('datasetCard.msgAlertErrorExistDescription'));
         } else {
-          this.httpError.checkError(err, 'Alerta', 'Error al guardar dataset'); // TODO: Traducir
+          this.httpError.checkError(err,
+            this.translate.instant('alerts.alert'),
+            this.translate.instant('datasetCard.msgAlertErrorSaveDataset'));
         }
       }
     );
@@ -91,11 +96,13 @@ export class DatasetCardComponent implements OnInit {
   remove() {
     this.datasetService.deleteDataset(this.dataset.id).subscribe(
       dataset => {
-        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente'}); // TODO: Traducir
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.removedCorrectly')});
         this.emitRemoved.emit(dataset);
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al borrar dataset'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('datasetCard.msgAlertErrorRemoveDataset'));
       }
     );
     this.isConfirmActive = false;

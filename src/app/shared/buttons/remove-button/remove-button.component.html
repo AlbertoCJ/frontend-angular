@@ -1,1 +1,6 @@
-<app-button [label]="label" [disabled]="disabled" [styleClass]="'ui-button-danger'" (emitClicked)="clicked()"></app-button>
+<app-button 
+    [label]="translate.instant('buttons.btnDelete')" 
+    [disabled]="disabled" 
+    [styleClass]="'ui-button-danger'" 
+    (emitClicked)="clicked()">
+</app-button>

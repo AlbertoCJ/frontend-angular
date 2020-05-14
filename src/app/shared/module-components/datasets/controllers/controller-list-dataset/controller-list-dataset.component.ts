@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { NgForm } from '@angular/forms';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-list-dataset',
@@ -29,7 +30,8 @@ export class ControllerListDatasetComponent implements OnInit {
   constructor(private datasetService: DatasetService,
               private messageService: MessageService,
               private httpError: HttpErrorService,
-              private globalConfigService: GlobalConfigService) {
+              private globalConfigService: GlobalConfigService,
+              public translate: TranslateService) {
     // this.descriptionSearch = '';
     this.page = 1;
     this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.dataset.showDatasets;
@@ -50,7 +52,9 @@ export class ControllerListDatasetComponent implements OnInit {
         this.listDataset = listDataset;
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al obtener listado de datasets'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerListDataset.msgAlertErrorGetListDataset'));
       }
   );
   }

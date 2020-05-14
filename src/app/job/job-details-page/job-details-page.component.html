@@ -1,4 +1,7 @@
 <app-header-title [textTitle]="jobTitle">
-    <app-controller-job-details [jobId]="jobId" (emitJob)="jobData($event)" (emitCancel)="backHome()">
+    <app-controller-job-details 
+        [jobId]="jobId" 
+        (emitJob)="jobData($event)" 
+        (emitCancel)="backHome()">
     </app-controller-job-details>
 </app-header-title>

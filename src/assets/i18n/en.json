@@ -12,15 +12,23 @@
         "btnSave": "Save",
         "btnView": "View"
     },
+    "errorList": {
+        "headerText": "Errors",
+        "noErrors": "No errors"
+    },
     "modals": {
         "warning": "Warning"
     },
     "alerts": {
-        "alert": "Alert"
+        "alert": "Alert",
+        "textShowMoreCollapse": "Show more",
+        "textShowLessCollapse": "Show less"
     },
     "menssageToast": {
         "storedCorrectly": "Stored correctly",
-        "updateCorrectly": "Updated correctly"
+        "updateCorrectly": "Updated correctly",
+        "downloadCorrectly": "Correctly downloaded",
+        "removedCorrectly": "Correctly removed"
     },
     "login": {
         "email": "Email",
@@ -121,6 +129,52 @@
         "msgAlertErrorChangeLanguage": "Error while changing language."
     },
     "homePage": {
-        "headerJobRunning": "List Job Running"
+        "headerJobRunning": "List Job Running",
+        "latestJob": "Latest Jobs"
+    },
+    "datasetsUploadPage": {
+        "textTitle": "Add Dataset"
+    },
+    "datasetsListPage": {
+        "textTitle": "List Dataset"
+    },
+    "controllerFormDataset": {
+        "msgAlertErrorExistDescription": "That description already exists.",
+        "msgAlertErrorSave": "Error when saving dataset.",
+        "textError": "Write a description",
+        "chooseLabel": "Add file",
+        "uploadLabel": "Upload dataset",
+        "cancelLabel": "clean",
+        "labelText": "Description"
+    },
+    "controllerListDataset": {
+        "msgAlertErrorGetListDataset": "Error when obtaining list of datasets.",
+        "searchFilter": "Search by description",
+        "noDatasets": "No datasets"
+    },
+    "datasetCard": {
+        "msgAlertErrorDownloadDataset": "Error when downloading dataset.",
+        "msgAlertErrorExistDescription": "That description already exists.",
+        "msgAlertErrorSaveDataset": "Error when saving dataset.",
+        "msgAlertErrorRemoveDataset": "Error when deleting dataset.",
+        "titleConfirm": "Warning",
+        "messageConfirm": "It will be permanently removed. Are you sure?",
+        "name": "Name:",
+        "size": "Size:",
+        "description": "Description:",
+        "attributes": "Attributes:"
+    },
+    "launchJobPage": {
+        "textTitle": "Launch job",
+        "dataset": "Dataset",
+        "algorithm": "Algorithms",
+        "container": "Container",
+        "confirmation": "Confirmation"
+    },
+    "jobListPage": {
+        "textTitle": "List Job"
+    },
+    "jobDetailsPage": {
+        "textJob": "Job:"
     }
 }

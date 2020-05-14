@@ -3,23 +3,49 @@
         <div class="ui-g-12">
             <form (ngSubmit)="search(forma)" #forma="ngForm" novalidate>
                 <div class="ui-inputgroup">
-                    <button pButton type="submit" icon="pi pi-search" class="ui-button-primary" [disabled]="descriptionSearch === ''"></button>
-                    <input type="text" pInputText name="descriptionSearch" placeholder="Buscar por descripción" [(ngModel)]="descriptionSearch">
-                    <button pButton type="button" icon="pi pi-times" class="ui-button-danger" (click)="clearDescriptionSearch()"></button>
+                    <button 
+                        pButton 
+                        type="submit" 
+                        icon="pi pi-search" 
+                        class="ui-button-primary" 
+                        [disabled]="descriptionSearch === ''">
+                    </button>
+                    <input 
+                        type="text" 
+                        pInputText 
+                        name="descriptionSearch" 
+                        [placeholder]="translate.instant('controllerListDataset.searchFilter')" 
+                        [(ngModel)]="descriptionSearch">
+                    <button 
+                        pButton 
+                        type="button" 
+                        icon="pi pi-times" 
+                        class="ui-button-danger" 
+                        (click)="clearDescriptionSearch()">
+                    </button>
                 </div>
             </form>
         </div>
     </div>
     <div class="p-grid m-cards">
         <div class="p-lg-3 p-md-4 p-sm-6 p-col-12" *ngFor="let dataset of listDataset.datasets">
-            <app-dataset-card [dataset]="dataset" [showButtons]="showCardButtons" [isClicker]="clickCard" (emitSelected)="select($event)" (emitRemoved)="removed($event)"></app-dataset-card>
+            <app-dataset-card 
+                [dataset]="dataset" 
+                [showButtons]="showCardButtons" 
+                [isClicker]="clickCard" 
+                (emitSelected)="select($event)" 
+                (emitRemoved)="removed($event)">
+            </app-dataset-card>
         </div>
     </div>
     <div *ngIf="listDataset.datasets.length === 0">
-        <p class="list-empty list-empty-padding">No hay datasets</p>
+        <p class="list-empty list-empty-padding">{{ translate.instant('controllerListDataset.noDatasets') }}</p>
     </div>
 
     <div *ngIf="listDataset.datasets.length > 0">
-        <app-pagination [paginationData]="listDataset.paginationData" (emitPage)="changePage($event)"></app-pagination>
+        <app-pagination 
+            [paginationData]="listDataset.paginationData" 
+            (emitPage)="changePage($event)">
+        </app-pagination>
     </div>
 </div>

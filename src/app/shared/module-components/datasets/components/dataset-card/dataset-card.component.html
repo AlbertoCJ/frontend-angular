@@ -1,11 +1,15 @@
 <div class="card-wrapper">
-    <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{clicker: isClicker, 'card-background': isClicker}" (click)="select()">
+    <p-card 
+        class="mt-card" 
+        styleClass="ui-card-shadow" 
+        [ngClass]="{clicker: isClicker, 'card-background': isClicker}" 
+        (click)="select()">
 
         <div class="">
             <p class="date-dataset">{{ dataset.dateCreation | date:'dd/MM/yyyy' }}</p>
             <div class="p-grid p-justify-center">
                 <div class="p-col-4">
-                    <span class="title-card-dataset">Nombre:</span>
+                    <span class="title-card-dataset">{{ translate.instant('datasetCard.name') }}</span>
                 </div>
                 <div class="p-col-8 separator">
                     <span class="content-card-dataset">{{ dataset.fullName }}</span>
@@ -13,28 +17,36 @@
             </div>
             <div class="p-grid p-justify-center">
                 <div class="p-col-4">
-                    <span class="title-card-dataset">Tamaño:</span>
+                    <span class="title-card-dataset">{{ translate.instant('datasetCard.size') }}</span>
                 </div>
                 <div class="p-col-8 separator">
-                    <span class="content-card-dataset">{{ dataset.size }} <span class="title-card-dataset-bytes">Byte</span></span>
+                    <span class="content-card-dataset">{{ dataset.size }} 
+                        <span class="title-card-dataset-bytes">Byte</span>
+                    </span>
                 </div>
             </div>
             <div class="p-grid p-justify-center">
                 <div class="p-col-4">
-                    <span class="title-card-dataset">Descripción:</span>
+                    <span class="title-card-dataset">{{ translate.instant('datasetCard.description') }}</span>
                 </div>
                 <div class="p-col-8 custom-textarea separator">
-                    <textarea [rows]="2" [disabled]="mode === viewMode.VIEW" [(ngModel)]="dataset.description" pInputTextarea></textarea>
+                    <textarea 
+                        [rows]="2" 
+                        [disabled]="mode === viewMode.VIEW" 
+                        [(ngModel)]="dataset.description" 
+                        pInputTextarea>
+                    </textarea>
                 </div>
             </div>
             <div class="p-grid p-justify-center">
                 <div class="p-col-4">
-                    <span class="title-card-dataset">Atributos:</span>
+                    <span class="title-card-dataset">{{ translate.instant('datasetCard.attributes') }}</span>
                 </div>
                 <div class="p-col-8 custom-textarea separator">
                     <div class="box-atributes">
                         <ul>
-                            <li class="content-card-dataset" *ngFor="let attribute of dataset.attributes"> - {{ attribute }}</li>
+                            <li class="content-card-dataset" 
+                                *ngFor="let attribute of dataset.attributes"> - {{ attribute }}</li>
                         </ul>
                     </div>
                 </div>
@@ -45,15 +57,32 @@
         </div>
     </p-card>
     <div class="card-icons">
-        <i *ngIf="showButtons && mode !== viewMode.EDIT" class="pi pi-download card-icon ui-special-button-info ml-1" (click)="downloadDataset()"></i>
-        <i *ngIf="showButtons && mode !== viewMode.EDIT" class="pi pi-pencil card-icon ui-special-button-warning ml-1" (click)="edit()"></i>
-        <i *ngIf="showButtons && mode !== viewMode.EDIT" class="pi pi-trash card-icon ui-special-button-danger ml-1 mr-1" (click)="removeConfirm()"></i>
+        <i *ngIf="showButtons && mode !== viewMode.EDIT" 
+            class="pi pi-download card-icon ui-special-button-info ml-1" 
+            (click)="downloadDataset()"></i>
+        <i *ngIf="showButtons && mode !== viewMode.EDIT" 
+            class="pi pi-pencil card-icon ui-special-button-warning ml-1" 
+            (click)="edit()"></i>
+        <i *ngIf="showButtons && mode !== viewMode.EDIT" 
+            class="pi pi-trash card-icon ui-special-button-danger ml-1 mr-1" 
+            (click)="removeConfirm()"></i>
 
-        <i *ngIf="showButtons && mode === viewMode.EDIT" class="pi pi-save card-icon ui-special-button-success mr-1" (click)="update()"></i>
-        <i *ngIf="showButtons && mode === viewMode.EDIT" class="pi pi-times card-icon ui-special-button-danger mr-1" (click)="cancelUpdate()"></i>
+        <i *ngIf="showButtons && mode === viewMode.EDIT" 
+            class="pi pi-save card-icon ui-special-button-success mr-1" 
+            (click)="update()"></i>
+        <i *ngIf="showButtons && mode === viewMode.EDIT" 
+            class="pi pi-times card-icon ui-special-button-danger mr-1" 
+            (click)="cancelUpdate()"></i>
 
     </div>
 
 </div>
 
-<app-confirm-dialog *ngIf="isConfirmActive" [isConfirmActive]="isConfirmActive" [title]="titleConfirm" [message]="messageConfirm" (confirm)="remove()" (cancel)="removeCancel()"></app-confirm-dialog>
+<app-confirm-dialog 
+    *ngIf="isConfirmActive" 
+    [isConfirmActive]="isConfirmActive" 
+    [title]="translate.instant('datasetCard.titleConfirm')" 
+    [message]="translate.instant('datasetCard.messageConfirm')" 
+    (confirm)="remove()" 
+    (cancel)="removeCancel()">
+</app-confirm-dialog>

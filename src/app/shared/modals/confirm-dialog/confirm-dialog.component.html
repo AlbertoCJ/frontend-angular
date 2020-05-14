@@ -1,5 +1,11 @@
 <!-- Modal -->
-<app-modal-generic *ngIf="isConfirmActive" [isModalActive]="isModalActive" (closed)="emitModal()" [showHeader]="title && title !== ''" [showSection]="message && message !== ''">
+<app-modal-generic 
+    *ngIf="isConfirmActive" 
+    [isModalActive]="isModalActive" 
+    (closed)="emitModal()" 
+    [showHeader]="title && title !== ''" 
+    [showSection]="message && message !== ''">
+    
     <!-- <custom-header> -->
     <span slot="custom-header">{{ title }}</span>
     <!-- </custom-header> -->

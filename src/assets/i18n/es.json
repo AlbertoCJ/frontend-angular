@@ -12,15 +12,23 @@
         "btnSave": "Guardar",
         "btnView": "Ver"
     },
+    "errorList": {
+        "headerText": "Errores",
+        "noErrors": "No hay errores"
+    },
     "modals": {
         "warning": "Aviso"
     },
     "alerts": {
-        "alert": "Alerta"
+        "alert": "Alerta",
+        "textShowMoreCollapse": "Mostrar más",
+        "textShowLessCollapse": "Mostrar menos"
     },
     "menssageToast": {
         "storedCorrectly": "Guardado correctamente",
-        "updateCorrectly": "Actualizado correctamente"
+        "updateCorrectly": "Actualizado correctamente",
+        "downloadCorrectly": "Descargado correctamente",
+        "removedCorrectly": "Eliminado correctamente"
     },
     "login": {
         "email": "Email",
@@ -121,6 +129,52 @@
         "msgAlertErrorChangeLanguage": "Error al cambiar el idioma."
     },
     "homePage": {
-        "headerJobRunning": "Listado Job Ejecutandose"
+        "headerJobRunning": "Listado Job Ejecutandose",
+        "latestJob": "Últimos Jobs"
+    },
+    "datasetsUploadPage": {
+        "textTitle": "Agregar Dataset"
+    },
+    "datasetsListPage": {
+        "textTitle": "Listado Dataset"
+    },
+    "controllerFormDataset": {
+        "msgAlertErrorExistDescription": "Ya existe esa descripción.",
+        "msgAlertErrorSave": "Error al guardar dataset.",
+        "textError": "Escribe una descipción",
+        "chooseLabel": "Agregar fichero",
+        "uploadLabel": "Subir dataset",
+        "cancelLabel": "Limpiar",
+        "labelText": "Descripción"
+    },
+    "controllerListDataset": {
+        "msgAlertErrorGetListDataset": "Error al obtener listado de datasets.",
+        "searchFilter": "Buscar por descripción",
+        "noDatasets": "No hay datasets"
+    },
+    "datasetCard": {
+        "msgAlertErrorDownloadDataset": "Error al descargar dataset.",
+        "msgAlertErrorExistDescription": "Ya existe esa descripción.",
+        "msgAlertErrorSaveDataset": "Error al guardar dataset.",
+        "msgAlertErrorRemoveDataset": "Error al borrar dataset.",
+        "titleConfirm": "Aviso",
+        "messageConfirm": "Se eliminara permanentemente. ¿Estás seguro?",
+        "name": "Nombre:",
+        "size": "Tamaño:",
+        "description": "Descripción:",
+        "attributes": "Atributos:"
+    },
+    "launchJobPage": {
+        "textTitle": "Lanzar job",
+        "dataset": "Dataset",
+        "algorithm": "Algoritmos",
+        "container": "Contenedor",
+        "confirmation": "Confirmación"
+    },
+    "jobListPage": {
+        "textTitle": "Listado Job"
+    },
+    "jobDetailsPage": {
+        "textJob": "Job:"
     }
 }

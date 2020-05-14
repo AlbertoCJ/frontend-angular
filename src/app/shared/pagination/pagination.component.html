@@ -1,3 +1,7 @@
 <div *ngIf="paginationData">
-    <p-paginator [rows]="paginationData.limit" [totalRecords]="paginationData.totalDocs" (onPageChange)="paginate($event)"></p-paginator>
+    <p-paginator 
+        [rows]="paginationData.limit" 
+        [totalRecords]="paginationData.totalDocs" 
+        (onPageChange)="paginate($event)">
+    </p-paginator>
 </div>

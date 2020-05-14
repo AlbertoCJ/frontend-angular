@@ -4,6 +4,7 @@ import { DatasetService } from '../../../../../core/services/dataset/dataset.ser
 import { MessageService } from 'primeng/api';
 import { AlertService } from '../../../../../core/services/alert/alert.service';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -24,7 +25,8 @@ export class ControllerFormDatasetComponent implements OnInit {
   constructor( private datasetService: DatasetService,
                private messageService: MessageService,
                private alertService: AlertService,
-               private httpError: HttpErrorService) {
+               private httpError: HttpErrorService,
+               public translate: TranslateService) {
     this.formDataset = new FormDataset();
   }
 
@@ -40,7 +42,7 @@ export class ControllerFormDatasetComponent implements OnInit {
     this.clearError();
     if (this.formDataset && this.formDataset.description === '') {
       this.showError = true;
-      this.textError = 'Escribe una descipción'; // TODO: Traducir
+      this.textError = this.translate.instant('controllerFormDataset.textError');
     } else {
       this.formDataset.file = event.files[0];
       this.datasetService.upload(this.formDataset).subscribe( (resp: Dataset) => {
@@ -49,12 +51,16 @@ export class ControllerFormDatasetComponent implements OnInit {
         this.clearAll();
         form.clear();
         this.formDataset = new FormDataset();
-        this.messageService.add({severity: 'success', detail: 'Guardado correctamente'}); // Traducir
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.updateCorrectly')});
       }, (err) => {
         if (err.error && err.error.err && err.error.err.code === 11000) {
-          this.alertService.setAlert('Alerta', `Ya existe esa descripción.`); // Traducir
+          this.alertService.setAlert(
+            this.translate.instant('alerts.alert'),
+            this.translate.instant('controllerFormDataset.msgAlertErrorExistDescription'));
         } else {
-          this.httpError.checkError(err, 'Alerta', 'Error al guardar dataset'); // TODO: Traducir
+          this.httpError.checkError(err,
+            this.translate.instant('alerts.alert'),
+            this.translate.instant('controllerFormDataset.msgAlertErrorSave'));
         }
       });
     }

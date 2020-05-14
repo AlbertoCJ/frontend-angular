@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileUploadComponent implements OnInit {
 
+// TODO: Eliminar componente si no se usa
+
   fileName = '';
 
   constructor() { }

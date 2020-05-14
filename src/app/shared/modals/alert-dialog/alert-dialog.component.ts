@@ -1,15 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../../../core/services/alert/alert.service';
 import { Observable } from 'rxjs';
 import { Alert } from 'src/app/core/entities/generic/alert';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-alert-dialog',
   templateUrl: './alert-dialog.component.html',
   styleUrls: ['./alert-dialog.component.scss']
 })
-export class AlertDialogComponent implements OnInit, DoCheck {
+export class AlertDialogComponent implements OnInit {
 
   title: string;
   message: string;
@@ -22,7 +23,8 @@ export class AlertDialogComponent implements OnInit, DoCheck {
   textToShowCollapse: string;
 
   constructor(private alert: AlertService,
-              private router: Router) {
+              private router: Router,
+              public translate: TranslateService) {
     this.isModalActive = false;
   }
 
@@ -36,11 +38,6 @@ export class AlertDialogComponent implements OnInit, DoCheck {
       this.isAlertActive = dataAlert.activated;
       this.isModalActive = dataAlert.activated;
     });
-  }
-
-  ngDoCheck() {
-    this.textShowMoreCollapse = 'Mostrar más'; // this.translate.instant('general.showMore'); // TODO: Traducir
-    this.textShowLessCollapse = 'Mostrar menos'; // this.translate.instant('general.showLess'); // TODO: Traducir
   }
 
   close() {

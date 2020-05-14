@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-error-list',
@@ -7,7 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ErrorListComponent implements OnInit {
 
-  headerText = 'Errores'; // TODO: Traducir
   maxHeight = '80px';
 
   @Input() errorList: string[];
@@ -17,7 +17,7 @@ export class ErrorListComponent implements OnInit {
     }
   }
 
-  constructor() {}
+  constructor(public translate: TranslateService) {}
 
   ngOnInit() {
   }

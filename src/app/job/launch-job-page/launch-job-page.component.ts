@@ -6,6 +6,7 @@ import { LocalWorkers } from '../../shared/module-components/job/entities/worker
 import { Steps } from 'src/app/shared/module-components/job/enums/steps.enum';
 import { FormJobData } from '../../shared/module-components/job/entities/form-job-data/form-job-data';
 import { DataAlgorithms } from '../../shared/module-components/job/entities/data-algorithms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-launch-job-page',
@@ -21,19 +22,19 @@ export class LaunchJobPageComponent implements OnInit {
   listAlgorithms: DataAlgorithms;
   dataWorkers: LocalWorkers;
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.items = [
       {
-        label: 'Dataset'
+        label: this.translate.instant('launchJobPage.dataset')
       },
       {
-        label: 'Algoritmos'
+        label: this.translate.instant('launchJobPage.algorithm')
       },
       {
-        label: 'Contenedor'
+        label: this.translate.instant('launchJobPage.container')
       },
       {
-        label: 'Confirmación'
+        label: this.translate.instant('launchJobPage.confirmation')
       }
     ];
     this.activeStep = Steps.DATASET;

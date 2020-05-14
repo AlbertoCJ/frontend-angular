@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Job } from '../../shared/module-components/job/entities/job';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-job-details-page',
@@ -13,7 +14,8 @@ export class JobDetailsPageComponent implements OnInit {
   jobTitle: string;
 
   constructor(private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              public translate: TranslateService) {
     this.route.params.subscribe(param => {
       this.jobId = param.id;
       this.jobTitle = '';
@@ -24,7 +26,7 @@ export class JobDetailsPageComponent implements OnInit {
   }
 
   jobData(job: Job) {
-    this.jobTitle = `Job: ${ job.name }`; // Traducir
+    this.jobTitle = `${ this.translate.instant('jobDetailsPage.textJob') } ${ job.name }`;
   }
 
   backHome() {

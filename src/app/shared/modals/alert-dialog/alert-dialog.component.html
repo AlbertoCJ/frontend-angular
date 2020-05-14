@@ -1,12 +1,23 @@
 <!-- Modal -->
-<app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="emitAccept()" [showHeader]="title && title !== ''" [showSection]="message && message !== ''" [closable]="false">
+<app-modal-generic 
+    *ngIf="isAlertActive" 
+    [isModalActive]="isModalActive" 
+    (closed)="emitAccept()" 
+    [showHeader]="title && title !== ''" 
+    [showSection]="message && message !== ''" 
+    [closable]="false">
     <!-- <custom-header style="width: 100%;"> -->
     <span slot="custom-header" class="modal-card-title">{{ title }}</span>
     <!-- </custom-header> -->
     <!-- <custom-section> -->
     <div slot="custom-section">
         <p>{{ message }}</p>
-        <app-collapse *ngIf="textToShowCollapse && textToShowCollapse !== ''" [textShowMore]="textShowMoreCollapse" [textShowLess]="textShowLessCollapse" [textToShow]="textToShowCollapse"></app-collapse>
+        <app-collapse 
+            *ngIf="textToShowCollapse && textToShowCollapse !== ''" 
+            [textShowMore]="translate.instant('alerts.textShowMoreCollapse')" 
+            [textShowLess]="translate.instant('alerts.textShowLessCollapse')" 
+            [textToShow]="textToShowCollapse">
+        </app-collapse>
     </div>
     <!-- </custom-section> -->
     <!-- <custom-footer> -->

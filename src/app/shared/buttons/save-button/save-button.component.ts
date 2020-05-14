@@ -8,14 +8,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SaveButtonComponent implements OnInit {
 
-  label: string;
   @Input() disabled = false;
 
   @Output() emitClicked = new EventEmitter<string>();
 
-  constructor(public translate: TranslateService) {
-    this.label = this.translate.instant('buttons.btnSave');
-  }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit() {
   }
