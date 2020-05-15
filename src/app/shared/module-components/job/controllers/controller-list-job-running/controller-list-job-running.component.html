@@ -3,22 +3,38 @@
         <div class="mb-3">
             <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
                 <span slot="end">
-                <app-custom-button class="mr-2" [icon]="'pi pi-refresh'" [iconPos]="'left'" [styleClass]="'ui-button-warning'" (emitClicked)="getListJobsRunning()"></app-custom-button>
+                <app-custom-button 
+                    class="mr-2" 
+                    [icon]="'pi pi-refresh'" 
+                    [iconPos]="'left'" 
+                    [styleClass]="'ui-button-warning'" 
+                    (emitClicked)="getListJobsRunning()">
+                </app-custom-button>
             </span>
             </app-buttons-panel-normal>
         </div>
         <div class="p-grid m-cards">
             <div class="p-col-12" *ngFor="let job of listJobRunning.jobs">
-                <app-job-card [job]="job" [showButtons]="showCardButtons" [isClicker]="clickCard" (emitSelected)="select($event)" (emitEdit)="edit($event)" (emitRemoved)="removed($event)" (emitSavedJob)="getListJobsRunning()"></app-job-card>
+                <app-job-card 
+                    [job]="job" 
+                    [showButtons]="showCardButtons" 
+                    [isClicker]="clickCard" 
+                    (emitSelected)="select($event)" 
+                    (emitEdit)="edit($event)" 
+                    (emitRemoved)="removed($event)" 
+                    (emitSavedJob)="getListJobsRunning()">
+                </app-job-card>
             </div>
         </div>
         <div *ngIf="listJobRunning.jobs.length > 0">
-            <app-pagination [paginationData]="listJobRunning.paginationData" (emitPage)="changePage($event)"></app-pagination>
+            <app-pagination 
+                [paginationData]="listJobRunning.paginationData" 
+                (emitPage)="changePage($event)">
+            </app-pagination>
         </div>
     </div>
 
     <div *ngIf="listJobRunning.jobs.length <= 0">
-        <!-- TODO: Traducir -->
-        <p class="list-empty list-empty-job-running-padding">No hay jobs ejecutandose</p>
+        <p class="list-empty list-empty-job-running-padding">{{ translate.instant('controllerListJobRunning.noJobsRunning') }}</p>
     </div>
 </div>

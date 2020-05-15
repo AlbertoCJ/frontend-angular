@@ -1,8 +1,7 @@
 <div>
     <div class="mb-4">
         <div *ngIf="!task">
-            <!-- TODO: Traducir -->
-            <p class="text-status color-not-start"> No iniciado aún</p>
+            <p class="text-status color-not-start"> {{ translate.instant('algorithmDetailsInfo.notInitYet') }}</p>
         </div>
 
 
@@ -17,12 +16,10 @@
 
 
         <div *ngIf="task && task.status && task.status === 'RUNNING'">
-            <!-- TODO: Traducir -->
-            <p class="text-status color-running"> Ejecutandose </p>
+            <p class="text-status color-running"> {{ translate.instant('algorithmDetailsInfo.running') }} </p>
         </div>
         <div *ngIf="!model && task && task.status && task.status === 'COMPLETED'">
-            <!-- TODO: Traducir -->
-            <p class="text-status color-get-result"> Obteniendo resultados</p>
+            <p class="text-status color-get-result"> {{ translate.instant('algorithmDetailsInfo.gettingResults') }}</p>
         </div>
     </div>
 

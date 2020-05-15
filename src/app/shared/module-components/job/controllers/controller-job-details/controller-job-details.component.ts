@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 import { Job } from '../../entities/job';
 import { ViewMode } from '../../../../../core/enums/view-mode.enum';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-job-details',
@@ -24,7 +25,8 @@ export class ControllerJobDetailsComponent implements OnInit {
 
   constructor(private jobService: JobService,
               private messageService: MessageService,
-              private httpError: HttpErrorService) { }
+              private httpError: HttpErrorService,
+              public translate: TranslateService) { }
 
   ngOnInit() {
     this.getJob();
@@ -37,7 +39,9 @@ export class ControllerJobDetailsComponent implements OnInit {
         this.emitJob.emit(this.job);
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al obtener el job.'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerJobDetails.msgAlertErrorGetJob'));
       }
     );
   }
@@ -45,12 +49,15 @@ export class ControllerJobDetailsComponent implements OnInit {
   updateJob() {
     this.jobService.updateJob(this.job).subscribe(
       job => {
-        this.messageService.add({severity: 'success', detail: 'Guardado correctamente'}); // TODO: Traducir
+        this.messageService.add({severity: 'success',
+          detail: this.translate.instant('menssageToast.storedCorrectly')});
         this.job = job;
         this.emitSaved.emit(this.job);
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al guardar el job.'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerJobDetails.msgAlertErrorSaveJob'));
       }
     );
   }

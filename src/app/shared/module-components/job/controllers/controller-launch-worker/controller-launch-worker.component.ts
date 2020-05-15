@@ -3,6 +3,7 @@ import { Steps } from '../../enums/steps.enum';
 import { LocalWorkers } from '../../entities/workers/local-workers';
 import { ZoneLaunch } from '../../enums/zoneLaunch.enum';
 import { DataAlgorithms } from '../../entities/data-algorithms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-launch-worker',
@@ -24,7 +25,7 @@ export class ControllerLaunchWorkerComponent implements OnInit {
   @Output() emitStep = new EventEmitter<number>();
   @Output() emitDataWorkers = new EventEmitter<LocalWorkers>(); // TODO: Falta AwsWorker
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.showView = ZoneLaunch.LOCAL;
     this.btnPrevDisabled = false;
     this.btnNextDisabled = true;

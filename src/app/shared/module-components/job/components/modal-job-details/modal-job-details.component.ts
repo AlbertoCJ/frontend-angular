@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Job } from '../../entities/job';
 import { ViewMode } from '../../../../../core/enums/view-mode.enum';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-modal-job-details',
@@ -34,7 +35,7 @@ export class ModalJobDetailsComponent implements OnInit {
   @Output() closedModalJob = new EventEmitter<boolean>();
   @Output() emitSavedJob = new EventEmitter<Job>();
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.isAlertActive = true;
     this.isModalActive = true;
   }

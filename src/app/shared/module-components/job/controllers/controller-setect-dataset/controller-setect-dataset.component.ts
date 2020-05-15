@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Steps } from '../../enums/steps.enum';
 import { Dataset } from '../../../datasets/entities/dataset';
 import { FormJobData } from '../../entities/form-job-data/form-job-data';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-setect-dataset',
@@ -12,7 +13,6 @@ export class ControllerSetectDatasetComponent implements OnInit {
 
   formJobData: FormJobData;
   showError = false;
-  textError: string;
   datasetSelected: Dataset;
   showView: number; // 1 = Subir y seleccionar, 2 = seleccionar existente
 
@@ -20,9 +20,8 @@ export class ControllerSetectDatasetComponent implements OnInit {
   @Output() emitDataset = new EventEmitter<Dataset>();
   @Output() emitFormJobData = new EventEmitter<FormJobData>();
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.formJobData = new FormJobData();
-    this.textError = 'Debe escribir un nombre.'; // TODO: Traducir
    }
 
   ngOnInit() {

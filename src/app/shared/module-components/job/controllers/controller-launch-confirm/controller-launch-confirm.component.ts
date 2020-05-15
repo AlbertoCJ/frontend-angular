@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Steps } from '../../enums/steps.enum';
-import { StringifyOptions } from 'querystring';
 import { Dataset } from '../../../datasets/entities';
 import { LocalWorkers } from '../../entities/workers/local-workers';
 import { FormJobData } from '../../entities/form-job-data/form-job-data';
@@ -10,6 +9,7 @@ import { AlertService } from '../../../../../core/services/alert/alert.service';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { Router } from '@angular/router';
 import { DataAlgorithms } from '../../entities/data-algorithms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-launch-confirm',
@@ -20,7 +20,6 @@ export class ControllerLaunchConfirmComponent implements OnInit {
 
   btnPrevDisabled: boolean;
   btnLaunchDisabled: boolean;
-  btnLaunchLabel: string;
   btnLaunchStyleClass: string;
 
   listAlgorithms: DataAlgorithms;
@@ -60,10 +59,10 @@ export class ControllerLaunchConfirmComponent implements OnInit {
               private dockerService: DockerService,
               private alertService: AlertService,
               private httpError: HttpErrorService,
-              private router: Router) {
+              private router: Router,
+              public translate: TranslateService) {
     this.btnPrevDisabled = false;
     this.btnLaunchDisabled = false;
-    this.btnLaunchLabel = 'Launch'; // TODO: traducir
     this.btnLaunchStyleClass = 'ui-button-success';
    }
 
@@ -102,16 +101,24 @@ export class ControllerLaunchConfirmComponent implements OnInit {
       err => {
         switch (err.status) {
           case 600:
-            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message); // TODO: Traducir
+            this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
+            this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
+              err.error.error.message);
             break;
           case 601:
-            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message); // TODO: Traducir
+            this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
+            this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
+              err.error.error.message);
             break;
           case 602:
-            this.alertService.setAlertShowMore('Alerta', 'Error al generar contenedores.', err.error.error.message); // TODO: Traducir
+            this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
+            this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
+              err.error.error.message);
             break;
           default:
-            this.httpError.checkError(err, 'Alerta', 'Error al generar contenedores.'); // TODO: Traducir
+            this.httpError.checkError(err,
+              this.translate.instant('alerts.alert'),
+              this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'));
             break;
         }
       }
@@ -124,7 +131,9 @@ export class ControllerLaunchConfirmComponent implements OnInit {
         this.router.navigate([`job/${respJob.id}`]);
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al lanzar rutina para generar job.'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerLaunchConfirm.msgAlertErrorLaunchJob'));
       }
     );
   }

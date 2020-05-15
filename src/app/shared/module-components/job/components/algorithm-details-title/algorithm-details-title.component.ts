@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-algorithm-details-title',
@@ -10,7 +11,7 @@ export class AlgorithmDetailsTitleComponent implements OnInit {
   @Input() title: string;
   @Input() percent: number;
 
-  constructor() { }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit() {
   }

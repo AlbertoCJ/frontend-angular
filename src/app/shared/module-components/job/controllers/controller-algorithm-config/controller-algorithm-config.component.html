@@ -1,100 +1,179 @@
-<app-header-title [textTitle]="'Configurar algoritmos'">
+<app-header-title [textTitle]="translate.instant('controllerAlgorithmConfig.textTitle')">
     <div class="ui-fluid form-container">
 
         <div *ngIf="!showAlgoritConf">
-            <app-header-title [textTitle]="'Lista de algoritmos'">
+            <app-header-title [textTitle]="translate.instant('controllerAlgorithmConfig.textTitleAlgorithm')">
                 <div>
                     <div class="ui-g">
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.linearRegression">
-                            <p-checkbox label="Linear Regression" (onChange)="clickCheckAlgorithm($event, Algorithms.LINEAR_REGRESSION)"></p-checkbox>
+                            <p-checkbox 
+                                label="Linear Regression" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.LINEAR_REGRESSION)">
+                            </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.linearRegressionBagging">
-                            <p-checkbox label="Linear Regression Bagging" (onChange)="clickCheckAlgorithm($event, Algorithms.LINEAR_REGRESSION_BAGGING)"></p-checkbox>
+                            <p-checkbox 
+                                label="Linear Regression Bagging" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.LINEAR_REGRESSION_BAGGING)">
+                            </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.IBk">
-                            <p-checkbox label="IBk" (onChange)="clickCheckAlgorithm($event, Algorithms.IBK)"></p-checkbox>
+                            <p-checkbox 
+                                label="IBk" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.IBK)">
+                            </p-checkbox>
                         </div>
 
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.ZeroR">
-                            <p-checkbox label="ZeroR" (onChange)="clickCheckAlgorithm($event, Algorithms.ZEROR)"></p-checkbox>
+                            <p-checkbox 
+                                label="ZeroR" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.ZEROR)">
+                            </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.M5P">
-                            <p-checkbox label="M5P" (onChange)="clickCheckAlgorithm($event, Algorithms.M5P)"></p-checkbox>
+                            <p-checkbox 
+                                label="M5P" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.M5P)">
+                            </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.M5PBagging">
-                            <p-checkbox label="M5P Bagging" (onChange)="clickCheckAlgorithm($event, Algorithms.M5P_BAGGING)"></p-checkbox>
+                            <p-checkbox 
+                                label="M5P Bagging" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.M5P_BAGGING)">
+                            </p-checkbox>
                         </div>
 
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.M5Rules">
-                            <p-checkbox label="M5Rules" (onChange)="clickCheckAlgorithm($event, Algorithms.M5RULES)"></p-checkbox>
+                            <p-checkbox 
+                                label="M5Rules" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.M5RULES)">
+                            </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.DecisionStump">
-                            <p-checkbox label="Decision Stump" (onChange)="clickCheckAlgorithm($event, Algorithms.DECISION_STUMP)"></p-checkbox>
+                            <p-checkbox 
+                                label="Decision Stump" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.DECISION_STUMP)">
+                            </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.DecisionStumpBagging">
-                            <p-checkbox label="DecisionStump Bagging" (onChange)="clickCheckAlgorithm($event, Algorithms.DECISION_STUMP_BAGGING)"></p-checkbox>
+                            <p-checkbox 
+                                label="DecisionStump Bagging" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.DECISION_STUMP_BAGGING)">
+                            </p-checkbox>
                         </div>
 
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.Libsvm">
-                            <p-checkbox label="Libsvm" (onChange)="clickCheckAlgorithm($event, Algorithms.LIBSVM)"></p-checkbox>
+                            <p-checkbox 
+                                label="Libsvm" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.LIBSVM)">
+                            </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.LibsvmBagging">
-                            <p-checkbox label="Libsvm Bagging" (onChange)="clickCheckAlgorithm($event, Algorithms.LIBSVM_BAGGING)"></p-checkbox>
+                            <p-checkbox 
+                                label="Libsvm Bagging" 
+                                (onChange)="clickCheckAlgorithm($event, Algorithms.LIBSVM_BAGGING)">
+                            </p-checkbox>
                         </div>
                     </div>
                 </div>
                 <div class="box-button">
-                    <app-special-button [btnText]="'Configurar algoritmos'" [disabled]="!isAnyAlgorithms()" (emitClick)="showAlgoritConf = true"></app-special-button>
+                    <app-special-button 
+                        [btnText]="translate.instant('controllerAlgorithmConfig.btnTextConfigAlgorithm')" 
+                        [disabled]="!isAnyAlgorithms()" 
+                        (emitClick)="showAlgoritConf = true">
+                    </app-special-button>
                 </div>
             </app-header-title>
         </div>
 
         <div *ngIf="showAlgoritConf">
             <div class="box-button">
-                <app-special-button [btnText]="'Cambiar algoritmos'" (emitClick)="showAlgoritConf = false"></app-special-button>
+                <app-special-button 
+                    [btnText]="translate.instant('controllerAlgorithmConfig.btnTextChangeAlgorithm')" 
+                    (emitClick)="showAlgoritConf = false">
+                </app-special-button>
             </div>
             <p-accordion [multiple]="true">
                 <p-accordionTab header="Linear Regression" *ngIf="listAlgorithms.linearRegression.algorithm">
-                    <app-algorithm-linear-regression [linearRegression]="listAlgorithms.linearRegression.algorithm" (changeLinearRegression)="onChangeLinearRegression($event)"></app-algorithm-linear-regression>
+                    <app-algorithm-linear-regression 
+                        [linearRegression]="listAlgorithms.linearRegression.algorithm" 
+                        (changeLinearRegression)="onChangeLinearRegression($event)">
+                    </app-algorithm-linear-regression>
                 </p-accordionTab>
                 <p-accordionTab header="Linear Regression Bagging" *ngIf="listAlgorithms.linearRegressionBagging.algorithm">
-                    <app-algorithm-linear-regression-bagging [linearRegressionBagging]="listAlgorithms.linearRegressionBagging.algorithm" (changeLinearRegressionBagging)="onChangeLinearRegressionBagging($event)"></app-algorithm-linear-regression-bagging>
+                    <app-algorithm-linear-regression-bagging 
+                        [linearRegressionBagging]="listAlgorithms.linearRegressionBagging.algorithm" 
+                        (changeLinearRegressionBagging)="onChangeLinearRegressionBagging($event)">
+                    </app-algorithm-linear-regression-bagging>
                 </p-accordionTab>
                 <p-accordionTab header="IBk" *ngIf="listAlgorithms.IBk.algorithm">
-                    <app-algorithm-ibk [ibk]="listAlgorithms.IBk.algorithm" (changeIbk)="onChangeIBk($event)"></app-algorithm-ibk>
+                    <app-algorithm-ibk 
+                        [ibk]="listAlgorithms.IBk.algorithm" 
+                        (changeIbk)="onChangeIBk($event)">
+                    </app-algorithm-ibk>
                 </p-accordionTab>
                 <p-accordionTab header="ZeroR" *ngIf="listAlgorithms.ZeroR.algorithm">
-                    <app-algorithm-zeror [zeror]="listAlgorithms.ZeroR.algorithm" (changeIbk)="onChangeZeror($event)"></app-algorithm-zeror>
+                    <app-algorithm-zeror 
+                        [zeror]="listAlgorithms.ZeroR.algorithm" 
+                        (changeIbk)="onChangeZeror($event)">
+                    </app-algorithm-zeror>
                 </p-accordionTab>
                 <p-accordionTab header="M5P" *ngIf="listAlgorithms.M5P.algorithm">
-                    <app-algorithm-m5p [m5p]="listAlgorithms.M5P.algorithm" (changeM5p)="onChangeM5p($event)"></app-algorithm-m5p>
+                    <app-algorithm-m5p 
+                        [m5p]="listAlgorithms.M5P.algorithm" 
+                        (changeM5p)="onChangeM5p($event)">
+                    </app-algorithm-m5p>
                 </p-accordionTab>
                 <p-accordionTab header="M5P Bagging" *ngIf="listAlgorithms.M5PBagging.algorithm">
-                    <app-algorithm-m5p-bagging [m5pBagging]="listAlgorithms.M5PBagging.algorithm" (changeM5pBagging)="onChangeM5pBagging($event)"></app-algorithm-m5p-bagging>
+                    <app-algorithm-m5p-bagging 
+                        [m5pBagging]="listAlgorithms.M5PBagging.algorithm" 
+                        (changeM5pBagging)="onChangeM5pBagging($event)">
+                    </app-algorithm-m5p-bagging>
                 </p-accordionTab>
                 <p-accordionTab header="M5Rules" *ngIf="listAlgorithms.M5Rules.algorithm">
-                    <app-algorithm-m5rules [m5rules]="listAlgorithms.M5Rules.algorithm" (changeM5rules)="onChangeM5rules($event)"></app-algorithm-m5rules>
+                    <app-algorithm-m5rules 
+                        [m5rules]="listAlgorithms.M5Rules.algorithm" 
+                        (changeM5rules)="onChangeM5rules($event)">
+                    </app-algorithm-m5rules>
                 </p-accordionTab>
                 <p-accordionTab header="Decision Stump" *ngIf="listAlgorithms.DecisionStump.algorithm">
-                    <app-algorithm-decision-stump [decisionStump]="listAlgorithms.DecisionStump.algorithm" (changeDecisionStump)="onChangeDecisionStump($event)"></app-algorithm-decision-stump>
+                    <app-algorithm-decision-stump 
+                        [decisionStump]="listAlgorithms.DecisionStump.algorithm" 
+                        (changeDecisionStump)="onChangeDecisionStump($event)">
+                    </app-algorithm-decision-stump>
                 </p-accordionTab>
                 <p-accordionTab header="Decision Stump Bagging" *ngIf="listAlgorithms.DecisionStumpBagging.algorithm">
-                    <app-algorithm-decision-stump-bagging [decisionStumpBagging]="listAlgorithms.DecisionStumpBagging.algorithm" (changeDecisionStumpBagging)="onChangeDecisionStumpBagging($event)"></app-algorithm-decision-stump-bagging>
+                    <app-algorithm-decision-stump-bagging 
+                    [decisionStumpBagging]="listAlgorithms.DecisionStumpBagging.algorithm" 
+                    (changeDecisionStumpBagging)="onChangeDecisionStumpBagging($event)">
+                </app-algorithm-decision-stump-bagging>
                 </p-accordionTab>
                 <p-accordionTab header="Libsvm" *ngIf="listAlgorithms.Libsvm.algorithm">
-                    <app-algorithm-libsvm [libsvm]="listAlgorithms.Libsvm.algorithm" (changeLibsvm)="onChangeLibsvm($event)"></app-algorithm-libsvm>
+                    <app-algorithm-libsvm 
+                        [libsvm]="listAlgorithms.Libsvm.algorithm" 
+                        (changeLibsvm)="onChangeLibsvm($event)">
+                    </app-algorithm-libsvm>
                 </p-accordionTab>
                 <p-accordionTab header="Libsvm Bagging" *ngIf="listAlgorithms.LibsvmBagging.algorithm">
-                    <app-algorithm-libsvm-bagging [libsvmBagging]="listAlgorithms.LibsvmBagging.algorithm" (changeLibsvmBagging)="onChangeLibsvmBagging($event)"></app-algorithm-libsvm-bagging>
+                    <app-algorithm-libsvm-bagging 
+                        [libsvmBagging]="listAlgorithms.LibsvmBagging.algorithm" 
+                        (changeLibsvmBagging)="onChangeLibsvmBagging($event)">
+                    </app-algorithm-libsvm-bagging>
                 </p-accordionTab>
             </p-accordion>
         </div>
         <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
             <span slot="start">
-                <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>
+                <app-previous-button 
+                    [disabled]="btnPrevDisabled" 
+                    (emitClicked)="btnPrevClicked()">
+                </app-previous-button>
             </span>
             <span slot="end">
-                <app-next-button [disabled]="btnNextDisabled || !isAnyAlgorithms()" (emitClicked)="btnNextClicked()"></app-next-button>
+                <app-next-button 
+                    [disabled]="btnNextDisabled || !isAnyAlgorithms()" 
+                    (emitClicked)="btnNextClicked()">
+                </app-next-button>
             </span>
         </app-buttons-panel-normal>
     </div>

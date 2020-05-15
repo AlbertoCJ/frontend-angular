@@ -1,14 +1,12 @@
 <div class="algorithm-details-data">
-    <!-- <p-tabMenu [model]="items" [activeItem]="activeItem">
-    </p-tabMenu> -->
     <p-selectButton [options]="types" [(ngModel)]="selectedType"></p-selectButton>
 
     <div class="box-data" [ngStyle]="{'height': height}">
         <div *ngIf="selectedType === 'CONFIG'">
             <table class="box-data-table">
                 <tr>
-                    <th>Parámetro</th>
-                    <th>Opción</th>
+                    <th>{{ translate.instant('algorithmDetailsData.titleParam') }}</th>
+                    <th>{{ translate.instant('algorithmDetailsData.titleOption') }}</th>
                 </tr>
                 <tr *ngFor="let param of configs">
                     <td>
@@ -23,8 +21,8 @@
         <div *ngIf="selectedType === 'RESULT'">
             <table class="box-data-table">
                 <tr>
-                    <th>Parámetro</th>
-                    <th>Valor</th>
+                    <th>{{ translate.instant('algorithmDetailsData.titleParam') }}</th>
+                    <th>{{ translate.instant('algorithmDetailsData.titleValue') }}</th>
                 </tr>
                 <tr *ngFor="let result of results">
                     <td>

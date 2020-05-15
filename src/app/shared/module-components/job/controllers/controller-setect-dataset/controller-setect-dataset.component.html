@@ -1,21 +1,31 @@
-<app-header-title [textTitle]="'Selección Dataset'">
+<app-header-title [textTitle]="translate.instant('controllerSelectDataset.textTitle')">
 
     <div class="ui-g ui-fluid form-container">
         <div class="ui-g-12">
             <div class="ui-g-5">
-                Nombre job*
+                {{ translate.instant('controllerSelectDataset.nameJob') }}*
             </div>
             <div class="ui-g-7">
-                <input type="text" pInputText name="jobName" [(ngModel)]="formJobData.name" [ngClass]="{'ng-invalid ng-dirty': showError, 'ng-valid': !showError}">
-                <span *ngIf="showError" class="box-error-login class-error">{{ textError }}</span>
+                <input 
+                    type="text" 
+                    pInputText 
+                    name="jobName" 
+                    [(ngModel)]="formJobData.name" 
+                    [ngClass]="{'ng-invalid ng-dirty': showError, 'ng-valid': !showError}">
+                <span *ngIf="showError" class="box-error-login class-error">{{ translate.instant('controllerSelectDataset.nameJobError') }}</span>
             </div>
         </div>
         <div class="ui-g-12">
             <div class="ui-g-5">
-                Descripción job
+                {{ translate.instant('controllerSelectDataset.descriptionJob') }}
             </div>
             <div class="ui-g-7">
-                <textarea [rows]="2" autoResize="true" pInputTextarea [(ngModel)]="formJobData.description"></textarea>
+                <textarea 
+                    [rows]="2" 
+                    autoResize="true" 
+                    pInputTextarea 
+                    [(ngModel)]="formJobData.description">
+                </textarea>
             </div>
         </div>
 
@@ -23,37 +33,58 @@
 
         <div class="ui-g-12" *ngIf="datasetSelected">
             <div class="ui-g-12 ui-g-6 ui-g-3">
-                <app-dataset-card [dataset]="datasetSelected" [showButtons]="false"></app-dataset-card>
+                <app-dataset-card 
+                    [dataset]="datasetSelected" 
+                    [showButtons]="false"></app-dataset-card>
             </div>
         </div>
 
         <div class="ui-g-12" *ngIf="datasetSelected">
-            <app-special-button [btnText]="'Limpiar Dataset'" (emitClick)="clearDataset()" [customClass]="'ui-special-button-danger'"></app-special-button>
+            <app-special-button 
+                [btnText]="translate.instant('controllerSelectDataset.cleanDataset')" 
+                (emitClick)="clearDataset()" 
+                [customClass]="'ui-special-button-danger'">
+            </app-special-button>
         </div>
     </div>
 
     <div class="ui-fluid">
         <div class="ui-g" *ngIf="!datasetSelected">
             <div class="ui-g-12 ui-md-6">
-                <app-special-button [btnText]="'Subir y seleccionar Dataset'" (emitClick)="showView = 1"></app-special-button>
+                <app-special-button 
+                    [btnText]="translate.instant('controllerSelectDataset.uploadAndSetDataset')" 
+                    (emitClick)="showView = 1">
+                </app-special-button>
             </div>
             <div class="ui-g-12 ui-md-6">
-                <app-special-button [btnText]="'Seleccionar Dataset existente'" (emitClick)="showView = 2"></app-special-button>
+                <app-special-button 
+                    [btnText]="translate.instant('controllerSelectDataset.setDatasetExist')" 
+                    (emitClick)="showView = 2">
+                </app-special-button>
             </div>
         </div>
     </div>
 
     <div *ngIf="showView === 1">
-        <app-controller-form-dataset (emitDataset)="setDatasetSelected($event)"></app-controller-form-dataset>
+        <app-controller-form-dataset 
+            (emitDataset)="setDatasetSelected($event)">
+        </app-controller-form-dataset>
     </div>
     <div *ngIf="showView === 2">
-        <app-controller-list-dataset [clickCard]="true" [showCardButtons]="false" (emitDataset)="setDatasetSelected($event)"></app-controller-list-dataset>
+        <app-controller-list-dataset 
+            [clickCard]="true" 
+            [showCardButtons]="false" 
+            (emitDataset)="setDatasetSelected($event)">
+        </app-controller-list-dataset>
     </div>
 
     <div class="ui-fluid form-container">
         <app-buttons-panel-normal [marginTop]="true">
             <span slot="end">
-            <app-next-button [disabled]="!datasetSelected" (emitClicked)="btnNextClicked()"></app-next-button>
+            <app-next-button 
+                [disabled]="!datasetSelected" 
+                (emitClicked)="btnNextClicked()">
+            </app-next-button>
         </span>
         </app-buttons-panel-normal>
     </div>

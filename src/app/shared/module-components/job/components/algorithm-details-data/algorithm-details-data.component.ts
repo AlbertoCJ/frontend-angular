@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
 import { Model } from '../../entities/model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-algorithm-details-data',
@@ -50,10 +51,10 @@ export class AlgorithmDetailsDataComponent implements OnInit {
   }
 
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.types = [
-      {label: 'Configuración', value: 'CONFIG', disabled: true}, // TODO: Traducir
-      {label: 'Resultados', value: 'RESULT', disabled: true} // TODO: Traducir
+      {label: this.translate.instant('algorithmDetailsData.labelConfig'), value: 'CONFIG', disabled: true},
+      {label: this.translate.instant('algorithmDetailsData.labelResult'), value: 'RESULT', disabled: true}
   ];
    }
 

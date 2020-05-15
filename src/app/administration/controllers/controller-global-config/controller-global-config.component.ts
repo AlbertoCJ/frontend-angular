@@ -17,8 +17,6 @@ export class ControllerGlobalConfigComponent implements OnInit {
 
   // Confirm
   isConfirmActive = false;
-  titleConfirm = this.translate.instant('modals.warning');
-  messageConfirm = this.translate.instant('controllerGlobalConfig.messageConfirm');
 
   globalConfigForm: FormGroup;
   globalConfig: GlobalConfig;

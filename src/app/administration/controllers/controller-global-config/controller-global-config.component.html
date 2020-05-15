@@ -198,4 +198,11 @@
     </form>
 </div>
 
-<app-confirm-dialog *ngIf="isConfirmActive" [isConfirmActive]="isConfirmActive" [title]="titleConfirm" [message]="messageConfirm" (confirm)="resetDefaultValues()" (cancel)="cancelConfirm()"></app-confirm-dialog>
+<app-confirm-dialog 
+    *ngIf="isConfirmActive" 
+    [isConfirmActive]="isConfirmActive" 
+    [title]="translate.instant('modals.warning')" 
+    [message]="translate.instant('controllerGlobalConfig.messageConfirm')" 
+    (confirm)="resetDefaultValues()" 
+    (cancel)="cancelConfirm()">
+</app-confirm-dialog>

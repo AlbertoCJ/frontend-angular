@@ -1,11 +1,18 @@
-<app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="formCancel()" [showFooter]="false" [fullModal]="false">
-    <span slot="custom-header">Job: {{ job.name }}</span>
+<app-modal-generic 
+    *ngIf="isAlertActive" 
+    [isModalActive]="isModalActive" 
+    (closed)="formCancel()" 
+    [showFooter]="false" 
+    [fullModal]="false">
+
+    <span slot="custom-header">{{ translate.instant('modalJobDetails.textHeader') }} {{ job.name }}</span>
     <span slot="custom-section">
-        <!-- <code>{{ job | json }}</code> -->
-        <app-controller-job-details [jobId]="job.id" [mode]="mode" (emitJob)="modificateJob($event)" (emitCancel)="close()" (emitSaved)="saved($event)"></app-controller-job-details>
+        <app-controller-job-details 
+            [jobId]="job.id" 
+            [mode]="mode" 
+            (emitJob)="modificateJob($event)" 
+            (emitCancel)="close()" 
+            (emitSaved)="saved($event)">
+        </app-controller-job-details>
     </span>
-    <!-- <span slot="custom-footer">
-        <app-custom-button [label]="'Cerrar'" (emitClicked)="close()">
-        </app-custom-button>
-    </span> -->
 </app-modal-generic>

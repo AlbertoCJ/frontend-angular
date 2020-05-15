@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Job } from '../../entities/job';
 import { ViewMode } from '../../../../../core/enums/view-mode.enum';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class JobDetailsComponent implements OnInit {
 
   @Output() emitJob = new EventEmitter<Job>();
 
-  constructor() { }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit() {
   }

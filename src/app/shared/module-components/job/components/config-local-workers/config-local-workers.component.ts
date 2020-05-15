@@ -6,6 +6,7 @@ import { GlobalConfigService } from '../../../../../core/services/global-config/
 import { DataAlgorithms } from '../../entities/data-algorithms';
 import { LocalContainerService } from '../../../../../core/services/local-container/local-container.service';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-config-local-workers',
@@ -51,7 +52,8 @@ export class ConfigLocalWorkersComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private globalConfigService: GlobalConfigService,
               private localContainerService: LocalContainerService,
-              private httpError: HttpErrorService) {
+              private httpError: HttpErrorService,
+              public translate: TranslateService) {
     this.containersForm = this.fb.group({
       numContainers: [0]
     });
@@ -97,7 +99,9 @@ export class ConfigLocalWorkersComponent implements OnInit {
 
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al obtener contenedores locales.'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('configLocalWorkers.msgAlertErrorGetContainersLocal'));
       }
     );
   }

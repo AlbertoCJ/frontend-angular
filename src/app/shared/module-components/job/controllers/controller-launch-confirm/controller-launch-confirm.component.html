@@ -1,14 +1,14 @@
-<app-header-title [textTitle]="'Confirmación'">
+<app-header-title [textTitle]="translate.instant('controllerLaunchConfirm.textTitle')">
     <div class="ui-fluid form-container">
 
         <div class="sheet-config">
             <div class="sheet-section" *ngIf="formJobData">
                 <div class="title-section">
-                    <span>Job</span>
+                    <span>{{ translate.instant('controllerLaunchConfirm.titleJob') }}</span>
                 </div>
                 <div class="p-grid">
                     <div class="p-lg-3 p-md-3 p-sm-4 p-col-4 label-section">
-                        <span>Nombre:</span>
+                        <span>{{ translate.instant('controllerLaunchConfirm.labelName') }}</span>
                     </div>
                     <div class="p-lg-9 p-md-9 p-sm-8 p-col-8 value-section">
                         {{ formJobData.name }}
@@ -16,7 +16,7 @@
                 </div>
                 <div class="p-grid">
                     <div class="p-lg-3 p-md-3 p-sm-4 p-col-4 label-section">
-                        <span>Descripción:</span>
+                        <span>{{ translate.instant('controllerLaunchConfirm.labelDescription') }}</span>
                     </div>
                     <div class="p-lg-9 p-md-9 p-sm-8 p-col-8 value-section">
                         {{ formJobData.description }}
@@ -26,11 +26,11 @@
 
             <div class="sheet-section" *ngIf="dataset">
                 <div class="title-section">
-                    <span>Dataset</span>
+                    <span>{{ translate.instant('controllerLaunchConfirm.titleDataset') }}</span>
                 </div>
                 <div class="p-grid">
                     <div class="p-lg-3 p-md-3 p-sm-4 p-col-4 label-section">
-                        <span>Descripción:</span>
+                        <span>{{ translate.instant('controllerLaunchConfirm.labelDescription') }}</span>
                     </div>
                     <div class="p-lg-9 p-md-9 p-sm-8 p-col-8 value-section">
                         {{ dataset.description }}
@@ -38,7 +38,7 @@
                 </div>
                 <div class="p-grid">
                     <div class="p-lg-3 p-md-3 p-sm-4 p-col-4 label-section">
-                        <span>Atributos:</span>
+                        <span>{{ translate.instant('controllerLaunchConfirm.labelAttributes') }}</span>
                     </div>
                     <div class="p-lg-9 p-md-9 p-sm-8 p-col-8 value-section">
                         <p *ngFor="let attribute of dataset.attributes"> - {{ attribute }}</p>
@@ -48,7 +48,7 @@
 
             <div class="sheet-section" *ngIf="listAlgorithms && dataAlgorithms.length > 0">
                 <div class="title-section">
-                    <span>Lista de algoritmos</span>
+                    <span>{{ translate.instant('controllerLaunchConfirm.titleAlgorithms') }}</span>
                 </div>
                 <div class="p-grid" *ngFor="let algorithm of dataAlgorithms">
                     <div class="p-col-12 label-algorithm">
@@ -74,11 +74,11 @@
 
             <div class="sheet-section" *ngIf="dataWorkers">
                 <div class="title-section">
-                    <span>Contenedores</span>
+                    <span>{{ translate.instant('controllerLaunchConfirm.titleContainers') }}</span>
                 </div>
                 <div class="p-grid">
                     <div class="p-lg-5 p-md-5 p-sm-6 p-col-7 label-section">
-                        <span>Nº de contenedores:</span>
+                        <span>{{ translate.instant('controllerLaunchConfirm.labelContainer') }}</span>
                     </div>
                     <div class="p-lg-7 p-md-7 p-sm-6 p-col-5 value-section">
                         {{ dataWorkers.numContainers }}
@@ -92,10 +92,18 @@
 
         <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
             <span slot="start">
-            <app-previous-button [disabled]="btnPrevDisabled" (emitClicked)="btnPrevClicked()"></app-previous-button>
+            <app-previous-button 
+                [disabled]="btnPrevDisabled" 
+                (emitClicked)="btnPrevClicked()">
+            </app-previous-button>
         </span>
             <span slot="end">
-            <app-custom-button [label]="btnLaunchLabel" [disabled]="btnLaunchDisabled" [styleClass]="btnLaunchStyleClass" (emitClicked)="btnLaunchClicked()"></app-custom-button>
+            <app-custom-button 
+                [label]="translate.instant('controllerLaunchConfirm.btnLaunch')" 
+                [disabled]="btnLaunchDisabled" 
+                [styleClass]="btnLaunchStyleClass" 
+                (emitClicked)="btnLaunchClicked()">
+            </app-custom-button>
         </span>
         </app-buttons-panel-normal>
     </div>

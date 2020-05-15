@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../entities/task';
 import { Model } from '../../entities/model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-algorithm-details-info',
@@ -16,7 +17,7 @@ export class AlgorithmDetailsInfoComponent implements OnInit {
   @Input() task: Task;
   @Input() model: Model;
 
-  constructor() { }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit() {
   }

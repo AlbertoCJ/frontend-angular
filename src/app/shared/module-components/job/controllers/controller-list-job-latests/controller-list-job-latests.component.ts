@@ -4,6 +4,7 @@ import { Job } from '../../entities/job';
 import { JobService } from '../../../../../core/services/job/job.service';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-list-job-latests',
@@ -23,7 +24,8 @@ export class ControllerListJobLatestsComponent implements OnInit {
 
   constructor(private jobService: JobService,
               private httpError: HttpErrorService,
-              private globalConfigService: GlobalConfigService) {
+              private globalConfigService: GlobalConfigService,
+              public translate: TranslateService) {
     this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.home.showLatestsJobs;
     this.listJobLatests = new ListJob();
   }
@@ -42,7 +44,9 @@ export class ControllerListJobLatestsComponent implements OnInit {
         this.listJobLatests = listJobLatests;
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al obtener listado últimos jobs'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerListJobLatests.msgAlertErrorGetListJobLatests'));
       }
   );
   }

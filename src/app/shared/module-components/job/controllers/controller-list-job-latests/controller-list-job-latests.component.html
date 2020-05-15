@@ -3,19 +3,32 @@
         <div class="mb-3">
             <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
                 <span slot="end">
-                <app-custom-button class="mr-2" [icon]="'pi pi-refresh'" [iconPos]="'left'" [styleClass]="'ui-button-warning'" (emitClicked)="getListJobsLatests()"></app-custom-button>
+                <app-custom-button 
+                    class="mr-2" 
+                    [icon]="'pi pi-refresh'" 
+                    [iconPos]="'left'" 
+                    [styleClass]="'ui-button-warning'" 
+                    (emitClicked)="getListJobsLatests()">
+                </app-custom-button>
             </span>
             </app-buttons-panel-normal>
         </div>
         <div class="p-grid m-cards">
             <div class="p-col-12" *ngFor="let job of listJobLatests.jobs">
-                <app-job-card [job]="job" [showButtons]="showCardButtons" [isClicker]="clickCard" (emitSelected)="select($event)" (emitEdit)="edit($event)" (emitRemoved)="removed($event)" (emitSavedJob)="getListJobsLatests()"></app-job-card>
+                <app-job-card 
+                    [job]="job" 
+                    [showButtons]="showCardButtons" 
+                    [isClicker]="clickCard" 
+                    (emitSelected)="select($event)" 
+                    (emitEdit)="edit($event)" 
+                    (emitRemoved)="removed($event)" 
+                    (emitSavedJob)="getListJobsLatests()">
+                </app-job-card>
             </div>
         </div>
     </div>
 
     <div *ngIf="listJobLatests.jobs.length <= 0">
-        <!-- TODO: Traducir -->
-        <p class="list-empty list-empty-job-latests-padding">No hay jobs</p>
+        <p class="list-empty list-empty-job-latests-padding">{{ translate.instant('controllerListJobLatests.noJobs') }}</p>
     </div>
 </div>

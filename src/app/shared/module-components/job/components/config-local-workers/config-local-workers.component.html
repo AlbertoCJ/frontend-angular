@@ -1,32 +1,37 @@
-<app-header-title [textTitle]="'Configurar workers local'">
+ <app-header-title [textTitle]="translate.instant('configLocalWorkers.textTitle')">
     <form [formGroup]="containersForm">
         <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
             <span slot="end">
-                <app-custom-button class="mr-2" [icon]="'pi pi-refresh'" [iconPos]="'left'" [styleClass]="'ui-button-warning'" (emitClicked)="petitionLocalContainer()"></app-custom-button>
+                <app-custom-button 
+                    class="mr-2" 
+                    [icon]="'pi pi-refresh'" 
+                    [iconPos]="'left'" 
+                    [styleClass]="'ui-button-warning'" 
+                    (emitClicked)="petitionLocalContainer()">
+                </app-custom-button>
             </span>
         </app-buttons-panel-normal>
         <div class="ui-g">
-            <!-- TODO: Traducir todos los textos -->
             <div class="ui-g-12">
-                <p class="cont-text"><span class="cont-number">{{ numContMaxGlobal }}</span> contenedores máx. globales.</p>
+                <p class="cont-text"><span class="cont-number">{{ numContMaxGlobal }}</span> {{ translate.instant('configLocalWorkers.textNumContMaxGlobal') }}</p>
             </div>
             <div class="ui-g-12">
-                <p class="cont-text"><span class="cont-number">{{ containersInactive }}</span> contenedores inactivos.</p>
+                <p class="cont-text"><span class="cont-number">{{ containersInactive }}</span> {{ translate.instant('configLocalWorkers.textContainersInactive') }}</p>
             </div>
             <div class="ui-g-12">
-                <p class="cont-text"><span class="cont-number">{{ containersActive }}</span> contenedores activos.</p>
+                <p class="cont-text"><span class="cont-number">{{ containersActive }}</span> {{ translate.instant('configLocalWorkers.textContainersActive') }}</p>
                 <div>
                     <div class="ui-g-12">
-                        <p class="cont-text"><span class="cont-number">{{ containersFree }}</span> libres.</p>
+                        <p class="cont-text"><span class="cont-number">{{ containersFree }}</span> {{ translate.instant('configLocalWorkers.textContainersFree') }}</p>
                     </div>
                     <div class="ui-g-12">
-                        <p class="cont-text"><span class="cont-number">{{ containersBussy }}</span> ocupados.</p>
+                        <p class="cont-text"><span class="cont-number">{{ containersBussy }}</span> {{ translate.instant('configLocalWorkers.textContainersBussy') }}</p>
                     </div>
                 </div>
             </div>
             <div class="ui-g-12">
                 <div class="ui-g-5 cont-label">
-                    Nº contenedores:
+                    {{ translate.instant('configLocalWorkers.labelContainer') }}
                 </div>
                 <div class="ui-g-7">
                     <p-spinner formControlName="numContainers" [min]="0" [max]="maxSpinner"></p-spinner>

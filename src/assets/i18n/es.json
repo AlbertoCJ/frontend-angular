@@ -22,7 +22,8 @@
     "alerts": {
         "alert": "Alerta",
         "textShowMoreCollapse": "Mostrar más",
-        "textShowLessCollapse": "Mostrar menos"
+        "textShowLessCollapse": "Mostrar menos",
+        "btnClose": "Cerrar"
     },
     "menssageToast": {
         "storedCorrectly": "Guardado correctamente",
@@ -176,5 +177,96 @@
     },
     "jobDetailsPage": {
         "textJob": "Job:"
+    },
+    "controllerSelectDataset": {
+        "nameJobError": "Debe escribir un nombre.",
+        "textTitle": "Selección Dataset",
+        "nameJob": "Nombre job",
+        "descriptionJob": "Descripción job",
+        "cleanDataset": "Limpiar Dataset",
+        "uploadAndSetDataset": "Subir y seleccionar Dataset",
+        "setDatasetExist": "Seleccionar Dataset existente"
+    },
+    "controllerListJob": {
+        "msgAlertErrorGetListJob": "Error al obtener listado de jobs.",
+        "searchByName": "Buscar por nombre",
+        "searchByDescription": "Buscar por descripción",
+        "noJobs": "No hay jobs"
+    },
+    "controllerListJobLatests": {
+        "msgAlertErrorGetListJobLatests": "Error al obtener listado últimos jobs.",
+        "noJobs": "No hay jobs"
+    },
+    "controllerListJobRunning": {
+        "msgAlertErrorGetListJobRunning": "Error al obtener listado de jobs ejecutandose.",
+        "noJobsRunning": "No hay jobs ejecutandose"
+    },
+    "controllerAlgorithmConfig": {
+        "textTitle": "Configurar algoritmos",
+        "textTitleAlgorithm": "Lista de algoritmos",
+        "btnTextConfigAlgorithm": "Configurar algoritmos",
+        "btnTextChangeAlgorithm": "Cambiar algoritmos"
+    },
+    "controllerLaunchWorker": {
+        "textTitleGlobal": "Configurar contenedores",
+        "btnTextAWS": "AWS",
+        "btnTextLocal": "Local"
+    },
+    "controllerLaunchConfirm": {
+        "msgAlertErrorGenerateContainers": "Error al generar contenedores.",
+        "msgAlertErrorLaunchJob": "Error al lanzar rutina para generar job.",
+        "textTitle": "Confirmación",
+        "titleJob": "Job",
+        "labelName": "Nombre:",
+        "labelDescription": "Descripción:",
+        "titleDataset": "Dataset",
+        "labelAttributes": "Atributos:",
+        "titleAlgorithms": "Lista de algoritmos",
+        "titleContainers": "Contenedores",
+        "labelContainer": "Nº de contenedores:",
+        "btnLaunch": "Lanzar"
+    },
+    "controllerJobDetails": {
+        "msgAlertErrorGetJob": "Error al obtener el job.",
+        "msgAlertErrorSaveJob": "Error al guardar el job."
+    },
+    "configLocalWorkers": {
+        "msgAlertErrorGetContainersLocal": "Error al obtener contenedores locales.",
+        "textTitle": "Configurar workers local",
+        "textNumContMaxGlobal": "contenedores máx. globales.",
+        "textContainersInactive": "contenedores inactivos.",
+        "textContainersActive": "contenedores activos.",
+        "textContainersFree": "libres.",
+        "textContainersBussy": "ocupados.",
+        "labelContainer": "Nº de contenedores:"
+    },
+    "jobCard": {
+        "messageConfirm": "Se eliminara permanentemente. ¿Estás seguro?",
+        "msgAlertErrorRemoveJob": "Error al borrar job.",
+        "labelName": "Nombre:",
+        "labelDescription": "Descripción:",
+        "tableTitle": "Estado de los algoritmos",
+        "titleCardInfoMiniTotal": "Total",
+        "titleCardInfoMiniRunning": "Ejecutando",
+        "titleCardInfoMiniErrors": "Errores",
+        "titleCardInfoMiniCompleted": "Completado"
+    },
+    "jobDetails": {
+        "textTitle": "Algoritmos"
+    },
+    "modalJobDetails": {
+        "textHeader": "Job:"
+    },
+    "algorithmDetailsData": {
+        "labelConfig": "Configuración",
+        "labelResult": "Resultados",
+        "titleParam": "Parámetro",
+        "titleOption": "Opción",
+        "titleValue": "Valor"
+    },
+    "algorithmDetailsInfo": {
+        "notInitYet": "No iniciado aún",
+        "running": "Ejecutandose",
+        "gettingResults": "Obteniendo resultados"
     }
 }

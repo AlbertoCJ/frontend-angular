@@ -14,6 +14,7 @@ import { Libsvm } from '../../entities/algorithms/libsvm/libsvm';
 import { LibsvmBagging } from '../../entities/algorithms/libsvm-bagging/libsvm-bagging';
 import { DataAlgorithms } from '../../entities/data-algorithms';
 import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-algorithm-config',
@@ -36,7 +37,8 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
   @Output() emitStep = new EventEmitter<number>();
   @Output() emitListAlgorithms = new EventEmitter<any>();
 
-  constructor(private globalConfigService: GlobalConfigService) {
+  constructor(private globalConfigService: GlobalConfigService,
+              public translate: TranslateService) {
     this.listAlgorithms = new DataAlgorithms();
     this.showAlgoritConf = false;
     this.btnPrevDisabled = false;

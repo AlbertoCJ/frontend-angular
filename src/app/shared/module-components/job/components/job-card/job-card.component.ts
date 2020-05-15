@@ -5,6 +5,7 @@ import { JobService } from '../../../../../core/services/job/job.service';
 import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-job-card',
@@ -19,8 +20,6 @@ export class JobCardComponent implements OnInit {
 
   // Confirm
   isConfirmActive = false;
-  titleConfirm = 'Aviso'; // TODO: Traducir
-  messageConfirm = 'Se eliminara permanentemente. ¿Estás seguro?'; // TODO: Traducir
 
   // Modal job
   isModalActive: boolean;
@@ -52,7 +51,8 @@ export class JobCardComponent implements OnInit {
   constructor(private jobService: JobService,
               private messageService: MessageService,
               private httpError: HttpErrorService,
-              private router: Router) { }
+              private router: Router,
+              public translate: TranslateService) { }
 
   ngOnInit() {
   }
@@ -134,11 +134,13 @@ export class JobCardComponent implements OnInit {
   remove() {
     this.jobService.deleteJob(this.job.id).subscribe(
       job => {
-        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente.'}); // TODO: Traducir
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.removedCorrectly')});
         this.emitRemoved.emit(this.job);
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al borrar job.'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('jobCard.msgAlertErrorRemoveJob'));
 
       }
     );

@@ -6,6 +6,7 @@ import { ListJob } from '../../entities/list-job';
 import { NgForm } from '@angular/forms';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-list-job',
@@ -29,7 +30,8 @@ export class ControllerListJobComponent implements OnInit {
   constructor(private jobService: JobService,
               private messageService: MessageService,
               private httpError: HttpErrorService,
-              private globalConfigService: GlobalConfigService) {
+              private globalConfigService: GlobalConfigService,
+              public translate: TranslateService) {
     this.page = 1;
     this.limit = this.globalConfigService.getGlobalConfigSessionStorage().showLists.job.showJobs;
     this.listJob = new ListJob();
@@ -49,7 +51,9 @@ export class ControllerListJobComponent implements OnInit {
         this.listJob = listJob;
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al obtener listado de jobs'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerListJob.msgAlertErrorGetListJob'));
       }
   );
   }
