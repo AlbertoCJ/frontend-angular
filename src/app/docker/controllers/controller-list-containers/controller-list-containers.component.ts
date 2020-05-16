@@ -3,6 +3,7 @@ import { DockerService } from '../../../core/services/docker/docker.service';
 import { Container } from '../../entities';
 import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../core/services/http-error/http-error.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controller-list-containers',
@@ -16,7 +17,8 @@ export class ControllerListContainersComponent implements OnInit {
 
   constructor(private dockerService: DockerService,
               private messageService: MessageService,
-              private httpError: HttpErrorService) { }
+              private httpError: HttpErrorService,
+              public translate: TranslateService) { }
 
   ngOnInit() {
   }
@@ -32,7 +34,9 @@ export class ControllerListContainersComponent implements OnInit {
         this.containers = containers;
       },
       err => {
-          this.httpError.checkError(err, 'Alerta', 'Error al obtener contenedores.'); // TODO: Traducir
+          this.httpError.checkError(err,
+            this.translate.instant('alerts.alert'),
+            this.translate.instant('controllerListContainers.messageErrorGetContainers'));
       }
   );
   }
@@ -40,11 +44,12 @@ export class ControllerListContainersComponent implements OnInit {
   removeContainer(id: string) {
     this.dockerService.removeContainer(id).subscribe(
       removed => {
-        this.messageService.add({severity: 'success', detail: 'Eliminado correctamente.'}); // TODO: Traducir
-        this.getContainers(this.state);
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.removedCorrectly')});
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al eliminar contenedor.'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerListContainers.messageErrorRemoveContainer'));
       }
     );
   }
@@ -52,11 +57,13 @@ export class ControllerListContainersComponent implements OnInit {
   startContainer(id: string) {
     this.dockerService.startContainer(id).subscribe(
       started => {
-        this.messageService.add({severity: 'success', detail: 'Iniciado correctamente.'}); // TODO: Traducir
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.startedCorrectly')});
         this.getContainers(this.state);
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al iniciar contenedor.'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerListContainers.messageErrorStartContainer'));
       }
     );
   }
@@ -64,11 +71,13 @@ export class ControllerListContainersComponent implements OnInit {
   stopContainer(id: string) {
     this.dockerService.stopContainer(id).subscribe(
       stopped => {
-        this.messageService.add({severity: 'success', detail: 'Parado correctamente.'}); // TODO: Traducir
+        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.stoppedCorrectly')});
         this.getContainers(this.state);
       },
       err => {
-        this.httpError.checkError(err, 'Alerta', 'Error al parar contenedor.'); // TODO: Traducir
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerListContainers.messageErrorStopContainer'));
       }
     );
   }

@@ -3,7 +3,13 @@
         "completed": "Completed",
         "running": "Running",
         "partial": "Partial",
-        "error": "Error"
+        "error": "Error",
+        "exited": "Stop",
+        "created": "Created",
+        "paused": "Paused",
+        "restarting": "Restarting",
+        "removing": "Removing",
+        "dead": "Dead"
     },
     "welcome": "Welcome",
     "buttons": {
@@ -35,7 +41,9 @@
         "storedCorrectly": "Stored correctly",
         "updateCorrectly": "Updated correctly",
         "downloadCorrectly": "Correctly downloaded",
-        "removedCorrectly": "Correctly removed"
+        "removedCorrectly": "Correctly removed",
+        "startedCorrectly": "Correctly initiated",
+        "stoppedCorrectly": "Stopping correctly"
     },
     "login": {
         "email": "Email",
@@ -126,6 +134,29 @@
     },
     "administrationUserPage": {
         "headerUserManagement": "User Management"
+    },
+    "containerListPage": {
+        "textTitle": "Container list"
+    },
+    "controllerListContainers": {
+        "messageErrorGetContainers": "Error in obtaining containers.",
+        "messageErrorRemoveContainer": "Error when removing container.",
+        "messageErrorStartContainer": "Error when starting container.",
+        "messageErrorStopContainer": "Error when stopping container."
+    },
+    "containersList": {
+        "noContainers": "No containers"
+    },
+    "containerStatusSelected": {
+        "labelStarted": "Initiated",
+        "labelStopped": "Stops",
+        "labelAll": "All"
+    },
+    "containerCard": {
+        "labelStop": "Stop",
+        "labelStart": "Start",
+        "labelRemove": "Remove",
+        "titleURL": "URL:"
     },
     "menubar": {
         "dataSets": "DataSets",

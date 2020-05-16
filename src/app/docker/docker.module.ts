@@ -23,6 +23,7 @@ import { DOCKER_CONTROLLERS } from './controllers/index';
     SharedModule
   ],
   exports: [
+    CoreModule,
     DOCKER_COMPONENTS,
     DOCKER_CONTROLLERS
   ]

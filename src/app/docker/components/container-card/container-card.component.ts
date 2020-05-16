@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Container } from '../../entities';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-container-card',
@@ -8,7 +9,7 @@ import { Container } from '../../entities';
   styleUrls: ['./container-card.component.css']
 })
 export class ContainerCardComponent implements OnInit {
-  // TODO: Mostrar el estado en el idioma elegido mediente un pipe
+
   items: MenuItem[];
   container: Container;
   @Input('container') set setContainer(container: Container) {
@@ -21,21 +22,21 @@ export class ContainerCardComponent implements OnInit {
   @Output() started = new EventEmitter<string>();
   @Output() stopped = new EventEmitter<string>();
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.items = [];
    }
 
   ngOnInit() {
     if (this.container.state === 'running') {
       this.items.push(
-        {label: 'Parar', icon: 'pi pi-power-off', command: () => {
+        {label: this.translate.instant('containerCard.labelStop'), icon: 'pi pi-power-off', command: () => {
           this.stopContainer();
         }}
       );
     }
     if (this.container.state === 'exited') {
       this.items.push(
-        {label: 'Iniciar', icon: 'pi pi-refresh', command: () => {
+        {label: this.translate.instant('containerCard.labelStart'), icon: 'pi pi-refresh', command: () => {
           this.startContainer();
         }}
       );

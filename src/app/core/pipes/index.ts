@@ -3,11 +3,13 @@ import { SplitCamelCaseToStringPipe } from './split-camel-case-to-string/split-c
 import { StatusAlgorithmPipe } from './status-algorithm/status-algorithm.pipe';
 import { StatusJobPipe } from './status-job/status-job.pipe';
 import { ConfigParamBooleanPipe } from './config-param-boolean/config-param-boolean.pipe';
+import { StatusContainerDockerPipe } from './status-container-docker/status-container-docker.pipe';
 
 export const PIPES = [
     CapitalizePipe,
     SplitCamelCaseToStringPipe,
     StatusAlgorithmPipe,
     StatusJobPipe,
-    ConfigParamBooleanPipe
+    ConfigParamBooleanPipe,
+    StatusContainerDockerPipe
 ];

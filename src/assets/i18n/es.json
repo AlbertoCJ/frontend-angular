@@ -3,7 +3,13 @@
         "completed": "Completado",
         "running": "Ejecutando",
         "partial": "Parcial",
-        "error": "Error"
+        "error": "Error",
+        "exited": "Parada",
+        "created": "Creada",
+        "paused": "Pausada",
+        "restarting": "Reiniciada",
+        "removing": "Eliminada",
+        "dead": "Muerta"
     },
     "welcome": "Bienvenido",
     "buttons": {
@@ -35,7 +41,9 @@
         "storedCorrectly": "Guardado correctamente",
         "updateCorrectly": "Actualizado correctamente",
         "downloadCorrectly": "Descargado correctamente",
-        "removedCorrectly": "Eliminado correctamente"
+        "removedCorrectly": "Eliminado correctamente",
+        "startedCorrectly": "Iniciado correctamente",
+        "stoppedCorrectly": "Parado correctamente"
     },
     "login": {
         "email": "Email",
@@ -126,6 +134,29 @@
     },
     "administrationUserPage": {
         "headerUserManagement": "Gestión de Usuarios"
+    },
+    "containerListPage": {
+        "textTitle": "Lista contenedores"
+    },
+    "controllerListContainers": {
+        "messageErrorGetContainers": "Error al obtener contenedores.",
+        "messageErrorRemoveContainer": "Error al eliminar contenedor.",
+        "messageErrorStartContainer": "Error al iniciar contenedor.",
+        "messageErrorStopContainer": "Error al parar contenedor."
+    },
+    "containersList": {
+        "noContainers": "No hay contenedores"
+    },
+    "containerStatusSelected": {
+        "labelStarted": "Iniciadas",
+        "labelStopped": "Paradas",
+        "labelAll": "Todas"
+    },
+    "containerCard": {
+        "labelStop": "Parar",
+        "labelStart": "Iniciar",
+        "labelRemove": "Eliminar",
+        "titleURL": "URL:"
     },
     "menubar": {
         "dataSets": "DataSets",

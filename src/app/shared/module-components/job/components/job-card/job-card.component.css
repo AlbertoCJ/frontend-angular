@@ -46,18 +46,22 @@
 
 :host ::ng-deep .card-job-completed .ui-card-body {
     background-color: #efffef;
+    padding-bottom: 0px;
 }
 
 :host ::ng-deep .card-job-running .ui-card-body {
     background-color: #ffffe3;
+    padding-bottom: 0px;
 }
 
 :host ::ng-deep .card-job-partial .ui-card-body {
     background-color: #eaeaff;
+    padding-bottom: 0px;
 }
 
 :host ::ng-deep .card-job-error .ui-card-body {
     background-color: #ffeaea;
+    padding-bottom: 0px;
 }
 
 .date-job {

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Container } from '../../entities';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-containers-list',
@@ -19,7 +20,7 @@ export class ContainersListComponent implements OnInit {
   @Output() containerStarted = new EventEmitter<string>();
   @Output() containerStopped = new EventEmitter<string>();
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.containers = [];
   }
 

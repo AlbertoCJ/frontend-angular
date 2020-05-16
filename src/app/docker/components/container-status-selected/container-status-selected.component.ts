@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-container-status-selected',
@@ -14,16 +15,11 @@ export class ContainerStatusSelectedComponent implements OnInit {
 
   @Output() statusChanged = new EventEmitter<string>();
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.types = [
-            {label: 'Iniciadas', value: 'running'},
-            {label: 'Paradas', value: 'exited'},
-            // {label: 'Creadas', value: 'created', icon: 'fa fa-fw fa-cc-paypal'},
-            // {label: 'Pausadas', value: 'paused', icon: 'fa fa-fw fa-cc-paypal'},
-            // {label: 'Reiniciadas', value: 'restarting', icon: 'fa fa-fw fa-cc-paypal'},
-            // {label: 'Eliminadas', value: 'removing', icon: 'fa fa-fw fa-cc-paypal'},
-            // {label: 'Muertas', value: 'dead', icon: 'fa fa-fw fa-cc-paypal'},
-            {label: 'Todas', value: 'all'}
+            {label: this.translate.instant('containerStatusSelected.labelStarted'), value: 'running'},
+            {label: this.translate.instant('containerStatusSelected.labelStopped'), value: 'exited'},
+            {label: this.translate.instant('containerStatusSelected.labelAll'), value: 'all'}
         ];
    }
 
