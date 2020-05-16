@@ -14,7 +14,7 @@ import { JobDetailsPageComponent } from './job/job-details-page/job-details-page
 import { AdministrationUsersPageComponent } from './administration/administration-users-page/administration-users-page.component';
 import { AdministrationConfigPageComponent } from './administration/administration-config-page/administration-config-page.component';
 
-const routes: Routes = [ // TODO: AdminRoleGuard <-- Rol para admin
+const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuard, UserRoleGuard]  },
   { path: 'launch-job', component: LaunchJobPageComponent, canActivate: [AuthGuard, UserRoleGuard] },

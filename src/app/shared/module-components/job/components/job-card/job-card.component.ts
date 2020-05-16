@@ -4,7 +4,6 @@ import { ViewMode } from '../../../../../core/enums/view-mode.enum';
 import { JobService } from '../../../../../core/services/job/job.service';
 import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
-import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -51,7 +50,6 @@ export class JobCardComponent implements OnInit {
   constructor(private jobService: JobService,
               private messageService: MessageService,
               private httpError: HttpErrorService,
-              private router: Router,
               public translate: TranslateService) { }
 
   ngOnInit() {
@@ -94,10 +92,6 @@ export class JobCardComponent implements OnInit {
       if (percentAcum > 0 && numAlgorithm > 0) { counters.percent = Number((percentAcum / numAlgorithm).toFixed(0)); }
     }
     this.counters = counters;
-  }
-
-  jobDetails() { // TODO: Prueba eliminar despues y quitar router de constructor
-    this.router.navigate([`job/${this.job.id}`]);
   }
 
   select() {

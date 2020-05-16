@@ -104,7 +104,7 @@ export class UserService {
       return sessionStorage.getItem('language');
 
     } else {
-      return 'es';
+      return null;
     }
   }
 }

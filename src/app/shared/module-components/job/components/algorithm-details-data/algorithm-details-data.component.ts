@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
 import { Model } from '../../entities/model';
 import { TranslateService } from '@ngx-translate/core';
+import { CapitalizePipe } from '../../../../../core/pipes/capitalize/capitalize.pipe';
+import { SplitCamelCaseToStringPipe } from '../../../../../core/pipes/split-camel-case-to-string/split-camel-case-to-string.pipe';
 
 @Component({
   selector: 'app-algorithm-details-data',
@@ -19,6 +21,10 @@ export class AlgorithmDetailsDataComponent implements OnInit {
   configs: any[];
   results: any[];
 
+  // Pipes
+  capitalizePipe = new CapitalizePipe();
+  splitCamelCaseToStringPipe = new SplitCamelCaseToStringPipe();
+
   @Input() height: string;
   @Input('algorithm') set seAlgorithm(algorit: any) {
     if (algorit) {
@@ -28,7 +34,7 @@ export class AlgorithmDetailsDataComponent implements OnInit {
       const configs = [];
       for (const key in conf) {
         if (conf.hasOwnProperty(key)) {
-          configs.push({ label: this.splitCamelCaseToString(this.capitalize(key)), value: conf[key] });
+          configs.push({ label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(key)), value: conf[key] });
         }
       }
       this.configs = configs;
@@ -42,7 +48,7 @@ export class AlgorithmDetailsDataComponent implements OnInit {
       for (const key in validation) {
         if (validation.hasOwnProperty(key)) {
           if (key !== 'weightedPrecision' && key !== 'error') {
-            results.push({ label: this.splitCamelCaseToString(this.capitalize(key)), value: validation[key] });
+            results.push({ label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(key)), value: validation[key] });
           }
         }
       }
@@ -59,14 +65,6 @@ export class AlgorithmDetailsDataComponent implements OnInit {
    }
 
   ngOnInit() {
-  }
-
-  splitCamelCaseToString(s) {
-    return s.split(/(?=[A-Z])/).join(' ');
-  }
-
-  capitalize(s) {
-    return s.trim().replace(/^\w/, (c) => c.toUpperCase());
   }
 
 }

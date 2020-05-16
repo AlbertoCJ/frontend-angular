@@ -54,12 +54,20 @@ export class LoginComponent implements OnInit {
     if (emailValue !== '' && passValue !== '') {
       this.login.email = form.value.email;
       this.login.password = form.value.password;
-      this.auth.login(this.login).subscribe( resp => {
+      this.auth.login(this.login).subscribe( (resp: any) => {
+
+        if (this.userService.getLanguage() === null) {
+          this.userService.saveLanguage(resp.user.language);
+        }
 
         this.globalConfigService.getGlobalConfig().subscribe( globalConfig => {
 
           const user = this.auth.getUser();
-          this.userService.saveLanguage(user.language);
+
+          // if (this.userService.getLanguage() === null) {
+          //   this.userService.saveLanguage(user.language);
+          // }
+
           this.translate.use(this.userService.getLanguage());
 
           if (user && user.role === 'USER_ROLE') {

@@ -10,6 +10,9 @@ import { HttpErrorService } from '../../../../../core/services/http-error/http-e
 import { Router } from '@angular/router';
 import { DataAlgorithms } from '../../entities/data-algorithms';
 import { TranslateService } from '@ngx-translate/core';
+import { CapitalizePipe } from '../../../../../core/pipes/capitalize/capitalize.pipe';
+import { SplitCamelCaseToStringPipe } from '../../../../../core/pipes/split-camel-case-to-string/split-camel-case-to-string.pipe';
+
 
 @Component({
   selector: 'app-controller-launch-confirm',
@@ -24,6 +27,10 @@ export class ControllerLaunchConfirmComponent implements OnInit {
 
   listAlgorithms: DataAlgorithms;
   dataAlgorithms: any[] = [];
+
+  // Pipes
+  capitalizePipe = new CapitalizePipe();
+  splitCamelCaseToStringPipe = new SplitCamelCaseToStringPipe();
 
   @Input() formJobData: FormJobData;
   @Input() dataset: Dataset;
@@ -40,8 +47,11 @@ export class ControllerLaunchConfirmComponent implements OnInit {
             const configsParsed = [];
             for (const keyConf in configs) {
               if (configs.hasOwnProperty(keyConf)) {
-                // configs.push({ label: this.splitCamelCaseToString(this.capitalize(keyConf)), value: configs[keyConf] });
-                configsParsed.push({ label: keyConf, value: configs[keyConf] });
+                configsParsed.push(
+                  {
+                    label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(keyConf)),
+                    value: configs[keyConf]
+                  });
               }
             }
 

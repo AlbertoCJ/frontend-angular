@@ -36,7 +36,12 @@ export class AppComponent {
     translate.setDefaultLang('en');
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use(this.userService.getLanguage());
+    const language = this.userService.getLanguage();
+    if (language === null) {
+      translate.use('en');
+    } else {
+      translate.use(language);
+    }
 
     // if (this.auth.isAuth()) { this.name = this.auth.getUser().name; }
     this.loadingSubscription = this.loadingScreenService.loadingStatus.pipe(debounceTime(this.debounceTime)).subscribe(

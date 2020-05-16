@@ -16,8 +16,12 @@ import { AuthService } from './services/auth/auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { MessageService } from 'primeng/api';
 
+// Pipes
+import { PIPES } from './pipes/index';
+
 @NgModule({
   declarations: [
+    PIPES,
     LoginComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -41,6 +45,7 @@ import { MessageService } from 'primeng/api';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    PIPES,
     PRIMENG_MODULES
   ]
 })

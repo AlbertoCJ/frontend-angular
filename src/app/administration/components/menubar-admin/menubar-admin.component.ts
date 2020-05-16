@@ -72,8 +72,8 @@ export class MenubarAdminComponent implements OnInit {
     const user = this.auth.getUser();
     user.language = language.value;
     this.userService.changeLanguage(user).subscribe( user => {
-      this.userService.saveLanguage(user.language);
-      this.translate.use(this.userService.getLanguage());
+      this.userService.saveLanguage(language.value);
+      this.translate.use(language.value);
       this.generateMenuItems();
     }, (err) => {
         // tslint:disable-next-line: max-line-length

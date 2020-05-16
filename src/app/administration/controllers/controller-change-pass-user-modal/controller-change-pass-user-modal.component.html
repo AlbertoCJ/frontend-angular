@@ -1,5 +1,10 @@
-<app-modal-generic *ngIf="isAlertActive" [isModalActive]="isModalActive" (closed)="formCancel()" [showFooter]="false" [fullModal]="false">
-    <!-- TODO: Traducir -->
+<app-modal-generic 
+    *ngIf="isAlertActive" 
+    [isModalActive]="isModalActive" 
+    (closed)="formCancel()" 
+    [showFooter]="false" 
+    [fullModal]="false">
+
     <span slot="custom-header">{{ translate.instant('controllerChangePassUserModal.titleModal') }}</span>
     <span slot="custom-section">
 

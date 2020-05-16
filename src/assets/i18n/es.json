@@ -1,4 +1,10 @@
 {
+    "status": {
+        "completed": "Completado",
+        "running": "Ejecutando",
+        "partial": "Parcial",
+        "error": "Error"
+    },
     "welcome": "Bienvenido",
     "buttons": {
         "btnAccept": "Aceptar",
@@ -39,7 +45,8 @@
         "txtErrEmailEmpty": "Email vacio",
         "txtErrAndEmpty": " y ",
         "txtErrPassEmpty": "Contraseña vacia",
-        "msgAlertErrorLoginUnexpected": "Error inesperado al intentar loguearse."
+        "msgAlertErrorLoginUnexpected": "Error inesperado al intentar loguearse.",
+        "msgAlertErrorTokenExpired": "El token a caducado. Debes logearte de nuevo."
     },
     "menubarAdmin": {
         "config": "Configuración",

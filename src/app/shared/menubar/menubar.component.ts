@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SelectItem } from 'primeng/api/selectitem';
 import { UserService } from '../../core/services/user/user.service';
 import { HttpErrorService } from '../../core/services/http-error/http-error.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menubar',
@@ -21,7 +22,8 @@ export class MenubarComponent implements OnInit {
   constructor(private auth: AuthService,
               public translate: TranslateService,
               private userService: UserService,
-              private httpError: HttpErrorService) {
+              private httpError: HttpErrorService,
+              private router: Router) {
     this.language = [
       {label: 'EN', value: 'en'},
       {label: 'ES', value: 'es'}
@@ -30,7 +32,7 @@ export class MenubarComponent implements OnInit {
 
   ngOnInit() {
     this.selectedLanguage = this.userService.getLanguage();
-    this.changeLanguage({ value: this.userService.getLanguage() });
+    this.changeLanguage({ value: this.selectedLanguage });
   }
 
   generateMenuItems() {
@@ -80,8 +82,8 @@ export class MenubarComponent implements OnInit {
     const user = this.auth.getUser();
     user.language = language.value;
     this.userService.changeLanguage(user).subscribe( user => {
-      this.userService.saveLanguage(user.language);
-      this.translate.use(this.userService.getLanguage());
+      this.userService.saveLanguage(language.value);
+      this.translate.use(language.value);
       this.generateMenuItems();
     }, (err) => {
         // tslint:disable-next-line: max-line-length

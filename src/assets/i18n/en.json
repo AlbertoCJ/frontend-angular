@@ -1,4 +1,10 @@
 {
+    "status": {
+        "completed": "Completed",
+        "running": "Running",
+        "partial": "Partial",
+        "error": "Error"
+    },
     "welcome": "Welcome",
     "buttons": {
         "btnAccept": "Accept",
@@ -39,7 +45,8 @@
         "txtErrEmailEmpty": "Empty Email",
         "txtErrAndEmpty": " and ",
         "txtErrPassEmpty": "Empty password",
-        "msgAlertErrorLoginUnexpected": "Unexpected error when trying to log in."
+        "msgAlertErrorLoginUnexpected": "Unexpected error when trying to log in.",
+        "msgAlertErrorTokenExpired": "The token has expired. You must log in again."
     },
     "menubarAdmin": {
         "config": "Configuration",
