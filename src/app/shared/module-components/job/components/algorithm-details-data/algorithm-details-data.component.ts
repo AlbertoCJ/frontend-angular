@@ -4,6 +4,7 @@ import { Model } from '../../entities/model';
 import { TranslateService } from '@ngx-translate/core';
 import { CapitalizePipe } from '../../../../../core/pipes/capitalize/capitalize.pipe';
 import { SplitCamelCaseToStringPipe } from '../../../../../core/pipes/split-camel-case-to-string/split-camel-case-to-string.pipe';
+import { ConfigParamBooleanPipe } from '../../../../../core/pipes/config-param-boolean/config-param-boolean.pipe';
 
 @Component({
   selector: 'app-algorithm-details-data',
@@ -24,6 +25,7 @@ export class AlgorithmDetailsDataComponent implements OnInit {
   // Pipes
   capitalizePipe = new CapitalizePipe();
   splitCamelCaseToStringPipe = new SplitCamelCaseToStringPipe();
+  configParamBooleanPipe = new ConfigParamBooleanPipe();
 
   @Input() height: string;
   @Input('algorithm') set seAlgorithm(algorit: any) {
@@ -34,7 +36,11 @@ export class AlgorithmDetailsDataComponent implements OnInit {
       const configs = [];
       for (const key in conf) {
         if (conf.hasOwnProperty(key)) {
-          configs.push({ label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(key)), value: conf[key] });
+          configs.push(
+            {
+              label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(key)),
+              value: this.configParamBooleanPipe.transform(key, conf[key])
+            });
         }
       }
       this.configs = configs;
