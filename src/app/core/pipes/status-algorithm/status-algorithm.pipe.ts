@@ -11,13 +11,19 @@ export class StatusAlgorithmPipe implements PipeTransform {
 
   transform(value: string): string {
     let statusAlgorithm = '';
-    if (value === 'COMPLETED') {
-      statusAlgorithm = this.translate.instant('status.completed');
-    } else if (value === 'RUNNING') {
-      statusAlgorithm = this.translate.instant('status.running');
-    } else if (value === 'ERROR') {
-      statusAlgorithm = this.translate.instant('status.error');
+
+    switch (value) {
+      case 'COMPLETED':
+        statusAlgorithm = this.translate.instant('status.completed');
+        break;
+      case 'RUNNING':
+        statusAlgorithm = this.translate.instant('status.running');
+        break;
+      case 'ERROR':
+        statusAlgorithm = this.translate.instant('status.error');
+        break;
     }
+
     return statusAlgorithm;
   }
 

@@ -11,21 +11,31 @@ export class StatusContainerDockerPipe implements PipeTransform {
 
   transform(value: string): string {
     let statusContanerDocker = '';
-    if (value === 'exited') {
-      statusContanerDocker = this.translate.instant('status.exited');
-    } else if (value === 'running') {
-      statusContanerDocker = this.translate.instant('status.running');
-    } else if (value === 'created') {
-      statusContanerDocker = this.translate.instant('status.created');
-    } else if (value === 'paused') {
-      statusContanerDocker = this.translate.instant('status.paused');
-    } else if (value === 'restarting') {
-      statusContanerDocker = this.translate.instant('status.restarting');
-    } else if (value === 'removing') {
-      statusContanerDocker = this.translate.instant('status.removing');
-    } else if (value === 'dead') {
-      statusContanerDocker = this.translate.instant('status.dead');
+
+    switch (value) {
+      case 'exited':
+        statusContanerDocker = this.translate.instant('status.exited');
+        break;
+      case 'running':
+        statusContanerDocker = this.translate.instant('status.running');
+        break;
+      case 'created':
+        statusContanerDocker = this.translate.instant('status.created');
+        break;
+      case 'paused':
+        statusContanerDocker = this.translate.instant('status.paused');
+        break;
+      case 'restarting':
+        statusContanerDocker = this.translate.instant('status.restarting');
+        break;
+      case 'removing':
+        statusContanerDocker = this.translate.instant('status.removing');
+        break;
+      case 'dead':
+        statusContanerDocker = this.translate.instant('status.dead');
+        break;
     }
+
     return statusContanerDocker;
   }
 

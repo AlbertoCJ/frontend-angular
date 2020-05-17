@@ -2,7 +2,7 @@
     <p-card class="mt-card" styleClass="ui-card-shadow" [ngClass]="{clicker: isClicker, 'card-background': isClicker, 'mt-card-admin': user.role === 'ADMIN_ROLE', 'mt-card-user': user.role === 'USER_ROLE'}">
 
         <div class="">
-            <!-- <p class="date-dataset">{{ dataset.dateCreation | date:'dd/MM/yyyy' }}</p> -->
+            <p class="date-dataset">{{ user.dateCreation | date:'dd/MM/yyyy' }}</p>
             <div class="p-grid p-justify-center">
                 <div class="p-col-4">
                     <span class="title-card-user">{{ translate.instant('userCard.labelName') }}</span>

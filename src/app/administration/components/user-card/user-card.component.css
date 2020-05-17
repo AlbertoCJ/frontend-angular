@@ -51,10 +51,11 @@
 }
 
 
-/* .date-dataset {
+.date-dataset {
     font-size: x-small;
     font-weight: bold;
-} */
+    margin-bottom: 16px;
+}
 
 .title-card-user {
     font-size: small;

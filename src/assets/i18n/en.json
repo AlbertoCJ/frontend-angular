@@ -261,6 +261,9 @@
         "labelAttributes": "Attributes:",
         "titleAlgorithms": "List of algorithms",
         "titleContainers": "Containers",
+        "labelLaunchedIn": "Launched in:",
+        "valueLocal": "Local",
+        "valueAWS": "Amazon Web Services",
         "labelContainer": "No. of containers:",
         "btnLaunch": "Launch"
     },
