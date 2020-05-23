@@ -1,0 +1,21 @@
+<div>
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12" *ngFor="let time of listTimes.times">
+            <app-time-card [time]="time">
+
+            </app-time-card>
+        </div>
+    </div>
+
+    <div *ngIf="listTimes.times.length===0 ">
+        <!-- TODO: Traducir -->
+        <p class="list-empty list-empty-padding">No ha realizado job aún</p>
+    </div>
+
+    <div *ngIf="listTimes.times.length> 0">
+        <app-pagination 
+            [paginationData]="listTimes.paginationData" 
+            (emitPage)="changePage($event)">
+        </app-pagination>
+    </div>
+</div>

@@ -83,6 +83,13 @@
                             <app-buttons-panel-normal>
                                 <span slot="end">
                                 <span class="btn-panel">
+                                    <!-- TODO: Traducir -->
+                                    <app-custom-button 
+                                        [label]="'Resultados'" 
+                                        (emitClicked)="openResult()">
+                                    </app-custom-button>
+                                </span>
+                                <span class="btn-panel">
                                         <app-remove-button 
                                             *ngIf="job.hasStatus !== 'RUNNING'" 
                                             [disabled]="disabledButtonRemove" 
@@ -122,10 +129,18 @@
 </div>
 
 <app-modal-job-details 
-    *ngIf="isModalActive" 
-    [isModalActive]="isModalActive" 
+    *ngIf="isModalJobActive" 
+    [isModalActive]="isModalJobActive" 
     [job]="job" 
     [mode]="mode" 
     (closedModalJob)="closeModalJob($event)" 
     (emitSavedJob)="savedJob($event)">
 </app-modal-job-details>
+
+<app-modal-job-result
+    *ngIf="isModalResultActive" 
+    [isModalActive]="isModalResultActive" 
+    [job]="job" 
+    (closedModalResult)="closeModalResult($event)">
+
+</app-modal-job-result>

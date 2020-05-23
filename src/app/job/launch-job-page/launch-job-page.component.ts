@@ -23,6 +23,18 @@ export class LaunchJobPageComponent implements OnInit {
   dataWorkers: LocalWorkers;
 
   constructor(public translate: TranslateService) {
+    this.translate.onLangChange.subscribe( change => {
+      this.initTranslateData();
+    });
+    this.activeStep = Steps.DATASET;
+    this.activeTab = 0;
+   }
+
+  ngOnInit() {
+    this.initTranslateData();
+  }
+
+  initTranslateData() {
     this.items = [
       {
         label: this.translate.instant('launchJobPage.dataset')
@@ -37,11 +49,6 @@ export class LaunchJobPageComponent implements OnInit {
         label: this.translate.instant('launchJobPage.confirmation')
       }
     ];
-    this.activeStep = Steps.DATASET;
-    this.activeTab = 0;
-   }
-
-  ngOnInit() {
   }
 
   changeStep(step) {

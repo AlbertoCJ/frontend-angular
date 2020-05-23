@@ -3,11 +3,13 @@ import { ControllerCreateUserModalComponent } from './controller-create-user-mod
 import { ControllerEditUserModalComponent } from './controller-edit-user-modal/controller-edit-user-modal.component';
 import { ControllerChangePassUserModalComponent } from './controller-change-pass-user-modal/controller-change-pass-user-modal.component';
 import { ControllerGlobalConfigComponent } from './controller-global-config/controller-global-config.component';
+import { ControllerListTimeComponent } from './controller-list-time/controller-list-time.component';
 
 export const ADMIN_CONTROLLERS = [
     ControllerListUserComponent,
     ControllerCreateUserModalComponent,
     ControllerEditUserModalComponent,
     ControllerChangePassUserModalComponent,
-    ControllerGlobalConfigComponent
+    ControllerGlobalConfigComponent,
+    ControllerListTimeComponent
 ];

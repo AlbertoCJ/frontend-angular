@@ -9,7 +9,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class UserCardComponent implements OnInit {
 
+  // Modal
+  timeModal = false;
+  // Modal Edit User
   editUserModal = false;
+  // Modal Change Pass
   changePassUserModal = false;
 
   @Input() showButtons = true;
@@ -19,6 +23,15 @@ export class UserCardComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
   ngOnInit() {
+  }
+
+  // Modal time
+  openTimeModal() {
+    this.timeModal = true;
+  }
+
+  closeTimeModal(event: boolean) {
+    this.timeModal = event;
   }
 
   // Modal manager methods

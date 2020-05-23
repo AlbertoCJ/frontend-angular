@@ -16,16 +16,23 @@ export class ContainerStatusSelectedComponent implements OnInit {
   @Output() statusChanged = new EventEmitter<string>();
 
   constructor(public translate: TranslateService) {
-    this.types = [
-            {label: this.translate.instant('containerStatusSelected.labelStarted'), value: 'running'},
-            {label: this.translate.instant('containerStatusSelected.labelStopped'), value: 'exited'},
-            {label: this.translate.instant('containerStatusSelected.labelAll'), value: 'all'}
-        ];
+    this.translate.onLangChange.subscribe( change => {
+      this.initTranslateData();
+    });
    }
 
   ngOnInit() {
+    this.initTranslateData();
     this.statusSelected = 'running';
     this.onChangeType('running');
+  }
+
+  initTranslateData() {
+    this.types = [
+      {label: this.translate.instant('containerStatusSelected.labelStarted'), value: 'running'},
+      {label: this.translate.instant('containerStatusSelected.labelStopped'), value: 'exited'},
+      {label: this.translate.instant('containerStatusSelected.labelAll'), value: 'all'}
+  ];
   }
 
   onChangeType(state) {

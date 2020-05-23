@@ -21,8 +21,11 @@ export class JobCardComponent implements OnInit {
   isConfirmActive = false;
 
   // Modal job
-  isModalActive: boolean;
+  isModalJobActive: boolean;
   mode: number;
+
+  // Modal result
+  isModalResultActive: boolean;
 
   job: Job;
   counters: any;
@@ -97,32 +100,41 @@ export class JobCardComponent implements OnInit {
   select() {
     this.emitSelected.emit(this.job);
     this.mode = ViewMode.VIEW;
-    this.isModalActive = true;
+    this.isModalJobActive = true;
   }
 
   edit() {
     this.emitEdit.emit(this.job);
     this.mode = ViewMode.EDIT;
-    this.isModalActive = true;
+    this.isModalJobActive = true;
   }
 
   keypress() {
     this.emitJob.emit(this.job);
   }
 
-  // Modal
+  // Modal Job
   closeModalJob(event: boolean) {
-    this.isModalActive = event;
+    this.isModalJobActive = event;
   }
 
   savedJob(job: Job) {
     this.emitSavedJob.emit(job);
-    // this.isModalActive = false;
+    // this.isModalJobActive = false;
   }
 
   // Confirm
   removeConfirm() {
     this.isConfirmActive = true;
+  }
+
+  openResult() {
+    this.isModalResultActive = true;
+  }
+
+  // Modal result
+  closeModalResult(event: boolean) {
+    this.isModalResultActive = event;
   }
 
   remove() {

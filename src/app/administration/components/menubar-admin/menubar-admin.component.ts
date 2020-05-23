@@ -26,14 +26,17 @@ export class MenubarAdminComponent implements OnInit {
       {label: 'EN', value: 'en'},
       {label: 'ES', value: 'es'}
     ];
+    this.translate.onLangChange.subscribe( change => {
+      this.initTranslateData();
+    });
   }
 
   ngOnInit() {
     this.selectedLanguage = this.userService.getLanguage();
-    this.changeLanguage({ value: this.userService.getLanguage() });
+    this.initTranslateData();
   }
 
-  generateMenuItems() {
+  initTranslateData() {
     this.items = [
       {
         label: this.translate.instant('menubarAdmin.config'),
@@ -74,7 +77,6 @@ export class MenubarAdminComponent implements OnInit {
     this.userService.changeLanguage(user).subscribe( user => {
       this.userService.saveLanguage(language.value);
       this.translate.use(language.value);
-      this.generateMenuItems();
     }, (err) => {
         // tslint:disable-next-line: max-line-length
         this.httpError.checkError(err, this.translate.instant('modals.warning'), this.translate.instant('menubar.msgAlertErrorChangeLanguage'));

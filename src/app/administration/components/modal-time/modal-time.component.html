@@ -1,0 +1,19 @@
+<app-modal-generic 
+    *ngIf="isAlertActive" 
+    [isModalActive]="isModalActive" 
+    (closed)="formCancel()" 
+    [showFooter]="true" 
+    [fullModal]="false">
+<!-- TODO: Traducir -->
+    <span slot="custom-header">Control de tiempo de {{ user.name }}</span>
+    <span slot="custom-section">
+        <app-controller-list-time [user]="user">
+
+        </app-controller-list-time>
+    </span>
+    <span slot="custom-footer">
+        <app-cancel-button (emitClicked)="close()">
+
+        </app-cancel-button>
+    </span>
+</app-modal-generic>

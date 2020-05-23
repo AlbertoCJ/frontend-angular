@@ -1,0 +1,19 @@
+.custom-textarea .ui-inputtext {
+    width: 100%;
+    resize: none;
+}
+
+.title  {
+    font-size: small;
+    text-align: center;
+}
+
+.value {
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+}
+
+:host ::ng-deep .time-card .ui-card-body {
+    padding-bottom: 0px;
+}

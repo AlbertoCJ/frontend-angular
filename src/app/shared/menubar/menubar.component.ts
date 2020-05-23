@@ -28,14 +28,18 @@ export class MenubarComponent implements OnInit {
       {label: 'EN', value: 'en'},
       {label: 'ES', value: 'es'}
     ];
+    this.translate.onLangChange.subscribe( change => {
+      this.initTranslateData();
+    });
   }
 
   ngOnInit() {
     this.selectedLanguage = this.userService.getLanguage();
-    this.changeLanguage({ value: this.selectedLanguage });
+    // this.changeLanguage({ value: this.selectedLanguage });
+    this.initTranslateData();
   }
 
-  generateMenuItems() {
+  initTranslateData() {
     this.items = [
       {
         icon: 'pi pi-fw pi-home',
@@ -84,7 +88,6 @@ export class MenubarComponent implements OnInit {
     this.userService.changeLanguage(user).subscribe( user => {
       this.userService.saveLanguage(language.value);
       this.translate.use(language.value);
-      this.generateMenuItems();
     }, (err) => {
         // tslint:disable-next-line: max-line-length
         this.httpError.checkError(err, this.translate.instant('modals.warning'), this.translate.instant('menubar.msgAlertErrorChangeLanguage'));

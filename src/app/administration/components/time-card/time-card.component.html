@@ -1,0 +1,37 @@
+
+<p-card class="time-card" 
+styleClass="ui-card-shadow">
+    <div class="p-grid">
+        <div class="p-lg-8 p-md-8 p-sm-6 p-col-12">
+            <div class="p-grid">
+                <div class="p-lg-4 p-md-4 p-sm-6 p-col-6">
+                    <p class="title">Nombre Job:</p>
+                    <p class="value">{{ time.jobName }}</p>
+                </div>
+                <div class="p-lg-8 p-md-8 p-sm-6 p-col-6">
+                    <p class="title">Descripción Job:</p>
+                    <div class="custom-textarea">
+                        <textarea 
+                            [rows]="2" 
+                            [disabled]="true" 
+                            [(ngModel)]="time.jobDescription" 
+                            pInputTextarea>
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-lg-4 p-md-4 p-sm-6 p-col-12">
+            <div class="p-grid">
+                <div class="p-lg-6 p-md-6 p-sm-6 p-col-6">
+                    <p class="title">Fecha creación:</p>
+                    <p class="value">{{ time.dateCreation | date:'dd/MM/yyyy' }}</p>
+                </div>
+                <div class="p-lg-6 p-md-6 p-sm-6 p-col-6">
+                    <p class="title">Tiempo:</p>
+                    <p class="value">{{ hoursAndMinutes }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-card>
