@@ -22,7 +22,7 @@ export class ControllerListTimeComponent implements OnInit {
               private httpError: HttpErrorService,
               public translate: TranslateService) {
     this.page = 1;
-    this.limit = 6;
+    this.limit = 4;
     this.listTimes = new ListTimes();
    }
 
@@ -40,10 +40,9 @@ export class ControllerListTimeComponent implements OnInit {
         this.listTimes = listTimes;
       },
       err => {
-        // TODO: Controlar error y textos de error a list time
-        // this.httpError.checkError(err,
-        //   this.translate.instant('alerts.alert'),
-        //   this.translate.instant('controllerListUser.messageErrorGetListUser'));
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerListTime.messageErrorGetListTime'));
       }
   );
   }

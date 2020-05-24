@@ -3,6 +3,12 @@
     resize: none;
 }
 
+.status {
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
 .title  {
     font-size: small;
     text-align: center;

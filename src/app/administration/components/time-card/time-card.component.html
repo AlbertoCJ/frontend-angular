@@ -1,15 +1,18 @@
 
 <p-card class="time-card" 
 styleClass="ui-card-shadow">
+    <div>
+        <p class="status">{{ time.hasStatus | statusJob }}</p>
+    </div>
     <div class="p-grid">
         <div class="p-lg-8 p-md-8 p-sm-6 p-col-12">
             <div class="p-grid">
                 <div class="p-lg-4 p-md-4 p-sm-6 p-col-6">
-                    <p class="title">Nombre Job:</p>
+                    <p class="title">{{ translate.instant('timeCard.titleNameJob') }}</p>
                     <p class="value">{{ time.jobName }}</p>
                 </div>
                 <div class="p-lg-8 p-md-8 p-sm-6 p-col-6">
-                    <p class="title">Descripción Job:</p>
+                    <p class="title">{{ translate.instant('timeCard.titleDescriptionJob') }}</p>
                     <div class="custom-textarea">
                         <textarea 
                             [rows]="2" 
@@ -24,12 +27,13 @@ styleClass="ui-card-shadow">
         <div class="p-lg-4 p-md-4 p-sm-6 p-col-12">
             <div class="p-grid">
                 <div class="p-lg-6 p-md-6 p-sm-6 p-col-6">
-                    <p class="title">Fecha creación:</p>
+                    <p class="title">{{ translate.instant('timeCard.titleDateCreation') }}</p>
                     <p class="value">{{ time.dateCreation | date:'dd/MM/yyyy' }}</p>
                 </div>
                 <div class="p-lg-6 p-md-6 p-sm-6 p-col-6">
-                    <p class="title">Tiempo:</p>
-                    <p class="value">{{ hoursAndMinutes }}</p>
+                    <p class="title">{{ translate.instant('timeCard.titleTime') }}</p>
+                    <p *ngIf="time.hasStatus !== 'RUNNING'" class="value">{{ hoursAndMinutes }}</p>
+                    <p *ngIf="time.hasStatus === 'RUNNING'" class="value">{{ translate.instant('timeCard.waiting') }}</p>
                 </div>
             </div>
         </div>

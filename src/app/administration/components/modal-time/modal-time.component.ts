@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../../core/entities/user/user';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-modal-time',
@@ -25,7 +26,7 @@ export class ModalTimeComponent implements OnInit {
 
   @Output() closedModalTime = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit() {
   }

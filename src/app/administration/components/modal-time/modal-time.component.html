@@ -4,8 +4,8 @@
     (closed)="formCancel()" 
     [showFooter]="true" 
     [fullModal]="false">
-<!-- TODO: Traducir -->
-    <span slot="custom-header">Control de tiempo de {{ user.name }}</span>
+
+    <span slot="custom-header">{{ translate.instant('modalTime.titleHeader') }} {{ user.name }}</span>
     <span slot="custom-section">
         <app-controller-list-time [user]="user">
 

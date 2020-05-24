@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Time } from '../../entities/time';
 import * as moment from 'moment';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-time-card',
@@ -16,18 +17,14 @@ export class TimeCardComponent implements OnInit {
     this.time = time;
     const end = moment(time.end);
     const start = moment(time.start);
-    // const days = end.diff(start, 'd');
-    // const hours = end.diff(start, 'h');
-    // const minutes = end.diff(start, 'm');
-    // this.hoursAndMinutes = `${ days }d ${ hours }h ${ minutes }m`;
 
     const ms = moment(end, 'DD/MM/YYYY HH:mm:ss').diff(moment(start, 'DD/MM/YYYY HH:mm:ss'));
     const d = moment.duration(ms);
     this.hoursAndMinutes = `${ d.days() }d ${ d.hours() }h ${ d.minutes() }m ${ d.seconds() }s`;
-    // console.log(d.days(), d.hours(), d.minutes(), d.seconds());
+
   }
 
-  constructor() { }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit() {
   }

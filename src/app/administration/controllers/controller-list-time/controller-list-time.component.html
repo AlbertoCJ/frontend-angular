@@ -8,8 +8,7 @@
     </div>
 
     <div *ngIf="listTimes.times.length===0 ">
-        <!-- TODO: Traducir -->
-        <p class="list-empty list-empty-padding">No ha realizado job aún</p>
+        <p class="list-empty list-empty-padding">{{ translate.instant('controllerListTime.noTimeJob') }}</p>
     </div>
 
     <div *ngIf="listTimes.times.length> 0">

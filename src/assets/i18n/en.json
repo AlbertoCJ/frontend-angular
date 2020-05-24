@@ -132,6 +132,20 @@
         "labelEmail": "Email:",
         "btnChangePass": "C. Password"
     },
+    "controllerListTime": {
+        "messageErrorGetListTime": "Error in obtaining times.",
+        "noTimeJob": "Hasn't performed a job yet"
+    },
+    "modalTime": {
+        "titleHeader": "Time Control"
+    },
+    "timeCard": {
+        "titleNameJob": "Job Name:",
+        "titleDescriptionJob": "Job Description:",
+        "titleDateCreation": "Date Creation:",
+        "titleTime": "Time:",
+        "waiting": "Waiting"
+    },
     "administrationUserPage": {
         "headerUserManagement": "User Management"
     },
