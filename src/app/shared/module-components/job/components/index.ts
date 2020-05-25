@@ -20,6 +20,8 @@ import { AlgorithmDetailsTitleComponent } from './algorithm-details-title/algori
 import { AlgorithmDetailsInfoComponent } from './algorithm-details-info/algorithm-details-info.component';
 import { AlgorithmDetailsDataComponent } from './algorithm-details-data/algorithm-details-data.component';
 import { ModalJobResultComponent } from './modal-job-result/modal-job-result.component';
+import { ResultErrorComparisonComponent } from './result-error-comparison/result-error-comparison.component';
+import { ResultPredictionComparisonComponent } from './result-prediction-comparison/result-prediction-comparison.component';
 
 export const JOB_COMPONENTS = [
     AlgorithmLinearRegressionComponent,
@@ -42,5 +44,7 @@ export const JOB_COMPONENTS = [
     AlgorithmDetailsTitleComponent,
     AlgorithmDetailsInfoComponent,
     AlgorithmDetailsDataComponent,
-    ModalJobResultComponent
+    ModalJobResultComponent,
+    ResultErrorComparisonComponent,
+    ResultPredictionComparisonComponent
 ];

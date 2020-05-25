@@ -1,5 +1,16 @@
-<p>Validation</p>
+<!-- <p>Validation</p>
 {{ job.dataAlgorithms.linearRegression.model.validation | json }}
 
 <p>Prediction</p>
-{{ job.dataAlgorithms.linearRegression.model.prediction | json }}
+{{ job.dataAlgorithms.linearRegression.model.prediction | json }} -->
+
+<div class="select-button">
+<p-selectButton [options]="types" [(ngModel)]="selectedType"></p-selectButton>
+</div>
+
+<div *ngIf="selectedType === 'ERRORS'">
+    <app-result-error-comparison [job]="job"></app-result-error-comparison>
+</div>
+<div *ngIf="selectedType === 'PREDICTIONS'">
+    
+</div>

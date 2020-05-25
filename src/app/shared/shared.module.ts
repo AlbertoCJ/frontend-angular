@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from '../core/core.module';
+import { ChartsModule } from 'ng2-charts';
 
 // Components
 import { MenubarComponent } from './menubar/menubar.component';
@@ -17,6 +18,7 @@ import { MODALS_COMPONENTS } from './modals/index';
 import { DATASETS_SHARED } from './module-components/datasets/index';
 import { JOB_SHARED } from './module-components/job/index';
 
+
 @NgModule({
   declarations: [
     MenubarComponent,
@@ -33,10 +35,12 @@ import { JOB_SHARED } from './module-components/job/index';
     JOB_SHARED
   ],
   imports: [
-    CoreModule
+    CoreModule,
+    ChartsModule
   ],
   exports: [
     CoreModule,
+    ChartsModule,
     MenubarComponent,
     HeaderTitleComponent,
     StepComponent,

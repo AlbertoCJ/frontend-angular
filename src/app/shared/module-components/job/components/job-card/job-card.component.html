@@ -84,21 +84,21 @@
                                 <span slot="end">
                                 <span class="btn-panel">
                                     <!-- TODO: Traducir -->
-                                    <app-custom-button 
+                                    <app-custom-button
+                                        [disabled]="job.hasStatus === 'RUNNING' || job.hasStatus === 'ERROR'"
                                         [label]="'Resultados'" 
                                         (emitClicked)="openResult()">
                                     </app-custom-button>
                                 </span>
                                 <span class="btn-panel">
                                         <app-remove-button 
-                                            *ngIf="job.hasStatus !== 'RUNNING'" 
                                             [disabled]="disabledButtonRemove" 
                                             (emitClicked)="removeConfirm()">
                                         </app-remove-button>
                                     </span>
                                 <span class="btn-panel">
                                         <app-edit-button 
-                                            *ngIf="job.hasStatus !== 'RUNNING'" 
+                                            [disabled]="job.hasStatus === 'RUNNING'"
                                             [disabled]="disabledButtonEdit" 
                                             (emitClicked)="edit()">
                                         </app-edit-button>

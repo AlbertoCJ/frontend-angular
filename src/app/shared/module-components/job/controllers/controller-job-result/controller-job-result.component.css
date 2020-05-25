@@ -1,0 +1,12 @@
+.select-button {
+    text-align: center;
+}
+
+:host ::ng-deep .select-button .ui-selectbutton {
+    display: flex;
+}
+
+:host ::ng-deep .select-button .ui-selectbutton .ui-button {
+    flex-grow: 4;
+    border: 1px solid white;
+}

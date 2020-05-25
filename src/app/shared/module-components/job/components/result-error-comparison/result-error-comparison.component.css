@@ -1,0 +1,18 @@
+.select-chart {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep .select-chart .ui-dropdown {
+    width: 250px;
+}
+
+.box-line-chart {
+    max-width: 900px;
+    display: flex;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+
+}
