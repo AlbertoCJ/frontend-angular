@@ -27,6 +27,19 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
   Algorithms = Algorithms;
   gcAlgorithms: any;
 
+  // Checks
+  linearRegressionCheck = false;
+  linearRegressionBaggingCheck = false;
+  IBkCheck = false;
+  ZeroRCheck = false;
+  M5PCheck = false;
+  M5PBaggingCheck = false;
+  M5RulesCheck = false;
+  DecisionStumpCheck = false;
+  DecisionStumpBaggingCheck = false;
+  LibsvmCheck = false;
+  LibsvmBaggingCheck = false;
+
   // Algorithms object
   listAlgorithms: DataAlgorithms;
 

@@ -7,70 +7,81 @@
                     <div class="ui-g">
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.linearRegression">
                             <p-checkbox 
-                                label="Linear Regression" 
+                                label="Linear Regression"
+                                [(ngModel)]="linearRegressionCheck"
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.LINEAR_REGRESSION)">
                             </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.linearRegressionBagging">
                             <p-checkbox 
                                 label="Linear Regression Bagging" 
+                                [(ngModel)]="linearRegressionBaggingCheck"
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.LINEAR_REGRESSION_BAGGING)">
                             </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.IBk">
                             <p-checkbox 
-                                label="IBk" 
+                                label="IBk"
+                                [(ngModel)]="IBkCheck"
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.IBK)">
                             </p-checkbox>
                         </div>
 
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.ZeroR">
                             <p-checkbox 
-                                label="ZeroR" 
+                                label="ZeroR"
+                                [(ngModel)]="ZeroRCheck"
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.ZEROR)">
                             </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.M5P">
                             <p-checkbox 
-                                label="M5P" 
+                                label="M5P"
+                                [(ngModel)]="M5PCheck"
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.M5P)">
                             </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.M5PBagging">
                             <p-checkbox 
                                 label="M5P Bagging" 
+                                [(ngModel)]="M5PBaggingCheck"
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.M5P_BAGGING)">
                             </p-checkbox>
                         </div>
 
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.M5Rules">
                             <p-checkbox 
-                                label="M5Rules" 
+                                label="M5Rules"
+                                [(ngModel)]="M5RulesCheck"
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.M5RULES)">
                             </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.DecisionStump">
                             <p-checkbox 
-                                label="Decision Stump" 
+                                label="Decision Stump"
+                                [(ngModel)]="DecisionStumpCheck" 
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.DECISION_STUMP)">
                             </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.DecisionStumpBagging">
                             <p-checkbox 
-                                label="DecisionStump Bagging" 
+                                label="DecisionStump Bagging"
+                                [(ngModel)]="DecisionStumpBaggingCheck"
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.DECISION_STUMP_BAGGING)">
                             </p-checkbox>
                         </div>
 
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.Libsvm">
                             <p-checkbox 
-                                label="Libsvm" 
+                                label="Libsvm"
+                                [(ngModel)]="LibsvmCheck"
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.LIBSVM)">
                             </p-checkbox>
                         </div>
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.LibsvmBagging">
                             <p-checkbox 
-                                label="Libsvm Bagging" 
+                                label="Libsvm Bagging"
+                                [(ngModel)]="LibsvmBaggingCheck"
                                 (onChange)="clickCheckAlgorithm($event, Algorithms.LIBSVM_BAGGING)">
                             </p-checkbox>
                         </div>

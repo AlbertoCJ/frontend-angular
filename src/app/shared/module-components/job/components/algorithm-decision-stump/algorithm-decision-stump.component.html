@@ -1,6 +1,15 @@
-<div class="buttons-panel buttons-panel-end">
-    <app-restart-button [disabled]="btnRestart" (emitClicked)="restart()"></app-restart-button>
+<div class="ui-g">
+    <div class="ui-g-5">
+        <!-- TODO: Traducir -->
+        <span class="cursor-pointer doc-info-algorithm"><a href="https://weka.sourceforge.io/doc.stable-3-8/weka/classifiers/trees/DecisionStump.html" target="_blank">Documentación</a><i class="pi pi-info-circle"></i></span>
+    </div>
+    <div class="ui-g-7">
+        <div class="buttons-panel buttons-panel-end ">
+            <app-restart-button [disabled]="btnRestart" (emitClicked)="restart()"></app-restart-button>
+        </div>
+    </div>
 </div>
+
 <form [formGroup]="decisionStumpForm">
     <div class="ui-g">
         <div class="ui-g-12">
