@@ -94,7 +94,7 @@ export class ResultErrorComparisonComponent implements OnInit {
       if (dataAlgorithms.hasOwnProperty(key)) {
 
         const nameAlgorithm = key;
-        if (dataAlgorithms[nameAlgorithm].model.validation) {
+        if (dataAlgorithms[nameAlgorithm].model && dataAlgorithms[nameAlgorithm].model.validation) {
           label.push(this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(nameAlgorithm)));
           data.push(dataAlgorithms[nameAlgorithm].model.validation[nameError]);
         }
