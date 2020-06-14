@@ -4,6 +4,7 @@ import { LocalWorkers } from '../../entities/workers/local-workers';
 import { ZoneLaunch } from '../../enums/zoneLaunch.enum';
 import { DataAlgorithms } from '../../entities/data-algorithms';
 import { TranslateService } from '@ngx-translate/core';
+import { AwsWorkers } from '../../entities/workers/aws-workers';
 
 @Component({
   selector: 'app-controller-launch-worker',
@@ -12,9 +13,10 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ControllerLaunchWorkerComponent implements OnInit {
 
+  public zoneLaunch = ZoneLaunch;
   showView: number; // 1 = aws, 2 = local
 
-  dataWorkers: LocalWorkers; // TODO: Falta AwsWorker
+  dataWorkers: LocalWorkers | AwsWorkers;
 
   btnPrevDisabled: boolean;
   btnNextDisabled: boolean;
@@ -23,7 +25,7 @@ export class ControllerLaunchWorkerComponent implements OnInit {
   @Input() listAlgorithms: DataAlgorithms;
 
   @Output() emitStep = new EventEmitter<number>();
-  @Output() emitDataWorkers = new EventEmitter<LocalWorkers>(); // TODO: Falta AwsWorker
+  @Output() emitDataWorkers = new EventEmitter<LocalWorkers | AwsWorkers>();
 
   constructor(public translate: TranslateService) {
     this.showView = ZoneLaunch.LOCAL;
@@ -32,6 +34,10 @@ export class ControllerLaunchWorkerComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  selectZoneLaunch(zoneLaunch: number) {
+    this.showView = zoneLaunch;
   }
 
   allowNext(event: boolean) {
@@ -45,6 +51,11 @@ export class ControllerLaunchWorkerComponent implements OnInit {
     } else {
       this.btnNextDisabled = true;
     }
+  }
+
+  setAwsWorkers(awsWorkers: AwsWorkers) {
+    this.dataWorkers = awsWorkers;
+    this.validNumContainer();
   }
 
   setLocalWorkers(localWorkers: LocalWorkers) {

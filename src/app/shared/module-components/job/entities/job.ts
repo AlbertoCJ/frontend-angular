@@ -9,6 +9,7 @@ export class Job {
     description: string;
     dateCreation: Date | null;
     dataAlgorithms: DataAlgorithms;
+    platform: string;
 
     constructor(data?: any) {
         this.id = data && data._id ? data._id : 0;
@@ -18,5 +19,6 @@ export class Job {
         this.description = data && data.description ? data.description : '';
         this.dateCreation = data && data.dateCreation ? data.dateCreation : null;
         this.dataAlgorithms = data && data.dataAlgorithms ? new DataAlgorithms(data.dataAlgorithms) : null;
+        this.platform = data && data.platform ? data.platform : '';
     }
 }

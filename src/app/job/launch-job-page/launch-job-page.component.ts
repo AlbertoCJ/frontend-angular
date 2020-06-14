@@ -7,6 +7,7 @@ import { Steps } from 'src/app/shared/module-components/job/enums/steps.enum';
 import { FormJobData } from '../../shared/module-components/job/entities/form-job-data/form-job-data';
 import { DataAlgorithms } from '../../shared/module-components/job/entities/data-algorithms';
 import { TranslateService } from '@ngx-translate/core';
+import { AwsWorkers } from '../../shared/module-components/job/entities/workers/aws-workers';
 
 @Component({
   selector: 'app-launch-job-page',
@@ -20,7 +21,7 @@ export class LaunchJobPageComponent implements OnInit {
   formJobData: FormJobData;
   datasetSelected: Dataset;
   listAlgorithms: DataAlgorithms;
-  dataWorkers: LocalWorkers;
+  dataWorkers: LocalWorkers | AwsWorkers;
 
   constructor(public translate: TranslateService) {
     this.translate.onLangChange.subscribe( change => {
@@ -56,8 +57,7 @@ export class LaunchJobPageComponent implements OnInit {
     this.activeTab = step - 1;
   }
 
-  setDataWorkers(dataWorkers: LocalWorkers) {
-    // console.log(dataWorkers);
+  setDataWorkers(dataWorkers: LocalWorkers | AwsWorkers) {
     this.dataWorkers = dataWorkers;
   }
 

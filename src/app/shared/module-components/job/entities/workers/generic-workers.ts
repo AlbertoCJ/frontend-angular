@@ -1,4 +1,5 @@
 import { ZoneLaunch } from '../../enums/zoneLaunch.enum';
+
 export class GenericWorkers {
 
     zoneLaunch: number;

@@ -16,13 +16,14 @@ export class JobService {
 
   constructor(private http: HttpClient) { }
 
-  launchJob( formJobData: FormJobData, dataset: Dataset, listAlgorithms: any, containers: any ) {
+  launchJob( formJobData: FormJobData, dataset: Dataset, listAlgorithms: any, containers: any, platform: string ) {
     const formData: FormData = new FormData();
     formData.append('fileName', dataset.file);
     formData.append('jobName', formJobData.name);
     formData.append('jobDescription', formJobData.description);
     formData.append('algorithms', JSON.stringify(listAlgorithms));
     formData.append('containers', JSON.stringify(containers));
+    formData.append('platform', platform);
 
     const httpOptions = {
       headers: new HttpHeaders({

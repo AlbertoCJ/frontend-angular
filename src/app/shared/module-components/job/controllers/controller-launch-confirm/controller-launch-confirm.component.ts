@@ -13,6 +13,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { CapitalizePipe } from '../../../../../core/pipes/capitalize/capitalize.pipe';
 import { SplitCamelCaseToStringPipe } from '../../../../../core/pipes/split-camel-case-to-string/split-camel-case-to-string.pipe';
 import { ConfigParamBooleanPipe } from '../../../../../core/pipes/config-param-boolean/config-param-boolean.pipe';
+import { AwsWorkers } from '../../entities/workers/aws-workers';
+import { ZoneLaunch } from '../../enums/zoneLaunch.enum';
+import { DockerAwsService } from '../../../../../core/services/dockerAWS/docker-aws.service';
 
 
 @Component({
@@ -63,12 +66,13 @@ export class ControllerLaunchConfirmComponent implements OnInit {
       }
     }
   }
-  @Input() dataWorkers: LocalWorkers;
+  @Input() dataWorkers: LocalWorkers | AwsWorkers;
 
   @Output() emitStep = new EventEmitter<number>();
 
   constructor(private jobService: JobService,
               private dockerService: DockerService,
+              private dockerAwsService: DockerAwsService,
               private alertService: AlertService,
               private httpError: HttpErrorService,
               private router: Router,
@@ -88,26 +92,65 @@ export class ControllerLaunchConfirmComponent implements OnInit {
   btnLaunchClicked() {
     // alert('Lanzado');
 
-    if (this.dataWorkers.numContainers > 0) {
-      this.launchLocalContainers();
-    } else if (this.dataWorkers.numContainers <= 0) {
-      this.launchJob([]);
+    // Check platform 'AWS' or 'LOCAL'
+    if (this.dataWorkers.zoneLaunch === ZoneLaunch.AWS) {
+      if (this.dataWorkers.numContainers > 0) {
+        this.launchAwsContainers('AWS');
+      } else if (this.dataWorkers.numContainers <= 0) {
+        this.launchJob([], 'AWS');
+      }
+    } else {
+      if (this.dataWorkers.numContainers > 0) {
+        this.launchLocalContainers('LOCAL');
+      } else if (this.dataWorkers.numContainers <= 0) {
+        this.launchJob([], 'LOCAL');
+      }
     }
 
-
-
-    // TODO: Primero comprobar si es local o aws
-
-    // SI ES LOCAL
-    // TODO: Lanzar petición para crear contenedores, almacenar los contenedores con el usuario que los crea.
-    // TODO: Si se reciben correctamente, se esperara X segundos por cada contenedor creado antes de lanzar los algoritmos.
-    // TODO: Peticion que gestiona los algoritmos y los asigna a contenedores, etc.
   }
 
-  launchLocalContainers() {
+  async launchAwsContainers(platform: string) {
+    const containersAWS = [];
+
+    for (let i = 0; i < this.dataWorkers.numContainers; i++) {
+      await this.dockerAwsService.createContainers()
+        .then( (respContainer: any) => {
+          containersAWS.push(respContainer.awsContainer);
+        })
+        .catch(err => {
+          console.log(err);
+          // switch (err.status) {
+          //   case 600:
+          //     this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
+          //     this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
+          //       err.error.error.message);
+          //     break;
+          //   case 601:
+          //     this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
+          //     this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
+          //       err.error.error.message);
+          //     break;
+          //   case 602:
+          //     this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
+          //     this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
+          //       err.error.error.message);
+          //     break;
+          //   default:
+          //     this.httpError.checkError(err,
+          //       this.translate.instant('alerts.alert'),
+          //       this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'));
+          //     break;
+          // }
+        });
+    }
+
+    this.launchJob(containersAWS, platform);
+  }
+
+  launchLocalContainers(platform: string) {
     this.dockerService.runContainers(this.dataWorkers.numContainers).subscribe( // this.containers
       respContainers => {
-        this.launchJob(respContainers.containers);
+        this.launchJob(respContainers.containers, platform);
 
       },
       err => {
@@ -137,8 +180,8 @@ export class ControllerLaunchConfirmComponent implements OnInit {
     );
   }
 
-  launchJob(containers: any[]) {
-    this.jobService.launchJob(this.formJobData, this.dataset, this.listAlgorithms, containers).subscribe(
+  launchJob(containers: any[], platform: string) {
+    this.jobService.launchJob(this.formJobData, this.dataset, this.listAlgorithms, containers, platform).subscribe(
       respJob => {
         this.router.navigate([`job/${respJob.id}`]);
       },

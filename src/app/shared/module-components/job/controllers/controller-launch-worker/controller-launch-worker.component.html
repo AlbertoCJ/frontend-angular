@@ -5,35 +5,32 @@
             <div class="ui-g-12 ui-md-6">
                 <app-special-button 
                     [btnText]="translate.instant('controllerLaunchWorker.btnTextAWS')" 
-                    [disabled]="true" 
-                    (emitClick)="showView = 1">
+                    (emitClick)="selectZoneLaunch(zoneLaunch.AWS)">
                 </app-special-button>
             </div>
             <div class="ui-g-12 ui-md-6">
                 <app-special-button 
                     [btnText]="translate.instant('controllerLaunchWorker.btnTextLocal')" 
-                    (emitClick)="showView = 2">
+                    (emitClick)="selectZoneLaunch(zoneLaunch.LOCAL)">
                 </app-special-button>
             </div>
         </div>
     </div>
 
     <div class="ui-fluid form-container">
-        <div *ngIf="showView === 1">
-            <!-- <app-controller-form-dataset (emitDataset)="setDatasetSelected($event)"></app-controller-form-dataset> -->
-
-            <!-- <app-header-title [textTitle]="'Configurar workers AWS'">
-                Crear componente para configurar aws workers
-            </app-header-title> -->
+        <div *ngIf="showView === zoneLaunch.AWS">
+            <app-config-aws-workers
+                [listAlgorithms]="listAlgorithms" 
+                (emitAwsWorkers)="setAwsWorkers($event)" 
+                (emitAllowNext)="allowNext($event)">
+            </app-config-aws-workers>
         </div>
-        <div *ngIf="showView === 2">
+        <div *ngIf="showView === zoneLaunch.LOCAL">
             <app-config-local-workers 
                 [listAlgorithms]="listAlgorithms" 
                 (emitLocalWorkers)="setLocalWorkers($event)" 
                 (emitAllowNext)="allowNext($event)">
             </app-config-local-workers>
-            <!-- local -->
-            <!-- <app-controller-list-dataset [clickCard]="true" [showCardButtons]="false" (emitDataset)="setDatasetSelected($event)"></app-controller-list-dataset> -->
         </div>
 
         <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
