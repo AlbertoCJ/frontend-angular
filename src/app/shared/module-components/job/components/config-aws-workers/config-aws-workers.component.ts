@@ -6,6 +6,7 @@ import { GlobalConfigService } from '../../../../../core/services/global-config/
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ZoneLaunch } from '../../enums/zoneLaunch.enum';
+import { AwsContainerService } from '../../../../../core/services/aws-container/aws-container.service';
 
 @Component({
   selector: 'app-config-aws-workers',
@@ -17,18 +18,18 @@ export class ConfigAwsWorkersComponent implements OnInit {
   containersForm: FormGroup;
   awsWorkers: AwsWorkers;
 
-  // awsContainers: any[];
+  awsContainers: any[];
 
-  // gcAwsContainers: any;
-  // containersActive = 0;
-  // containersInactive = 0;
-  // numAlgorithms = 0;
-  // numContMaxGlobal = 0;
-  // containersFree = 0;
-  // containersBussy = 0;
-  // listAlgorithms: DataAlgorithms;
+  gcAwsContainers: any;
+  containersActive = 0;
+  containersInactive = 0;
+  numAlgorithms = 0;
+  numContMaxGlobal = 0;
+  containersFree = 0;
+  containersBussy = 0;
+  listAlgorithms: DataAlgorithms;
 
-  // maxSpinner: number; // TODO: Numero maximo permitido en el spinner
+  maxSpinner: number;
 
   @Input('listAlgorithms') set setListAlgorithms(algorithms: DataAlgorithms) {
     if (algorithms) {
@@ -40,8 +41,8 @@ export class ConfigAwsWorkersComponent implements OnInit {
               }
           }
       }
-      // this.numAlgorithms = numAlgorithms;
-      // this.petitionLocalContainer();
+      this.numAlgorithms = numAlgorithms;
+      this.petitionAwsContainer();
     }
   }
 
@@ -50,15 +51,15 @@ export class ConfigAwsWorkersComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private globalConfigService: GlobalConfigService,
-              // private localContainerService: LocalContainerService, // TODO: Servicio
+              private awsContainerService: AwsContainerService,
               private httpError: HttpErrorService,
               public translate: TranslateService) {
     this.containersForm = this.fb.group({
       numContainers: [0]
     });
     this.awsWorkers = new AwsWorkers({ zoneLaunch: ZoneLaunch.AWS });
-    // this.gcAwsContainers = this.globalConfigService.getGlobalConfigSessionStorage().awsContainer;
-    // this.maxSpinner = this.gcAwsContainers.numContMaxGlobal;
+    this.gcAwsContainers = this.globalConfigService.getGlobalConfigSessionStorage().awsContainer;
+    this.maxSpinner = this.gcAwsContainers.numContMaxGlobal;
     // Form change emit
     this.containersForm.valueChanges.subscribe(data => {
       this.awsWorkers.numContainers = this.containersForm.value.numContainers;
@@ -70,59 +71,59 @@ export class ConfigAwsWorkersComponent implements OnInit {
     this.emitAwsWorkers.emit(this.awsWorkers);
   }
 
-  // petitionLocalContainer() {
-  //   this.localContainerService.getLocalContainers().subscribe(
-  //     localContainer => {
-  //       // Reiniciar
-  //       this.containersFree = 0;
-  //       this.containersBussy = 0;
+  petitionAwsContainer() {
+    this.awsContainerService.getAwsContainers().subscribe(
+      awsContainer => {
+        // Reiniciar
+        this.containersFree = 0;
+        this.containersBussy = 0;
 
-  //       this.localContainers = localContainer;
+        this.awsContainers = awsContainer;
 
-  //       this.numContMaxGlobal = this.gcLocalContainers.numContMaxGlobal;
+        this.numContMaxGlobal = this.gcAwsContainers.numContMaxGlobal;
 
-  //       this.containersActive = localContainer.length;
-  //       this.containersInactive = this.numContMaxGlobal - this.containersActive;
+        this.containersActive = awsContainer.length;
+        this.containersInactive = this.numContMaxGlobal - this.containersActive;
 
-  //       localContainer.forEach(contaier => {
-  //         if (contaier.User_id === '' && contaier.Job_id === '' && contaier.Working === false) {
-  //           this.containersFree++;
-  //         } else if (contaier.Working === true) {
-  //           this.containersBussy++;
-  //         }
-  //       });
+        awsContainer.forEach(contaier => {
+          if (contaier.User_id === '' && contaier.Job_id === '' && contaier.Working === false) {
+            this.containersFree++;
+          } else if (contaier.Working === true) {
+            this.containersBussy++;
+          }
+        });
 
-  //       this.allowNext();
+        this.allowNext();
 
-  //       this.maxSpinner = this.maxSelectContainer();
+        this.maxSpinner = this.maxSelectContainer();
 
-  //     },
-  //     err => {
-  //       this.httpError.checkError(err,
-  //         this.translate.instant('alerts.alert'),
-  //         this.translate.instant('configLocalWorkers.msgAlertErrorGetContainersLocal'));
-  //     }
-  //   );
-  // }
+      },
+      err => {
+        this.httpError.checkError(err,
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('configLocalWorkers.msgAlertErrorGetContainersLocal'));
+      }
+    );
+  }
 
-  // maxSelectContainer() {
-  //   let valReturn = this.gcLocalContainers.numContMaxGlobal;
-  //   if (this.containersInactive > this.numAlgorithms) {
-  //     valReturn = this.numAlgorithms;
-  //   } else {
-  //     valReturn = this.containersInactive;
-  //   }
-  //   return valReturn;
-  // }
+  maxSelectContainer() {
+    let valReturn = this.gcAwsContainers.numContMaxGlobal;
+    if (this.containersInactive > this.numAlgorithms) {
+      valReturn = this.numAlgorithms;
+    } else {
+      valReturn = this.containersInactive;
+    }
+    return valReturn;
+  }
 
-  // allowNext() {
-  //   if (this.containersFree > 0) {
-  //     this.emitAllowNext.emit(true);
-  //   } else if (this.containersInactive <= 0) {
-  //     this.emitAllowNext.emit(true);
-  //   } else {
-  //     this.emitAllowNext.emit(false);
-  //   }
-  // }
+  allowNext() {
+    if (this.containersFree > 0) {
+      this.emitAllowNext.emit(true);
+    } else if (this.containersInactive <= 0) {
+      this.emitAllowNext.emit(true);
+    } else {
+      this.emitAllowNext.emit(false);
+    }
+  }
 
 }

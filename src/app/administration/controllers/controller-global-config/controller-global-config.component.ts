@@ -37,6 +37,7 @@ export class ControllerGlobalConfigComponent implements OnInit {
   initForm() {
     this.globalConfigForm = this.fb.group({
       numContMaxGlobal: [10, [ Validators.min(2) ]],
+      numContMaxGlobalAws: [10, [ Validators.min(2) ]],
       linearRegression: [true],
       linearRegressionBagging: [true],
       IBk: [true],
@@ -59,6 +60,7 @@ export class ControllerGlobalConfigComponent implements OnInit {
     this.globalConfig = this.globalConfigService.getGlobalConfigSessionStorage();
     this.globalConfigForm.patchValue({
       numContMaxGlobal: this.globalConfig.localContainer.numContMaxGlobal,
+      numContMaxGlobalAws: this.globalConfig.awsContainer.numContMaxGlobal,
       linearRegression: this.globalConfig.algorithms.linearRegression,
       linearRegressionBagging: this.globalConfig.algorithms.linearRegressionBagging,
       IBk: this.globalConfig.algorithms.IBk,
@@ -90,6 +92,8 @@ export class ControllerGlobalConfigComponent implements OnInit {
       });
     } else {
       this.globalConfig.localContainer.numContMaxGlobal = this.globalConfigForm.value.numContMaxGlobal;
+
+      this.globalConfig.awsContainer.numContMaxGlobal = this.globalConfigForm.value.numContMaxGlobalAws;
 
       this.globalConfig.algorithms.linearRegression = this.globalConfigForm.value.linearRegression;
       this.globalConfig.algorithms.linearRegressionBagging = this.globalConfigForm.value.linearRegressionBagging;

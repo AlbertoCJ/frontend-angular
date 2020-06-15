@@ -20,6 +20,24 @@
 
         <div class="box-main">
             <div class="super-title">
+                <p> {{ translate.instant('controllerGlobalConfig.superTitleAwsContainer') }} </p>
+            </div>
+
+            <div class="box-param">
+                <div class="p-grid">
+                    <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
+                        <span class="label">{{ translate.instant('controllerGlobalConfig.labelConMaxGlobal') }}</span>
+                    </div>
+                    <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
+                        <p-spinner formControlName="numContMaxGlobalAws" [min]="2"></p-spinner>
+                        <p class="help-text">{{ translate.instant('controllerGlobalConfig.min') }} 2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-main">
+            <div class="super-title">
                 <p> {{ translate.instant('controllerGlobalConfig.superTitleAllowAlgorithm') }} </p>
             </div>
 

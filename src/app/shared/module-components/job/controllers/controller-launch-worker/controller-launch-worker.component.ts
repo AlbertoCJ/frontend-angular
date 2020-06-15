@@ -28,7 +28,7 @@ export class ControllerLaunchWorkerComponent implements OnInit {
   @Output() emitDataWorkers = new EventEmitter<LocalWorkers | AwsWorkers>();
 
   constructor(public translate: TranslateService) {
-    this.showView = ZoneLaunch.LOCAL;
+    this.showView = ZoneLaunch.AWS;
     this.btnPrevDisabled = false;
     this.btnNextDisabled = true;
    }
