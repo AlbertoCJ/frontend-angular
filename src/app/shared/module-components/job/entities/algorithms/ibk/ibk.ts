@@ -5,6 +5,7 @@ export class Ibk {
     name: string;
     endpoint: string;
     config: any;
+    status: string;
     errorList: string[];
 
     constructor(data?: any) {
@@ -12,6 +13,7 @@ export class Ibk {
         this.name = data && data.name ? data.name : 'IBk';
         this.endpoint = data && data.endpoint ? data.endpoint : 'IBk';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.status = data && data.status ? data.status : 'OK';
         this.errorList = data && data.errorList ? data.errorList : [];
     }
 

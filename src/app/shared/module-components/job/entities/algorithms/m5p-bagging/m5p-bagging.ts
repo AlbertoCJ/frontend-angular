@@ -5,6 +5,7 @@ export class M5pBagging {
     name: string;
     endpoint: string;
     config: any;
+    status: string;
     errorList: string[];
 
     constructor(data?: any) {
@@ -12,6 +13,7 @@ export class M5pBagging {
         this.name = data && data.name ? data.name : 'M5P Bagging';
         this.endpoint = data && data.endpoint ? data.endpoint : 'M5P/bagging';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.status = data && data.status ? data.status : 'OK';
         this.errorList = data && data.errorList ? data.errorList : [];
     }
 

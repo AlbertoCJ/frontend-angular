@@ -5,6 +5,7 @@ export class M5rules {
     name: string;
     endpoint: string;
     config: any;
+    status: string;
     errorList: string[];
 
     constructor(data?: any) {
@@ -12,6 +13,7 @@ export class M5rules {
         this.name = data && data.name ? data.name : 'M5Rules';
         this.endpoint = data && data.endpoint ? data.endpoint : 'M5Rules';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.status = data && data.status ? data.status : 'OK';
         this.errorList = data && data.errorList ? data.errorList : [];
     }
 

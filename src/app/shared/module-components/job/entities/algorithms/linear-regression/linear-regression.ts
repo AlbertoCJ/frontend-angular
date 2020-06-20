@@ -5,6 +5,7 @@ export class LinearRegression {
     name: string;
     endpoint: string;
     config: any;
+    status: string;
     errorList: string[];
 
     constructor(data?: any) {
@@ -12,6 +13,7 @@ export class LinearRegression {
         this.name = data && data.name ? data.name : 'Linear Regression';
         this.endpoint = data && data.endpoint ? data.endpoint : 'linearRegression';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.status = data && data.status ? data.status : 'OK';
         this.errorList = data && data.errorList ? data.errorList : [];
     }
 

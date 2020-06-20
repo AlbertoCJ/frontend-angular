@@ -113,35 +113,15 @@ export class ControllerLaunchConfirmComponent implements OnInit {
     const containersAWS = [];
 
     for (let i = 0; i < this.dataWorkers.numContainers; i++) {
+
       await this.dockerAwsService.createContainers()
         .then( (respContainer: any) => {
           containersAWS.push(respContainer.awsContainer);
         })
         .catch(err => {
           console.log(err);
-          // switch (err.status) {
-          //   case 600:
-          //     this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
-          //     this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
-          //       err.error.error.message);
-          //     break;
-          //   case 601:
-          //     this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
-          //     this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
-          //       err.error.error.message);
-          //     break;
-          //   case 602:
-          //     this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
-          //     this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
-          //       err.error.error.message);
-          //     break;
-          //   default:
-          //     this.httpError.checkError(err,
-          //       this.translate.instant('alerts.alert'),
-          //       this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'));
-          //     break;
-          // }
         });
+
     }
 
     this.launchJob(containersAWS, platform);

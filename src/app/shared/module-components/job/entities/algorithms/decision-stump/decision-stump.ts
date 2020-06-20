@@ -5,6 +5,7 @@ export class DecisionStump {
     name: string;
     endpoint: string;
     config: any;
+    status: string;
     errorList: string[];
 
     constructor(data?: any) {
@@ -12,6 +13,7 @@ export class DecisionStump {
         this.name = data && data.name ? data.name : 'Decision Stump';
         this.endpoint = data && data.endpoint ? data.endpoint : 'DecisionStump';
         this.config = data && data.config ? data.config : this.dataConfig();
+        this.status = data && data.status ? data.status : 'OK';
         this.errorList = data && data.errorList ? data.errorList : [];
     }
 
