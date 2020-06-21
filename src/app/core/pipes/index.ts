@@ -5,6 +5,7 @@ import { StatusJobPipe } from './status-job/status-job.pipe';
 import { ConfigParamBooleanPipe } from './config-param-boolean/config-param-boolean.pipe';
 import { StatusContainerDockerPipe } from './status-container-docker/status-container-docker.pipe';
 import { ZoneLaunchPipe } from './zone-launch/zone-launch.pipe';
+import { StatusContainerDockerAwsPipe } from './status-container-docker-aws/status-container-docker-aws.pipe';
 
 export const PIPES = [
     CapitalizePipe,
@@ -13,5 +14,6 @@ export const PIPES = [
     StatusJobPipe,
     ConfigParamBooleanPipe,
     StatusContainerDockerPipe,
-    ZoneLaunchPipe
+    ZoneLaunchPipe,
+    StatusContainerDockerAwsPipe
 ];

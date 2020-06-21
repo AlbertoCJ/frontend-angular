@@ -22,6 +22,7 @@ import { AlgorithmDetailsDataComponent } from './algorithm-details-data/algorith
 import { ModalJobResultComponent } from './modal-job-result/modal-job-result.component';
 import { ResultErrorComparisonComponent } from './result-error-comparison/result-error-comparison.component';
 import { ResultPredictionComparisonComponent } from './result-prediction-comparison/result-prediction-comparison.component';
+import { ContainerAwsStatusCardComponent } from './container-aws-status-card/container-aws-status-card.component';
 
 export const JOB_COMPONENTS = [
     AlgorithmLinearRegressionComponent,
@@ -46,5 +47,6 @@ export const JOB_COMPONENTS = [
     AlgorithmDetailsDataComponent,
     ModalJobResultComponent,
     ResultErrorComparisonComponent,
-    ResultPredictionComparisonComponent
+    ResultPredictionComparisonComponent,
+    ContainerAwsStatusCardComponent
 ];

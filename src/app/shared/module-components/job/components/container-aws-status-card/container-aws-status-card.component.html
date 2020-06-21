@@ -1,0 +1,12 @@
+<p-card>
+    <div class="p-grid">
+        <div class="p-lg-4 p-md-5 p-sm-6 p-col-6">
+            <p>{{ translate.instant('containerAwsStatusCard.name') }} </p>
+            <p>{{ translate.instant('containerAwsStatusCard.status') }} </p>
+        </div>
+        <div class="p-lg-8 p-md-7 p-sm-6 p-col-6">
+            <p>{{ container.aplicationName }}</p>
+            <p>{{ container.status | statusContainerDockerAws }}</p>
+        </div>
+    </div>
+</p-card>

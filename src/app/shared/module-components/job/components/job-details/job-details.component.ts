@@ -4,6 +4,7 @@ import { ViewMode } from '../../../../../core/enums/view-mode.enum';
 import { TranslateService } from '@ngx-translate/core';
 import { AwsContainerService } from '../../../../../core/services/aws-container/aws-container.service';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
+import { ContainerAwsStatus } from '../../entities/container-aws-status';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { HttpErrorService } from '../../../../../core/services/http-error/http-e
 export class JobDetailsComponent implements OnInit {
 
   job: Job;
-  awsContainerOwn: any[]; // TODO: crear objeto
+  awsContainerOwn: ContainerAwsStatus[];
 
   @Input('job') set setJob(job: Job) {
     if (job) {
@@ -40,13 +41,12 @@ export class JobDetailsComponent implements OnInit {
   getAwsContainersOwn() {
     this.awsContainerService.getAwsContainersOwn(this.job.id).subscribe(
       awsContainerOwn => {
-        this.awsContainerOwn = awsContainerOwn;
+        this.awsContainerOwn = awsContainerOwn.map( containerAws => new ContainerAwsStatus(containerAws));
       },
       err => {
         this.httpError.checkError(err,
           this.translate.instant('alerts.alert'),
-          'Error al obtener contenedores AWS'); // TODO: Traducir
-          // this.translate.instant('configLocalWorkers.msgAlertErrorGetContainersLocal'));
+          this.translate.instant('jobDetails.msgAlertErrorGetContainersAws'));
       }
     );
   }

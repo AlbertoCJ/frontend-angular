@@ -11,6 +11,13 @@
         "removing": "Eliminada",
         "dead": "Muerta"
     },
+    "statusAWS": {
+        "launching": "Lanzado",
+        "updating": "Actualizando",
+        "ready": "Listo",
+        "terminating": "Termiando",
+        "terminated": "Terminado"
+    },
     "welcome": "Bienvenido",
     "buttons": {
         "btnAccept": "Aceptar",
@@ -308,7 +315,13 @@
         "titleCardInfoMiniCompleted": "Completado"
     },
     "jobDetails": {
-        "textTitle": "Algoritmos"
+        "textTitleAlgorithms": "Algoritmos",
+        "textTitleContainersAws": "Estado de contenedores AWS",
+        "msgAlertErrorGetContainersAws": "Error al obtener contenedores AWS"
+    },
+    "containerAwsStatusCard": {
+        "name": "Nombre:",
+        "status": "Estado:"
     },
     "modalJobDetails": {
         "textHeader": "Job:"
