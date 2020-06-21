@@ -12,6 +12,29 @@
     <app-error-list [errorList]="job.errorList"></app-error-list>
 </div>
 
+<div *ngIf="awsContainerOwn && awsContainerOwn.length > 0 && job.platform ==='AWS'" class="mb-4">
+    <!-- TODO: Traducir, aplicar algo css, aplicar pipe al estado || Crear un componente?? -->
+    <!-- <app-header-title [textTitle]="translate.instant('jobDetails.textTitle')">     -->
+    <app-header-title [textTitle]="'Contenedores AWS'">   
+        <div class="p-grid">
+            <div *ngFor="let container of awsContainerOwn" class="p-lg-3 p-md-4 p-sm-6 p-col-12">
+                <p-card>
+                    <div class="p-grid">
+                        <div class="p-lg-4 p-md-5 p-sm-6 p-col-6">
+                            <p>Nombre: </p>
+                            <p>Estado: </p>
+                        </div>
+                        <div class="p-lg-8 p-md-7 p-sm-6 p-col-6">
+                            <p>{{ container.Application_name }}</p>
+                            <p>{{ container.Status }}</p>
+                        </div>
+                    </div>
+                </p-card>
+            </div>
+        </div>
+    </app-header-title>
+</div>
+
 <app-header-title [textTitle]="translate.instant('jobDetails.textTitle')">
     <p-accordion *ngIf="job">
         <app-algorithm-details 

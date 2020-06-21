@@ -13,16 +13,7 @@ export class DockerAwsService {
   constructor(private http: HttpClient) { }
 
   async createContainers() {
-    // const formData: FormData = new FormData();
-    // formData.append('nContainers', numContainers.toString());
-
     const promise = await this.http.post(`${ this.url }/createWorker`, {}).toPromise();
     return promise;
-
-    // .pipe(
-    //   map( (resp: any) => {
-    //     return resp;
-    //   })
-    // );
   }
 }

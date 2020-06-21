@@ -2,7 +2,7 @@ import { DataAlgorithms } from './data-algorithms';
 
 export class Job {
 
-    id: number;
+    id: string;
     hasStatus: string | null;
     errorList: string[];
     name: string;
@@ -12,7 +12,7 @@ export class Job {
     platform: string;
 
     constructor(data?: any) {
-        this.id = data && data._id ? data._id : 0;
+        this.id = data && data._id ? data._id : '';
         this.hasStatus = data && data.hasStatus ? data.hasStatus : null;
         this.errorList = data && data.errorList ? data.errorList : [];
         this.name = data && data.name ? data.name : '';

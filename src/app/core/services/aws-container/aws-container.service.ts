@@ -22,4 +22,15 @@ export class AwsContainerService {
     );
 
   }
+
+  getAwsContainersOwn(jobId: string) {
+
+    return this.http.get(`${ this.url }/awsContainerOwn/${ jobId }`).pipe(
+      map( (resp: any) => {
+        const respContainers = resp.containers;
+        return respContainers;
+      })
+    );
+
+  }
 }
