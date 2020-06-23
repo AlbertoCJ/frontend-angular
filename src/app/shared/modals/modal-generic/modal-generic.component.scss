@@ -1,3 +1,19 @@
-// .dialog-responsive {
-//     width: '50vw'
-// }
+
+:host ::ng-deep .modal-generic .ui-dialog .ui-dialog-titlebar {
+    border: 1px solid #002d5e;
+    background-color: #00458f;
+    color: white;
+}
+
+:host ::ng-deep .modal-generic .ui-corner-top {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+:host ::ng-deep .modal-generic .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {
+    color: white;
+}
+
+:host ::ng-deep .modal-generic .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon:hover {
+    color: #cccccc;
+}

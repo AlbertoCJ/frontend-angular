@@ -1,3 +1,13 @@
 .box-button {
     margin: 10px 0px 10px 0px;
 }
+
+.text-select-algorithm {
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+
+:host ::ng-deep .ui-accordion-content-wrapper {
+    margin-bottom: 10px;
+}

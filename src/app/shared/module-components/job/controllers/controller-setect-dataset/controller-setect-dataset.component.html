@@ -3,7 +3,7 @@
     <div class="ui-g ui-fluid form-container">
         <div class="ui-g-12">
             <div class="ui-g-5">
-                {{ translate.instant('controllerSelectDataset.nameJob') }}*
+                {{ translate.instant('controllerSelectDataset.nameJob') }}*:
             </div>
             <div class="ui-g-7">
                 <input 
@@ -17,7 +17,7 @@
         </div>
         <div class="ui-g-12">
             <div class="ui-g-5">
-                {{ translate.instant('controllerSelectDataset.descriptionJob') }}
+                {{ translate.instant('controllerSelectDataset.descriptionJob') }}:
             </div>
             <div class="ui-g-7">
                 <textarea 
@@ -48,16 +48,20 @@
         </div>
     </div>
 
-    <div class="ui-fluid">
-        <div class="ui-g" *ngIf="!datasetSelected">
-            <div class="ui-g-12 ui-md-6">
+    <div class="ui-fluid mb-5" *ngIf="!datasetSelected">
+        <!-- TODO: Traducir -->
+        <p class="text-dataset">Debes seleccionar un dataset</p>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 button-selected">
                 <app-special-button 
+                    [selected]="showView === 1"
                     [btnText]="translate.instant('controllerSelectDataset.uploadAndSetDataset')" 
                     (emitClick)="showView = 1">
                 </app-special-button>
             </div>
             <div class="ui-g-12 ui-md-6">
                 <app-special-button 
+                [selected]="showView === 2"
                     [btnText]="translate.instant('controllerSelectDataset.setDatasetExist')" 
                     (emitClick)="showView = 2">
                 </app-special-button>

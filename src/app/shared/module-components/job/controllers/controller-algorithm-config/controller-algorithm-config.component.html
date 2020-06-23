@@ -4,6 +4,8 @@
         <div *ngIf="!showAlgoritConf">
             <app-header-title [textTitle]="translate.instant('controllerAlgorithmConfig.textTitleAlgorithm')">
                 <div>
+                    <!-- TODO: Traducir -->
+                    <div class="text-select-algorithm mb-3">Selecciona los algoritmos que deseas lanzar</div>
                     <div class="ui-g">
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.linearRegression">
                             <p-checkbox 
@@ -87,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box-button">
+                <div class="box-button mt-4">
                     <app-special-button 
                         [btnText]="translate.instant('controllerAlgorithmConfig.btnTextConfigAlgorithm')" 
                         [disabled]="!isAnyAlgorithms()" 
@@ -98,7 +100,7 @@
         </div>
 
         <div *ngIf="showAlgoritConf">
-            <div class="box-button">
+            <div class="box-button mb-4">
                 <app-special-button 
                     [btnText]="translate.instant('controllerAlgorithmConfig.btnTextChangeAlgorithm')" 
                     (emitClick)="showAlgoritConf = false">

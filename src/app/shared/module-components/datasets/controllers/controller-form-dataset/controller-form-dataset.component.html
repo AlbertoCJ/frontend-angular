@@ -25,13 +25,25 @@
             <span *ngIf="showError" class="box-error-login class-error">{{ textError }}</span>
         </ng-template>
     </p-fileUpload>
+
+    <div class="ui-g ui-fluid form-container">
+        <div class="ui-g-12" *ngIf="dataset">
+            <div class="ui-g-12 ui-g-6 ui-g-3">
+                <app-dataset-card 
+                [dataset]="dataset" 
+                [showButtons]="false">
+            </app-dataset-card>
+            </div>
+        </div>
+    </div>
+    
 </div>
-<div *ngIf="dataset" class="p-grid mt-cards">
+<!-- <div *ngIf="dataset" class="p-grid mt-cards">
     <div class="p-col-12 p-md-6 p-lg-3">
         <app-dataset-card 
             [dataset]="dataset" 
             [showButtons]="false">
         </app-dataset-card>
     </div>
-</div>
-<!-- <span *ngIf="showError" class="box-error-login class-error">{{ textError }}</span> -->
+</div> -->
+

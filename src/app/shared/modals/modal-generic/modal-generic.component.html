@@ -1,26 +1,28 @@
 <!-- [style]="style" -->
-<p-dialog 
-    [(visible)]="isModalActive" 
-    [styleClass]="'dialog-responsive'" 
-    (onShow)="showDialogMaximized(dialogDetail)" 
-    (onHide)="hideDialog()" 
-    #dialogDetail 
-    [blockScroll]="true" 
-    [modal]="true" 
-    [closeOnEscape]="false" 
-    [draggable]="false" 
-    [focusOnShow]="false"
-    [closable]="closable">
-    
-    <p-header *ngIf="showHeader">
-        <ng-content select="[slot=custom-header]"></ng-content>
-    </p-header>
-    <section *ngIf="showSection">
-        <div class="container">
-            <ng-content select="[slot=custom-section]"></ng-content>
-        </div>
-    </section>
-    <p-footer *ngIf="showFooter">
-        <ng-content select="[slot=custom-footer]"></ng-content>
-    </p-footer>
-</p-dialog>
+<div class="modal-generic">
+    <p-dialog 
+        [(visible)]="isModalActive" 
+        [styleClass]="'dialog-responsive'" 
+        (onShow)="showDialogMaximized(dialogDetail)" 
+        (onHide)="hideDialog()" 
+        #dialogDetail 
+        [blockScroll]="true" 
+        [modal]="true" 
+        [closeOnEscape]="false" 
+        [draggable]="false" 
+        [focusOnShow]="false"
+        [closable]="closable">
+        
+        <p-header *ngIf="showHeader">
+            <ng-content select="[slot=custom-header]"></ng-content>
+        </p-header>
+        <section *ngIf="showSection">
+            <div class="container">
+                <ng-content select="[slot=custom-section]"></ng-content>
+            </div>
+        </section>
+        <p-footer *ngIf="showFooter">
+            <ng-content select="[slot=custom-footer]"></ng-content>
+        </p-footer>
+    </p-dialog>
+</div>

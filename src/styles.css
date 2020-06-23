@@ -120,6 +120,11 @@ body {
     opacity: 0.5;
 }
 
+/* CARD */
+
+.mt-card .ui-card.ui-corner-all {
+    border-radius: 0px;;
+}
 
 /* SPECIAL BUTTON */
 

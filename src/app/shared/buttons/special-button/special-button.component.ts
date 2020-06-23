@@ -12,6 +12,7 @@ export class SpecialButtonComponent implements OnInit {
 
   @Input() btnText = '';
   @Input() disabled = false;
+  @Input() selected = false;
   @Input('customClass') set customClass(value: string) {
     if (value) {
       this.stringClass = `${ this.stringClassBase } ${ value }`;

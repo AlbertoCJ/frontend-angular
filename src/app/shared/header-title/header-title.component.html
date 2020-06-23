@@ -1,12 +1,13 @@
+<div class="header-title">
 <p-accordion>
     <p-accordionTab 
         selected="true" 
         disabled="true" 
         [header]="textTitle" 
-        [ngClass]="{ 'ui-state-disabled': false }" 
-        class="header-title">
+        [ngClass]="{ 'ui-state-disabled': false }">
         
         <ng-content></ng-content>
         
     </p-accordionTab>
 </p-accordion>
+</div>

@@ -1,0 +1,4 @@
+.button-selected {
+    border: 2px solid orangered;
+    font-weight: bold;
+}

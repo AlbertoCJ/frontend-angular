@@ -6,3 +6,12 @@
 :host ::ng-deep .ui-state-disabled {
     opacity: 1;
 }
+
+
+:host ::ng-deep .header-title .ui-accordion-header.ui-state-active a {
+    background-color: #0054ad;
+}
+
+:host ::ng-deep .header-title .ui-accordion .ui-accordion-header a .ui-accordion-toggle-icon {
+    color: #0054ad;
+}

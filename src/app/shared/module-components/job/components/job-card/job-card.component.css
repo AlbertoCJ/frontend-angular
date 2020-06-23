@@ -2,40 +2,6 @@
     width: 100%;
 }
 
-
-/* .card-wrapper {
-    -webkit-box-align: flex-start;
-    -webkit-align-items: flex-start;
-    -ms-flex-align: flex-start;
-    justify-content: flex-end;
-    align-items: flex-start;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-flow: nowrap;
-    -ms-flex-flow: nowrap;
-    flex-flow: nowrap;
-}
-
-.card-icon {
-    background-color: rgb(250, 108, 108);
-    color: white;
-    position: absolute;
-    cursor: pointer;
-} */
-
-
-/* .card-icon:hover {
-    color: white;
-    background-color: rgb(250, 49, 49);
-} */
-
-
-/* .clicker {
-    cursor: pointer;
-} */
-
 :host ::ng-deep .card-job .ui-card:hover {
     /* transform: rotate(1deg); */
     /* border: 1px solid grey; */
