@@ -1,7 +1,8 @@
 
 :host ::ng-deep .modal-generic .ui-dialog .ui-dialog-titlebar {
-    border: 1px solid #002d5e;
-    background-color: #00458f;
+    border: 1px solid white;
+    // background-color: #00458f;
+    background: linear-gradient(90deg, #150875, #f96a11);
     color: white;
 }
 
@@ -16,4 +17,8 @@
 
 :host ::ng-deep .modal-generic .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon:hover {
     color: #cccccc;
+}
+
+.modal-text {
+    font-weight: bold;
 }

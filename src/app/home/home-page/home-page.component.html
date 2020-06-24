@@ -1,9 +1,13 @@
-<app-header-title [textTitle]="translate.instant('homePage.headerJobRunning')">
-    <app-controller-list-job-running [clickCard]="true">
-    </app-controller-list-job-running>
-</app-header-title>
+<div class="mb-4">
+    <app-header-title [textTitle]="translate.instant('homePage.headerJobRunning')">
+        <app-controller-list-job-running [clickCard]="true">
+        </app-controller-list-job-running>
+    </app-header-title>
+</div>
 
-<app-header-title [textTitle]="translate.instant('homePage.latestJob')">
-    <app-controller-list-job-latests [clickCard]="true">
-    </app-controller-list-job-latests>
-</app-header-title>
+<div>
+    <app-header-title [textTitle]="translate.instant('homePage.latestJob')">
+        <app-controller-list-job-latests [clickCard]="true">
+        </app-controller-list-job-latests>
+    </app-header-title>
+</div>

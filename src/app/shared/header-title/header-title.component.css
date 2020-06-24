@@ -1,17 +1,22 @@
-:host ::ng-deep .ui-accordion .ui-accordion-header.ui-state-active a {
-    background-color: #007ad9;
-    color: white;
+.header-title-text {
+    padding: 10px;
+    /* background: linear-gradient(90deg, #150875, #f96a11); */
+    background: linear-gradient(90deg, #3a3370, #ff873c);
+    color: #ffffff;
+    padding: 0.571em 1em;
+    border: 1px solid #c8c8c8;
+    font-weight: 700;
 }
 
-:host ::ng-deep .ui-state-disabled {
-    opacity: 1;
+.header-title-text span {
+    color: #ffffff;
+    margin-left: 15px;
 }
 
-
-:host ::ng-deep .header-title .ui-accordion-header.ui-state-active a {
-    background-color: #0054ad;
-}
-
-:host ::ng-deep .header-title .ui-accordion .ui-accordion-header a .ui-accordion-toggle-icon {
-    color: #0054ad;
+.header-title-content {
+    padding: 0.571em 1em;
+    border: 1px solid #c8c8c8;
+    background-color: #ffffff;
+    color: #333333;
+    padding: 0.571em 1em;
 }

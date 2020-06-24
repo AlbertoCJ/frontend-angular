@@ -3,7 +3,8 @@
 }
 
 :host ::ng-deep .mt-card .ui-card-body {
-    background-color: #f1f2ff;
+    /* background-color: #f1f2ff; */
+    background-color: whitesmoke;
 }
 
 .card-wrapper {
@@ -47,7 +48,7 @@
 }
 
 .date-dataset {
-    font-size: x-small;
+    font-size: small;
     font-weight: bold;
     padding-bottom: 8px;
 }

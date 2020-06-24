@@ -5,6 +5,7 @@
             <div class="ui-g-12 ui-md-6">
                 <app-special-button 
                     [selected]="showView === zoneLaunch.AWS"
+                    [customClass]="'ui-special-button-custom'"
                     [btnText]="translate.instant('controllerLaunchWorker.btnTextAWS')" 
                     (emitClick)="selectZoneLaunch(zoneLaunch.AWS)">
                 </app-special-button>
@@ -12,6 +13,7 @@
             <div class="ui-g-12 ui-md-6">
                 <app-special-button 
                     [selected]="showView === zoneLaunch.LOCAL"
+                    [customClass]="'ui-special-button-custom'"
                     [btnText]="translate.instant('controllerLaunchWorker.btnTextLocal')" 
                     (emitClick)="selectZoneLaunch(zoneLaunch.LOCAL)">
                 </app-special-button>

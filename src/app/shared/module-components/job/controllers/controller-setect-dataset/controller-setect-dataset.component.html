@@ -3,7 +3,7 @@
     <div class="ui-g ui-fluid form-container">
         <div class="ui-g-12">
             <div class="ui-g-5">
-                {{ translate.instant('controllerSelectDataset.nameJob') }}*:
+                {{ translate.instant('controllerSelectDataset.nameJob') }}<span class="asterisc">*</span>:
             </div>
             <div class="ui-g-7">
                 <input 
@@ -55,13 +55,15 @@
             <div class="ui-g-12 ui-md-6 button-selected">
                 <app-special-button 
                     [selected]="showView === 1"
+                    [customClass]="'ui-special-button-custom'"
                     [btnText]="translate.instant('controllerSelectDataset.uploadAndSetDataset')" 
                     (emitClick)="showView = 1">
                 </app-special-button>
             </div>
             <div class="ui-g-12 ui-md-6">
                 <app-special-button 
-                [selected]="showView === 2"
+                    [selected]="showView === 2"
+                    [customClass]="'ui-special-button-custom'"
                     [btnText]="translate.instant('controllerSelectDataset.setDatasetExist')" 
                     (emitClick)="showView = 2">
                 </app-special-button>
