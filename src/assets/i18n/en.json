@@ -116,7 +116,8 @@
         "passwordInvalid": "Enter Password",
         "labelPassword2": "Conf. Password:",
         "password2Invalid": "Passwords don't match",
-        "labelActive": "Activate:"
+        "labelActive": "Activate:",
+        "sendEmail": "Send email when job is over"
     },
     "controllerEditUserModal": {
         "messageErrorEditUser": "Error when updating user.",
@@ -125,7 +126,8 @@
         "nameInvalid": "Enter 3 letters",
         "labelEmail": "Email:",
         "emailInvalid": "Enter email",
-        "labelActive": "Activate:"
+        "labelActive": "Activate:",
+        "sendEmail": "Send email when job is over"
     },
     "controllerChangePassUserModal": {
         "messageErrorChangePassUser": "Error when updating the password.",

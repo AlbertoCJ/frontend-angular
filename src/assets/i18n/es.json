@@ -116,7 +116,8 @@
         "passwordInvalid": "Ingrese contraseña",
         "labelPassword2": "Conf. Contraseña:",
         "password2Invalid": "Las contraseñas no coinciden",
-        "labelActive": "Activar:"
+        "labelActive": "Activar:",
+        "sendEmail": "Enviar email al finalizar job"
     },
     "controllerEditUserModal": {
         "messageErrorEditUser": "Error al actualizar usuario.",
@@ -125,7 +126,8 @@
         "nameInvalid": "Ingrese 3 letras",
         "labelEmail": "Correo:",
         "emailInvalid": "Ingrese email",
-        "labelActive": "Activar:"
+        "labelActive": "Activar:",
+        "sendEmail": "Enviar email al finalizar job"
     },
     "controllerChangePassUserModal": {
         "messageErrorChangePassUser": "Error al actualizar la contraseña.",

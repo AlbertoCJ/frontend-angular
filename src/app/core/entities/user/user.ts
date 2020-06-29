@@ -8,6 +8,7 @@ export class User {
     state: boolean;
     dateCreation: Date;
     language: string;
+    sendEmail: boolean;
 
     constructor(data?: any) {
         this.id = data && data._id ? data._id : '';
@@ -18,5 +19,6 @@ export class User {
         this.state = data && data.state ? data.state : false;
         this.dateCreation = data && data.dateCreation ? data.dateCreation : null;
         this.language = data && data.language ? data.language : 'es';
+        this.sendEmail = data && data.sendEmail ? data.sendEmail : false;
     }
 }

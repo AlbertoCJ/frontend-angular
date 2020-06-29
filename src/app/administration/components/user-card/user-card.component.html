@@ -54,9 +54,9 @@
     </p-card>
     <div class="card-icons" *ngIf="user.role !== 'ADMIN_ROLE'">
         <i *ngIf="showButtons" (click)="openTimeModal()" class="pi pi-clock clicker card-icon ui-special-button-warning mr-3"></i>
-        <i *ngIf="showButtons && !user.state" class="pi pi-ban card-icon ui-special-button-danger ml-1 mr-1"></i>
+        <span *ngIf="showButtons && !user.state" class="triangle-top-right-red"></span>
 
-        <i *ngIf="showButtons && user.state" class="pi pi-ban card-icon ui-special-button-success ml-1 mr-1"></i>
+        <span *ngIf="showButtons && user.state" class="triangle-top-right-green"></span>
     </div>
 
 </div>

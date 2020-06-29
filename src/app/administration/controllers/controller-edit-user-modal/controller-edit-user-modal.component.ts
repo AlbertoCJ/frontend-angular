@@ -36,7 +36,8 @@ export class ControllerEditUserModalComponent implements OnInit {
       this.editUserForm.patchValue({
         name: user.name,
         email: user.email,
-        state: user.state
+        state: user.state,
+        sendEmail: user.sendEmail
       });
       this.user = user;
     }
@@ -57,7 +58,8 @@ export class ControllerEditUserModalComponent implements OnInit {
     this.editUserForm = this.fb.group({
       name: ['', [ Validators.required, Validators.minLength(3) ]],
       email: ['', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')] ],
-      state: [true]
+      state: [true],
+      sendEmail: [false]
     });
   }
 
@@ -96,7 +98,8 @@ export class ControllerEditUserModalComponent implements OnInit {
       this.user.name = this.editUserForm.value.name;
       this.user.email = this.editUserForm.value.email;
       this.user.state = this.editUserForm.value.state;
-
+      this.user.sendEmail = this.editUserForm.value.sendEmail;
+      console.log(this.user);
       this.userService.updateUser(this.user).subscribe( (resp: User) => {
         this.isModalActive = false;
         this.emitSaved.emit('saved');

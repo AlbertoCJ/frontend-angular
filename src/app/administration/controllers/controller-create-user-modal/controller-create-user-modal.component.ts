@@ -48,7 +48,8 @@ export class ControllerCreateUserModalComponent implements OnInit {
       email: ['', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')] ],
       password: ['', Validators.required],
       password2: ['', Validators.required],
-      state: [true]
+      state: [true],
+      sendEmail: [false]
     }, {
       validators: this.validators.equalPasswords('password', 'password2')
     });
@@ -104,6 +105,7 @@ export class ControllerCreateUserModalComponent implements OnInit {
       this.user.email = this.createUserForm.value.email;
       this.user.password = this.createUserForm.value.password;
       this.user.state = this.createUserForm.value.state;
+      this.user.sendEmail = this.createUserForm.value.sendEmail;
 
       this.userService.createUser(this.user).subscribe( (resp: User) => {
         this.isModalActive = false;
@@ -113,7 +115,8 @@ export class ControllerCreateUserModalComponent implements OnInit {
           email: '',
           password: '',
           password2: '',
-          state: true
+          state: true,
+          sendEmail: false
         });
         this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.storedCorrectly')});
       }, (err) => {

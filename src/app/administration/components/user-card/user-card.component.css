@@ -103,3 +103,19 @@
 :host ::ng-deep .card-button-item .my-button {
     width: 100%;
 }
+
+.triangle-top-right-green {
+    width: 0;
+    height: 0;
+    border-top: 18px solid #34A835; 
+    border-left: 18px solid transparent; 
+    float: right;     
+}
+
+.triangle-top-right-red {
+    width: 0;
+    height: 0;
+    border-top: 18px solid #e91224; 
+    border-left: 18px solid transparent;
+    float: right;     
+}
