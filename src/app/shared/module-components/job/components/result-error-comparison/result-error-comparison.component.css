@@ -1,6 +1,10 @@
+.select-button-custom {
+    /* float: right;
+    position: relative; */
+}
+
 .select-chart {
     text-align: center;
-    margin-top: 20px;
     margin-bottom: 10px;
 }
 

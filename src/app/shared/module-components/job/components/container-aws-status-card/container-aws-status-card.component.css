@@ -1,0 +1,7 @@
+:host ::ng-deep .launching .ui-card-body {
+    background-color: rgb(255, 254, 210);
+}
+
+:host ::ng-deep .ready .ui-card-body {
+    background-color: rgb(217, 255, 217);
+}

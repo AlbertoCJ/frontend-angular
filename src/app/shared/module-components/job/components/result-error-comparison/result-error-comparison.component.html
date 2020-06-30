@@ -1,15 +1,43 @@
 
-<div class="select-chart">
-    <p-dropdown [options]="optionsErrors" [(ngModel)]="selectedError" (onChange)="generateChartLine($event)"></p-dropdown>
+<div class="mt-3 select-button-custom">
+    <p-selectButton [options]="types" [(ngModel)]="selectedType" (onChange)="generateTable($event)">
+        <ng-template let-item>
+            <div style="padding: 5px">
+                <i class="{{ item.label }}"></i>
+            </div>
+        </ng-template>
+    </p-selectButton>
 </div>
 
-<div class="box-line-chart" *ngIf="lineChartLabels && lineChartData">
-    <canvas baseChart
-    [datasets]="lineChartData"
-    [labels]="lineChartLabels"
-    [options]="lineChartOptions"
-    [colors]="lineChartColors"
-    [legend]="lineChartLegend"
-    [chartType]="lineChartType"></canvas>
+<div *ngIf="selectedType === 'chart'" class="mt-3">
+    <div class="select-chart">
+        <p-dropdown [options]="optionsErrors" [(ngModel)]="selectedError" (onChange)="generateChartLine($event)"></p-dropdown>
+    </div>
+
+    <div class="box-line-chart" *ngIf="lineChartLabels && lineChartData">
+        <canvas baseChart
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"></canvas>
+    </div>
 </div>
 
+<div *ngIf="selectedType === 'table'" class="mt-3">
+    <div class="mt-3">
+        <table>
+            <tr>
+                <th *ngFor="let itemHead of tableHead">
+                    {{ itemHead }}
+                </th>
+            </tr>
+            <tr *ngFor="let itemBody of tableBody">
+            <td *ngFor="let itemData of itemBody">
+                {{ itemData }}
+            </td>
+            </tr>
+        </table>
+    </div>
+</div>

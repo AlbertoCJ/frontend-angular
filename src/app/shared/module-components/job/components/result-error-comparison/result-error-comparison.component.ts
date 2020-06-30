@@ -13,6 +13,12 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
 })
 export class ResultErrorComparisonComponent implements OnInit {
 
+  types: SelectItem[];
+  selectedType: string;
+
+  tableHead: any[];
+  tableBody: any[];
+
   optionsErrors: SelectItem[];
   selectedError: string;
 
@@ -37,32 +43,37 @@ export class ResultErrorComparisonComponent implements OnInit {
   public lineChartType = 'line';
   // public lineChartPlugins = [pluginAnnotations];
   public lineChartOptions: ChartOptions = {
-    responsive: true,
-    scales: {
-      // We use this empty structure as a placeholder for dynamic theming.
-      xAxes: [{}],
-      yAxes: [
-        {
-          // id: 'y-axis-0',
-          // position: 'left',
-        } // ,
-        // {
-        //   id: 'y-axis-1',
-        //   position: 'right',
-        //   gridLines: {
-        //     color: 'rgba(255,0,0,0.3)',
-        //   },
-        //   ticks: {
-        //     fontColor: 'red',
-        //   }
-        // }
-      ]
-    }
+    responsive: true
+    // scales: {
+    //   // We use this empty structure as a placeholder for dynamic theming.
+    //   xAxes: [{}],
+    //   yAxes: [
+    //     {
+    //       // id: 'y-axis-0',
+    //       // position: 'left',
+    //     } // ,
+    //     // {
+    //     //   id: 'y-axis-1',
+    //     //   position: 'right',
+    //     //   gridLines: {
+    //     //     color: 'rgba(255,0,0,0.3)',
+    //     //   },
+    //     //   ticks: {
+    //     //     fontColor: 'red',
+    //     //   }
+    //     // }
+    //   ]
+    // }
   };
 
   @Input() job: Job;
 
   constructor() {
+    this.types = [
+      {label: 'pi pi-chart-bar', value: 'chart'},
+      {label: 'pi pi-table', value: 'table'}
+    ];
+    this.selectedType = this.types[0].value;
     this.optionsErrors = [
       {label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform('meanAbsoluteError')),
         value: 'meanAbsoluteError'},
@@ -105,6 +116,41 @@ export class ResultErrorComparisonComponent implements OnInit {
     this.lineChartData = [
       { data, label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(nameError)) }
     ];
+  }
+
+  generateTable(event) {
+    if (event.value === 'table') {
+      const dataAlgorithms = this.job.dataAlgorithms;
+      let headers = [];
+      const table = [];
+      for (const nameAlgorithm in dataAlgorithms) {
+        if (dataAlgorithms.hasOwnProperty(nameAlgorithm)) {
+
+          if (dataAlgorithms[nameAlgorithm].model && dataAlgorithms[nameAlgorithm].model.validation) {
+            const validation = dataAlgorithms[nameAlgorithm].model.validation;
+            const row = [];
+
+            headers = [];
+            headers.push(null);
+            row.push(this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(nameAlgorithm)));
+            for (const nameError in validation) {
+              if (validation.hasOwnProperty(nameError) && nameError !== 'weightedPrecision' && nameError !== 'error') {
+                headers.push(this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(nameError)));
+
+                row.push(validation[nameError]);
+
+              }
+            }
+
+            table.push(row);
+          }
+        }
+      }
+      this.tableHead = [];
+      this.tableHead = headers;
+      this.tableBody = [];
+      this.tableBody = table;
+    }
   }
 
 }
