@@ -90,7 +90,6 @@ export class ControllerLaunchConfirmComponent implements OnInit {
   }
 
   btnLaunchClicked() {
-    // alert('Lanzado');
 
     // Check platform 'AWS' or 'LOCAL'
     if (this.dataWorkers.zoneLaunch === ZoneLaunch.AWS) {
@@ -111,6 +110,7 @@ export class ControllerLaunchConfirmComponent implements OnInit {
 
   async launchAwsContainers(platform: string) {
     const containersAWS = [];
+    let error: any;
 
     for (let i = 0; i < this.dataWorkers.numContainers; i++) {
 
@@ -119,19 +119,27 @@ export class ControllerLaunchConfirmComponent implements OnInit {
           containersAWS.push(respContainer.awsContainer);
         })
         .catch(err => {
-          console.log(err);
+          error = err;
         });
 
     }
 
-    this.launchJob(containersAWS, platform);
+    if (error.error && error.error.err && error.error.err.statusCode === 403) {
+      this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
+      this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
+      error.error.err.message);
+    } else if (error) {
+      this.alertService.setAlert(this.translate.instant('alerts.alert'),
+      this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'));
+    } else {
+      this.launchJob(containersAWS, platform);
+    }
   }
 
   launchLocalContainers(platform: string) {
     this.dockerService.runContainers(this.dataWorkers.numContainers).subscribe( // this.containers
       respContainers => {
         this.launchJob(respContainers.containers, platform);
-
       },
       err => {
         switch (err.status) {

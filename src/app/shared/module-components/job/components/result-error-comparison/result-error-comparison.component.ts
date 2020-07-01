@@ -136,12 +136,9 @@ export class ResultErrorComparisonComponent implements OnInit {
             for (const nameError in validation) {
               if (validation.hasOwnProperty(nameError) && nameError !== 'weightedPrecision' && nameError !== 'error') {
                 headers.push(this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(nameError)));
-
                 row.push(validation[nameError]);
-
               }
             }
-
             table.push(row);
           }
         }

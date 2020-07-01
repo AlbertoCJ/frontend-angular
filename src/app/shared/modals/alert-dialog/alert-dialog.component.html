@@ -11,13 +11,15 @@
     <!-- </custom-header> -->
     <!-- <custom-section> -->
     <div slot="custom-section" class="alert-section">
-        <p>{{ message }}</p>
-        <app-collapse 
-            *ngIf="textToShowCollapse && textToShowCollapse !== ''" 
-            [textShowMore]="translate.instant('alerts.textShowMoreCollapse')" 
-            [textShowLess]="translate.instant('alerts.textShowLessCollapse')" 
-            [textToShow]="textToShowCollapse">
-        </app-collapse>
+        <p class="item">{{ message }}</p>
+        <div class="item">
+            <app-collapse 
+                *ngIf="textToShowCollapse && textToShowCollapse !== ''" 
+                [textShowMore]="translate.instant('alerts.textShowMoreCollapse')" 
+                [textShowLess]="translate.instant('alerts.textShowLessCollapse')" 
+                [textToShow]="textToShowCollapse">
+            </app-collapse>
+        </div>
     </div>
     <!-- </custom-section> -->
     <!-- <custom-footer> -->

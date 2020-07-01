@@ -1,5 +1,10 @@
 .alert-section {
     min-height: 60px;
     display: flex;
-    align-items: center;
+    // align-items: center;
+    flex-flow: column wrap;
 }
+
+.item {
+    flex-grow: 12; /* default 0 */
+  }

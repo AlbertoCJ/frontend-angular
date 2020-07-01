@@ -1,6 +1,7 @@
 .select-button-custom {
     /* float: right;
     position: relative; */
+    text-align: right;
 }
 
 .select-chart {
