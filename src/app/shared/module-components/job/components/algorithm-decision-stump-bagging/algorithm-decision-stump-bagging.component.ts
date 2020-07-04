@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DecisionStumpBagging } from '../../entities/algorithms/decision-stump-bagging/decision-stump-bagging';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-algorithm-decision-stump-bagging',
@@ -30,12 +31,13 @@ export class AlgorithmDecisionStumpBaggingComponent implements OnInit {
 
   @Output() changeDecisionStumpBagging = new EventEmitter<DecisionStumpBagging>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              public translate: TranslateService) {
     this.initForm();
     this.decisionStumpBagging = new DecisionStumpBagging();
     this.optionsValidation = [
-      { label: 'Cross Validation', value: 'CrossValidation' }, // TODO: Traducir
-      { label: 'Hold-Out', value: 'Hold-Out' } // TODO: Traducir
+      { label: 'Cross Validation', value: 'CrossValidation' },
+      { label: 'Hold-Out', value: 'Hold-Out' }
     ];
    }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Ibk } from '../../entities/algorithms/ibk/ibk';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SelectItem } from 'primeng/api/selectitem';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-algorithm-ibk',
@@ -36,27 +37,28 @@ export class AlgorithmIBKComponent implements OnInit {
 
   @Output() changeIbk = new EventEmitter<Ibk>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              public translate: TranslateService) {
     this.initForm();
     this.ibk = new Ibk();
     this.optionsDistanceWeighting = [
-      { label: 'No distance weighting', value: '0' }, // TODO: Traducir
-      { label: '1/distance', value: 'I' }, // TODO: Traducir
-      { label: '1-distance', value: 'F' } // TODO: Traducir
+      { label: 'No distance weighting', value: '0' },
+      { label: '1/distance', value: 'I' },
+      { label: '1-distance', value: 'F' }
     ];
     this.optionsNearestNeighbourSearchAlgorithm = [
-      { label: 'Ball Tree', value: 'BallTree' }, // TODO: Traducir
-      { label: 'Cover Tree', value: 'CoverTree' }, // TODO: Traducir
-      { label: 'Filtered Neighbour Search', value: 'FilteredNeighbourSearch' }, // TODO: Traducir
-      { label: 'KDTree', value: 'KDTree' }, // TODO: Traducir
-      { label: 'Linear NN Search', value: 'LinearNNSearch' }, // TODO: Traducir
-      { label: 'Nearest Neighbour Search', value: 'NearestNeighbourSearch' }, // TODO: Traducir
-      { label: 'Performance Stats', value: 'PerformanceStats' }, // TODO: Traducir
-      { label: 'Tree Performance Stats', value: 'TreePerformanceStats' }, // TODO: Traducir
+      { label: 'Ball Tree', value: 'BallTree' },
+      { label: 'Cover Tree', value: 'CoverTree' },
+      { label: 'Filtered Neighbour Search', value: 'FilteredNeighbourSearch' },
+      { label: 'KDTree', value: 'KDTree' },
+      { label: 'Linear NN Search', value: 'LinearNNSearch' },
+      { label: 'Nearest Neighbour Search', value: 'NearestNeighbourSearch' },
+      { label: 'Performance Stats', value: 'PerformanceStats' },
+      { label: 'Tree Performance Stats', value: 'TreePerformanceStats' },
     ];
     this.optionsValidation = [
-      { label: 'Cross Validation', value: 'CrossValidation' }, // TODO: Traducir
-      { label: 'Hold-Out', value: 'Hold-Out' } // TODO: Traducir
+      { label: 'Cross Validation', value: 'CrossValidation' },
+      { label: 'Hold-Out', value: 'Hold-Out' }
     ];
    }
 

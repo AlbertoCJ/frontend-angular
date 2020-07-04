@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DecisionStump } from '../../entities/algorithms/decision-stump/decision-stump';
 import { SelectItem } from 'primeng/api/selectitem';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-algorithm-decision-stump',
@@ -28,12 +29,13 @@ export class AlgorithmDecisionStumpComponent implements OnInit {
 
   @Output() changeDecisionStump = new EventEmitter<DecisionStump>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              public translate: TranslateService) {
     this.initForm();
     this.decisionStump = new DecisionStump();
     this.optionsValidation = [
-      { label: 'Cross Validation', value: 'CrossValidation' }, // TODO: Traducir
-      { label: 'Hold-Out', value: 'Hold-Out' } // TODO: Traducir
+      { label: 'Cross Validation', value: 'CrossValidation' },
+      { label: 'Hold-Out', value: 'Hold-Out' }
     ];
    }
 

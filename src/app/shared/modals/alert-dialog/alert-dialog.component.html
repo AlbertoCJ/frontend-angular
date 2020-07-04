@@ -6,10 +6,8 @@
     [showHeader]="title && title !== ''" 
     [showSection]="message && message !== ''" 
     [closable]="false">
-    <!-- <custom-header style="width: 100%;"> -->
     <span slot="custom-header" class="modal-card-title">{{ title }}</span>
-    <!-- </custom-header> -->
-    <!-- <custom-section> -->
+
     <div slot="custom-section" class="alert-section">
         <p class="item">{{ message }}</p>
         <div class="item">
@@ -21,14 +19,11 @@
             </app-collapse>
         </div>
     </div>
-    <!-- </custom-section> -->
-    <!-- <custom-footer> -->
+
     <span slot="custom-footer">
-        <!-- TODO: Traducir -->
             <app-custom-button 
-                [label]="'Cerrar'" 
+                [label]="translate.instant('alerts.btnClose')" 
                 (emitClicked)="close()">
             </app-custom-button>
         </span>
-    <!-- </custom-footer> -->
 </app-modal-generic>

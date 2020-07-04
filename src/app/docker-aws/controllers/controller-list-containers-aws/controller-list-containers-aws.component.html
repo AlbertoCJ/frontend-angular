@@ -1,0 +1,17 @@
+<div class="mb-3">
+    <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
+        <span slot="end">
+            <app-custom-button 
+                class="mr-2" 
+                [icon]="'pi pi-refresh'" 
+                [iconPos]="'left'" 
+                [styleClass]="'ui-button-warning'" 
+                (emitClicked)="getContainersAws()">
+            </app-custom-button>
+        </span>
+    </app-buttons-panel-normal>
+</div>
+<app-containers-aws-list 
+    [containersAws]="containersAws" 
+    (containerAwsRemoved)="removeContainerAws($event)">
+</app-containers-aws-list>

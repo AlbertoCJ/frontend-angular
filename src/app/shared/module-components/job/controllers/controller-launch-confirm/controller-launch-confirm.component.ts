@@ -124,16 +124,17 @@ export class ControllerLaunchConfirmComponent implements OnInit {
 
     }
 
-    if (error.error && error.error.err && error.error.err.statusCode === 403) {
+    if (error && error.error && error.error.err && error.error.err.statusCode === 403) {
       this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
       this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
       error.error.err.message);
-    } else if (error) {
-      this.alertService.setAlert(this.translate.instant('alerts.alert'),
-      this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'));
     } else {
       this.launchJob(containersAWS, platform);
     }
+    // if (error) {
+    //   this.alertService.setAlert(this.translate.instant('alerts.alert'),
+    //   this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'));
+    // } else
   }
 
   launchLocalContainers(platform: string) {

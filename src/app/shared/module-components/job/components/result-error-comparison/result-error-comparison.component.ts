@@ -41,29 +41,8 @@ export class ResultErrorComparisonComponent implements OnInit {
   ];
   public lineChartLegend = false;
   public lineChartType = 'line';
-  // public lineChartPlugins = [pluginAnnotations];
   public lineChartOptions: ChartOptions = {
     responsive: true
-    // scales: {
-    //   // We use this empty structure as a placeholder for dynamic theming.
-    //   xAxes: [{}],
-    //   yAxes: [
-    //     {
-    //       // id: 'y-axis-0',
-    //       // position: 'left',
-    //     } // ,
-    //     // {
-    //     //   id: 'y-axis-1',
-    //     //   position: 'right',
-    //     //   gridLines: {
-    //     //     color: 'rgba(255,0,0,0.3)',
-    //     //   },
-    //     //   ticks: {
-    //     //     fontColor: 'red',
-    //     //   }
-    //     // }
-    //   ]
-    // }
   };
 
   @Input() job: Job;

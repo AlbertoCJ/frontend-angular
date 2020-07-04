@@ -246,6 +246,7 @@
         "nameJob": "Job name",
         "descriptionJob": "Job description",
         "cleanDataset": "Clean Dataset",
+        "textSelectDataset": "You must select a dataset",
         "uploadAndSetDataset": "Upload and select Dataset",
         "setDatasetExist": "Select Existing Dataset"
     },
@@ -266,8 +267,10 @@
     "controllerAlgorithmConfig": {
         "textTitle": "Configure algorithms",
         "textTitleAlgorithm": "List of algorithms",
+        "textSelectAlgorithm": "Select the algorithms you want to launch",
         "btnTextConfigAlgorithm": "Configure algorithms",
-        "btnTextChangeAlgorithm": "Change algorithms"
+        "btnTextChangeAlgorithm": "Change algorithms",
+        "clickDocumentation": "Documentation"
     },
     "controllerLaunchWorker": {
         "textTitleGlobal": "Configure containers",
@@ -314,7 +317,8 @@
         "titleCardInfoMiniTotal": "Total",
         "titleCardInfoMiniRunning": "Running",
         "titleCardInfoMiniErrors": "Errors",
-        "titleCardInfoMiniCompleted": "Completed"
+        "titleCardInfoMiniCompleted": "Completed",
+        "btnResult": "Results"
     },
     "jobDetails": {
         "textTitleAlgorithms": "Algorithms",
@@ -339,5 +343,8 @@
         "notInitYet": "Not yet started",
         "running": "Running",
         "gettingResults": "Getting results"
+    },
+    "modalJobResult": {
+        "titleModal": "Job Results"
     }
 }

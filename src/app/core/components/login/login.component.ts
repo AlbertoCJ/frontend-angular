@@ -64,10 +64,6 @@ export class LoginComponent implements OnInit {
 
           const user = this.auth.getUser();
 
-          // if (this.userService.getLanguage() === null) {
-          //   this.userService.saveLanguage(user.language);
-          // }
-
           this.translate.use(this.userService.getLanguage());
 
           if (user && user.role === 'USER_ROLE') {

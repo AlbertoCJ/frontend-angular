@@ -49,8 +49,7 @@
     </div>
 
     <div class="ui-fluid mb-5" *ngIf="!datasetSelected">
-        <!-- TODO: Traducir -->
-        <p class="text-dataset">Debes seleccionar un dataset</p>
+        <p class="text-dataset">{{ translate.instant('controllerSelectDataset.textSelectDataset') }}</p>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-6 button-selected">
                 <app-special-button 

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LibsvmBagging } from '../../entities/algorithms/libsvm-bagging/libsvm-bagging';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SelectItem } from 'primeng/api/selectitem';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-algorithm-libsvm-bagging',
@@ -45,22 +46,23 @@ export class AlgorithmLibsvmBaggingComponent implements OnInit {
 
   @Output() changeLibsvm = new EventEmitter<LibsvmBagging>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              public translate: TranslateService) {
     this.initForm();
     this.libsvmBagging = new LibsvmBagging();
     this.optionsSvmType = [
-      { label: 'epsilon-SVR', value: 3 }, // TODO: Traducir
-      { label: 'nu-SVR', value: 4 } // TODO: Traducir
+      { label: 'epsilon-SVR', value: 3 },
+      { label: 'nu-SVR', value: 4 }
     ];
     this.optionsKernelType = [
-      { label: 'linear: u\'*v', value: 0 }, // TODO: Traducir
-      { label: 'polynomial: (gamma*u\'*v + coef0)^degree2', value: 1 }, // TODO: Traducir
-      { label: 'radial basis function: exp(-gamma*|u-v|^2)', value: 2 }, // TODO: Traducir
-      { label: 'sigmoid: tanh()gamma*u\'*v + coef0)', value: 3 } // TODO: Traducir
+      { label: 'linear: u\'*v', value: 0 },
+      { label: 'polynomial: (gamma*u\'*v + coef0)^degree2', value: 1 },
+      { label: 'radial basis function: exp(-gamma*|u-v|^2)', value: 2 },
+      { label: 'sigmoid: tanh()gamma*u\'*v + coef0)', value: 3 }
     ];
     this.optionsValidation = [
-      { label: 'Cross Validation', value: 'CrossValidation' }, // TODO: Traducir
-      { label: 'Hold-Out', value: 'Hold-Out' } // TODO: Traducir
+      { label: 'Cross Validation', value: 'CrossValidation' },
+      { label: 'Hold-Out', value: 'Hold-Out' }
     ];
    }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { M5p } from '../../entities/algorithms/m5p/m5p';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SelectItem } from 'primeng/api/selectitem';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-algorithm-m5p',
@@ -32,12 +33,13 @@ export class AlgorithmM5pComponent implements OnInit {
 
   @Output() changeM5p = new EventEmitter<M5p>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              public translate: TranslateService) {
     this.initForm();
     this.m5p = new M5p();
     this.optionsValidation = [
-      { label: 'Cross Validation', value: 'CrossValidation' }, // TODO: Traducir
-      { label: 'Hold-Out', value: 'Hold-Out' } // TODO: Traducir
+      { label: 'Cross Validation', value: 'CrossValidation' },
+      { label: 'Hold-Out', value: 'Hold-Out' }
     ];
    }
 

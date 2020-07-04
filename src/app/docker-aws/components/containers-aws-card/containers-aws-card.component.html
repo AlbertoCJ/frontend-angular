@@ -1,0 +1,41 @@
+<p-card styleClass="ui-card-shadow">
+    <div class="p-grid">
+        <span class="p-col date-card">
+            <div>
+                <span>{{ containerAws.dateCreated | date:'dd/MM/yyyy' }}</span>
+    </div>
+    </span>
+    <span class="p-col subtitle-card">
+            <span>{{ containerAws.status | statusContainerDockerAws }}</span>
+    </span>
+    </div>
+
+
+    <div class="p-grid">
+        <span class="p-col title-card">
+            <div>
+                <span>{{ containerAws.applicationName }}</span>
+        <span class="status" 
+            [ngClass]="{ 'status-on': containerAws.status === 'Ready', 'status-off': containerAws.status === 'Pending' }">
+        </span>
+    </div>
+    </span>
+    </div>
+
+    <p class="endpoint-title">Endpoint:</p>
+    <div class="jumbotron">
+        <p class="text-show">
+            <code class="text-show">
+                {{ containerAws.endpointURL }}
+            </code>
+        </p>
+    </div>
+
+    <p-footer *ngIf="containerAws.status !== 'Terminated'">
+        <div class="buttons-panel buttons-panel-end">
+            <app-remove-button 
+                (emitClicked)="removeContainerAws()">
+            </app-remove-button>
+        </div>
+    </p-footer>
+</p-card>

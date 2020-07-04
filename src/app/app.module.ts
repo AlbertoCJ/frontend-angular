@@ -16,6 +16,7 @@ import { HomeModule } from './home/home.module';
 import { DatasetsModule } from './datasets/datasets.module';
 import { JobModule } from './job/job.module';
 import { DockerModule } from './docker/docker.module';
+import { DockerAWSModule } from './docker-aws/docker-aws.module';
 import { AdministrationModule } from './administration/administration.module';
 
 // Interceptors
@@ -51,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DatasetsModule,
     JobModule,
     DockerModule,
+    DockerAWSModule,
     AdministrationModule
   ],
   providers: [

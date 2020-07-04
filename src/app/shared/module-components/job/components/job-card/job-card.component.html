@@ -83,10 +83,9 @@
                             <app-buttons-panel-normal>
                                 <span slot="end">
                                 <span class="btn-panel">
-                                    <!-- TODO: Traducir -->
                                     <app-custom-button
                                         [disabled]="job.hasStatus === 'RUNNING' || job.hasStatus === 'ERROR'"
-                                        [label]="'Resultados'" 
+                                        [label]="translate.instant('jobCard.btnResult')" 
                                         (emitClicked)="openResult()">
                                     </app-custom-button>
                                 </span>

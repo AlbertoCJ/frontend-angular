@@ -4,8 +4,7 @@
     (closed)="formCancel()" 
     [showFooter]="true" 
     [fullModal]="true">
-<!-- TODO: Traducir -->
-    <span slot="custom-header">Resultados del job: {{ job.name }}</span>
+    <span slot="custom-header">{{ translate.instant('modalJobResult.titleModal') }}: {{ job.name }}</span>
     <span slot="custom-section">
         <app-controller-job-result [job]="job">
 

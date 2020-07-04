@@ -3,7 +3,6 @@ import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Container } from '../../../docker/entities';
-import { AuthService } from '../auth/auth.service';
 
 
 @Injectable({

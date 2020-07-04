@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { LinearRegressionBagging } from '../../entities/algorithms/linear-regression-bagging/linear-regression-bagging';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-algorithm-linear-regression-bagging',
@@ -33,17 +34,18 @@ export class AlgorithmLinearRegressionBaggingComponent implements OnInit {
 
   @Output() changeLinearRegressionBagging = new EventEmitter<LinearRegressionBagging>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              public translate: TranslateService) {
     this.initForm();
     this.linearRegressionBagging = new LinearRegressionBagging();
     this.optionsAttributeSelectionMethod = [
-      { label: 'Attribute selection using M5´s method', value: 0 }, // TODO: Traducir
-      { label: 'No attribute selection', value: 1 }, // TODO: Traducir
-      { label: 'Selection using the Akaike information metric', value: 2 } // TODO: Traducir
+      { label: 'Attribute selection using M5´s method', value: 0 },
+      { label: 'No attribute selection', value: 1 },
+      { label: 'Selection using the Akaike information metric', value: 2 }
     ];
     this.optionsValidation = [
-      { label: 'Cross Validation', value: 'CrossValidation' }, // TODO: Traducir
-      { label: 'Hold-Out', value: 'Hold-Out' } // TODO: Traducir
+      { label: 'Cross Validation', value: 'CrossValidation' },
+      { label: 'Hold-Out', value: 'Hold-Out' }
     ];
    }
 

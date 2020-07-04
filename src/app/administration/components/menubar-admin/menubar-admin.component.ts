@@ -55,7 +55,7 @@ export class MenubarAdminComponent implements OnInit {
             {
                 label: this.translate.instant('menubarAdmin.aws'),
                 icon: 'pi pi-fw pi-list',
-                routerLink: ['/container-list']
+                routerLink: ['/container-list-aws']
             },
             {
               label: this.translate.instant('menubarAdmin.local'),

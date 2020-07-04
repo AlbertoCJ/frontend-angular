@@ -13,6 +13,7 @@ import { ContainerListPageComponent } from './docker/container-list-page/contain
 import { JobDetailsPageComponent } from './job/job-details-page/job-details-page.component';
 import { AdministrationUsersPageComponent } from './administration/administration-users-page/administration-users-page.component';
 import { AdministrationConfigPageComponent } from './administration/administration-config-page/administration-config-page.component';
+import { ContainerAWSListPageComponent } from './docker-aws/container-awslist-page/container-awslist-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'administration-users', component: AdministrationUsersPageComponent, canActivate: [AuthGuard, AdminRoleGuard] },
   { path: 'configurations', component: AdministrationConfigPageComponent, canActivate: [AuthGuard, AdminRoleGuard] },
   { path: 'container-list', component: ContainerListPageComponent, canActivate: [AuthGuard, AdminRoleGuard] },
+  { path: 'container-list-aws', component: ContainerAWSListPageComponent, canActivate: [AuthGuard, AdminRoleGuard] },
   { path: '**', pathMatch: 'full', redirectTo: 'login' }
 ];
 

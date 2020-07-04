@@ -4,8 +4,7 @@
         <div *ngIf="!showAlgoritConf">
             <app-header-title [textTitle]="translate.instant('controllerAlgorithmConfig.textTitleAlgorithm')">
                 <div>
-                    <!-- TODO: Traducir -->
-                    <div class="text-select-algorithm mb-3">Selecciona los algoritmos que deseas lanzar</div>
+                    <div class="text-select-algorithm mb-3">{{ translate.instant('controllerAlgorithmConfig.textSelectAlgorithm') }}</div>
                     <div class="ui-g">
                         <div class="ui-g-4" *ngIf="gcAlgorithms && gcAlgorithms.linearRegression">
                             <p-checkbox 
