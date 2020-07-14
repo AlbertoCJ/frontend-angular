@@ -8,6 +8,14 @@
             <div class="box-param">
                 <div class="p-grid">
                     <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
+                        <span class="label">{{ translate.instant('controllerGlobalConfig.enableDisable') }}</span>
+                    </div>
+                    <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
+                        <p-inputSwitch formControlName="localActivated" [readonly]="!this.globalConfigForm.value.awsActivated"></p-inputSwitch>
+                    </div>
+                </div>
+                <div class="p-grid">
+                    <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
                         <span class="label">{{ translate.instant('controllerGlobalConfig.labelConMaxGlobal') }}</span>
                     </div>
                     <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
@@ -24,6 +32,14 @@
             </div>
 
             <div class="box-param">
+                <div class="p-grid">
+                    <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
+                        <span class="label">{{ translate.instant('controllerGlobalConfig.enableDisable') }}</span>
+                    </div>
+                    <div class="p-lg-6 p-md-6 p-sm-5 p-col-4 value-section">
+                        <p-inputSwitch formControlName="awsActivated" [readonly]="!this.globalConfigForm.value.localActivated"></p-inputSwitch>
+                    </div>
+                </div>
                 <div class="p-grid">
                     <div class="p-lg-6 p-md-6 p-sm-7 p-col-8 label-section">
                         <span class="label">{{ translate.instant('controllerGlobalConfig.labelConMaxGlobal') }}</span>

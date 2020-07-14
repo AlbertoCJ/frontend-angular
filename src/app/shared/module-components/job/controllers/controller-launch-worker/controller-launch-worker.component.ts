@@ -5,6 +5,8 @@ import { ZoneLaunch } from '../../enums/zoneLaunch.enum';
 import { DataAlgorithms } from '../../entities/data-algorithms';
 import { TranslateService } from '@ngx-translate/core';
 import { AwsWorkers } from '../../entities/workers/aws-workers';
+import { GlobalConfigService } from '../../../../../core/services/global-config/global-config.service';
+import { GlobalConfig } from 'src/app/administration/entities/global-config';
 
 @Component({
   selector: 'app-controller-launch-worker',
@@ -22,15 +24,23 @@ export class ControllerLaunchWorkerComponent implements OnInit {
   btnNextDisabled: boolean;
   isAllowNext = false;
 
+  globalConfig: GlobalConfig;
+
   @Input() listAlgorithms: DataAlgorithms;
 
   @Output() emitStep = new EventEmitter<number>();
   @Output() emitDataWorkers = new EventEmitter<LocalWorkers | AwsWorkers>();
 
-  constructor(public translate: TranslateService) {
-    this.showView = ZoneLaunch.AWS;
+  constructor(private globalConfigService: GlobalConfigService,
+              public translate: TranslateService) {
     this.btnPrevDisabled = false;
     this.btnNextDisabled = true;
+    this.globalConfig = this.globalConfigService.getGlobalConfigSessionStorage();
+    if (this.globalConfig.awsContainer.awsActivated) {
+      this.showView = ZoneLaunch.AWS;
+    } else {
+      this.showView = ZoneLaunch.LOCAL;
+    }
    }
 
   ngOnInit() {

@@ -28,7 +28,7 @@ export class GlobalConfigService {
 
   updateGlobalConfig(globalConfigUpdate: GlobalConfig) {
 
-    return this.http.put(`${ this.url }/globalConfig/${ globalConfigUpdate.id }`, globalConfigUpdate ).pipe(
+    return this.http.put(`${ this.url }/globalConfig/${ globalConfigUpdate._id }`, globalConfigUpdate ).pipe(
       map( (resp: any) => {
         const respGlobalConfig = resp.globalConfig;
         const globalConfig = new GlobalConfig(respGlobalConfig);
@@ -39,7 +39,7 @@ export class GlobalConfigService {
   }
 
   restoreGlobalConfig(globalConfigRestore: GlobalConfig) {
-    return this.http.put(`${ this.url }/globalConfig/restore/${ globalConfigRestore.id }`, {}).pipe(
+    return this.http.put(`${ this.url }/globalConfig/restore/${ globalConfigRestore._id }`, {}).pipe(
       map( (resp: any) => {
         const respGlobalConfig = resp.globalConfig;
         const globalConfig = new GlobalConfig(respGlobalConfig);
@@ -61,7 +61,7 @@ export class GlobalConfigService {
   getGlobalConfigSessionStorage() {
     let globalConfig = null;
     if (sessionStorage.getItem('globalConfig')) {
-      globalConfig = new GlobalConfig(JSON.parse(sessionStorage.getItem('globalConfig')));
+      globalConfig = JSON.parse(sessionStorage.getItem('globalConfig'));
 
     }
     return globalConfig;

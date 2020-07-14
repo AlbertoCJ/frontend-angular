@@ -1,13 +1,14 @@
 export class GlobalConfig {
 
-    id: string;
+    // tslint:disable-next-line: variable-name
+    _id: string;
     localContainer: any;
     awsContainer: any;
     showLists: any;
     algorithms: any;
 
     constructor(data: any) {
-        this.id = data._id || data.id;
+        this._id = data._id;
         this.localContainer = this.setLocalContainer(data.localContainer);
         this.awsContainer = this.setLocalContainer(data.awsContainer);
         this.showLists = this.setShowLists(data.showLists);
@@ -16,13 +17,15 @@ export class GlobalConfig {
 
     setLocalContainer(data: any) {
         return {
-            numContMaxGlobal: data.numContMaxGlobal
+            numContMaxGlobal: data.numContMaxGlobal,
+            localActivated: data.localActivated
         };
     }
 
     setAwsContainer(data: any) {
         return {
-            numContMaxGlobal: data.numContMaxGlobal
+            numContMaxGlobal: data.numContMaxGlobal,
+            awsActivated: data.awsActivated
         };
     }
 

@@ -37,7 +37,9 @@ export class ControllerGlobalConfigComponent implements OnInit {
   initForm() {
     this.globalConfigForm = this.fb.group({
       numContMaxGlobal: [10, [ Validators.min(2) ]],
+      localActivated: [true],
       numContMaxGlobalAws: [10, [ Validators.min(2) ]],
+      awsActivated: [true],
       linearRegression: [true],
       linearRegressionBagging: [true],
       IBk: [true],
@@ -60,7 +62,9 @@ export class ControllerGlobalConfigComponent implements OnInit {
     this.globalConfig = this.globalConfigService.getGlobalConfigSessionStorage();
     this.globalConfigForm.patchValue({
       numContMaxGlobal: this.globalConfig.localContainer.numContMaxGlobal,
+      localActivated: this.globalConfig.localContainer.localActivated,
       numContMaxGlobalAws: this.globalConfig.awsContainer.numContMaxGlobal,
+      awsActivated: this.globalConfig.awsContainer.awsActivated,
       linearRegression: this.globalConfig.algorithms.linearRegression,
       linearRegressionBagging: this.globalConfig.algorithms.linearRegressionBagging,
       IBk: this.globalConfig.algorithms.IBk,
@@ -92,8 +96,10 @@ export class ControllerGlobalConfigComponent implements OnInit {
       });
     } else {
       this.globalConfig.localContainer.numContMaxGlobal = this.globalConfigForm.value.numContMaxGlobal;
+      this.globalConfig.localContainer.localActivated = this.globalConfigForm.value.localActivated;
 
       this.globalConfig.awsContainer.numContMaxGlobal = this.globalConfigForm.value.numContMaxGlobalAws;
+      this.globalConfig.awsContainer.awsActivated = this.globalConfigForm.value.awsActivated;
 
       this.globalConfig.algorithms.linearRegression = this.globalConfigForm.value.linearRegression;
       this.globalConfig.algorithms.linearRegressionBagging = this.globalConfigForm.value.linearRegressionBagging;
@@ -111,6 +117,8 @@ export class ControllerGlobalConfigComponent implements OnInit {
       this.globalConfig.showLists.home.showJobsRunning = this.globalConfigForm.value.showJobsRunning;
       this.globalConfig.showLists.dataset.showDatasets = this.globalConfigForm.value.showDatasets;
       this.globalConfig.showLists.job.showJobs = this.globalConfigForm.value.showJobs;
+
+      console.log(this.globalConfig);
 
       this.globalConfigService.updateGlobalConfig(this.globalConfig).subscribe( (resp: GlobalConfig) => {
         this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.updateCorrectly')});

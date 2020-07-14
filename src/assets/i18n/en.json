@@ -85,6 +85,7 @@
         "valids": "Valids:",
         "superTitleLocalContainer": "Local Containers",
         "superTitleAwsContainer": "AWS Containers",
+        "enableDisable": "Enable/Disable:",
         "labelConMaxGlobal": "No. of Global Max. Cont.:",
         "superTitleAllowAlgorithm": "Allowed Algorithms",
         "superTitleShowList": "Show in listings",
