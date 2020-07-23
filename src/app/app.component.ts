@@ -6,6 +6,7 @@ import { debounceTime } from 'rxjs/operators';
 import { ngxLoadingAnimationTypes } from 'ngx-loading';
 import {TranslateService} from '@ngx-translate/core';
 import { UserService } from './core/services/user/user.service';
+import { GlobalConfigService } from './core/services/global-config/global-config.service';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +32,8 @@ export class AppComponent {
   constructor(private auth: AuthService,
               private loadingScreenService: LoadingScreenService,
               public translate: TranslateService,
-              private userService: UserService) {
+              private userService: UserService,
+              private globalConfigService: GlobalConfigService) {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en');
 
@@ -66,7 +68,7 @@ export class AppComponent {
   }
 
   showMenuAdmin() {
-    return this.auth.isAuth() && this.auth.getUser().role === 'ADMIN_ROLE';
+    return this.auth.isAuth() && this.auth.getUser().role === 'ADMIN_ROLE' && this.globalConfigService.getGlobalConfigSessionStorage();
   }
 
 }

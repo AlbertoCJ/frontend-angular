@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../core/services/http-error/http-error.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ContainerAws } from '../../entities/container-aws';
+import { AlertService } from '../../../core/services/alert/alert.service';
 
 @Component({
   selector: 'app-controller-list-containers-aws',
@@ -17,7 +18,8 @@ export class ControllerListContainersAwsComponent implements OnInit {
   constructor(private dockerAwsService: DockerAwsService,
               private messageService: MessageService,
               private httpError: HttpErrorService,
-              public translate: TranslateService) { }
+              public translate: TranslateService,
+              private alertService: AlertService) { }
 
   ngOnInit() {
     this.getContainersAws();
@@ -29,15 +31,20 @@ export class ControllerListContainersAwsComponent implements OnInit {
         this.containersAws = containersAws;
       },
       err => {
+        if (err && err.error && err.error.err && err.error.err.statusCode === 403) {
+          this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerListContainers.messageErrorGetContainers'),
+            err.error.err.message);
+        } else {
           this.httpError.checkError(err,
-            this.translate.instant('alerts.alert'),
-            this.translate.instant('controllerListContainers.messageErrorGetContainers'));
+          this.translate.instant('alerts.alert'),
+          this.translate.instant('controllerListContainers.messageErrorGetContainers'));
+        }
       }
     );
   }
 
   removeContainerAws(applicationName: string) {
-    console.log(applicationName);
     this.dockerAwsService.removeContainerAws(applicationName).subscribe(
       removed => {
         this.getContainersAws();

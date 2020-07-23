@@ -31,8 +31,8 @@
         </p>
     </div>
 
-    <p-footer *ngIf="containerAws.status !== 'Terminated'">
-        <div class="buttons-panel buttons-panel-end">
+    <p-footer>
+        <div *ngIf="containerAws.status !== 'Terminated'" class="buttons-panel buttons-panel-end">
             <app-remove-button 
                 (emitClicked)="removeContainerAws()">
             </app-remove-button>

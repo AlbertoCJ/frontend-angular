@@ -347,5 +347,9 @@
     },
     "modalJobResult": {
         "titleModal": "Resultados del job"
+    },
+    "controllerJobResult": {
+        "labelErrors": "Comparación de errores",
+        "labelPredictions": "Comparación de la predicción"
     }
 }

@@ -16,17 +16,20 @@ export class ControllerJobResultComponent implements OnInit {
   @Input() job: Job;
 
   constructor(public translate: TranslateService) {
-    // TODO: Traducir dinamicamente usando servicio
-    this.types = [
-      {label: 'Comparación de errores', value: 'ERRORS'},
-      {label: 'Comparación de la predicción', value: 'PREDICTIONS'}
-      // {label: this.translate.instant('algorithmDetailsData.labelConfig'), value: 'CONFIG'},
-      // {label: this.translate.instant('algorithmDetailsData.labelResult'), value: 'RESULT'}
-    ];
+    this.initTypes();
+    this.translate.onLangChange.subscribe( change => {
+      this.initTypes();
+    });
     this.selectedType = this.types[0].value;
    }
 
   ngOnInit() {
   }
 
+  initTypes() {
+    this.types = [
+      {label: this.translate.instant('controllerJobResult.labelErrors'), value: 'ERRORS'},
+      {label: this.translate.instant('controllerJobResult.labelPredictions'), value: 'PREDICTIONS'}
+    ];
+  }
 }

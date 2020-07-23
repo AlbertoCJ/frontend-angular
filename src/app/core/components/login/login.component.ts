@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('configurations');
           }
 
-        }); // TODO Gestionar si da error
+        });
 
 
       }, (err) => {

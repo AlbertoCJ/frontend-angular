@@ -64,14 +64,20 @@ export class AlgorithmDetailsDataComponent implements OnInit {
 
 
   constructor(public translate: TranslateService) {
-    // TODO: Traducir dinamicamente usando servicio
+    this.initTypes();
+    this.translate.onLangChange.subscribe( change => {
+      this.initTypes();
+    });
+   }
+
+  ngOnInit() {
+  }
+
+  initTypes() {
     this.types = [
       {label: this.translate.instant('algorithmDetailsData.labelConfig'), value: 'CONFIG', disabled: true},
       {label: this.translate.instant('algorithmDetailsData.labelResult'), value: 'RESULT', disabled: true}
     ];
-   }
-
-  ngOnInit() {
   }
 
 }

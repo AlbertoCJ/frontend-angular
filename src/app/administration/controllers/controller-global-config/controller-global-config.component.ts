@@ -118,8 +118,6 @@ export class ControllerGlobalConfigComponent implements OnInit {
       this.globalConfig.showLists.dataset.showDatasets = this.globalConfigForm.value.showDatasets;
       this.globalConfig.showLists.job.showJobs = this.globalConfigForm.value.showJobs;
 
-      console.log(this.globalConfig);
-
       this.globalConfigService.updateGlobalConfig(this.globalConfig).subscribe( (resp: GlobalConfig) => {
         this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.updateCorrectly')});
       }, (err) => {

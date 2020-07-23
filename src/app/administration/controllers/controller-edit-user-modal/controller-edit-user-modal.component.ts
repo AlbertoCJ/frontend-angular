@@ -99,7 +99,6 @@ export class ControllerEditUserModalComponent implements OnInit {
       this.user.email = this.editUserForm.value.email;
       this.user.state = this.editUserForm.value.state;
       this.user.sendEmail = this.editUserForm.value.sendEmail;
-      console.log(this.user);
       this.userService.updateUser(this.user).subscribe( (resp: User) => {
         this.isModalActive = false;
         this.emitSaved.emit('saved');
