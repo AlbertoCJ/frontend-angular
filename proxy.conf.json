@@ -1,0 +1,52 @@
+{
+    "/user": {
+      "target": "https://metfg-backend.herokuapp.com",
+      "secure": false,
+      "changeOrigin": true
+    },
+    "/login": {
+        "target": "https://metfg-backend.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/dataset": {
+        "target": "https://metfg-backend.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/job": {
+        "target": "https://metfg-backend.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/docker": {
+        "target": "https://metfg-backend.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/dockerAWS": {
+        "target": "https://metfg-backend.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/globalConfig": {
+        "target": "https://metfg-backend.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/localContainer": {
+        "target": "https://metfg-backend.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/awsContainer": {
+        "target": "https://metfg-backend.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/time": {
+        "target": "https://metfg-backend.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+      }
+  }
