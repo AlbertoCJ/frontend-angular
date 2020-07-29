@@ -5,7 +5,7 @@ import { DatasetService } from '../../../../../core/services/dataset/dataset.ser
 import { MessageService } from 'primeng/api';
 import { HttpErrorService } from '../../../../../core/services/http-error/http-error.service';
 import { AlertService } from '../../../../../core/services/alert/alert.service';
-import { saveAs } from 'file-saver';
+// import { saveAs } from 'file-saver';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -43,19 +43,19 @@ export class DatasetCardComponent implements OnInit {
     this.emitSelected.emit(this.dataset);
   }
 
-  downloadDataset() {
-    this.datasetService.downloadDataset(this.dataset).subscribe(
-      datasetFile => {
-        saveAs(datasetFile, `${ this.dataset.fullName }`);
-        this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.downloadCorrectly')});
-      },
-      err => {
-        this.httpError.checkError(err,
-          this.translate.instant('alerts.alert'),
-          this.translate.instant('datasetCard.msgAlertErrorDownloadDataset'));
-      }
-    );
-  }
+  // downloadDataset() {
+  //   this.datasetService.downloadDataset(this.dataset).subscribe(
+  //     datasetFile => {
+  //       saveAs(datasetFile, `${ this.dataset.fullName }`);
+  //       this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.downloadCorrectly')});
+  //     },
+  //     err => {
+  //       this.httpError.checkError(err,
+  //         this.translate.instant('alerts.alert'),
+  //         this.translate.instant('datasetCard.msgAlertErrorDownloadDataset'));
+  //     }
+  //   );
+  // }
 
   edit() {
     this.descriptionAux = this.dataset.description;

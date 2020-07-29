@@ -1,4 +1,5 @@
 export const environment = {
-  apiUrl: 'https://metfg-backend.herokuapp.com', // 'http://localhost:3000',
+  apiUrl: 'http://localhost:3000',
+  // apiUrl: 'https://metfg-backend.herokuapp.com',
   production: true
 };

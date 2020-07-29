@@ -57,9 +57,9 @@
         </div>
     </p-card>
     <div class="card-icons">
-        <i *ngIf="showButtons && mode !== viewMode.EDIT" 
-            class="pi pi-download card-icon ui-special-button-info ml-1" 
-            (click)="downloadDataset()"></i>
+        <a *ngIf="showButtons && mode !== viewMode.EDIT"  [href]="dataset.locationS3"><i
+            class="pi pi-download card-icon ui-special-button-info ml-1" ></i>
+        </a>
         <i *ngIf="showButtons && mode !== viewMode.EDIT" 
             class="pi pi-pencil card-icon ui-special-button-warning ml-1" 
             (click)="edit()"></i>

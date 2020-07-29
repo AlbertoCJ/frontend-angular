@@ -10,6 +10,7 @@ export class Dataset {
     public size: string;
     public user: string;
     public attributes: string[];
+    public locationS3: string;
 
     constructor(data?: any) {
         this.id = data && data._id ? data._id : '';
@@ -22,5 +23,6 @@ export class Dataset {
         this.size = data && data.size ? data.size : '';
         this.user = data && data.user ? data.user : '';
         this.attributes = data && data.attributes ? data.attributes : [];
+        this.locationS3 = data && data.locationS3 ? data.locationS3 : '';
     }
 }
