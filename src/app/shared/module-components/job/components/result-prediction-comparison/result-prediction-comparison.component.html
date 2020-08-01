@@ -1,1 +1,16 @@
-<p>result-prediction-comparison works!</p>
+<br/>
+<br/>
+
+<p-dropdown [options]="optionsErrors" [(ngModel)]="selectedError" (onChange)="generateChartLine($event.value, selectedPosition)"></p-dropdown>
+
+<p-dropdown [options]="optionsPosition" [(ngModel)]="selectedPosition" [virtualScroll]="true" (onChange)="generateChartLine(selectedError, $event.value)"></p-dropdown>
+
+<div class="box-line-chart" *ngIf="lineChartLabels && lineChartData">
+    <canvas baseChart
+    [datasets]="lineChartData"
+    [labels]="lineChartLabels"
+    [options]="lineChartOptions"
+    [colors]="lineChartColors"
+    [legend]="lineChartLegend"
+    [chartType]="lineChartType"></canvas>
+</div>
