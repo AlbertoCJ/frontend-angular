@@ -5,6 +5,7 @@ import { CapitalizePipe } from '../../../../../core/pipes/capitalize/capitalize.
 import { SplitCamelCaseToStringPipe } from '../../../../../core/pipes/split-camel-case-to-string/split-camel-case-to-string.pipe';
 import { Label, Color } from 'ng2-charts';
 import { ChartDataSets, ChartOptions } from 'chart.js';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-result-prediction-comparison',
@@ -45,7 +46,7 @@ export class ResultPredictionComparisonComponent implements OnInit {
 
   @Input() job: Job;
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.optionsErrors = [
       {label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform('meanAbsoluteError')),
         value: 'meanAbsoluteError'},

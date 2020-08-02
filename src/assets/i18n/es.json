@@ -351,5 +351,9 @@
     "controllerJobResult": {
         "labelErrors": "Comparación de errores",
         "labelPredictions": "Comparación de la predicción"
+    },
+    "resultPredictionComparison": {
+        "errorPrediction": "Error",
+        "positionPrediction": "Posición"
     }
 }

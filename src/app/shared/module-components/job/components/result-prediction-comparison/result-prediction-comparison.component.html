@@ -1,8 +1,14 @@
 
 <div *ngIf="lineChartLabels && lineChartData">
     <div class="selects-chart">
-        <p-dropdown class="select-chart" [options]="optionsErrors" [(ngModel)]="selectedError" (onChange)="generateChartLine($event.value, selectedPosition)"></p-dropdown>
-        <p-dropdown class="select-chart" [options]="optionsPosition" [(ngModel)]="selectedPosition" [virtualScroll]="true" [itemSize]="31" [filter]="false" (onChange)="generateChartLine(selectedError, $event.value)"></p-dropdown>
+        <span class="select-chart">
+            {{ translate.instant('resultPredictionComparison.errorPrediction') }}: 
+            <p-dropdown [options]="optionsErrors" [(ngModel)]="selectedError" (onChange)="generateChartLine($event.value, selectedPosition)"></p-dropdown>
+        </span>
+        <span class="select-chart">
+            {{ translate.instant('resultPredictionComparison.positionPrediction') }}: 
+            <p-dropdown [options]="optionsPosition" [(ngModel)]="selectedPosition" [virtualScroll]="true" [itemSize]="31" [filter]="false" (onChange)="generateChartLine(selectedError, $event.value)"></p-dropdown>
+        </span>
     </div>
 
     <div class="box-line-chart">
