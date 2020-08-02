@@ -83,7 +83,6 @@ export class ResultPredictionComparisonComponent implements OnInit {
   }
 
   generateChartLine(changeError: any, changePosition: any) {
-    // console.log(`${ changeError } --- ${ changePosition - 1 }`);
 
     const chartLineData = [];
     let major: number;
@@ -150,7 +149,6 @@ export class ResultPredictionComparisonComponent implements OnInit {
 
       label.push(`${ chartLineData[i].nameAlgorithm } - ${ chartLineData[i].prediction}`);
       data.push(chartLineData[i].error);
-      // data2.push(chartLineData[i].error / 2); // TODO: En este array gestionar la cobertura
     }
 
     // Genera data cover
