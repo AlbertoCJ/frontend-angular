@@ -26,9 +26,18 @@
             <p-splitButton 
                 [label]="translate.instant('containerCard.labelRemove')" 
                 icon="pi pi-trash" 
-                (onClick)="removeContainer()" 
+                (onClick)="removeConfirm()" 
                 [model]="items" 
                 styleClass="ui-button-danger"></p-splitButton>
         </div>
     </p-footer>
 </p-card>
+
+<app-confirm-dialog 
+    *ngIf="isConfirmActive" 
+    [isConfirmActive]="isConfirmActive" 
+    [title]="translate.instant('datasetCard.titleConfirm')" 
+    [message]="translate.instant('datasetCard.messageConfirm')" 
+    (confirm)="removeContainer()" 
+    (cancel)="removeCancel()">
+</app-confirm-dialog>

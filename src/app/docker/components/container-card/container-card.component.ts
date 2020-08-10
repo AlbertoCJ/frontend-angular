@@ -10,6 +10,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ContainerCardComponent implements OnInit {
 
+  // Confirm
+  isConfirmActive = false;
+
   items: MenuItem[];
   container: Container;
   @Input('container') set setContainer(container: Container) {
@@ -43,7 +46,17 @@ export class ContainerCardComponent implements OnInit {
     }
   }
 
+  // Confirm
+  removeConfirm() {
+    this.isConfirmActive = true;
+  }
+
+  removeCancel() {
+    this.isConfirmActive = false;
+  }
+
   removeContainer() {
+    this.isConfirmActive = false;
     this.removed.emit(this.container.id);
   }
 

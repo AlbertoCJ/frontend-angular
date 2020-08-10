@@ -34,8 +34,17 @@
     <p-footer>
         <div *ngIf="containerAws.status !== 'Terminated'" class="buttons-panel buttons-panel-end">
             <app-remove-button 
-                (emitClicked)="removeContainerAws()">
+                (emitClicked)="removeConfirm()">
             </app-remove-button>
         </div>
     </p-footer>
 </p-card>
+
+<app-confirm-dialog 
+    *ngIf="isConfirmActive" 
+    [isConfirmActive]="isConfirmActive" 
+    [title]="translate.instant('datasetCard.titleConfirm')" 
+    [message]="translate.instant('datasetCard.messageConfirm')" 
+    (confirm)="removeContainerAws()" 
+    (cancel)="removeCancel()">
+</app-confirm-dialog>

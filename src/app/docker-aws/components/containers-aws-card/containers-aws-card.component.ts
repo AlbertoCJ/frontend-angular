@@ -9,6 +9,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ContainersAwsCardComponent implements OnInit {
 
+  // Confirm
+  isConfirmActive = false;
+
   containerAws: ContainerAws;
   @Input('containerAws') set setContainerAws(containerAws: ContainerAws) {
     if (containerAws) {
@@ -23,7 +26,17 @@ export class ContainersAwsCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Confirm
+  removeConfirm() {
+    this.isConfirmActive = true;
+  }
+
+  removeCancel() {
+    this.isConfirmActive = false;
+  }
+
   removeContainerAws() {
+    this.isConfirmActive = false;
     this.removed.emit(this.containerAws.applicationName);
   }
 
