@@ -2,7 +2,7 @@
     <div class="p-grid">
         <span class="p-col date-card">
             <div>
-                <span>{{ containerAws.dateCreated | date:'dd/MM/yyyy' }}</span>
+                <span>{{ containerAws.dateCreation | date:'dd/MM/yyyy' }}</span>
     </div>
     </span>
     <span class="p-col subtitle-card">
@@ -32,7 +32,7 @@
     </div>
 
     <p-footer>
-        <div *ngIf="containerAws.status !== 'Terminated'" class="buttons-panel buttons-panel-end">
+        <div *ngIf="containerAws.status !== 'Launching'" class="buttons-panel buttons-panel-end">
             <app-remove-button 
                 (emitClicked)="removeConfirm()">
             </app-remove-button>

@@ -16,7 +16,7 @@ export class ContainersAwsListComponent implements OnInit {
     }
   }
 
-  @Output() containerAwsRemoved = new EventEmitter<string>();
+  @Output() containerAwsRemoved = new EventEmitter<ContainerAws>();
 
   constructor(public translate: TranslateService) {
     this.containersAws = [];
@@ -25,8 +25,8 @@ export class ContainersAwsListComponent implements OnInit {
   ngOnInit() {
   }
 
-  removeContainerAws(applicationName: string) {
-    this.containerAwsRemoved.emit(applicationName);
+  removeContainerAws(containerAws: ContainerAws) {
+    this.containerAwsRemoved.emit(containerAws);
   }
 
 }

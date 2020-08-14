@@ -19,7 +19,7 @@ export class ContainersAwsCardComponent implements OnInit {
     }
   }
 
-  @Output() removed = new EventEmitter<string>();
+  @Output() removed = new EventEmitter<ContainerAws>();
 
   constructor(public translate: TranslateService) { }
 
@@ -37,7 +37,7 @@ export class ContainersAwsCardComponent implements OnInit {
 
   removeContainerAws() {
     this.isConfirmActive = false;
-    this.removed.emit(this.containerAws.applicationName);
+    this.removed.emit(this.containerAws);
   }
 
 }

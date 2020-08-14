@@ -167,7 +167,8 @@
         "messageErrorGetContainers": "Error al obtener contenedores.",
         "messageErrorRemoveContainer": "Error al eliminar contenedor.",
         "messageErrorStartContainer": "Error al iniciar contenedor.",
-        "messageErrorStopContainer": "Error al parar contenedor."
+        "messageErrorStopContainer": "Error al parar contenedor.",
+        "startContainer": "Iniciar contenedor"
     },
     "containersList": {
         "noContainers": "No hay contenedores"

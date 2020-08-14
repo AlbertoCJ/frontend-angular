@@ -1,5 +1,15 @@
 <div class="mb-3">
     <app-buttons-panel-normal [marginTop]="true" [showStart]="true">
+        <span slot="start">
+            <app-custom-button 
+                class="ml-2" 
+                [label]="translate.instant('controllerListContainers.startContainer')"
+                [icon]="'pi pi-plus'" 
+                [iconPos]="'left'" 
+                [styleClass]="'ui-button-success'" 
+                (emitClicked)="initiateContainer()">
+            </app-custom-button>
+        </span>
         <span slot="end">
             <app-custom-button 
                 class="mr-2" 

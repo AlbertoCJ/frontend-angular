@@ -23,7 +23,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    position: fixed;
+    position: absolute;
 }
 
 .status-on {

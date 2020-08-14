@@ -25,6 +25,25 @@ export class ControllerListContainersAwsComponent implements OnInit {
     this.getContainersAws();
   }
 
+  initiateContainer() {
+    this.dockerAwsService.createContainers(true) // withoutUser = true
+        .then( (respContainer: any) => {
+          // containersAWS.push(respContainer.awsContainer);
+          this.getContainersAws();
+        })
+        .catch(err => {
+          if (err && err.error && err.error.err && err.error.err.statusCode === 403) {
+            this.alertService.setAlertShowMore(this.translate.instant('alerts.alert'),
+            this.translate.instant('controllerLaunchConfirm.msgAlertErrorGenerateContainers'),
+            err.error.err.message);
+          } else {
+            this.alertService.setAlert(this.translate.instant('alerts.alert'),
+            this.translate.instant('controllerListContainers.messageErrorStartContainer'));
+          }
+
+        });
+  }
+
   getContainersAws() {
     this.dockerAwsService.getContainersAws().subscribe(
       containersAws => {
@@ -44,8 +63,8 @@ export class ControllerListContainersAwsComponent implements OnInit {
     );
   }
 
-  removeContainerAws(applicationName: string) {
-    this.dockerAwsService.removeContainerAws(applicationName).subscribe(
+  removeContainerAws(containerAws: ContainerAws) {
+    this.dockerAwsService.removeContainerAws(containerAws.applicationName, containerAws.id).subscribe(
       removed => {
         this.getContainersAws();
         this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.removedCorrectly')});

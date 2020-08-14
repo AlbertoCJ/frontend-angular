@@ -167,7 +167,8 @@
         "messageErrorGetContainers": "Error in obtaining containers.",
         "messageErrorRemoveContainer": "Error when removing container.",
         "messageErrorStartContainer": "Error when starting container.",
-        "messageErrorStopContainer": "Error when stopping container."
+        "messageErrorStopContainer": "Error when stopping container.",
+        "startContainer": "Start container"
     },
     "containersList": {
         "noContainers": "No containers"
