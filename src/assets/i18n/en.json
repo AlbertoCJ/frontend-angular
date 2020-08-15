@@ -272,7 +272,9 @@
         "textSelectAlgorithm": "Select the algorithms you want to launch",
         "btnTextConfigAlgorithm": "Configure algorithms",
         "btnTextChangeAlgorithm": "Change algorithms",
-        "clickDocumentation": "Documentation"
+        "clickDocumentation": "Documentation",
+        "textCheckAll": "Check all",
+        "textUncheckAll": "Uncheck all"
     },
     "controllerLaunchWorker": {
         "textTitleGlobal": "Configure containers",

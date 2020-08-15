@@ -8,6 +8,20 @@
     font-size: larger;
 }
 
+.box-check-all {
+    text-align: right;
+}
+
+.text-check-all {
+    color: #007ad9;
+}
+
+.text-check-all:hover {
+    color: #116fbf;
+    cursor: pointer;
+    text-decoration-line: underline;
+}
+
 :host ::ng-deep .ui-accordion-content-wrapper {
     margin-bottom: 10px;
 }

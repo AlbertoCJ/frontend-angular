@@ -28,17 +28,18 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
   gcAlgorithms: any;
 
   // Checks
-  linearRegressionCheck = false;
-  linearRegressionBaggingCheck = false;
-  IBkCheck = false;
-  ZeroRCheck = false;
-  M5PCheck = false;
-  M5PBaggingCheck = false;
-  M5RulesCheck = false;
-  DecisionStumpCheck = false;
-  DecisionStumpBaggingCheck = false;
-  LibsvmCheck = false;
-  LibsvmBaggingCheck = false;
+  listAlgorithmsChecked = [];
+  // linearRegressionCheck = false;
+  // linearRegressionBaggingCheck = false;
+  // IBkCheck = false;
+  // ZeroRCheck = false;
+  // M5PCheck = false;
+  // M5PBaggingCheck = false;
+  // M5RulesCheck = false;
+  // DecisionStumpCheck = false;
+  // DecisionStumpBaggingCheck = false;
+  // LibsvmCheck = false;
+  // LibsvmBaggingCheck = false;
 
   // Algorithms object
   listAlgorithms: DataAlgorithms;
@@ -62,80 +63,107 @@ export class ControllerAlgorithmConfigComponent implements OnInit {
   ngOnInit() {
   }
 
-  clickCheckAlgorithm(event: boolean, idAlgorithm: number) {
+  checkAll() {
+    for (let i = 1; i < 12 ; i++) {
+      this.clickCheckAlgorithm({ checked: true }, i);
+    }
+    this.listAlgorithmsChecked = [
+      'linearRegression',
+      'linearRegressionBagging',
+      'IBk',
+      'ZeroR',
+      'M5P',
+      'M5PBagging',
+      'M5Rules',
+      'DecisionStump',
+      'DecisionStumpBagging',
+      'Libsvm',
+      'LibsvmBagging'
+    ];
+  }
+
+  uncheckAll() {
+    for (let i = 1; i < 12 ; i++) {
+      this.clickCheckAlgorithm({ checked: false }, i);
+    }
+    this.listAlgorithmsChecked = [];
+  }
+
+  clickCheckAlgorithm(event: any, idAlgorithm: number) {
+    const checked = event.checked;
     switch (idAlgorithm) {
       case Algorithms.LINEAR_REGRESSION:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.linearRegression.algorithm = new LinearRegression();
         } else {
           this.listAlgorithms.linearRegression.algorithm = null;
         }
         break;
       case Algorithms.LINEAR_REGRESSION_BAGGING:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.linearRegressionBagging.algorithm = new LinearRegressionBagging();
         } else {
           this.listAlgorithms.linearRegressionBagging.algorithm = null;
         }
         break;
       case Algorithms.IBK:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.IBk.algorithm = new Ibk();
         } else {
           this.listAlgorithms.IBk.algorithm = null;
         }
         break;
       case Algorithms.ZEROR:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.ZeroR.algorithm = new Zeror();
         } else {
           this.listAlgorithms.ZeroR.algorithm = null;
         }
         break;
       case Algorithms.M5P:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.M5P.algorithm = new M5p();
         } else {
           this.listAlgorithms.M5P.algorithm = null;
         }
         break;
       case Algorithms.M5P_BAGGING:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.M5PBagging.algorithm = new M5pBagging();
         } else {
           this.listAlgorithms.M5PBagging.algorithm = null;
         }
         break;
       case Algorithms.M5RULES:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.M5Rules.algorithm = new M5rules();
         } else {
           this.listAlgorithms.M5Rules.algorithm = null;
         }
         break;
       case Algorithms.DECISION_STUMP:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.DecisionStump.algorithm = new DecisionStump();
         } else {
           this.listAlgorithms.DecisionStump.algorithm = null;
         }
         break;
       case Algorithms.DECISION_STUMP_BAGGING:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.DecisionStumpBagging.algorithm = new DecisionStumpBagging();
         } else {
           this.listAlgorithms.DecisionStumpBagging.algorithm = null;
         }
         break;
       case Algorithms.LIBSVM:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.Libsvm.algorithm = new Libsvm();
         } else {
           this.listAlgorithms.Libsvm.algorithm = null;
         }
         break;
       case Algorithms.LIBSVM_BAGGING:
-        if (event) {
+        if (checked === true) {
           this.listAlgorithms.LibsvmBagging.algorithm = new LibsvmBagging();
         } else {
           this.listAlgorithms.LibsvmBagging.algorithm = null;
