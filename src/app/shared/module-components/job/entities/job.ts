@@ -10,6 +10,7 @@ export class Job {
     dateCreation: Date | null;
     dataAlgorithms: DataAlgorithms;
     platform: string;
+    timeId: string;
 
     constructor(data?: any) {
         this.id = data && data._id ? data._id : '';
@@ -20,5 +21,6 @@ export class Job {
         this.dateCreation = data && data.dateCreation ? data.dateCreation : null;
         this.dataAlgorithms = data && data.dataAlgorithms ? new DataAlgorithms(data.dataAlgorithms) : null;
         this.platform = data && data.platform ? data.platform : '';
+        this.timeId = data && data.time ? data.time : '';
     }
 }

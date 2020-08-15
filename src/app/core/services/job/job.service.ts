@@ -121,12 +121,24 @@ export class JobService {
     );
   }
 
-  deleteJob(id) {
-    return this.http.delete(`${ this.url }/job/${ id }`).pipe(
+  deleteJob(job: Job) {
+    const body = {
+      timeId: job.timeId
+    };
+
+    let options = {};
+
+    if (job.hasStatus === 'RUNNING') {
+      options = {
+        body
+      };
+    }
+
+    return this.http.delete(`${ this.url }/job/${ job.id }`, options).pipe(
       map( (resp: any) => {
         const respJob = resp.job;
-        const job = new Job(respJob);
-        return job;
+        const jobParse = new Job(respJob);
+        return jobParse;
       })
     );
   }

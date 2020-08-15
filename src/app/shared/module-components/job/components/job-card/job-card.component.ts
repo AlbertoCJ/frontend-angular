@@ -138,7 +138,7 @@ export class JobCardComponent implements OnInit {
   }
 
   remove() {
-    this.jobService.deleteJob(this.job.id).subscribe(
+    this.jobService.deleteJob(this.job).subscribe(
       job => {
         this.messageService.add({severity: 'success', detail: this.translate.instant('menssageToast.removedCorrectly')});
         this.emitRemoved.emit(this.job);
