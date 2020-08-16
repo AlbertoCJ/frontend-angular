@@ -12,7 +12,7 @@
         "dead": "Muerta"
     },
     "statusAWS": {
-        "launching": "Lanzado",
+        "launching": "Lanzando",
         "updating": "Actualizando",
         "ready": "Listo",
         "terminating": "Termiando",

@@ -3,7 +3,8 @@
         <div style="display: inline-block; width: 94%;">
             <app-algorithm-details-title 
                 [title]="algorithm.name" 
-                [percent]="task ? task.percentageCompleted : null">
+                [percent]="task ? task.percentageCompleted : null"
+                [algorithm]="algorithm">
             </app-algorithm-details-title>
         </div>
     </p-header>

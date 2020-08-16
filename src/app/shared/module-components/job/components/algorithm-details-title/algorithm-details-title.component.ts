@@ -10,6 +10,7 @@ export class AlgorithmDetailsTitleComponent implements OnInit {
 
   @Input() title: string;
   @Input() percent: number;
+  @Input() algorithm: any;
 
   constructor(public translate: TranslateService) { }
 

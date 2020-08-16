@@ -4,6 +4,7 @@
     </div>
     <div class="p-lg-7 p-md-5 p-sm-4 p-col-4 progressbar-job-details">
         <p-progressBar *ngIf="percent" [value]="percent"></p-progressBar>
-        <div style="text-align: center;" *ngIf="!percent">{{ translate.instant('algorithmDetailsInfo.notInitYet') }}</div>
+        <div style="text-align: center;" *ngIf="!percent && algorithm && algorithm.status !== 'ERROR'">{{ translate.instant('algorithmDetailsInfo.notInitYet') }}</div>
+        <div style="text-align: center;" *ngIf="!percent && algorithm && algorithm.status === 'ERROR'">{{ algorithm.status }}</div>
     </div>
 </div>
