@@ -14,8 +14,8 @@ export class Time {
         this.jobName = data && data.jobName ? data.jobName : '';
         this.jobDescription = data && data.jobDescription ? data.jobDescription : '';
         this.dateCreation = data && data.dateCreation ? data.dateCreation : null;
-        this.start = data && data.start ? data.start : null;
-        this.end = data && data.end ? data.end : null;
+        this.start = data && data.start ? new Date(data.start) : null;
+        this.end = data && data.end ? new Date(data.end) : null;
         this.hasStatus = data && data.hasStatus ? data.hasStatus : '';
     }
 }
