@@ -49,7 +49,12 @@ export class ControllerListDatasetComponent implements OnInit {
   petitionListDatasets(page: number, limit: number, descriptionSearch: string) {
     this.datasetService.getListDataset(page, limit, descriptionSearch).subscribe(
       listDataset => {
-        this.listDataset = listDataset;
+        if (listDataset.datasets.length <= 0 && listDataset.paginationData && listDataset.paginationData.hasPrevPage) {
+          this.page = listDataset.paginationData.prevPage;
+          this.getListDatasets();
+        } else {
+          this.listDataset = listDataset;
+        }
       },
       err => {
         this.httpError.checkError(err,

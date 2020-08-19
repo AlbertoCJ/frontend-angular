@@ -48,14 +48,19 @@ export class ControllerListJobComponent implements OnInit {
   petitionListJobs(page: number, limit: number, nameSearch: string, descriptionSearch: string) {
     this.jobService.getListJobs(page, limit, nameSearch, descriptionSearch).subscribe(
       listJob => {
-        this.listJob = listJob;
+        if (listJob.jobs.length <= 0 && listJob.paginationData && listJob.paginationData.hasPrevPage) {
+          this.page = listJob.paginationData.prevPage;
+          this.getListJobs();
+        } else {
+          this.listJob = listJob;
+        }
       },
       err => {
         this.httpError.checkError(err,
           this.translate.instant('alerts.alert'),
           this.translate.instant('controllerListJob.msgAlertErrorGetListJob'));
       }
-  );
+    );
   }
 
   search(forma: NgForm) {
