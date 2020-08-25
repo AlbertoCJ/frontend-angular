@@ -146,7 +146,11 @@ export class ResultPredictionComparisonComponent implements OnInit {
 
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < chartLineData.length; i++) {
-      chartLineData[i].error = 1 - ( (chartLineData[i].error - minor) / ( major - minor ) );
+      if (major === minor) {
+        chartLineData[i].error = 1;
+      } else {
+        chartLineData[i].error = 1 - ( (chartLineData[i].error - minor) / ( major - minor ) );
+      }
 
       label.push(`${ chartLineData[i].nameAlgorithm } - ${ chartLineData[i].prediction}`);
       data.push(chartLineData[i].error);

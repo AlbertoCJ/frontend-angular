@@ -357,6 +357,7 @@
     },
     "resultPredictionComparison": {
         "errorPrediction": "Error",
-        "positionPrediction": "Posición"
+        "positionPrediction": "Posición",
+        "helpPositionPrediction": "Posición de la columna referente a la predicción."
     }
 }

@@ -6,7 +6,7 @@
             <p-dropdown [options]="optionsErrors" [(ngModel)]="selectedError" (onChange)="generateChartLine($event.value, selectedPosition)"></p-dropdown>
         </span>
         <span class="select-chart">
-            {{ translate.instant('resultPredictionComparison.positionPrediction') }}: 
+            {{ translate.instant('resultPredictionComparison.positionPrediction') }}<i class="pi pi-question-circle" [pTooltip]="translate.instant('resultPredictionComparison.helpPositionPrediction')"></i>:
             <p-dropdown [options]="optionsPosition" [(ngModel)]="selectedPosition" [virtualScroll]="true" [itemSize]="31" [filter]="false" (onChange)="generateChartLine(selectedError, $event.value)"></p-dropdown>
         </span>
     </div>
@@ -21,3 +21,4 @@
         [chartType]="lineChartType"></canvas>
     </div>
 </div>
+
