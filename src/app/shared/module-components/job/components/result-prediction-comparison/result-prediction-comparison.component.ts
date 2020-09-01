@@ -76,7 +76,7 @@ export class ResultPredictionComparisonComponent implements OnInit {
     let options: SelectItem[];
     options = [];
     for (let i = 0; i < size; i++) {
-      const val = i + 1;
+      const val = i;
       options.push({ label: `${ val }`, value: val });
     }
 
@@ -181,4 +181,60 @@ export class ResultPredictionComparisonComponent implements OnInit {
 
   }
 
+  // prueba() {
+
+  //   const headers = {
+  //     id: 'Identificador',
+  //     nombre: 'Nombre'
+  //   };
+  //   const data = [
+  //     { id: 1, nombre: 'John Doe' },
+  //     { id: 2, nombre: 'Juan' },
+  //     { id: 3, nombre: 'Samanta' }
+  //   ];
+  //   this.exportCSVFile(headers, data, 'result');
+  // }
+
+  // convertToCSV(objArray) {
+  //   const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+  //   let str = '';
+
+  //   // tslint:disable-next-line: prefer-for-of
+  //   for (let i = 0; i < array.length; i++) {
+  //     let line = '';
+  //     // tslint:disable-next-line: forin
+  //     for (const index in array[i]) {
+
+  //       if (line !== '') { line += ','; }
+  //       line += array[i][index];
+  //     }
+  //     str += line + '\r\n';
+  //   }
+
+  //   return str;
+  // }
+
+  // exportCSVFile(headers: any, items: any, fileName: string) {
+  //   if (headers) {
+  //    items.unshift(headers);
+  //   }
+  //   const jsonObject = JSON.stringify(items);
+  //   const csv = this.convertToCSV(jsonObject);
+  //   const exportName = fileName + '.csv' || 'export.csv';
+  //   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  //   if (navigator.msSaveBlob) {
+  //    navigator.msSaveBlob(blob, exportName);
+  //   } else {
+  //    const link = document.createElement('a');
+  //    if (link.download !== undefined) {
+  //     const url = URL.createObjectURL(blob);
+  //     link.setAttribute('href', url);
+  //     link.setAttribute('download', exportName);
+  //     link.style.visibility = 'hidden';
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+  //    }
+  //   }
+  //  }
 }

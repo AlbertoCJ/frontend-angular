@@ -22,7 +22,7 @@
     </app-header-title>
 </div>
 
-<app-header-title [textTitle]="translate.instant('jobDetails.textTitleAlgorithms')">
+<app-header-title [textTitle]="translate.instant('jobDetails.textTitleAlgorithms')" *ngIf="mode === viewModes.VIEW">
     <p-accordion *ngIf="job">
         <app-algorithm-details 
             *ngIf="job.dataAlgorithms.linearRegression.algorithm" 

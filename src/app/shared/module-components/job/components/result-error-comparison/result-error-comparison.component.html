@@ -1,6 +1,8 @@
 
 <div class="mt-3 select-button-custom">
-    <p-selectButton [options]="types" [(ngModel)]="selectedType" (onChange)="generateTable($event)">
+    <!-- TODO: Traducir -->
+    <span class="download" (click)="downloadCSV()"><i class="pi pi-download"></i>Descargar csv</span>
+    <p-selectButton class="ml-4" [options]="types" [(ngModel)]="selectedType" (onChange)="generateTable($event)">
         <ng-template let-item>
             <div style="padding: 5px">
                 <i class="{{ item.label }}"></i>
@@ -15,13 +17,21 @@
     </div>
 
     <div class="box-line-chart" *ngIf="lineChartLabels && lineChartData">
-        <canvas baseChart
+        <!-- <canvas baseChart
         [datasets]="lineChartData"
         [labels]="lineChartLabels"
         [options]="lineChartOptions"
         [colors]="lineChartColors"
         [legend]="lineChartLegend"
-        [chartType]="lineChartType"></canvas>
+        [chartType]="lineChartType"></canvas> -->
+
+        <canvas baseChart
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend"
+        [chartType]="barChartType">
+      </canvas>
     </div>
 </div>
 

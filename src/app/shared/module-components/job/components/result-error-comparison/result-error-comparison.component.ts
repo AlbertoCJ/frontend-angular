@@ -4,7 +4,8 @@ import { SelectItem } from 'primeng/api/selectitem';
 import { CapitalizePipe } from '../../../../../core/pipes/capitalize/capitalize.pipe';
 import { SplitCamelCaseToStringPipe } from '../../../../../core/pipes/split-camel-case-to-string/split-camel-case-to-string.pipe';
 import { Label, Color } from 'ng2-charts';
-import { ChartDataSets, ChartOptions } from 'chart.js';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { ToCsvService } from '../../../../../core/services/csv/to-csv.service';
 
 @Component({
   selector: 'app-result-error-comparison',
@@ -29,25 +30,29 @@ export class ResultErrorComparisonComponent implements OnInit {
   // Charts
   lineChartLabels: Label[];
   lineChartData: ChartDataSets[];
-  lineChartColors: Color[] = [
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
-    }
-  ];
+  // lineChartColors: Color[] = [
+  //   { // dark grey
+  //     backgroundColor: 'rgba(77,83,96,0.2)',
+  //     borderColor: 'rgba(77,83,96,1)',
+  //     pointBackgroundColor: 'rgba(77,83,96,1)',
+  //     pointBorderColor: '#fff',
+  //     pointHoverBackgroundColor: '#fff',
+  //     pointHoverBorderColor: 'rgba(77,83,96,1)'
+  //   }
+  // ];
   public lineChartLegend = false;
-  public lineChartType = 'line';
+  // public lineChartType = 'line';
   public lineChartOptions: ChartOptions = {
     responsive: true
   };
 
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = false;
+  // public barChartPlugins = [pluginDataLabels];
+
   @Input() job: Job;
 
-  constructor() {
+  constructor(private toCsv: ToCsvService) {
     this.types = [
       {label: 'pi pi-chart-bar', value: 'chart'},
       {label: 'pi pi-table', value: 'table'}
@@ -93,7 +98,11 @@ export class ResultErrorComparisonComponent implements OnInit {
 
     this.lineChartLabels = label;
     this.lineChartData = [
-      { data, label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(nameError)) }
+      { data,
+        label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(nameError)),
+        backgroundColor: '#9CCDFF',
+        hoverBackgroundColor: '#2E95FF'
+      }
     ];
   }
 
@@ -127,6 +136,49 @@ export class ResultErrorComparisonComponent implements OnInit {
       this.tableBody = [];
       this.tableBody = table;
     }
+  }
+
+  downloadCSV() {
+
+    let headers: any = null;
+
+    const data = [];
+
+    this.optionsErrors.forEach( nameOfError => {
+
+      const nameError = nameOfError.value;
+
+      const headersTemp: any = {};
+      const itemDataTemp: any = {};
+
+      if (headers) {
+        headersTemp.error = 'Error';
+      }
+
+      itemDataTemp.error = nameError;
+
+      const dataAlgorithms = this.job.dataAlgorithms;
+      for (const key in dataAlgorithms) {
+        if (dataAlgorithms.hasOwnProperty(key)) {
+
+          const nameAlgorithm = key;
+          if (dataAlgorithms[nameAlgorithm].model && dataAlgorithms[nameAlgorithm].model.validation) {
+
+            if (headers) {
+              headersTemp[nameAlgorithm] = this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(nameAlgorithm));
+            }
+
+            itemDataTemp[nameAlgorithm] = dataAlgorithms[nameAlgorithm].model.validation[nameError];
+
+          }
+        }
+      }
+
+      headers = headersTemp;
+      data.push(itemDataTemp);
+    });
+
+    this.toCsv.exportCSVFile(headers, data, 'errorsData');
   }
 
 }

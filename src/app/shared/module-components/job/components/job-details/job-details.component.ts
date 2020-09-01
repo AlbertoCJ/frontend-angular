@@ -14,6 +14,8 @@ import { ContainerAwsStatus } from '../../entities/container-aws-status';
 })
 export class JobDetailsComponent implements OnInit {
 
+  viewModes = ViewMode;
+
   job: Job;
   awsContainerOwn: ContainerAwsStatus[];
 

@@ -9,6 +9,9 @@
             {{ translate.instant('resultPredictionComparison.positionPrediction') }}<i class="pi pi-question-circle" [pTooltip]="translate.instant('resultPredictionComparison.helpPositionPrediction')"></i>:
             <p-dropdown [options]="optionsPosition" [(ngModel)]="selectedPosition" [virtualScroll]="true" [itemSize]="31" [filter]="false" (onChange)="generateChartLine(selectedError, $event.value)"></p-dropdown>
         </span>
+        <!-- <span>
+            <p (click)="prueba()">Descargar csv</p>
+        </span> -->
     </div>
 
     <div class="box-line-chart">

@@ -25,3 +25,13 @@
 .table td {
     padding: 8px 4px 8px 4px;
 }
+
+.download {
+    color: rgb(0, 0, 128);
+    cursor: pointer;
+}
+
+.download:hover {
+    text-decoration-line: underline;
+    color: blueviolet;
+}

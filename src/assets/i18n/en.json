@@ -357,7 +357,7 @@
     },
     "resultPredictionComparison": {
         "errorPrediction": "Error",
-        "positionPrediction": "Position",
-        "helpPositionPrediction": "Position of the prediction column."
+        "positionPrediction": "Instance",
+        "helpPositionPrediction": "Instance of the dataset on which the prediction is made."
     }
 }
