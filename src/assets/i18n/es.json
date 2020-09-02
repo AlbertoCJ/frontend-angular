@@ -355,6 +355,9 @@
         "labelErrors": "Comparación de errores",
         "labelPredictions": "Comparación de la predicción"
     },
+    "resultErrorComparison": {
+        "downloadCsv": "Descargar csv"
+    },
     "resultPredictionComparison": {
         "errorPrediction": "Error",
         "positionPrediction": "Instancia",

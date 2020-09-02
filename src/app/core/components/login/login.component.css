@@ -1,3 +1,16 @@
+
+.name-project {
+    text-align: center;
+    margin-top: 150px;
+    font-size: 60px;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 72px;
+    background: -webkit-linear-gradient(#150875, #f96a11);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .box-login {
     padding: 0px 10px 10px 10px;
     border-radius: 5px;

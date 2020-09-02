@@ -1,7 +1,6 @@
 
 <div class="mt-3 select-button-custom">
-    <!-- TODO: Traducir -->
-    <span class="download" (click)="downloadCSV()"><i class="pi pi-download"></i>Descargar csv</span>
+    <span class="download" (click)="downloadCSV()"><i class="pi pi-download"></i>{{ translate.instant('resultErrorComparison.downloadCsv') }}</span>
     <p-selectButton class="ml-4" [options]="types" [(ngModel)]="selectedType" (onChange)="generateTable($event)">
         <ng-template let-item>
             <div style="padding: 5px">

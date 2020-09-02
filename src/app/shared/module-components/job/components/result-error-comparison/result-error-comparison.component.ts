@@ -6,6 +6,7 @@ import { SplitCamelCaseToStringPipe } from '../../../../../core/pipes/split-came
 import { Label, Color } from 'ng2-charts';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { ToCsvService } from '../../../../../core/services/csv/to-csv.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-result-error-comparison',
@@ -52,7 +53,8 @@ export class ResultErrorComparisonComponent implements OnInit {
 
   @Input() job: Job;
 
-  constructor(private toCsv: ToCsvService) {
+  constructor(private toCsv: ToCsvService,
+              public translate: TranslateService) {
     this.types = [
       {label: 'pi pi-chart-bar', value: 'chart'},
       {label: 'pi pi-table', value: 'table'}
