@@ -74,10 +74,11 @@ export class ResultErrorComparisonComponent implements OnInit {
       {label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform('rootRelativeSquaredError')),
         value: 'rootRelativeSquaredError'},
     ];
+    this.selectedError = this.optionsErrors[0].value;
    }
 
   ngOnInit() {
-    this.generateChartLine({ value: this.optionsErrors[0].value });
+    this.generateChartLine({ value: this.selectedError });
   }
 
   generateChartLine(changeError: any) {
@@ -180,7 +181,7 @@ export class ResultErrorComparisonComponent implements OnInit {
       data.push(itemDataTemp);
     });
 
-    this.toCsv.exportCSVFile(headers, data, 'errorsData');
+    this.toCsv.exportCSVFile(headers, data, 'errorMetrics');
   }
 
 }

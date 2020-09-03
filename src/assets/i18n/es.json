@@ -359,7 +359,7 @@
         "downloadCsv": "Descargar csv"
     },
     "resultPredictionComparison": {
-        "errorPrediction": "Error",
+        "errorPrediction": "Métrica error",
         "positionPrediction": "Instancia",
         "helpPositionPrediction": "Instancia del dataset sobre el que se hace la predicción."
     }

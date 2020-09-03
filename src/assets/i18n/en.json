@@ -359,7 +359,7 @@
         "downloadCsv": "Download csv"
     },
     "resultPredictionComparison": {
-        "errorPrediction": "Error",
+        "errorPrediction": "Error metrics",
         "positionPrediction": "Instance",
         "helpPositionPrediction": "Instance of the dataset on which the prediction is made."
     }

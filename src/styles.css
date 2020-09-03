@@ -234,6 +234,17 @@ table {
     border-radius: 0px;;
 }
 
+/* Download csv */
+.download {
+    color: rgb(0, 0, 128);
+    cursor: pointer;
+}
+
+.download:hover {
+    text-decoration-line: underline;
+    color: blueviolet;
+}
+
 /* SPECIAL BUTTON */
 
 .ui-special-button {

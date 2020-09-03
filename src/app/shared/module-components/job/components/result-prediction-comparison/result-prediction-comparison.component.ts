@@ -6,6 +6,7 @@ import { SplitCamelCaseToStringPipe } from '../../../../../core/pipes/split-came
 import { Label, Color } from 'ng2-charts';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { TranslateService } from '@ngx-translate/core';
+import { ToCsvService } from '../../../../../core/services/csv/to-csv.service';
 
 @Component({
   selector: 'app-result-prediction-comparison',
@@ -46,7 +47,8 @@ export class ResultPredictionComparisonComponent implements OnInit {
 
   @Input() job: Job;
 
-  constructor(public translate: TranslateService) {
+  constructor(private toCsv: ToCsvService,
+              public translate: TranslateService) {
     this.optionsErrors = [
       {label: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform('meanAbsoluteError')),
         value: 'meanAbsoluteError'},
@@ -181,60 +183,99 @@ export class ResultPredictionComparisonComponent implements OnInit {
 
   }
 
-  // prueba() {
 
-  //   const headers = {
-  //     id: 'Identificador',
-  //     nombre: 'Nombre'
-  //   };
-  //   const data = [
-  //     { id: 1, nombre: 'John Doe' },
-  //     { id: 2, nombre: 'Juan' },
-  //     { id: 3, nombre: 'Samanta' }
-  //   ];
-  //   this.exportCSVFile(headers, data, 'result');
-  // }
+  downloadCSV() {
 
-  // convertToCSV(objArray) {
-  //   const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
-  //   let str = '';
+    const headers: any = {
+      instance: 'Instance',
+      algorithm: 'Algorithm',
+      prediction: 'Prediction',
+      reliability: 'Reliability'
+    };
 
-  //   // tslint:disable-next-line: prefer-for-of
-  //   for (let i = 0; i < array.length; i++) {
-  //     let line = '';
-  //     // tslint:disable-next-line: forin
-  //     for (const index in array[i]) {
+    const data: any = [];
 
-  //       if (line !== '') { line += ','; }
-  //       line += array[i][index];
-  //     }
-  //     str += line + '\r\n';
-  //   }
+    let positionLength = -1;
 
-  //   return str;
-  // }
+    const dataAlgorithms = this.job.dataAlgorithms;
 
-  // exportCSVFile(headers: any, items: any, fileName: string) {
-  //   if (headers) {
-  //    items.unshift(headers);
-  //   }
-  //   const jsonObject = JSON.stringify(items);
-  //   const csv = this.convertToCSV(jsonObject);
-  //   const exportName = fileName + '.csv' || 'export.csv';
-  //   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-  //   if (navigator.msSaveBlob) {
-  //    navigator.msSaveBlob(blob, exportName);
-  //   } else {
-  //    const link = document.createElement('a');
-  //    if (link.download !== undefined) {
-  //     const url = URL.createObjectURL(blob);
-  //     link.setAttribute('href', url);
-  //     link.setAttribute('download', exportName);
-  //     link.style.visibility = 'hidden';
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     document.body.removeChild(link);
-  //    }
-  //   }
-  //  }
+    for (const key in dataAlgorithms) {
+      if (dataAlgorithms.hasOwnProperty(key)) {
+        const nameAlgorithm = key;
+        // tslint:disable-next-line: max-line-length
+        if (dataAlgorithms[nameAlgorithm].model && dataAlgorithms[nameAlgorithm].model.validation && dataAlgorithms[nameAlgorithm].model.prediction) {
+
+          // Obtener valor posicion
+          if (positionLength === -1) {
+            positionLength = dataAlgorithms[nameAlgorithm].model.prediction.length;
+          }
+        }
+      }
+    }
+
+
+    for (let i = 0; i < positionLength - 1; i++) {
+
+      const currentInstance = i + 1;
+
+      const lineData: any = [];
+      let major: number;
+      let minor: number;
+
+
+      for (const key in dataAlgorithms) {
+        if (dataAlgorithms.hasOwnProperty(key)) {
+          const nameAlgorithm = key;
+          // tslint:disable-next-line: max-line-length
+          if (dataAlgorithms[nameAlgorithm].model && dataAlgorithms[nameAlgorithm].model.validation && dataAlgorithms[nameAlgorithm].model.prediction) {
+
+            const errorValue = dataAlgorithms[nameAlgorithm].model.validation[this.selectedError];
+
+            // Crear objeto por algoritmo
+            lineData.push(
+              {
+                instance: currentInstance, // position
+                algorithm: this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(nameAlgorithm)),
+                prediction: dataAlgorithms[nameAlgorithm].model.prediction[i], // i = a position
+                reliability: errorValue
+              }
+            );
+
+            // Obtener el mayor
+            if (!major) {
+              major = errorValue;
+            } else {
+              if (errorValue > major) {
+                major = errorValue;
+              }
+            }
+
+            // Obtener el menor
+            if (!minor) {
+              minor = errorValue;
+            } else {
+              if (errorValue < minor) {
+                minor = errorValue;
+              }
+            }
+
+          }
+        }
+      }
+
+      // tslint:disable-next-line: prefer-for-of
+      for (let j = 0; j < lineData.length; j++) {
+        if (major === minor) {
+          lineData[j].error = 1; // chartLineData[i].error / 100;
+        } else {
+          lineData[j].reliability = 1 - ( (lineData[j].reliability - minor) / ( major - minor ) );
+        }
+        data.push(lineData[j]);
+      }
+
+    }
+
+    this.toCsv.exportCSVFile(headers, data, `${ this.selectedError }Reliability`);
+  }
+
 }
