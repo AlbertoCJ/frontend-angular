@@ -147,41 +147,43 @@ export class ResultErrorComparisonComponent implements OnInit {
 
     const data = [];
 
-    this.optionsErrors.forEach( nameOfError => {
+    const dataAlgorithms = this.job.dataAlgorithms;
+    for (const key in dataAlgorithms) {
+      if (dataAlgorithms.hasOwnProperty(key)) {
 
-      const nameError = nameOfError.value;
+        const nameAlgorithm = key;
+        if (dataAlgorithms[nameAlgorithm].model && dataAlgorithms[nameAlgorithm].model.validation) {
 
-      const headersTemp: any = {};
-      const itemDataTemp: any = {};
+          const headersTemp: any = {};
+          const itemDataTemp: any = {};
 
-      if (headers) {
-        headersTemp.error = 'Error';
-      }
+          if (headers) {
+            headersTemp.algorithm = 'Algorithms';
+          }
 
-      itemDataTemp.error = nameError;
+          itemDataTemp.algorithm = nameAlgorithm;
 
-      const dataAlgorithms = this.job.dataAlgorithms;
-      for (const key in dataAlgorithms) {
-        if (dataAlgorithms.hasOwnProperty(key)) {
+          this.optionsErrors.forEach( nameOfError => {
 
-          const nameAlgorithm = key;
-          if (dataAlgorithms[nameAlgorithm].model && dataAlgorithms[nameAlgorithm].model.validation) {
+            const nameError = nameOfError.value;
 
             if (headers) {
-              headersTemp[nameAlgorithm] = this.splitCamelCaseToStringPipe.transform(this.capitalizePipe.transform(nameAlgorithm));
+              headersTemp[nameError] = nameError;
             }
 
-            itemDataTemp[nameAlgorithm] = dataAlgorithms[nameAlgorithm].model.validation[nameError];
+            itemDataTemp[nameError] = dataAlgorithms[nameAlgorithm].model.validation[nameError];
 
-          }
+          });
+
+          headers = headersTemp;
+          data.push(itemDataTemp);
+
         }
       }
-
-      headers = headersTemp;
-      data.push(itemDataTemp);
-    });
+    }
 
     this.toCsv.exportCSVFile(headers, data, 'errorMetrics');
+
   }
 
 }
