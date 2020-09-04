@@ -12,8 +12,10 @@
         </app-controller-list-time>
     </span>
     <span slot="custom-footer">
-        <app-cancel-button (emitClicked)="close()">
-
-        </app-cancel-button>
+        <app-custom-button 
+                [label]="translate.instant('buttons.btnClose')"
+                [styleClass]="'ui-button-danger'" 
+                (emitClicked)="close()">
+            </app-custom-button>
     </span>
 </app-modal-generic>

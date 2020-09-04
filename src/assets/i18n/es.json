@@ -29,7 +29,8 @@
         "btnDelete": "Eliminar",
         "btnRestart": "Reiniciar",
         "btnSave": "Guardar",
-        "btnView": "Ver"
+        "btnView": "Ver",
+        "btnClose": "Cerrar"
     },
     "errorList": {
         "headerText": "Errores",

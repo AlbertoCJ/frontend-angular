@@ -29,7 +29,8 @@
         "btnDelete": "Delete",
         "btnRestart": "Restart",
         "btnSave": "Save",
-        "btnView": "View"
+        "btnView": "View",
+        "btnClose": "Close"
     },
     "errorList": {
         "headerText": "Errors",

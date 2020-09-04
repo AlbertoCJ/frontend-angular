@@ -1,37 +1,42 @@
 <div class="fondo-login">
-    <p class="name-project">Cloud Ensemble</p>
+    <!-- <p class="name-project">Cloud Ensemble</p> -->
+    <!-- <img class="name-project" src="assets/icono.jfif"> -->
 
- <div class="box-center box-login bc-box-login">
-     <div class="box-language">
-        <span class="select-language">
-            <p-dropdown [options]="language" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage($event)"></p-dropdown>
-        </span>
-    </div>
-    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm)">
-        <div class="ui-fluid">
-            <div class="ui-g">
-                <div class="ui-g-12">
-                    <div>{{translate.instant('login.email')}}</div>
-                    <div><input formControlName="email" type="text " size="30 " pInputText /></div>
-                </div>
-                <div class="ui-g-12">
-                    <div>{{translate.instant('login.password')}}</div>
-                    <div class="ui-inputgroup">
-                        <input formControlName="password" type="password" pPassword size="30" [feedback]="false" [showPassword]="showPass" />
-                        <button pButton type="button" icon="pi pi-eye" (click)="showPass = !showPass" *ngIf="!showPass"></button>
-                        <button pButton type="button" icon="pi pi-eye-slash" (click)="showPass = !showPass" *ngIf="showPass"></button>
+<div class="box-center">
+    <div class="fondo-name-project"><img class="name-project" src="assets/icono.jfif"></div>
+    <div class="box-login bc-box-login">
+        <div class="box-language">
+            <span class="select-language">
+                <p-dropdown [options]="language" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage($event)"></p-dropdown>
+            </span>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm)">
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div>{{translate.instant('login.email')}}</div>
+                        <div><input formControlName="email" type="text " size="30 " pInputText /></div>
+                    </div>
+                    <div class="ui-g-12">
+                        <div>{{translate.instant('login.password')}}</div>
+                        <div class="ui-inputgroup">
+                            <input formControlName="password" type="password" pPassword size="30" [feedback]="false" [showPassword]="showPass" />
+                            <button pButton type="button" icon="pi pi-eye" (click)="showPass = !showPass" *ngIf="!showPass"></button>
+                            <button pButton type="button" icon="pi pi-eye-slash" (click)="showPass = !showPass" *ngIf="showPass"></button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div *ngIf="showError" class="box-error-login class-error">{{ textError }}</div>
-        <div class="ui-fluid">
-            <div class="ui-g">
-                <div class="ui-g-12">
-                    <button pButton class="" type="submit" [label]="translate.instant('login.btnLogin')"></button>
+            <div *ngIf="showError" class="box-error-login class-error">{{ textError }}</div>
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <button pButton class="" type="submit" [label]="translate.instant('login.btnLogin')"></button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
+
 </div>
